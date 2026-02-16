@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   FacebookLogoIcon,
@@ -56,7 +56,7 @@ export default function SocialRibbon({
       <ul className="flex gap-3 items-center">
         {items.map((item, index) => (
           <li key={index}>
-            <a href={item.href} className="flex items-center">
+            <a href={item.href} className="flex items-center" target="_blank">
               {item.iconName === "instagram" ? (
                 <InstagramLogoIcon
                   className={clsx("w-5 h-5 sm:w-7 sm:h-7", iconsClassName)}
@@ -107,5 +107,3 @@ export default function SocialRibbon({
     </div>
   );
 }
-
-
