@@ -4,12 +4,13 @@ import { Oxanium } from "next/font/google";
 import { landingPageTitle } from "@/mocks/landing-page";
 //@ts-ignore
 import "../styles/globals.css";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const oxanium = Oxanium({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
-
 
 export const metadata: Metadata = {
   title: landingPageTitle,
@@ -24,10 +25,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body
-        className={`${oxanium.variable} antialiased overflow-x-hidden`}
-      >
+      <body className={`${oxanium.variable} antialiased overflow-x-hidden`}>
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

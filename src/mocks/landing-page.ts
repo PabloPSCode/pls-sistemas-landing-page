@@ -32,15 +32,15 @@ export interface FooterLinkItem {
 export const landingPageTitle = "PLS Sistemas | Landing Pages e Websites";
 
 export const heroContent = {
-  title: "Landing pages e websites para sua empresa crescer",
+  title: "Landing pages, websites e ferramentas para sua empresa crescer",
   description:
-    "Template em português para apresentar serviços web com visual profissional, seções estratégicas e foco em conversão.",
+    "Oferecemos soluções modernas e eficazes para melhorar e facilitar a vida de pessoas e empresas.",
   primaryButtonTitle: "Explorar documentação",
 };
 
 export const navItems: LandingNavItem[] = [
   { label: "Quem somos", href: "#quem-somos" },
-  { label: "Landing Pages e Websites", href: "#landing-pages" },
+  { label: "Websites", href: "#landing-pages" },
   { label: "Soluções web", href: "#solucoes-web" },
   { label: "Soluções sob medida", href: "#solucoes-sob-medida" },
   { label: "Casos de sucesso", href: "#casos-de-sucesso" },
@@ -60,7 +60,7 @@ export const aboutContent = {
 
 export const landingServicesContent = {
   sectionId: "landing-pages",
-  title: "LANDING PAGES E WEBSITES",
+  title: "WEBSITES E LANDING PAGES",
   subtitle:
     "Além de landing pages e websites modernos, seguros e responsivos, também criamos soluções que convertem e trazem resultados reais.",
   items: [
@@ -165,11 +165,13 @@ export const customSolutionFormContent = {
   phoneLabel: "Whatsapp",
   messageLabel: "Como podemos ajudar você?",
   namePlaceholder: "João Silva",
-  phonePlaceholder: "(31) 99999-9999",
+  phonePlaceholder: "(31) 98518-7963",
   messagePlaceholder:
     "Descreva o que você precisa. Quanto mais detalhes você fornecer, melhor podemos ajudar.",
   submitLabel: "Quero receber contato",
 };
+
+const whatsAppContact = process.env.NEXT_PUBLIC_WHATSAPP_CONTACT || "5531999999999";
 
 export const footerContent = {
   navTitle: "NAVEGUE",
@@ -177,7 +179,7 @@ export const footerContent = {
   copyright: "2026, Todos os direitos reservados",
   navLinks: [
     { label: "Quem somos", href: "#quem-somos" },
-    { label: "Landing Pages e Sites", href: "#landing-pages" },
+    { label: "Websites", href: "#landing-pages" },
     { label: "Soluções web", href: "#solucoes-web" },
     { label: "Soluções sob medida", href: "#solucoes-sob-medida" },
   ] as FooterLinkItem[],
@@ -186,9 +188,9 @@ export const footerContent = {
   ] as FooterLinkItem[],
   socialItems: [
     { iconName: "instagram", href: "https://www.instagram.com" },
-    { iconName: "whatsapp", href: "https://wa.me/5531999999999" },
+    { iconName: "whatsapp", href: `https://wa.me/${whatsAppContact}` },
     { iconName: "x", href: "https://x.com" },
   ] as const,
 };
 
-export const whatsappFloatingLink = "https://wa.me/5531999999999";
+export const whatsappFloatingLink = `https://wa.me/${whatsAppContact}`;

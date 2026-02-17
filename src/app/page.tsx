@@ -4,8 +4,7 @@ import FadeContainer from "@/components/animations-and-loading/FadeContainer";
 import RevealContainer from "@/components/animations-and-loading/RevealContainer";
 import ZoomContainer from "@/components/animations-and-loading/ZoomContainer";
 import Button from "@/components/buttons/Button";
-import Footer from "@/components/elements/Footer";
-import LandingHeader from "@/components/elements/LandingHeader";
+
 import { Section } from "@/components/elements/Section";
 import VideoSection from "@/components/elements/VideoSection";
 import TextAreaInput from "@/components/inputs/TextAreaInput";
@@ -26,10 +25,8 @@ import { useState } from "react";
 import {
   aboutContent,
   customSolutionFormContent,
-  footerContent,
   heroContent,
   landingServicesContent,
-  navItems,
   webSolutionsContent,
   whatsappFloatingLink,
 } from "@/mocks/landing-page";
@@ -42,7 +39,6 @@ const landingServiceIcons = [
 ];
 
 export default function Home() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
@@ -57,61 +53,6 @@ export default function Home() {
 
   return (
     <div className="overflow-x-hidden bg-[#020205] text-white">
-      <LandingHeader.Root
-        bordered
-        sticky
-        className="bg-[#04050b]/95 text-white backdrop-blur border-white/10"
-      >
-        <LandingHeader.Left>
-          <a href="#inicio" className="flex items-center gap-2">
-            <Image
-              src="/imgs/logo_pls_sistemas.png"
-              alt="Equipe da PLS Sistemas trabalhando em projetos web"
-              width={120}
-              height={76}
-              className="w-full"
-            />
-          </a>
-        </LandingHeader.Left>
-
-        <LandingHeader.Center>
-          <LandingHeader.Nav className="justify-center gap-8">
-            {navItems.map((item) => (
-              <LandingHeader.Nav.Item key={item.href} href={item.href}>
-                {item.label}
-              </LandingHeader.Nav.Item>
-            ))}
-          </LandingHeader.Nav>
-        </LandingHeader.Center>
-
-        <LandingHeader.Right className="gap-3">
-          <LandingHeader.MobileMenuToggle
-            open={isMobileMenuOpen}
-            onToggle={setIsMobileMenuOpen as never}
-            className="text-white"
-          />
-
-          <LandingHeader.MobileMenuPanel open={isMobileMenuOpen}>
-            {navItems.map((item) => (
-              <LandingHeader.Nav.Item
-                key={`mobile-${item.href}`}
-                href={item.href}
-              >
-                {item.label}
-              </LandingHeader.Nav.Item>
-            ))}
-          </LandingHeader.MobileMenuPanel>
-
-          <LandingHeader.CTA
-            label="Falar com especialista"
-            className="hidden md:flex bg-[#7e2cff] text-white"
-            onClick={() => {
-              window.location.href = `#${customSolutionFormContent.sectionId}`;
-            }}
-          />
-        </LandingHeader.Right>
-      </LandingHeader.Root>
-
       <main className="flex flex-col">
         <div id="inicio">
           <VideoSection
@@ -121,7 +62,7 @@ export default function Home() {
             videoUrl="/videos/landing-pages.mov"
             primaryButtonTitle={heroContent.primaryButtonTitle}
             onPrimaryClick={handleVisitDocs}
-            containerClassName="h-[calc(80vh)]"
+            containerClassName="h-[90vh]"
             titleClassName="max-w-4xl"
             primaryButtonClassName="bg-white text-black"
           />
@@ -255,7 +196,11 @@ export default function Home() {
                           width={40}
                           height={40}
                         />
-                        <a href={item.url} target="_blank" rel="noopener noreferrer">
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           <Subtitle
                             content={item.ctaLabel}
                             className="text-primary-200 text-lg sm:text-3xl"
@@ -354,7 +299,7 @@ export default function Home() {
             <FadeContainer once className="mt-12 w-full max-w-4xl">
               <form
                 onSubmit={handleFormSubmit}
-                className="rounded-none border border-white/10 bg-[#2B2B2B] p-5 shadow-[0_16px_45px_rgba(0,0,0,0.28)] sm:p-7"
+                className="rounded-xl border border-white/10 bg-[#2B2B2B] p-5 shadow-[0_16px_45px_rgba(0,0,0,0.28)] sm:p-7"
               >
                 <div className="grid gap-4 sm:grid-cols-2">
                   <TextInput
@@ -402,103 +347,6 @@ export default function Home() {
           </Section>
         </div>
       </main>
-
-      <Footer.Root bordered={false} className="bg-[#030307] text-white">
-        <Footer.Top
-          columns={4}
-          className="gap-8 border-t border-white/10 py-14"
-        >
-          <Footer.Column className="items-start gap-5">
-            <div className="flex items-center gap-2">
-              <Image
-                src="/imgs/logo_pls_sistemas.png"
-                alt="Equipe da PLS Sistemas trabalhando em projetos web"
-                width={120}
-                height={76}
-                className="w-full"
-              />
-            </div>
-            <Paragraph
-              content="João Monlevade - MG."
-              className="text-white/70 text-sm sm:text-xl"
-            />
-          </Footer.Column>
-
-          <Footer.Column className="items-start gap-4">
-            <Subtitle
-              content={footerContent.navTitle}
-              className="text-white text-base sm:text-2xl"
-            />
-            <ul className="space-y-3">
-              {footerContent.navLinks.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-white/80 hover:text-white"
-                  >
-                    <Paragraph
-                      content={link.label}
-                      className="text-sm sm:text-xl"
-                    />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </Footer.Column>
-
-          <Footer.Column className="items-start gap-4">
-            <Subtitle
-              content={footerContent.policyTitle}
-              className="text-white text-base sm:text-2xl"
-            />
-            <ul className="space-y-3">
-              {footerContent.policyLinks.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-white/80 hover:text-white"
-                  >
-                    <Paragraph
-                      content={link.label}
-                      className="text-sm sm:text-xl"
-                    />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </Footer.Column>
-
-          <Footer.Column className="items-start lg:items-end">
-            <Image
-              src="/imgs/safe_site.png"
-              alt="Site seguro - certificado SSL da PLS Sistemas"
-              width={240}
-              height={40}
-            />
-          </Footer.Column>
-        </Footer.Top>
-
-        <Footer.Bottom
-          bordered
-          className="border-t border-white/40 py-6 flex-col items-center gap-4"
-        >
-          <span className="text-white text-xs sm:text-sm">
-            Siga nos no Instagram
-          </span>
-          <Footer.SocialRow
-            iconsClassName="text-foreground/80 hover:text-foreground"
-            items={[
-              {
-                href: "https://www.instagram.com/pls.sistemas",
-                iconName: "instagram",
-              },
-            ]}
-          />
-          <span className="text-white/70 text-xs sm:text-sm">
-            {new Date().getFullYear()} - Desenvolvido por PLS Sistemas
-          </span>
-        </Footer.Bottom>
-      </Footer.Root>
 
       <a
         href={whatsappFloatingLink}

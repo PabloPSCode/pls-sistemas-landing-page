@@ -1,6 +1,5 @@
 "use client";
 
-import Button from "@/components/buttons/Button";
 import Paragraph from "@/components/typography/Paragraph";
 import Title from "@/components/typography/Title";
 import { PauseIcon, PlayIcon } from "@phosphor-icons/react";
@@ -45,12 +44,6 @@ export default function VideoSection({
   description,
   videoUrl,
   showPlayPauseButton = false,
-  primaryButtonTitle,
-  secondaryButtonTitle,
-  onPrimaryClick,
-  onSecondaryClick,
-  primaryButtonClassName,
-  secondaryButtonClassName,
   titleClassName,
   descriptionClassName,
   containerClassName,
@@ -86,7 +79,9 @@ export default function VideoSection({
             }}
             className={clsx(
               "video-section-player !absolute !inset-0 !w-full !h-full !max-w-none !max-h-none",
-              showPlayPauseButton ? "pointer-events-auto" : "pointer-events-none",
+              showPlayPauseButton
+                ? "pointer-events-auto"
+                : "pointer-events-none",
               containerClassName,
             )}
           />
@@ -109,45 +104,24 @@ export default function VideoSection({
           </button>
         )}
 
-        <div className="absolute left-4 right-4 bottom-24 sm:left-8 sm:right-8 sm:bottom-10 z-20 max-w-[82%] sm:max-w-[70%]">
-          <Title
-            content={title}
-            element="h2"
-            className={clsx(
-              "text-white text-3xl sm:text-5xl md:text-6xl leading-[0.95]",
-              titleClassName,
-            )}
-          />
-          <Paragraph
-            content={description}
-            className={clsx(
-              "mt-3 sm:mt-4 text-white/90 text-sm sm:text-base md:text-lg",
-              descriptionClassName,
-            )}
-          />
-        </div>
-
-        <div className="absolute left-4 right-4 bottom-4 sm:left-auto sm:right-8 sm:bottom-8 z-20 flex flex-wrap gap-2 sm:gap-3 sm:justify-end">
-          <Button
-            label={primaryButtonTitle}
-            variant="filled"
-            onClick={onPrimaryClick}
-            className={clsx(
-              "rounded-full px-4 py-2 sm:px-6 sm:py-3 bg-white text-none hover:bg-white/85",
-              primaryButtonClassName,
-            )}
-          />
-          {secondaryButtonTitle && (
-            <Button
-              label={secondaryButtonTitle}
-              variant="outlined"
-              onClick={onSecondaryClick}
+        <div className="h-full flex flex-col justify-end items-center mx-auto max-w-7xl gap-4 ">
+          <div className="z-20 max-w-[82%] sm:max-w-[70%]">
+            <Title
+              content={title}
+              element="h2"
               className={clsx(
-                "rounded-full px-4 py-2 sm:px-6 sm:py-3 border-white text-white hover:bg-white/15",
-                secondaryButtonClassName,
+                "text-white text-3xl sm:text-5xl md:text-6xl leading-[0.95] text-center",
+                titleClassName,
               )}
             />
-          )}
+            <Paragraph
+              content={description}
+              className={clsx(
+                "mt-3 sm:mt-4 text-white/90 text-sm sm:text-base md:text-lg text-center",
+                descriptionClassName,
+              )}
+            />
+          </div>
         </div>
       </div>
     </section>

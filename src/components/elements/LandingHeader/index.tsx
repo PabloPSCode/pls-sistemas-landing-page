@@ -73,7 +73,7 @@ const Center: React.FC<CenterProps> = ({ className, children, ...rest }) => (
   <nav
     {...rest}
     className={clsx(
-      "hidden md:flex min-w-0 flex-1 items-center justify-center",
+      "hidden lg:flex min-w-0 flex-1 items-center justify-center",
       className
     )}
     aria-label="Navegação principal"
@@ -178,7 +178,7 @@ const MobileMenuToggle: React.FC<
     onClick={() => onToggle?.(!open)}
     {...rest}
     className={clsx(
-      "flex md:invisible h-9 w-9 md:w-0 md:h-0 items-center justify-center rounded-lg",
+      "flex lg:invisible h-9 w-9 lg:w-0 lg:h-0 items-center justify-center rounded-lg",
       "hover:bg-primary/10",
       className
     )}
@@ -195,7 +195,7 @@ const MobileMenuPanel: React.FC<{
 }> = ({ open, children, cta }) => {
   if (!open) return null;
   return (
-    <div className="md:hidden absolute left-0 right-0 top-full z-30 w-full border-b border-foreground/10 bg-background/98 backdrop-blur transition">
+    <div className="lg:hidden absolute left-0 right-0 top-full z-30 w-full border-b border-foreground/10 bg-background/98 backdrop-blur transition">
       <div className="mx-auto max-w-7xl px-3 py-3">
         <ul className="flex flex-col items-center gap-3">{children}</ul>
         {cta && <div className="mt-3">{cta}</div>}
