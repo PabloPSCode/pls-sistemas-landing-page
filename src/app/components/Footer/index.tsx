@@ -3,7 +3,8 @@
 import FooterElement from "@/components/elements/Footer";
 import Paragraph from "@/components/typography/Paragraph";
 import Subtitle from "@/components/typography/Subtitle";
-import { footerContent } from "@/mocks/landing-page";
+import { footerContent, whatsappFloatingLink } from "@/mocks/landing-page";
+import { WhatsappLogoIcon } from "@phosphor-icons/react/dist/icons/WhatsappLogo";
 import Image from "next/image";
 
 export default function Footer() {
@@ -97,6 +98,15 @@ export default function Footer() {
           {new Date().getFullYear()} - Desenvolvido por PLS Sistemas
         </span>
       </FooterElement.Bottom>
+            <a
+        href={whatsappFloatingLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Falar no WhatsApp"
+        className="fixed bottom-6 right-6 z-50 rounded-full bg-[#1ecd5a] p-4 text-white hover:scale-105"
+      >
+        <WhatsappLogoIcon size={32} weight="thin" />
+      </a>
     </FooterElement.Root>
   );
 }

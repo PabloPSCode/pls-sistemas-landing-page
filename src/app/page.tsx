@@ -348,15 +348,7 @@ export default function Home() {
         </div>
       </main>
 
-      <a
-        href={whatsappFloatingLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Falar no WhatsApp"
-        className="fixed bottom-6 right-6 z-50 rounded-full bg-[#1ecd5a] p-3 text-white hover:scale-105"
-      >
-        <WhatsappLogoIcon size={28} weight="fill" />
-      </a>
+
     </div>
   );
 }
