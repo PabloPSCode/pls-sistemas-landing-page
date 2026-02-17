@@ -40,7 +40,10 @@ export default function Header() {
       <LandingHeader.Center>
         <LandingHeader.Nav className="justify-center gap-8">
           {navItems.map((item) => (
-            <LandingHeader.Nav.Item key={item.href} href={resolveHref(item.href)}>
+            <LandingHeader.Nav.Item
+              key={item.href}
+              href={resolveHref(item.href)}
+            >
               {item.label}
             </LandingHeader.Nav.Item>
           ))}
@@ -59,6 +62,7 @@ export default function Header() {
             <LandingHeader.Nav.Item
               key={`mobile-${item.href}`}
               href={item.href}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {item.label}
             </LandingHeader.Nav.Item>

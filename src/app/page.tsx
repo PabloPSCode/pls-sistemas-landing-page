@@ -32,6 +32,7 @@ import {
   webSolutionsContent,
 } from "@/mocks/landing-page";
 import { brazilianPhoneMask } from "@/utils/masks";
+import Link from "next/link";
 
 const landingServiceIcons = [
   TableIcon,
@@ -70,7 +71,7 @@ export default function Home() {
           />
         </div>
 
-        <div id={aboutContent.sectionId}>
+        <div id={aboutContent.sectionId} className="scroll-mt-8">
           <Section size="full" sectionClassName="bg-[#030307] py-20 sm:py-24">
             <RevealContainer once className="w-full max-w-6xl">
               <Title
@@ -116,13 +117,17 @@ export default function Home() {
                 className="text-center"
               />
               <div className="flex w-full mt-4">
-                <BrandMarquee logos={companies} imageFilter="grayscale" speed={120}/>
+                <BrandMarquee
+                  logos={companies}
+                  imageFilter="grayscale"
+                  speed={120}
+                />
               </div>
             </div>
           </Section>
         </div>
 
-        <div id={landingServicesContent.sectionId}>
+        <div id={landingServicesContent.sectionId} className="scroll-mt-8">
           <Section
             size="full"
             sectionClassName="bg-gradient-to-b from-[#0f0327] via-[#3a126f] to-[#8f33ff] py-20 sm:py-24"
@@ -157,12 +162,15 @@ export default function Home() {
                           className="text-primary-100"
                           weight="light"
                         />
-                        <a href="#">
+                        <Link
+                          href="/landing-pages"
+                          className="flex items-center gap-2"
+                        >
                           <Subtitle
                             content={item.ctaLabel}
                             className="text-primary-200 text-lg sm:text-3xl"
                           />
-                        </a>
+                        </Link>
                       </div>
 
                       <Subtitle
@@ -182,7 +190,7 @@ export default function Home() {
           </Section>
         </div>
 
-        <div id={webSolutionsContent.sectionId}>
+        <div id={webSolutionsContent.sectionId} className="scroll-mt-8">
           <Section size="full" sectionClassName="bg-[#030307] py-20 sm:py-24">
             <RevealContainer once className="w-full max-w-6xl">
               <Title
@@ -295,7 +303,7 @@ export default function Home() {
           </Section>
         </div> */}
 
-        <div id={customSolutionFormContent.sectionId}>
+        <div id={customSolutionFormContent.sectionId} className="scroll-mt-8">
           <Section
             size="full"
             sectionClassName="bg-gradient-to-b from-[#0f0327] via-[#3a126f] to-[#8f33ff] py-20 sm:py-24"
