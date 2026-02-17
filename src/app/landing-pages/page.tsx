@@ -1,7 +1,651 @@
+"use client";
+
+import { useState, type FormEvent } from "react";
+
+import Button from "@/components/buttons/Button";
+import ImageCard from "@/components/cards/ImageCard";
+import ColorInput from "@/components/inputs/ColorInput";
+import MaskedTextInput from "@/components/inputs/MaskedTextInput";
+import SelectInput, { type Option } from "@/components/inputs/SelectInput";
+import TextInput from "@/components/inputs/TextInput";
+import GenericModal from "@/components/modals/GenericModal";
+import Paragraph from "@/components/typography/Paragraph";
+import Subtitle from "@/components/typography/Subtitle";
+import Title from "@/components/typography/Title";
+import {
+  creationProcessSteps,
+  landingServicesContent,
+  templates,
+} from "@/mocks/landing-page";
+import { brazilianPhoneMask } from "@/utils/masks";
+
+const fontOptions: Option[] = [
+  { label: "Poppins", value: "Poppins" },
+  { label: "Montserrat", value: "Montserrat" },
+  { label: "Raleway", value: "Raleway" },
+  { label: "Oxanium", value: "Oxanium" },
+  { label: "Roboto", value: "Roboto" },
+  { label: "Inter", value: "Inter" },
+  { label: "Open Sans", value: "Open Sans" },
+  { label: "Works Sans", value: "Works Sans" },
+  { label: "Ubuntu", value: "Ubuntu" },
+];
+
+const fontFamilyMap: Record<string, string> = {
+  Poppins: "var(--font-poppins), sans-serif",
+  Montserrat: "var(--font-montserrat), sans-serif",
+  Raleway: "var(--font-raleway), sans-serif",
+  Oxanium: "var(--font-oxanium), sans-serif",
+  Roboto: "var(--font-roboto), sans-serif",
+  Inter: "var(--font-inter), sans-serif",
+  "Open Sans": "var(--font-open-sans), sans-serif",
+  "Works Sans": "var(--font-work-sans), sans-serif",
+  Ubuntu: "var(--font-ubuntu), sans-serif",
+};
+
 export default function Page() {
+  const [isDomainModalOpen, setIsDomainModalOpen] = useState(false);
+  const [isTemplateModalOpen, setIsTemplateModalOpen] = useState(false);
+  const [isWebsiteFormModalOpen, setIsWebsiteFormModalOpen] = useState(false);
+  const [domainQuery, setDomainQuery] = useState("");
+  const [domainStatus, setDomainStatus] = useState<
+    "available" | "unavailable" | null
+  >(null);
+  const [domainError, setDomainError] = useState<string | null>(null);
+  const [isCheckingDomain, setIsCheckingDomain] = useState(false);
+  const [isSubmittingWebsiteForm, setIsSubmittingWebsiteForm] = useState(false);
+  const [websiteFormError, setWebsiteFormError] = useState<string | null>(null);
+  const [websiteFormSuccess, setWebsiteFormSuccess] = useState<string | null>(
+    null,
+  );
+
+  const [websiteCreationFormData, setWebsiteCreationFormData] = useState({
+    name: "",
+    whatsapp: "",
+    domain: "",
+    templateName: "",
+    templateUrl: "",
+    primaryColor: "#5b2cf5",
+    secondaryColor: "#0f172a",
+    font: "Oxanium",
+    message: "",
+  });
+
+  const handleCloseDomainModal = () => {
+    setIsDomainModalOpen(false);
+    setDomainQuery("");
+    setDomainStatus(null);
+    setDomainError(null);
+  };
+
+  const handleCloseTemplateModal = () => {
+    setIsTemplateModalOpen(false);
+  };
+
+  const handleCloseWebsiteFormModal = () => {
+    setIsWebsiteFormModalOpen(false);
+    setWebsiteFormError(null);
+    setWebsiteFormSuccess(null);
+  };
+
+  const checkDomainAvailability = async (domain: string) => {
+    const normalizedInput = domain.trim();
+
+    if (!normalizedInput) {
+      setDomainStatus(null);
+      setDomainError("Informe um domínio para consulta.");
+      return;
+    }
+
+    setDomainError(null);
+    setDomainStatus(null);
+    setIsCheckingDomain(true);
+
+    try {
+      const response = await fetch(
+        `/api/fetch-domain?domain=${encodeURIComponent(normalizedInput)}`,
+      );
+      const data = (await response.json()) as {
+        available?: boolean;
+        error?: string;
+      };
+
+      if (!response.ok) {
+        setDomainError(
+          data.error || "Não foi possível verificar este domínio.",
+        );
+        return;
+      }
+
+      if (typeof data.available !== "boolean") {
+        setDomainError("Resposta inválida da verificação de domínio.");
+        return;
+      }
+
+      setDomainStatus(data.available ? "available" : "unavailable");
+    } catch (error) {
+      console.error("Erro ao verificar domínio:", error);
+      setDomainError("Falha de conexão ao consultar disponibilidade.");
+      setDomainStatus(null);
+    } finally {
+      setIsCheckingDomain(false);
+    }
+  };
+
+  const handleMockDomainCheck = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    checkDomainAvailability(domainQuery);
+  };
+
+  const handleSelectDomain = () => {
+    if (domainStatus === "available") {
+      setWebsiteCreationFormData((prev) => ({
+        ...prev,
+        domain: domainQuery.trim(),
+      }));
+      setIsDomainModalOpen(false);
+    }
+  };
+
+  const handleSelectTemplate = (templateName: string, templateUrl: string) => {
+    setWebsiteCreationFormData((prev) => ({
+      ...prev,
+      templateName,
+      templateUrl,
+    }));
+    setIsTemplateModalOpen(false);
+  };
+
+  const handleWebsiteFormFieldChange = (
+    field:
+      | "name"
+      | "whatsapp"
+      | "message"
+      | "primaryColor"
+      | "secondaryColor"
+      | "font",
+    value: string,
+  ) => {
+    setWebsiteCreationFormData((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const validateWebsiteForm = () => {
+    if (!websiteCreationFormData.domain) {
+      return "Escolha um domínio antes de enviar o formulário.";
+    }
+
+    if (!websiteCreationFormData.templateName) {
+      return "Escolha um template antes de enviar o formulário.";
+    }
+
+    if (!websiteCreationFormData.name.trim()) {
+      return "Informe seu nome.";
+    }
+
+    if (!websiteCreationFormData.whatsapp.trim()) {
+      return "Informe seu WhatsApp.";
+    }
+
+    if (!websiteCreationFormData.message.trim()) {
+      return "Descreva brevemente o que você precisa.";
+    }
+
+    return null;
+  };
+
+  const handleWebsiteFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setWebsiteFormError(null);
+    setWebsiteFormSuccess(null);
+
+    const validationError = validateWebsiteForm();
+    if (validationError) {
+      setWebsiteFormError(validationError);
+      return;
+    }
+
+    setIsSubmittingWebsiteForm(true);
+
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1200));
+
+      console.log(
+        "Website creation form (mock submit):",
+        websiteCreationFormData,
+      );
+      setWebsiteFormSuccess("Solicitação enviada com sucesso (simulação).");
+    } catch {
+      setWebsiteFormError("Não foi possível enviar agora. Tente novamente.");
+    } finally {
+      setIsSubmittingWebsiteForm(false);
+    }
+  };
+
+  const selectedFontOption =
+    fontOptions.find(
+      (option) => option.value === websiteCreationFormData.font,
+    ) || null;
+  const selectedFontFamily =
+    fontFamilyMap[websiteCreationFormData.font] || "sans-serif";
+
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <h1 className="text-4xl font-bold">Bem-vindo à PLS Sistemas!</h1>
-    </div>
+    <main className="overflow-x-hidden bg-foreground">
+      <section
+        className="w-full py-16 sm:py-20 max-w-7xl mx-auto"
+        id="criar-site-landing-page"
+      >
+        <div className="mx-auto w-full max-w-4xl px-8">
+          <Title
+            content="PROCESSO DE CRIAÇÃO DE WEBSITES E LANDING PAGES"
+            element="h3"
+            className="text-gray-900  text-xl sm:text-2xl text-center"
+          />
+          <Subtitle
+            content="Em apenas 5 passos o seu negócio já está disponível para o mundo."
+            className="text-gray-700 mt-4"
+          />
+
+          <ol className="mt-10">
+            {creationProcessSteps.map((step, index) => (
+              <li
+                key={step.text}
+                className="relative flex gap-4 pb-10 last:pb-0 sm:gap-6"
+              >
+                <span className="w-8 shrink-0 text-center text-4xl font-black leading-none text-black sm:w-10 sm:text-5xl">
+                  {index + 1}
+                </span>
+
+                <div className="max-w-3xl pt-1">
+                  <Paragraph
+                    content={step.text}
+                    className="text-gray-900 text-xl sm:text-4xl"
+                  />
+                  {step.link &&
+                  step.link.includes("domínio") &&
+                  websiteCreationFormData.domain ? (
+                    <span className="text-base sm:text-lg font-bold">
+                      Domínio selecionado: {websiteCreationFormData.domain}
+                    </span>
+                  ) : step.link && step.link.includes("domínio") ? (
+                    <button
+                      onClick={() => setIsDomainModalOpen(true)}
+                      className="mt-2 inline-block text-base font-semibold text-[#1873ff] underline underline-offset-2 hover:text-[#0e5dd0] sm:text-lg"
+                    >
+                      {step.link}
+                    </button>
+                  ) : step.link &&
+                    step.link.toLowerCase().includes("templates") &&
+                    websiteCreationFormData.templateName ? (
+                    <div className="mt-2 flex flex-col gap-2">
+                      <span className="text-base sm:text-lg font-bold">
+                        Template selecionado:{" "}
+                        {websiteCreationFormData.templateName}
+                      </span>
+                      <button
+                        onClick={() => setIsTemplateModalOpen(true)}
+                        className="w-fit text-base font-semibold text-[#1873ff] underline underline-offset-2 hover:text-[#0e5dd0] sm:text-lg"
+                      >
+                        Trocar template
+                      </button>
+                    </div>
+                  ) : step.link &&
+                    step.link.toLowerCase().includes("templates") ? (
+                    <button
+                      onClick={() => setIsTemplateModalOpen(true)}
+                      className="mt-2 inline-block text-base font-semibold text-[#1873ff] underline underline-offset-2 hover:text-[#0e5dd0] sm:text-lg"
+                    >
+                      {step.link}
+                    </button>
+                  ) : step.link &&
+                    step.link.toLowerCase().includes("formul") ? (
+                    <button
+                      onClick={() => setIsWebsiteFormModalOpen(true)}
+                      className="mt-2 inline-block text-base font-semibold text-[#1873ff] underline underline-offset-2 hover:text-[#0e5dd0] sm:text-lg"
+                    >
+                      {step.link}
+                    </button>
+                  ) : step.link ? (
+                    <a
+                      href={step.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-2 inline-block text-base font-semibold text-[#1873ff] underline underline-offset-2 hover:text-[#0e5dd0] sm:text-lg"
+                    >
+                      {step.link}
+                    </a>
+                  ) : null}
+                </div>
+
+                {index < creationProcessSteps.length - 1 && (
+                  <span
+                    aria-hidden
+                    className="absolute left-[1rem] top-12 h-4 w-[3px] bg-primary-500 sm:left-[1.2rem] sm:top-14 sm:h-6"
+                  />
+                )}
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="w-full max-w-7xl mx-auto px-8 py-12" id="detalhes">
+        <Title
+          content={landingServicesContent.title}
+          element="h1"
+          className="text-center text-gray-900 tracking-[0.16em] font-black text-2xl sm:text-4xl"
+        />
+        <Subtitle
+          content={landingServicesContent.subtitle}
+          className="mx-auto mt-5 max-w-4xl text-center text-gray-900/90 text-base sm:text-3xl"
+        />
+
+        <div className="w-full mt-14 space-y-12 max-w-7xl mx-auto flex flex-col items-center">
+          {landingServicesContent.items.map((item, index) => {
+            return (
+              <article key={item.title} className="w-[80%] sm:w-[70%] mx-auto">
+                <Subtitle
+                  content={`${index + 1}. ${item.title}`}
+                  element="h2"
+                  className="text-gray-900 text-2xl sm:text-4xl"
+                />
+
+                <Paragraph
+                  content={item.description}
+                  className="mt-3 text-gray-900/85 text-base sm:text-2xl"
+                />
+
+                {item.highlights && (
+                  <ul className="mt-3 list-disc">
+                    {item.highlights.map((detail) => (
+                      <li key={detail}>
+                        <Paragraph
+                          content={detail}
+                          className="text-gray-900/80 text-sm sm:text-lg"
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      <GenericModal
+        open={isDomainModalOpen}
+        onClose={handleCloseDomainModal}
+        title="Consulta de disponibilidade de domínio"
+        size="xl"
+        className="bg-white text-gray-900"
+      >
+        <div className="overflow-hidden rounded-lg border border-foreground/15">
+          <form
+            onSubmit={handleMockDomainCheck}
+            className="space-y-4 bg-white px-4 pt-2 sm:px-5"
+          >
+            <label
+              htmlFor="domain-query"
+              className="block text-sm font-semibold text-gray-900"
+            >
+              Digite o domínio que deseja consultar
+            </label>
+            <div className="flex flex-col gap-2 sm:flex-row">
+              <input
+                id="domain-query"
+                type="text"
+                value={domainQuery}
+                onChange={(event) => setDomainQuery(event.target.value)}
+                placeholder="exemplo.com.br"
+                className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-300/30 disabled:cursor-not-allowed disabled:opacity-70"
+              />
+              <button
+                type="submit"
+                disabled={isCheckingDomain}
+                className="rounded-md bg-[#1873ff] px-4 py-2 text-sm font-semibold text-white hover:bg-[#0e5dd0] disabled:cursor-not-allowed disabled:opacity-70"
+              >
+                {isCheckingDomain ? "Verificando..." : "Verificar"}
+              </button>
+            </div>
+            {domainError && (
+              <div className="rounded-md border border-orange-200 bg-orange-50 px-3 py-2">
+                <Paragraph
+                  content={domainError}
+                  className="text-orange-700 text-sm"
+                />
+              </div>
+            )}
+            {domainStatus === "available" && (
+              <div className="rounded-md border border-green-200 bg-green-50 px-3 py-2">
+                <Paragraph
+                  content="Disponível nesta simulação. Você pode seguir com o registro."
+                  className="text-green-700 text-sm"
+                />
+              </div>
+            )}
+            {domainStatus === "unavailable" && (
+              <div className="rounded-md border border-red-200 bg-red-50 px-3 py-2">
+                <Paragraph
+                  content="Indisponível nesta simulação. Tente outra opção de domínio."
+                  className="text-red-700 text-sm"
+                />
+              </div>
+            )}
+            <Button
+              label="Utilizar este domínio"
+              className="text-white font-bold w-full"
+              onClick={handleSelectDomain}
+              disabled={domainStatus !== "available"}
+            />
+          </form>
+        </div>
+      </GenericModal>
+
+      <GenericModal
+        open={isTemplateModalOpen}
+        onClose={handleCloseTemplateModal}
+        title="Selecione o template desejado"
+        size="xl"
+        className="bg-white text-gray-900 overflow-x-hidden"
+      >
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {templates.map((template) => (
+            <ImageCard
+              key={template.templateUrl}
+              title={template.templateName}
+              imgUrl={template.templateImage}
+              onSeeDetails={() =>
+                window.open(
+                  template.templateUrl,
+                  "_blank",
+                  "noopener,noreferrer",
+                )
+              }
+              onSelectUrl={() =>
+                handleSelectTemplate(
+                  template.templateName,
+                  template.templateUrl,
+                )
+              }
+              seeButtonLabel="Ver"
+              selectButtonLabel="Selecionar"
+            />
+          ))}
+        </div>
+      </GenericModal>
+
+      <GenericModal
+        open={isWebsiteFormModalOpen}
+        onClose={handleCloseWebsiteFormModal}
+        title="Formulário de criação de website/landing page"
+        size="lg"
+        className="bg-white text-gray-900 overflow-x-hidden"
+      >
+        <form
+          onSubmit={handleWebsiteFormSubmit}
+          className="space-y-4 text-gray-900 [--color-bg:#ffffff] [--color-border:#d1d5db] [--color-foreground:#111827]"
+        >
+          <Subtitle content="Informações do site" />
+          <div className="rounded-md border border-gray-200 bg-gray-50 p-3">
+            <p className="text-sm text-gray-900">
+              <strong>Domínio selecionado:</strong>{" "}
+              {websiteCreationFormData.domain || "Não selecionado"}
+            </p>
+            <p className="mt-1 text-sm text-gray-900">
+              <strong>Template selecionado:</strong>{" "}
+              {websiteCreationFormData.templateName || "Não selecionado"}
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row sm:items-center justify-start gap-8 w-full">
+            <ColorInput
+              id="website-creation-primary-color"
+              label="Cor primária"
+              className="bg-white w-[80px]"
+              containerClassName="[&>label]:text-gray-900 [&>p]:text-gray-900 max-w-[280px]"
+              value={websiteCreationFormData.primaryColor}
+              onChange={(event) =>
+                handleWebsiteFormFieldChange("primaryColor", event.target.value)
+              }
+            />
+
+            <ColorInput
+              id="website-creation-secondary-color"
+              label="Cor secundária (opcional)"
+              helperText="Opcional para compor contraste visual."
+              className="bg-white w-[80px]"
+              containerClassName="[&>label]:text-gray-900 [&>p]:text-gray-900 w-fit max-w-[280px]"
+              value={websiteCreationFormData.secondaryColor}
+              onChange={(event) =>
+                handleWebsiteFormFieldChange(
+                  "secondaryColor",
+                  event.target.value,
+                )
+              }
+            />
+          </div>
+
+          <div className="rounded-md border border-gray-200 bg-gray-50 p-3">
+            <p
+              className="text-lg font-bold text-gray-900"
+              style={{
+                fontFamily: selectedFontFamily,
+              }}
+            >
+              Prévia da fonte selecionada - {selectedFontOption?.label || ""}
+            </p>
+            <p
+              className="mt-2 text-sm text-gray-900"
+              style={{
+                fontFamily: selectedFontFamily,
+              }}
+            >
+              Este texto demonstra como títulos e conteúdos podem aparecer com a
+              fonte e as cores escolhidas para seu website/landing page.
+            </p>
+          </div>
+
+          <SelectInput
+            id="website-creation-font"
+            label="Fonte"
+            options={fontOptions}
+            value={selectedFontOption}
+            onSelectOption={(selected) =>
+              handleWebsiteFormFieldChange(
+                "font",
+                String(selected?.value ?? ""),
+              )
+            }
+            placeholder="Selecione uma fonte"
+            isSearchable={false}
+            notFoundOptionsMessage="Nenhuma fonte disponível."
+            containerClassName="[--color-border:#d1d5db] [--color-foreground:#111827] [--color-placeholder:#111827]"
+            labelClassName="text-gray-900"
+          />
+
+          <Subtitle content="Informações do solicitante" className="mt-8" />
+
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+            <TextInput
+              id="website-creation-name"
+              label="Nome"
+              value={websiteCreationFormData.name}
+              onChange={(event) =>
+                handleWebsiteFormFieldChange("name", event.target.value)
+              }
+              placeholder="João Silva"
+              className="mt-1 bg-white text-gray-900 placeholder:text-gray-500"
+              containerClassName="[&>label]:text-gray-900 [&>p]:text-gray-900"
+            />
+            <MaskedTextInput
+              id="website-creation-whatsapp"
+              label="WhatsApp"
+              mask={brazilianPhoneMask}
+              value={websiteCreationFormData.whatsapp}
+              onChange={(event) =>
+                handleWebsiteFormFieldChange("whatsapp", event.target.value)
+              }
+              placeholder="(31) 99999-9999"
+              className="mt-1 bg-white text-gray-900 placeholder:text-gray-500"
+              containerClassName="[&>label]:text-gray-900 [&>p]:text-gray-900"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="website-creation-message"
+              className="block text-sm font-semibold text-gray-900"
+            >
+              Mensagem
+            </label>
+            <textarea
+              id="website-creation-message"
+              value={websiteCreationFormData.message}
+              onChange={(event) =>
+                handleWebsiteFormFieldChange("message", event.target.value)
+              }
+              placeholder="Descreva o seu projeto"
+              rows={5}
+              className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900 outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-300/30"
+            />
+          </div>
+
+          {websiteFormError && (
+            <div className="rounded-md border border-red-200 bg-red-50 px-3 py-2">
+              <Paragraph
+                content={websiteFormError}
+                className="text-red-700 text-sm"
+              />
+            </div>
+          )}
+
+          {websiteFormSuccess && (
+            <div className="rounded-md border border-green-200 bg-green-50 px-3 py-2">
+              <Paragraph
+                content={websiteFormSuccess}
+                className="text-green-700 text-sm"
+              />
+            </div>
+          )}
+
+          <Button
+            type="submit"
+            label={
+              isSubmittingWebsiteForm ? "Enviando..." : "Enviar solicitação"
+            }
+            loading={isSubmittingWebsiteForm}
+            className="w-full text-white font-bold"
+            disabled={
+              isSubmittingWebsiteForm ||
+              !websiteCreationFormData.domain ||
+              !websiteCreationFormData.templateName ||
+              !websiteCreationFormData.name.trim() ||
+              !websiteCreationFormData.whatsapp.trim() ||
+              !websiteCreationFormData.message.trim()
+            }
+          />
+        </form>
+      </GenericModal>
+    </main>
   );
 }

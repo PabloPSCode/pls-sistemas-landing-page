@@ -9,6 +9,9 @@ export interface LandingFeatureItem {
   title: string;
   description: string;
   ctaLabel: string;
+  highlights?: string[];
+  idealFor?: string;
+  expectedOutcome?: string;
 }
 
 export interface WebSolutionItem {
@@ -29,6 +32,12 @@ export interface TestimonialItem {
 export interface FooterLinkItem {
   label: string;
   href: string;
+}
+
+export interface LandingTemplateItem {
+  templateName: string;
+  templateUrl: string;
+  templateImage: string;
 }
 
 export const landingPageTitle = "PLS Sistemas | Landing Pages e Websites";
@@ -61,33 +70,65 @@ export const aboutContent = {
 
 export const landingServicesContent = {
   sectionId: "landing-pages",
-  title: "WEBSITES E LANDING PAGES",
+  title: "DETALHES SOBRE LANDING PAGES E WEBSITES",
   subtitle:
-    "Além de landing pages e websites modernos, seguros e responsivos, também criamos soluções que convertem e trazem resultados reais.",
+    "Entenda um pouco mais sobre nossos serviços de criação de landing pages e websites o e os resultados que você pode esperar ao contratar nossos serviços.",
   items: [
     {
       title: "Templates pré-prontos",
       description:
         "Utilizamos templates para que você ganhe velocidade na criação da sua landing page ou site.",
       ctaLabel: "Saiba mais",
+      highlights: [
+        "Estrutura validada para apresentação de oferta, prova social e CTA.",
+        "Personalização de textos, cores e seções conforme a sua marca.",
+        "Entrega mais rápida para campanhas que precisam entrar no ar sem atraso.",
+      ],
+      idealFor: "Empresas com prazo curto de lançamento.",
+      expectedOutcome:
+        "Redução no tempo de produção e início antecipado da captação de contatos.",
     },
     {
       title: "Design moderno e responsivo",
       description:
         "Design elegante e responsivo garantindo estética e usabilidade. Seu site funciona perfeitamente em qualquer dispositivo.",
       ctaLabel: "Saiba mais",
+      highlights: [
+        "Layout pensado para navegação fluida em celular, tablet e desktop.",
+        "Tipografia e hierarquia visual para leitura rápida e alta conversão.",
+        "Páginas leves com foco em experiência do usuário e credibilidade.",
+      ],
+      idealFor: "Negócios que valorizam presença digital profissional.",
+      expectedOutcome:
+        "Mais confiança para sua marca e melhor engajamento em qualquer tela.",
     },
     {
       title: "Seu site na primeira página do Google",
       description:
-        "Integramos seu site ou landing page com Google Analytics e aplicamos técnicas de SEO para ampliar sua presença online.",
+        "Aplicamos técnicas de SEO para ampliar sua presença online.",
       ctaLabel: "Saiba mais",
+      highlights: [
+        "Configuração inicial de SEO técnico e estrutura de títulos semânticos.",
+        "Boas práticas de conteúdo para aumentar relevância nas buscas.",
+      ],
+      idealFor:
+        "Empresas que precisam gerar tráfego orgânico com previsibilidade.",
+      expectedOutcome:
+        "Mais visibilidade para a empresa e aumento de oportunidades comerciais.",
     },
     {
       title: "Atualização do conteúdo",
       description:
-        "Oferecemos plano mensal e acessível para manter o conteúdo do seu site sempre atualizado e alinhado com o mercado.",
+        "Oferecemos plano opcional mensal de apenas R$ 99,90 para manter o conteúdo do seu site sempre atualizado e alinhado com o mercado.",
       ctaLabel: "Saiba mais",
+      highlights: [
+        "Plano contínuo para manter textos, banners e seções sempre atualizados. (Não inclui novas páginas ou mudanças estruturais ou mudanças de design).",
+        "Ajustes estratégicos com base em sazonalidade e mudanças do mercado.",
+        "Suporte recorrente para evolução do site sem interrupções.",
+      ],
+      idealFor: "Empresas que não querem manter um site desatualizado.",
+      expectedOutcome:
+        "Conteúdo sempre relevante, com reforço de autoridade e conversão.",
     },
   ] as LandingFeatureItem[],
 };
@@ -154,7 +195,7 @@ export const footerContent = {
     { label: "Soluções sob medida", href: "#solucoes-sob-medida" },
   ] as FooterLinkItem[],
   policyLinks: [
-    { label: "Política de Privacidade", href: "#" },
+    { label: "Política de Privacidade", href: "/politica-de-privacidade" },
   ] as FooterLinkItem[],
   socialItems: [
     { iconName: "instagram", href: "https://www.instagram.com" },
@@ -205,5 +246,76 @@ export const companies: BrandLogo[] = [
     href: "https://www.instagram.com/hygiasaude/",
     src: "/companies/hygia.png",
     alt: "Hygia",
+  },
+];
+
+export const creationProcessSteps = [
+  {
+    text: "Escolha do domínio: você escolhe um domínio que irá representar o endereço do seu site, exemplo: www.seusite.com.br.",
+    link: "Verificar a disponibilidade do seu domínio.",
+  },
+  {
+    text: "Escolha do template: você escolhe o template que melhor se adapta ao seu negócio.",
+    link: "Ver nossos templates disponíveis.",
+  },
+  {
+    text: "Briefing inicial: você nos informa com detalhes o que precisa, público alvo e objetivo principal do site.",
+    link: "Preenchar formulário de criação de site",
+  },
+  {
+    text: "Design e desenvolvimento: desenvolvemos e implementamos a página de acordo com o template escolhido e as informações fornecidas no briefing. Pode ficar tranquilo que vamos te mostrar tudo antes de publicar.",
+    link: "",
+  },
+  {
+    text: "Publicação e ajustes: colocamos no ar, configuramos o SEO, validamos tudo e refinamos com base nos resultados.",
+    link: "",
+  },
+];
+
+export const templates: LandingTemplateItem[] = [
+  {
+    templateName: "Solaris",
+    templateUrl: "https://soller-landing-page-template.vercel.app/",
+    templateImage: "/imgs/templates/solaris.png",
+  },
+  {
+    templateName: "Flowt",
+    templateUrl: "https://flowt-landing-page-template.vercel.app/",
+    templateImage: "/imgs/templates/flowt.png",
+  },
+  {
+    templateName: "Breakio",
+    templateUrl: "https://breakio-landing-page-template.vercel.app/",
+    templateImage: "/imgs/templates/breakio.png",
+  },
+  {
+    templateName: "Devox",
+    templateUrl: "https://magnifico-landing-page-template.vercel.app/",
+    templateImage: "/imgs/templates/devox.png",
+  },
+  {
+    templateName: "Xinder",
+    templateUrl: "https://xinder-landing-page-template.vercel.app/",
+    templateImage: "/imgs/templates/xinder.png",
+  },
+  {
+    templateName: "Coolers",
+    templateUrl: "https://collers-landing-page-template.vercel.app/",
+    templateImage: "/imgs/templates/coolers.png",
+  },
+  {
+    templateName: "Trakor",
+    templateUrl: "https://trakor-landing-page-template.vercel.app/",
+    templateImage: "/imgs/templates/trakor.png",
+  },
+  {
+    templateName: "Mabi",
+    templateUrl: "https://mabi-landing-page-template.vercel.app/",
+    templateImage: "/imgs/templates/mabi.png",
+  },
+  {
+    templateName: "Teach",
+    templateUrl: "https://teach-landing-page-template.vercel.app/",
+    templateImage: "/imgs/templates/teach.png",
   },
 ];

@@ -9,10 +9,10 @@ import "react-responsive-modal/styles.css";
 type Size = "sm" | "md" | "lg" | "xl";
 
 const sizeMap: Record<Size, string> = {
-  sm: "max-w-sm",
-  md: "max-w-md",
-  lg: "max-w-lg",
-  xl: "max-w-2xl",
+  sm: "max-w-[400px]",
+  md: "max-w-[600px]",
+  lg: "max-w-[800px]",
+  xl: "max-w-[1200px]",
 };
 
 export interface GenericModalProps {
@@ -92,6 +92,9 @@ export default function GenericModal({
           center
             ? "!bg-transparent m-4 sm:m-0"
             : "!bg-transparent !p-0 !m-0 !shadow-none !mt-4",
+          "!max-w-none",
+          "overflow-x-hidden",
+          sizeMap[size],
           "w-[calc(100vw-1.5rem)] sm:w-auto", // small devices fit
           containerClassName
         ),
@@ -102,6 +105,7 @@ export default function GenericModal({
           background: "transparent",
           padding: 0,
           margin: 0,
+          maxWidth: "none",
           boxShadow: "none",
         },
       }}
@@ -114,8 +118,7 @@ export default function GenericModal({
         className={clsx(
           "bg-background text-foreground rounded-xl border border-foreground/15 shadow-xl",
           "w-full",
-          "max-h-[calc(100vh-2rem)] sm:max-h-[calc(100vh-4rem)] overflow-auto",
-          sizeMap[size],
+          "max-h-[calc(100vh-2rem)] sm:max-h-[calc(100vh-4rem)] overflow-y-auto overflow-x-hidden",
           className
         )}
       >
@@ -171,5 +174,3 @@ export default function GenericModal({
     </Modal>
   );
 }
-
-

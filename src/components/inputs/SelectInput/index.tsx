@@ -138,7 +138,7 @@ const SelectInput = forwardRef<SelectInstance<Option>, SelectInputProps>(
       placeholder: (base) => ({
         ...base,
         color:
-          "color-mix(in srgb, var(--color-foreground, #111827) 50%, transparent)",
+          "var(--color-placeholder, color-mix(in srgb, var(--color-foreground, #111827) 50%, transparent))",
       }),
       menu: (base) => ({
         ...base,
@@ -178,9 +178,12 @@ const SelectInput = forwardRef<SelectInstance<Option>, SelectInputProps>(
       }),
       menuPortal: (base) => ({
         ...base,
-        zIndex: 50,
+        zIndex: 1200,
       }),
     } satisfies RSBaseProps["styles"];
+
+    const menuPortalTarget =
+      typeof document !== "undefined" ? document.body : undefined;
 
     const handleChange = (opt: SingleValue<Option>) => {
       onSelectOption?.(opt ?? null);
@@ -223,7 +226,7 @@ const SelectInput = forwardRef<SelectInstance<Option>, SelectInputProps>(
             isSearchable={isSearchable}
             placeholder={placeholder}
             onChange={handleChange}
-            menuPortalTarget={document.body} // evita clipping em modais/overflows
+            menuPortalTarget={menuPortalTarget} // evita clipping em modais/overflows
             noOptionsMessage={({ inputValue }) =>
               !inputValue
                 ? inputValue

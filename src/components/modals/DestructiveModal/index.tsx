@@ -92,6 +92,7 @@ export default function DestructiveModal({
           center
             ? "!bg-transparent m-4 sm:m-0"
             : "!bg-transparent !p-0 !m-0 !shadow-none !mt-4",
+          "overflow-x-hidden",
           "w-[calc(100vw-1.5rem)] sm:w-auto", // small devices fit
           containerClassName
         ),
@@ -114,7 +115,7 @@ export default function DestructiveModal({
         className={clsx(
           "bg-background text-foreground rounded-xl border border-foreground/15 shadow-xl",
           "w-full",
-          "max-h-[calc(100vh-2rem)] sm:max-h-[calc(100vh-4rem)] overflow-auto",
+          "max-h-[calc(100vh-2rem)] sm:max-h-[calc(100vh-4rem)] overflow-y-auto overflow-x-hidden",
           sizeMap[size],
           className
         )}
@@ -169,5 +170,4 @@ export default function DestructiveModal({
     </Modal>
   );
 }
-
 
