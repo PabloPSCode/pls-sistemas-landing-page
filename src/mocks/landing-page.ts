@@ -42,10 +42,9 @@ export const heroContent = {
 
 export const navItems: LandingNavItem[] = [
   { label: "Quem somos", href: "#quem-somos" },
-  { label: "Websites", href: "#landing-pages" },
+  { label: "Websites e landing pages", href: "#landing-pages" },
   { label: "Soluções web", href: "#solucoes-web" },
   { label: "Soluções sob medida", href: "#solucoes-sob-medida" },
-  { label: "Casos de sucesso", href: "#casos-de-sucesso" },
 ];
 
 export const aboutContent = {
@@ -105,7 +104,7 @@ export const webSolutionsContent = {
         "Exiba produtos da sua loja em uma vitrine virtual profissional e combine pagamento e envio com o cliente.",
       ctaLabel: "Saiba mais",
       imagePath: "/imgs/logo_mostra_loja.png",
-      url: "https://mostraloja.com.br",
+      url: "https://tirestore.mostraloja.com.br",
     },
     {
       title: "Encarte Oferta",
@@ -113,7 +112,7 @@ export const webSolutionsContent = {
         "Crie encartes e promoções para seu comércio de maneira simples e profissional, com foco em conversão.",
       ctaLabel: "Saiba mais",
       imagePath: "/imgs/logo_encarte_oferta.png",
-      url: "https://mostraloja.com.br",
+      url: "https://www.plssistemas.com.br",
     },
     {
       title: "React Ultimate Componentes",
@@ -121,41 +120,9 @@ export const webSolutionsContent = {
         "Biblioteca com +130 componentes React para desenvolvimento ágil de software, com suporte no Brasil.",
       ctaLabel: "Saiba mais",
       imagePath: "/imgs/logo_react_ultimate.png",
-      url: "https://mostraloja.com.br",
+      url: "https://reactultimate.pablosilvadev.com.br/",
     },
   ] as WebSolutionItem[],
-};
-
-export const testimonialsContent = {
-  sectionId: "casos-de-sucesso",
-  title: "CASOS DE SUCESSO",
-  subtitle: "Veja os depoimentos de alguns de nossos clientes",
-  items: [
-    {
-      name: "Pablo Silva",
-      role: "Empresário do varejo",
-      quote:
-        "Superou minhas expectativas. Eu imaginava que seria uma solução eficaz, mas entregou muito mais.",
-      avatarUrl:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80",
-    },
-    {
-      name: "Marina Alves",
-      role: "Gestora comercial",
-      quote:
-        "A estrutura ficou rápida, bonita e muito fácil de atualizar. Nosso time ganhou produtividade desde o primeiro mês.",
-      avatarUrl:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80",
-    },
-    {
-      name: "João Henrique",
-      role: "Diretor de operações",
-      quote:
-        "Com o novo site, aumentamos a geração de contatos qualificados e melhoramos a credibilidade da empresa na região.",
-      avatarUrl:
-        "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=300&q=80",
-    },
-  ] as TestimonialItem[],
 };
 
 export const customSolutionFormContent = {
@@ -182,7 +149,7 @@ export const footerContent = {
   copyright: "2026, Todos os direitos reservados",
   navLinks: [
     { label: "Quem somos", href: "#quem-somos" },
-    { label: "Websites", href: "#landing-pages" },
+    { label: "Websites e landing pages", href: "#landing-pages" },
     { label: "Soluções web", href: "#solucoes-web" },
     { label: "Soluções sob medida", href: "#solucoes-sob-medida" },
   ] as FooterLinkItem[],

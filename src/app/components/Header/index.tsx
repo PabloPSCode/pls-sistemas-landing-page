@@ -23,14 +23,15 @@ export default function Header() {
       bordered
       sticky
       className="bg-[#04050b]/95 text-white backdrop-blur border-white/10"
+      size="lg"
     >
       <LandingHeader.Left>
         <Link href="/" className="flex items-center gap-2">
           <Image
             src="/imgs/logo_pls_sistemas.png"
             alt="Equipe da PLS Sistemas trabalhando em projetos web"
-            width={120}
-            height={76}
+            width={132}
+            height={64}
             className="w-full"
           />
         </Link>

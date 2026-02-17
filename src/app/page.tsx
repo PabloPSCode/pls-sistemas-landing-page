@@ -106,13 +106,14 @@ export default function Home() {
             </div>
 
             <div
-              className="flex flex-col items-center max-w-7xl mx-auto gap-4 py-8 px-4 my-8 scroll-mt-12 sm:scroll-mt-14"
+              className="w-full flex flex-col items-center max-w-7xl mx-auto gap-4 py-8 px-4 my-8 scroll-mt-12 sm:scroll-mt-14"
               id="empresas"
             >
               <Title content="Empresas assistidas" />
               <Subtitle
                 content="Empresas que já foram impactadas pelos nossos serviços"
                 weight="light"
+                className="text-center"
               />
               <div className="flex w-full mt-4">
                 <BrandMarquee logos={companies} imageFilter="grayscale" speed={120}/>
