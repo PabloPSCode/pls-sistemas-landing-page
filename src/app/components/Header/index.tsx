@@ -3,6 +3,7 @@
 import LandingHeader from "@/components/elements/LandingHeader";
 import { customSolutionFormContent, navItems } from "@/mocks/landing-page";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
@@ -24,7 +25,7 @@ export default function Header() {
       className="bg-[#04050b]/95 text-white backdrop-blur border-white/10"
     >
       <LandingHeader.Left>
-        <a href="#inicio" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <Image
             src="/imgs/logo_pls_sistemas.png"
             alt="Equipe da PLS Sistemas trabalhando em projetos web"
@@ -32,7 +33,7 @@ export default function Header() {
             height={76}
             className="w-full"
           />
-        </a>
+        </Link>
       </LandingHeader.Left>
 
       <LandingHeader.Center>

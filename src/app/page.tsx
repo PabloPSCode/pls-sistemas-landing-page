@@ -16,20 +16,20 @@ import {
   MagnifyingGlassIcon,
   PaintBrushIcon,
   TableIcon,
-  WhatsappLogoIcon,
   WrenchIcon,
 } from "@phosphor-icons/react";
 import Image from "next/image";
 import { useState } from "react";
 
+import MaskedTextInput from "@/components/inputs/MaskedTextInput";
 import {
   aboutContent,
   customSolutionFormContent,
   heroContent,
   landingServicesContent,
   webSolutionsContent,
-  whatsappFloatingLink,
 } from "@/mocks/landing-page";
+import { brazilianPhoneMask } from "@/utils/masks";
 
 const landingServiceIcons = [
   TableIcon,
@@ -308,16 +308,15 @@ export default function Home() {
                     value={name}
                     onChange={(event) => setName(event.target.value)}
                     placeholder={customSolutionFormContent.namePlaceholder}
-                    className="border-white/25 bg-white/90 text-black placeholder:text-black/60"
                   />
 
-                  <TextInput
+                  <MaskedTextInput
+                    mask={brazilianPhoneMask}
                     id="telefone"
                     label={customSolutionFormContent.phoneLabel}
                     value={phone}
                     onChange={(event) => setPhone(event.target.value)}
                     placeholder={customSolutionFormContent.phonePlaceholder}
-                    className="border-white/25 bg-white/90 text-black placeholder:text-black/60"
                   />
                 </div>
 
@@ -330,7 +329,7 @@ export default function Home() {
                     placeholder={customSolutionFormContent.messagePlaceholder}
                     maxTextLength={1000}
                     currentTextLength={message.length}
-                    className="min-h-44 border-white/25 bg-white/90 text-black placeholder:text-black/60"
+                    className="min-h-44"
                   />
                 </div>
 
@@ -347,8 +346,6 @@ export default function Home() {
           </Section>
         </div>
       </main>
-
-
     </div>
   );
 }
