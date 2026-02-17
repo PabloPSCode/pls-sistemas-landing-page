@@ -34,10 +34,9 @@ export default function RevealContainer({
   return (
     <motion.div
       ref={ref}
+      initial={{ opacity: 0, y: offSet }}
       animate={
-        inView
-          ? { opacity: 1, transform: "translateY(0)" }
-          : { opacity: 0, transform: `translateY(${offSet}px)` }
+        inView ? { opacity: 1, y: 0 } : { opacity: 0, y: offSet }
       }
       transition={{ duration: 0.8, delay: delay * 0.1 }}
       className={className}
