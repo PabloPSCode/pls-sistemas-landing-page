@@ -100,7 +100,7 @@ export default function BrandMarquee({
                   width={160}
                   height={56}
                   className={clsx(
-                    "w-auto h-auto opacity-50 hover:opacity-100 transition-opacity",
+                    "w-auto h-auto opacity-50 hover:opacity-100 transition-opacity rounded-lg",
                     "object-contain",
                     itemsGap === "close"
                       ? "mx-4 sm:mx-6 md:mx-8"

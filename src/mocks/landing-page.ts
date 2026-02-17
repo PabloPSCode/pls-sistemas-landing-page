@@ -1,3 +1,5 @@
+import { BrandLogo } from "@/components/marketing/BrandMarquee";
+
 export interface LandingNavItem {
   label: string;
   href: string;
@@ -171,7 +173,8 @@ export const customSolutionFormContent = {
   submitLabel: "Quero receber contato",
 };
 
-const whatsAppContact = process.env.NEXT_PUBLIC_WHATSAPP_CONTACT || "5531999999999";
+const whatsAppContact =
+  process.env.NEXT_PUBLIC_WHATSAPP_CONTACT || "5531999999999";
 
 export const footerContent = {
   navTitle: "NAVEGUE",
@@ -194,3 +197,46 @@ export const footerContent = {
 };
 
 export const whatsappFloatingLink = `https://wa.me/${whatsAppContact}`;
+
+export const companies: BrandLogo[] = [
+  {
+    href: "https://www.ajxcapital.com.br",
+    src: "/companies/ajx.png",
+    alt: "Ajx",
+  },
+  {
+    href: "https://www.mirtescontabilidade.com.br",
+    src: "/companies/mj_contabilidade.png",
+    alt: "MJ Contabilidade",
+  },
+  {
+    href: "https://www.agsistemas.com.br",
+    src: "/companies/agsistemas.png",
+    alt: "Ag Sistemas",
+  },
+  {
+    href: "https://www.avodtech.com",
+    src: "/companies/avod.png",
+    alt: "Avod",
+  },
+  {
+    href: "https://www.buybye.com.br",
+    src: "/companies/buybye.png",
+    alt: "Buybye",
+  },
+  {
+    href: "https://www.instagram.com/terraizsacolao/?hl=en",
+    src: "/companies/terraiz.png",
+    alt: "Terraiz",
+  },
+  {
+    href: "https://www.optimizeit.com.br",
+    src: "/companies/optimizeit.png",
+    alt: "Buybye",
+  },
+  {
+    href: "https://www.instagram.com/hygiasaude/",
+    src: "/companies/hygia.png",
+    alt: "Hygia",
+  },
+];

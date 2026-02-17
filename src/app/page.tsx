@@ -22,8 +22,10 @@ import Image from "next/image";
 import { useState } from "react";
 
 import MaskedTextInput from "@/components/inputs/MaskedTextInput";
+import BrandMarquee from "@/components/marketing/BrandMarquee";
 import {
   aboutContent,
+  companies,
   customSolutionFormContent,
   heroContent,
   landingServicesContent,
@@ -101,6 +103,20 @@ export default function Home() {
                   ))}
                 </div>
               </RevealContainer>
+            </div>
+
+            <div
+              className="flex flex-col items-center max-w-7xl mx-auto gap-4 py-8 px-4 my-8 scroll-mt-12 sm:scroll-mt-14"
+              id="empresas"
+            >
+              <Title content="Empresas assistidas" />
+              <Subtitle
+                content="Empresas que já foram impactadas pelos nossos serviços"
+                weight="light"
+              />
+              <div className="flex w-full mt-4">
+                <BrandMarquee logos={companies} imageFilter="grayscale" speed={120}/>
+              </div>
             </div>
           </Section>
         </div>

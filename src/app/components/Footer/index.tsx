@@ -19,7 +19,7 @@ export default function Footer() {
             <Image
               src="/imgs/logo_pls_sistemas.png"
               alt="Equipe da PLS Sistemas trabalhando em projetos web"
-              width={120}
+              width={160}
               height={76}
               className="w-full"
             />
