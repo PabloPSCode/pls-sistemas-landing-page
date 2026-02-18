@@ -21,7 +21,7 @@ export default function Footer() {
               alt="Equipe da PLS Sistemas trabalhando em projetos web"
               width={160}
               height={76}
-              className="w-full"
+              className="w-full h-10 sm:h-12"
             />
           </div>
           <Paragraph
@@ -98,7 +98,7 @@ export default function Footer() {
           {new Date().getFullYear()} - Desenvolvido por PLS Sistemas
         </span>
       </FooterElement.Bottom>
-            <a
+      <a
         href={whatsappFloatingLink}
         target="_blank"
         rel="noopener noreferrer"

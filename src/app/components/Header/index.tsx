@@ -30,9 +30,9 @@ export default function Header() {
           <Image
             src="/imgs/logo_pls_sistemas.png"
             alt="Equipe da PLS Sistemas trabalhando em projetos web"
-            width={132}
-            height={64}
-            className="w-full"
+            width={180}
+            height={80}
+            className="w-full h-10 sm:h-12"
           />
         </Link>
       </LandingHeader.Left>
