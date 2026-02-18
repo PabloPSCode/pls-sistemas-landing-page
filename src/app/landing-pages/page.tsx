@@ -18,6 +18,7 @@ import {
   templates,
 } from "@/mocks/landing-page";
 import { brazilianPhoneMask } from "@/utils/masks";
+import { MIN_MESSAGE_LENGTH } from "@/constants";
 
 const fontOptions: Option[] = [
   { label: "Poppins", value: "Poppins" },
@@ -47,6 +48,9 @@ export default function Page() {
   const [isDomainModalOpen, setIsDomainModalOpen] = useState(false);
   const [isTemplateModalOpen, setIsTemplateModalOpen] = useState(false);
   const [isWebsiteFormModalOpen, setIsWebsiteFormModalOpen] = useState(false);
+  const [websiteFormSelectorContext, setWebsiteFormSelectorContext] = useState<
+    "domain" | "template" | null
+  >(null);
   const [domainQuery, setDomainQuery] = useState("");
   const [domainStatus, setDomainStatus] = useState<
     "available" | "unavailable" | null
@@ -76,16 +80,27 @@ export default function Page() {
     setDomainQuery("");
     setDomainStatus(null);
     setDomainError(null);
+
+    if (websiteFormSelectorContext === "domain") {
+      setIsWebsiteFormModalOpen(true);
+      setWebsiteFormSelectorContext(null);
+    }
   };
 
   const handleCloseTemplateModal = () => {
     setIsTemplateModalOpen(false);
+
+    if (websiteFormSelectorContext === "template") {
+      setIsWebsiteFormModalOpen(true);
+      setWebsiteFormSelectorContext(null);
+    }
   };
 
   const handleCloseWebsiteFormModal = () => {
     setIsWebsiteFormModalOpen(false);
     setWebsiteFormError(null);
     setWebsiteFormSuccess(null);
+    setWebsiteFormSelectorContext(null);
   };
 
   const checkDomainAvailability = async (domain: string) => {
@@ -144,6 +159,14 @@ export default function Page() {
         domain: domainQuery.trim(),
       }));
       setIsDomainModalOpen(false);
+      setDomainQuery("");
+      setDomainStatus(null);
+      setDomainError(null);
+
+      if (websiteFormSelectorContext === "domain") {
+        setIsWebsiteFormModalOpen(true);
+        setWebsiteFormSelectorContext(null);
+      }
     }
   };
 
@@ -154,6 +177,26 @@ export default function Page() {
       templateUrl,
     }));
     setIsTemplateModalOpen(false);
+
+    if (websiteFormSelectorContext === "template") {
+      setIsWebsiteFormModalOpen(true);
+      setWebsiteFormSelectorContext(null);
+    }
+  };
+
+  const handleOpenDomainModalFromWebsiteForm = () => {
+    setWebsiteFormSelectorContext("domain");
+    setDomainQuery(websiteCreationFormData.domain);
+    setDomainStatus(null);
+    setDomainError(null);
+    setIsWebsiteFormModalOpen(false);
+    setIsDomainModalOpen(true);
+  };
+
+  const handleOpenTemplateModalFromWebsiteForm = () => {
+    setWebsiteFormSelectorContext("template");
+    setIsWebsiteFormModalOpen(false);
+    setIsTemplateModalOpen(true);
   };
 
   const handleWebsiteFormFieldChange = (
@@ -495,6 +538,26 @@ export default function Page() {
               <strong>Template selecionado:</strong>{" "}
               {websiteCreationFormData.templateName || "Não selecionado"}
             </p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={handleOpenDomainModalFromWebsiteForm}
+                className="rounded-md border border-primary-400 px-3 py-1.5 text-xs font-semibold text-primary-700 transition-colors hover:bg-primary-50"
+              >
+                {websiteCreationFormData.domain
+                  ? "Trocar domínio"
+                  : "Selecionar domínio"}
+              </button>
+              <button
+                type="button"
+                onClick={handleOpenTemplateModalFromWebsiteForm}
+                className="rounded-md border border-primary-400 px-3 py-1.5 text-xs font-semibold text-primary-700 transition-colors hover:bg-primary-50"
+              >
+                {websiteCreationFormData.templateName
+                  ? "Trocar template"
+                  : "Selecionar template"}
+              </button>
+            </div>
           </div>
 
           <div className="flex flex-col sm:flex-row sm:items-center justify-start gap-8 w-full">
@@ -512,7 +575,6 @@ export default function Page() {
             <ColorInput
               id="website-creation-secondary-color"
               label="Cor secundária (opcional)"
-              helperText="Opcional para compor contraste visual."
               className="bg-white w-[80px]"
               containerClassName="[&>label]:text-gray-900 [&>p]:text-gray-900 w-fit max-w-[280px]"
               value={websiteCreationFormData.secondaryColor}
@@ -604,7 +666,7 @@ export default function Page() {
               onChange={(event) =>
                 handleWebsiteFormFieldChange("message", event.target.value)
               }
-              placeholder="Descreva o seu projeto"
+              placeholder="Descreva o seu projeto, quanto mais detalhes, melhor! Quais funcionalidades deseja? Qual o objetivo do site/landing page? Para que tipo de público?"
               rows={5}
               className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900 outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-300/30"
             />
@@ -641,7 +703,8 @@ export default function Page() {
               !websiteCreationFormData.templateName ||
               !websiteCreationFormData.name.trim() ||
               !websiteCreationFormData.whatsapp.trim() ||
-              !websiteCreationFormData.message.trim()
+              !websiteCreationFormData.message.trim() ||
+              websiteCreationFormData.message.length < MIN_MESSAGE_LENGTH
             }
           />
         </form>

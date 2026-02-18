@@ -1,5 +1,4 @@
 import { BrandLogo } from "@/components/marketing/BrandMarquee";
-import { startWhatsAppChat } from "@/utils/whatsapp";
 
 export interface LandingNavItem {
   label: string;
@@ -143,7 +142,7 @@ export const webSolutionsContent = {
     {
       title: "Mostra Loja",
       description:
-        "Exiba produtos da sua loja em uma vitrine virtual profissional e combine pagamento e envio com o cliente.",
+        "Exiba produtos da sua loja em uma vitrine virtual profissional e combine pagamento e envio diretamente com o cliente.",
       ctaLabel: "Saiba mais",
       imagePath: "/imgs/logo_mostra_loja.png",
       url: "https://tirestore.mostraloja.com.br",
@@ -159,7 +158,7 @@ export const webSolutionsContent = {
     {
       title: "React Ultimate Componentes",
       description:
-        "Biblioteca com +130 componentes React para desenvolvimento ágil de software, com suporte no Brasil.",
+        "Biblioteca com +130 componentes React contruída para desenvolvedores e empresas de software.",
       ctaLabel: "Saiba mais",
       imagePath: "/imgs/logo_react_ultimate.png",
       url: "https://reactultimate.pablosilvadev.com.br/",
@@ -200,7 +199,6 @@ export const footerContent = {
     { iconName: "x", href: "https://x.com" },
   ] as const,
 };
-
 
 export const companies: BrandLogo[] = [
   {
