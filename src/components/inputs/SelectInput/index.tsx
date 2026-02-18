@@ -204,7 +204,7 @@ const SelectInput = forwardRef<SelectInstance<Option>, SelectInputProps>(
 
         <div
           className={clsx(
-            "rounded-md bg-background",
+            "rounded-md bg-transparent",
             "focus-within:ring-2 focus-within:ring-primary-400/40",
             isDisabled && "opacity-70 cursor-not-allowed",
             errorMessage && "ring-1 ring-red-500 focus-within:ring-red-400/40"

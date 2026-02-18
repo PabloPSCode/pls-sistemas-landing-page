@@ -57,11 +57,11 @@ export default function ImageCard({
         alt={title}
         width={640}
         height={384}
-        className="w-full h-full object-cover rounded-lg mb-4"
+        className="w-full h-1/2 object-cover rounded-lg mb-4"
       />
 
       {/* Título */}
-      <h3 className="font-semibold text-md sm:text-lg text-gray-900">
+      <h3 className="font-semibold text-md sm:text-lg text-gray-900 -mt-4">
         {title}
       </h3>
 
@@ -72,7 +72,7 @@ export default function ImageCard({
 
       {/* Botão "Ver Detalhes" */}
       {(onSeeDetails || onSelectUrl) && (
-        <div className="flex flex-col gap-2 w-full mt-4">
+        <div className="flex flex-col gap-2 w-full">
           {onSeeDetails && (
             <button
               onClick={handleSeeDetails}
