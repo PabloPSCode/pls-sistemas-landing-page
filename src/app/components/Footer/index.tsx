@@ -3,7 +3,8 @@
 import FooterElement from "@/components/elements/Footer";
 import Paragraph from "@/components/typography/Paragraph";
 import Subtitle from "@/components/typography/Subtitle";
-import { footerContent, whatsappFloatingLink } from "@/mocks/landing-page";
+import { footerContent } from "@/mocks/landing-page";
+import { startWhatsAppChat } from "@/utils/whatsapp";
 import { WhatsappLogoIcon } from "@phosphor-icons/react/dist/icons/WhatsappLogo";
 import Image from "next/image";
 
@@ -82,8 +83,8 @@ export default function Footer() {
         bordered
         className="border-t border-white/40 py-6 flex-col items-center gap-4"
       >
-        <span className="text-white text-xs sm:text-sm">
-          Siga nos no Instagram
+        <span className="text-white/70 text-xs sm:text-sm">
+          {new Date().getFullYear()} - Desenvolvido por PLS Sistemas
         </span>
         <FooterElement.SocialRow
           iconsClassName="text-foreground/80 hover:text-foreground"
@@ -94,12 +95,9 @@ export default function Footer() {
             },
           ]}
         />
-        <span className="text-white/70 text-xs sm:text-sm">
-          {new Date().getFullYear()} - Desenvolvido por PLS Sistemas
-        </span>
       </FooterElement.Bottom>
       <a
-        href={whatsappFloatingLink}
+        onClick={() => startWhatsAppChat()}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Falar no WhatsApp"

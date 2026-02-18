@@ -2,6 +2,7 @@
 
 import LandingHeader from "@/components/elements/LandingHeader";
 import { customSolutionFormContent, navItems } from "@/mocks/landing-page";
+import { startWhatsAppChat } from "@/utils/whatsapp";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -72,9 +73,7 @@ export default function Header() {
         <LandingHeader.CTA
           label="Falar com especialista"
           className="hidden md:flex bg-[#7e2cff] text-white"
-          onClick={() => {
-            window.location.href = `#${customSolutionFormContent.sectionId}`;
-          }}
+          onClick={() => startWhatsAppChat()}
         />
       </LandingHeader.Right>
     </LandingHeader.Root>

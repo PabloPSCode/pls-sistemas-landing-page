@@ -32,6 +32,7 @@ import {
   webSolutionsContent,
 } from "@/mocks/landing-page";
 import { brazilianPhoneMask } from "@/utils/masks";
+import { startWhatsAppChat } from "@/utils/whatsapp";
 import Link from "next/link";
 
 const landingServiceIcons = [
@@ -52,6 +53,8 @@ export default function Home() {
 
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const completeMessage = `Olá, meu nome é ${name}. Meu telefone para contato é ${phone}. ${message}`;
+    startWhatsAppChat(completeMessage);
   };
 
   return (
@@ -187,18 +190,21 @@ export default function Home() {
                 );
               })}
             </div>
-              <RevealContainer once className="w-full flex justify-center items-center mt-8 mx-auto">
-                <Link
-                  href="/landing-pages#criar-site-landing-page"
-                  className="relative isolate flex items-center justify-center overflow-hidden rounded-xl border border-primary-300/35 bg-gradient-to-r from-primary-700 via-primary-600 to-primary-700 px-6 py-3 shadow-[0_14px_32px_rgba(96,61,255,0.35)] transition-all duration-300 before:absolute before:inset-0 before:-z-10 before:rounded-xl before:bg-primary-400/35 before:blur-2xl before:content-[''] hover:-translate-y-0.5 hover:from-primary-600 hover:to-primary-700 hover:shadow-[0_20px_38px_rgba(110,76,255,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300/60"
-                  id="criar-site-landing-page"
-                >
-                  <Subtitle
-                    content="Quero criar meu site ou landing page"
-                    className="text-white text-lg sm:text-3xl"
-                  />
-                </Link>
-              </RevealContainer>
+            <RevealContainer
+              once
+              className="w-full flex justify-center items-center mt-8 mx-auto"
+            >
+              <Link
+                href="/landing-pages#criar-site-landing-page"
+                className="relative isolate flex items-center justify-center overflow-hidden rounded-xl border border-primary-300/35 bg-gradient-to-r from-primary-700 via-primary-600 to-primary-700 px-6 py-3 shadow-[0_14px_32px_rgba(96,61,255,0.35)] transition-all duration-300 before:absolute before:inset-0 before:-z-10 before:rounded-xl before:bg-primary-400/35 before:blur-2xl before:content-[''] hover:-translate-y-0.5 hover:from-primary-600 hover:to-primary-700 hover:shadow-[0_20px_38px_rgba(110,76,255,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300/60"
+                id="criar-site-landing-page"
+              >
+                <Subtitle
+                  content="Quero criar meu site ou landing page"
+                  className="text-white text-lg sm:text-3xl"
+                />
+              </Link>
+            </RevealContainer>
           </Section>
         </div>
 
@@ -375,7 +381,7 @@ export default function Home() {
                     type="submit"
                     label={customSolutionFormContent.submitLabel}
                     variant="filled"
-                    className="bg-[#7e2cff] px-6 py-3 text-white"
+                    className="bg-secondary-700 px-6 py-3 text-white font-bold"
                   />
                 </div>
               </form>

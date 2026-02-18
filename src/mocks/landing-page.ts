@@ -1,4 +1,5 @@
 import { BrandLogo } from "@/components/marketing/BrandMarquee";
+import { startWhatsAppChat } from "@/utils/whatsapp";
 
 export interface LandingNavItem {
   label: string;
@@ -170,7 +171,7 @@ export const customSolutionFormContent = {
   sectionId: "solucoes-sob-medida",
   title: "SOLUÇÕES SOB MEDIDA",
   description:
-    "Precisa de uma solução sob medida para seu negócio? Preencha o formulário abaixo e nos conte o que você precisa. Iremos analisar seu caso cuidadosamente e retornar o contato.",
+    "Precisa de uma solução sob medida para seu negócio? Informe seu nome, Whatsapp e nos conte o que você precisa. Iremos analisar seu caso cuidadosamente e retornar o contato.",
   nameLabel: "Seu nome",
   phoneLabel: "Whatsapp",
   messageLabel: "Como podemos ajudar você?",
@@ -178,11 +179,8 @@ export const customSolutionFormContent = {
   phonePlaceholder: "(31) 98518-7963",
   messagePlaceholder:
     "Descreva o que você precisa. Quanto mais detalhes você fornecer, melhor podemos ajudar.",
-  submitLabel: "Quero receber contato",
+  submitLabel: "Iniciar conversa no WhatsApp",
 };
-
-const whatsAppContact =
-  process.env.NEXT_PUBLIC_WHATSAPP_CONTACT || "5531999999999";
 
 export const footerContent = {
   navTitle: "NAVEGUE",
@@ -199,12 +197,10 @@ export const footerContent = {
   ] as FooterLinkItem[],
   socialItems: [
     { iconName: "instagram", href: "https://www.instagram.com" },
-    { iconName: "whatsapp", href: `https://wa.me/${whatsAppContact}` },
     { iconName: "x", href: "https://x.com" },
   ] as const,
 };
 
-export const whatsappFloatingLink = `https://wa.me/${whatsAppContact}`;
 
 export const companies: BrandLogo[] = [
   {
