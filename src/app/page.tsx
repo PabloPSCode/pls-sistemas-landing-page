@@ -34,6 +34,7 @@ import {
 import { brazilianPhoneMask } from "@/utils/masks";
 import { startWhatsAppChat } from "@/utils/whatsapp";
 import Link from "next/link";
+import { MIN_MESSAGE_LENGTH } from "@/constants";
 
 const landingServiceIcons = [
   TableIcon,
@@ -382,6 +383,7 @@ export default function Home() {
                     label={customSolutionFormContent.submitLabel}
                     variant="filled"
                     className="bg-secondary-700 px-6 py-3 text-white font-bold"
+                    disabled={!name || !phone || !message || message.length < MIN_MESSAGE_LENGTH}
                   />
                 </div>
               </form>

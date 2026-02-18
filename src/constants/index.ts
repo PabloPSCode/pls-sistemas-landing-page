@@ -1,0 +1,1 @@
+export const MIN_MESSAGE_LENGTH = 10;
