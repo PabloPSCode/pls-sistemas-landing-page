@@ -202,7 +202,7 @@ export default function Home() {
               >
                 <Subtitle
                   content="Quero criar meu site ou landing page"
-                  className="text-white text-lg sm:text-3xl"
+                  className="text-white text-lg sm:text-3xl text-center"
                 />
               </Link>
             </RevealContainer>
