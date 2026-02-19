@@ -1,5 +1,5 @@
 const phoneNumber =
-  process.env.NEXT_PUBLIC_WHATSAPP_PHONE_NUMBER || "5599199999999"; // Substitua pelo número de telefone desejado
+  process.env.NEXT_PUBLIC_WHATSAPP_CONTACT || "5599199999999"; // Substitua pelo número de telefone desejado
 
 export function startWhatsAppChat(message?: string) {
   const encodedMessage = encodeURIComponent(

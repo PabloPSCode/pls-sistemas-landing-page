@@ -254,7 +254,7 @@ export const creationProcessSteps = [
   },
   {
     text: "Briefing inicial: você nos informa com detalhes o que precisa, público alvo e objetivo principal do site.",
-    link: "Preenchar formulário de criação de site",
+    link: "Preencher formulário de criação de site",
   },
   {
     text: "Design e desenvolvimento: desenvolvemos e implementamos a página de acordo com o template escolhido e as informações fornecidas no briefing. Pode ficar tranquilo que vamos te mostrar tudo antes de publicar.",
