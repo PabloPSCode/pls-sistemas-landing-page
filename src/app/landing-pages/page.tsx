@@ -19,6 +19,7 @@ import {
   templates,
 } from "@/mocks/landing-page";
 import { brazilianPhoneMask } from "@/utils/masks";
+import { startWhatsAppChat } from "@/utils/whatsapp";
 
 const fontOptions: Option[] = [
   { label: "Poppins", value: "Poppins" },
@@ -43,6 +44,14 @@ const fontFamilyMap: Record<string, string> = {
   "Works Sans": "var(--font-work-sans), sans-serif",
   Ubuntu: "var(--font-ubuntu), sans-serif",
 };
+
+const escapeHtml = (value: string) =>
+  value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 
 export default function Page() {
   const [isDomainModalOpen, setIsDomainModalOpen] = useState(false);
@@ -72,7 +81,7 @@ export default function Page() {
     primaryColor: "#5b2cf5",
     secondaryColor: "#0f172a",
     font: "Oxanium",
-    message: "",
+    additionalInfo: "",
   });
 
   const handleCloseDomainModal = () => {
@@ -203,7 +212,7 @@ export default function Page() {
     field:
       | "name"
       | "whatsapp"
-      | "message"
+      | "additionalInfo"
       | "primaryColor"
       | "secondaryColor"
       | "font",
@@ -229,7 +238,7 @@ export default function Page() {
       return "Informe seu WhatsApp.";
     }
 
-    if (!websiteCreationFormData.message.trim()) {
+    if (!websiteCreationFormData.additionalInfo.trim()) {
       return "Descreva brevemente o que você precisa.";
     }
 
@@ -252,10 +261,22 @@ export default function Page() {
     try {
       await new Promise((resolve) => setTimeout(resolve, 1200));
 
-      console.log(
-        "Website creation form (mock submit):",
-        websiteCreationFormData,
-      );
+      const completeMessage = `
+        <h2>Novo pedido de website/landing page</h2>
+        <p><strong>Nome:</strong> ${escapeHtml(websiteCreationFormData.name)}</p>
+        <p><strong>WhatsApp:</strong> ${escapeHtml(websiteCreationFormData.whatsapp)}</p>
+        <p><strong>Mensagem:</strong><br />${escapeHtml(websiteCreationFormData.additionalInfo)}</p>
+        <p><strong>Informações técnicas do projeto:</strong></p>
+        <ul>
+          <li><strong>Domínio escolhido:</strong> ${escapeHtml(websiteCreationFormData.domain || "não selecionado")}</li>
+          <li><strong>Template escolhido:</strong> ${escapeHtml(websiteCreationFormData.templateName || "não selecionado")}</li>
+          <li><strong>Cor primária:</strong> ${escapeHtml(websiteCreationFormData.primaryColor)}</li>
+          <li><strong>Cor secundária:</strong> ${escapeHtml(websiteCreationFormData.secondaryColor || "não informada")}</li>
+          <li><strong>Fonte escolhida:</strong> ${escapeHtml(websiteCreationFormData.font)}</li>
+        </ul>
+      `.trim();
+      startWhatsAppChat(completeMessage);
+
       setWebsiteFormSuccess("Solicitação enviada com sucesso (simulação).");
     } catch {
       setWebsiteFormError("Não foi possível enviar agora. Tente novamente.");
@@ -665,9 +686,12 @@ export default function Page() {
             </label>
             <textarea
               id="website-creation-message"
-              value={websiteCreationFormData.message}
+              value={websiteCreationFormData.additionalInfo}
               onChange={(event) =>
-                handleWebsiteFormFieldChange("message", event.target.value)
+                handleWebsiteFormFieldChange(
+                  "additionalInfo",
+                  event.target.value,
+                )
               }
               placeholder="Descreva o seu projeto, quanto mais detalhes, melhor! Quais funcionalidades deseja? Qual o objetivo do site/landing page? Para que tipo de público?"
               rows={5}
@@ -706,8 +730,8 @@ export default function Page() {
               !websiteCreationFormData.templateName ||
               !websiteCreationFormData.name.trim() ||
               !websiteCreationFormData.whatsapp.trim() ||
-              !websiteCreationFormData.message.trim() ||
-              websiteCreationFormData.message.length < MIN_MESSAGE_LENGTH
+              !websiteCreationFormData.additionalInfo.trim() ||
+              websiteCreationFormData.additionalInfo.length < MIN_MESSAGE_LENGTH
             }
           />
         </form>
