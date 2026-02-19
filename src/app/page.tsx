@@ -138,12 +138,12 @@ export default function Home() {
           >
             <RevealContainer once className="w-full max-w-6xl">
               <Title
-                content={landingServicesContent.title}
+                content="Websites e Landing Pages"
                 element="h2"
                 className="text-center text-white tracking-[0.16em] font-black"
               />
               <Subtitle
-                content={landingServicesContent.subtitle}
+                content="Criação de sites e landing pages otimizados para conversão, com design moderno e responsivo."
                 className="mx-auto mt-4 max-w-4xl text-center text-white/90 text-xl sm:text-4xl"
               />
             </RevealContainer>

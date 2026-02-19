@@ -148,7 +148,7 @@ export default function DestructiveModal({
           <button
             onClick={onClose}
             className={clsx(
-              "px-4 py-2 rounded-md text-foreground/70 text-xs sm:text-sm bg-transparent",
+              "px-4 py-2 rounded-md text-red-500 text-xs sm:text-sm bg-transparent",
               cancelButtonClassName
             )}
           >

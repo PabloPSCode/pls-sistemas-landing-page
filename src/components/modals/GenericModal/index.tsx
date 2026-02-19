@@ -85,7 +85,7 @@ export default function GenericModal({
       closeIcon={<XIcon size={22} weight="bold" />}
       classNames={{
         overlay: clsx(
-          "bg-black/50 dark:bg-black/70 backdrop-blur-[2px]",
+          "bg-black/50 dark:bg-black/70 backdrop-blur-[2px] mx-auto",
           overlayClassName
         ),
         modal: clsx(
@@ -95,10 +95,11 @@ export default function GenericModal({
           "!max-w-none",
           "overflow-x-hidden",
           sizeMap[size],
-          "w-[calc(100vw-1.5rem)] sm:w-auto", // small devices fit
+          "w-[calc(100vw-2.5rem)] sm:w-auto mx-auto", // small devices fit
           containerClassName
         ),
-        closeButton: "top-3 right-3 text-foreground/70 hover:text-foreground",
+        closeButton:
+          "top-3 right-3 text-red-500 hover:text-red-600 !bg-white !rounded-full !p-2",
       }}
       styles={{
         modal: {
@@ -123,7 +124,7 @@ export default function GenericModal({
         )}
       >
         {(title || description) && (
-          <div className="flex items-start justify-between gap-3 p-4 sm:p-5">
+          <div className="flex items-start justify-between gap-3 p-4 sm:p-5 mt-12">
             <div className="min-w-0">
               {title && (
                 <h2 id={titleId} className="text-sm sm:text-base font-semibold">
@@ -149,9 +150,10 @@ export default function GenericModal({
             <button
               onClick={onClose}
               className={clsx(
-                "px-4 py-2 rounded-md text-white text-xs sm:text-sm bg-red-500",
+                "top-3 right-3 text-red-500 hover:text-red-600 bg-cyan-300 rounded-full p-2",
                 cancelButtonClassName
               )}
+              style={{zIndex: 99999}}
             >
               {cancelButtonLabel || "Cancelar"}
             </button>

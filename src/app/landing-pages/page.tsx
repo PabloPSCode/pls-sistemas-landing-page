@@ -12,13 +12,13 @@ import GenericModal from "@/components/modals/GenericModal";
 import Paragraph from "@/components/typography/Paragraph";
 import Subtitle from "@/components/typography/Subtitle";
 import Title from "@/components/typography/Title";
+import { MIN_MESSAGE_LENGTH } from "@/constants";
 import {
   creationProcessSteps,
   landingServicesContent,
   templates,
 } from "@/mocks/landing-page";
 import { brazilianPhoneMask } from "@/utils/masks";
-import { MIN_MESSAGE_LENGTH } from "@/constants";
 
 const fontOptions: Option[] = [
   { label: "Poppins", value: "Poppins" },
@@ -421,6 +421,7 @@ export default function Page() {
         title="Consulta de disponibilidade de domínio"
         size="xl"
         className="bg-white text-gray-900"
+        showCloseButton
       >
         <div className="overflow-hidden rounded-lg border border-foreground/15">
           <form
@@ -490,6 +491,7 @@ export default function Page() {
         title="Selecione o template desejado"
         size="xl"
         className="bg-white text-gray-900 overflow-x-hidden"
+        showCloseButton
       >
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {templates.map((template) => (
@@ -523,6 +525,7 @@ export default function Page() {
         title="Formulário de criação de website/landing page"
         size="lg"
         className="bg-white text-gray-900 overflow-x-hidden"
+        showCloseButton
       >
         <form
           onSubmit={handleWebsiteFormSubmit}
