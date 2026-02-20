@@ -38,6 +38,7 @@ export interface LandingTemplateItem {
   templateName: string;
   templateUrl: string;
   templateImage: string;
+  recommendation: string;
 }
 
 export const landingPageTitle = "PLS Sistemas | Landing Pages e Websites";
@@ -271,45 +272,54 @@ export const templates: LandingTemplateItem[] = [
     templateName: "Solaris",
     templateUrl: "https://soller-landing-page-template.vercel.app/",
     templateImage: "/imgs/templates/solaris.png",
+    recommendation: "Empresas em geral.",
   },
   {
-    templateName: "Flowt",
+    templateName: "Clinic",
     templateUrl: "https://flowt-landing-page-template.vercel.app/",
     templateImage: "/imgs/templates/flowt.png",
+    recommendation: "Dentistas, clínicas e profissionais de saúde.",
   },
   {
     templateName: "Breakio",
     templateUrl: "https://breakio-landing-page-template.vercel.app/",
     templateImage: "/imgs/templates/breakio.png",
+    recommendation: "Empresas de RH, contabilidade e similares.",
   },
   {
     templateName: "Devox",
     templateUrl: "https://magnifico-landing-page-template.vercel.app/",
     templateImage: "/imgs/templates/devox.png",
+    recommendation: "Empresas de tecnologia, software e inovação.",
   },
   {
     templateName: "Xinder",
     templateUrl: "https://xinder-landing-page-template.vercel.app/",
     templateImage: "/imgs/templates/xinder.png",
+    recommendation: "Empresas em geral.",
   },
   {
     templateName: "Coolers",
     templateUrl: "https://collers-landing-page-template.vercel.app/",
     templateImage: "/imgs/templates/coolers.png",
+    recommendation: "Apresentação de produtos.",
   },
   {
     templateName: "Trakor",
     templateUrl: "https://trakor-landing-page-template.vercel.app/",
     templateImage: "/imgs/templates/trakor.png",
+    recommendation: "Empresas de tecnologia, software e inovação.",
   },
   {
-    templateName: "Mabi",
+    templateName: "Nutre",
     templateUrl: "https://mabi-landing-page-template.vercel.app/",
     templateImage: "/imgs/templates/mabi.png",
+    recommendation: "Nutricionistas e profissionais de saúde.",
   },
   {
-    templateName: "Teach",
+    templateName: "Law",
     templateUrl: "https://teach-landing-page-template.vercel.app/",
     templateImage: "/imgs/templates/teach.png",
+    recommendation: "Advogados, profissionais do direito e escritórios de advocacia.",
   },
 ];

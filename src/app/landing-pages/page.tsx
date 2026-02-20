@@ -53,9 +53,12 @@ const escapeHtml = (value: string) =>
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
 
+const TEMPLATE_ITEMS_PER_PAGE = 4;
+
 export default function Page() {
   const [isDomainModalOpen, setIsDomainModalOpen] = useState(false);
   const [isTemplateModalOpen, setIsTemplateModalOpen] = useState(false);
+  const [currentTemplatePage, setCurrentTemplatePage] = useState(1);
   const [isWebsiteFormModalOpen, setIsWebsiteFormModalOpen] = useState(false);
   const [websiteFormSelectorContext, setWebsiteFormSelectorContext] = useState<
     "domain" | "template" | null
@@ -98,6 +101,7 @@ export default function Page() {
 
   const handleCloseTemplateModal = () => {
     setIsTemplateModalOpen(false);
+    setCurrentTemplatePage(1);
 
     if (websiteFormSelectorContext === "template") {
       setIsWebsiteFormModalOpen(true);
@@ -186,11 +190,17 @@ export default function Page() {
       templateUrl,
     }));
     setIsTemplateModalOpen(false);
+    setCurrentTemplatePage(1);
 
     if (websiteFormSelectorContext === "template") {
       setIsWebsiteFormModalOpen(true);
       setWebsiteFormSelectorContext(null);
     }
+  };
+
+  const handleOpenTemplateModal = () => {
+    setCurrentTemplatePage(1);
+    setIsTemplateModalOpen(true);
   };
 
   const handleOpenDomainModalFromWebsiteForm = () => {
@@ -205,7 +215,7 @@ export default function Page() {
   const handleOpenTemplateModalFromWebsiteForm = () => {
     setWebsiteFormSelectorContext("template");
     setIsWebsiteFormModalOpen(false);
-    setIsTemplateModalOpen(true);
+    handleOpenTemplateModal();
   };
 
   const handleWebsiteFormFieldChange = (
@@ -291,6 +301,16 @@ export default function Page() {
     ) || null;
   const selectedFontFamily =
     fontFamilyMap[websiteCreationFormData.font] || "sans-serif";
+  const totalTemplatePages = Math.max(
+    1,
+    Math.ceil(templates.length / TEMPLATE_ITEMS_PER_PAGE),
+  );
+  const canGoToPreviousTemplatePage = currentTemplatePage > 1;
+  const canGoToNextTemplatePage = currentTemplatePage < totalTemplatePages;
+  const paginatedTemplates = templates.slice(
+    (currentTemplatePage - 1) * TEMPLATE_ITEMS_PER_PAGE,
+    currentTemplatePage * TEMPLATE_ITEMS_PER_PAGE,
+  );
 
   return (
     <main className="overflow-x-hidden bg-foreground">
@@ -305,7 +325,7 @@ export default function Page() {
             className="text-gray-900  text-xl sm:text-2xl text-center"
           />
           <Subtitle
-            content="Em apenas 5 passos o seu negócio já está disponível para o mundo."
+            content={`Em apenas 5 passos o seu negócio já está disponível para o mundo. \n\n \n Conte nos o que você precisa e deixe o resto por nossa conta (:`}
             className="text-gray-700 mt-4"
           />
 
@@ -346,7 +366,7 @@ export default function Page() {
                         {websiteCreationFormData.templateName}
                       </span>
                       <button
-                        onClick={() => setIsTemplateModalOpen(true)}
+                        onClick={handleOpenTemplateModal}
                         className="w-fit text-base font-semibold text-[#1873ff] underline underline-offset-2 hover:text-[#0e5dd0] sm:text-lg"
                       >
                         Trocar template
@@ -355,7 +375,7 @@ export default function Page() {
                   ) : step.link &&
                     step.link.toLowerCase().includes("templates") ? (
                     <button
-                      onClick={() => setIsTemplateModalOpen(true)}
+                      onClick={handleOpenTemplateModal}
                       className="mt-2 inline-block text-base font-semibold text-[#1873ff] underline underline-offset-2 hover:text-[#0e5dd0] sm:text-lg"
                     >
                       {step.link}
@@ -514,12 +534,13 @@ export default function Page() {
         className="bg-white text-gray-900 overflow-x-hidden"
         showCloseButton
       >
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {templates.map((template) => (
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {paginatedTemplates.map((template) => (
             <ImageCard
               key={template.templateUrl}
               title={template.templateName}
               imgUrl={template.templateImage}
+              description={`Recomendado para ${template.recommendation}`}
               onSeeDetails={() =>
                 window.open(
                   template.templateUrl,
@@ -537,6 +558,36 @@ export default function Page() {
               selectButtonLabel="Selecionar"
             />
           ))}
+        </div>
+        <div className="mt-5 flex flex-col items-center gap-2">
+          <Paragraph
+            content={`Página ${currentTemplatePage} de ${totalTemplatePages}`}
+            className="text-sm text-gray-900"
+          />
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() =>
+                setCurrentTemplatePage((prevPage) => Math.max(prevPage - 1, 1))
+              }
+              disabled={!canGoToPreviousTemplatePage}
+              className="rounded-md border border-[#1873ff] px-4 py-2 text-sm font-semibold text-[#1873ff] transition-colors hover:bg-[#e8f1ff] disabled:cursor-not-allowed disabled:border-gray-300 disabled:text-gray-400 disabled:hover:bg-transparent"
+            >
+              Anterior
+            </button>
+            <button
+              type="button"
+              onClick={() =>
+                setCurrentTemplatePage((prevPage) =>
+                  Math.min(prevPage + 1, totalTemplatePages),
+                )
+              }
+              disabled={!canGoToNextTemplatePage}
+              className="rounded-md border border-[#1873ff] px-4 py-2 text-sm font-semibold text-[#1873ff] transition-colors hover:bg-[#e8f1ff] disabled:cursor-not-allowed disabled:border-gray-300 disabled:text-gray-400 disabled:hover:bg-transparent"
+            >
+              Próximo
+            </button>
+          </div>
         </div>
       </GenericModal>
 
