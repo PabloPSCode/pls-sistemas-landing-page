@@ -282,7 +282,7 @@ export const templates: LandingTemplateItem[] = [
   },
   {
     templateName: "Real State",
-    templateUrl: "https://realstate-landing-page-template.vercel.app/",
+    templateUrl: "https://real-state-landing-page-template.vercel.app/",
     templateImage: "/imgs/templates/real-state.png",
     recommendation: "Corretores de imóveis.",
   },
