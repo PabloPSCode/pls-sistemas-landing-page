@@ -23,6 +23,7 @@ import { useState } from "react";
 
 import MaskedTextInput from "@/components/inputs/MaskedTextInput";
 import BrandMarquee from "@/components/marketing/BrandMarquee";
+import { MIN_MESSAGE_LENGTH } from "@/constants";
 import {
   aboutContent,
   companies,
@@ -34,7 +35,6 @@ import {
 import { brazilianPhoneMask } from "@/utils/masks";
 import { startWhatsAppChat } from "@/utils/whatsapp";
 import Link from "next/link";
-import { MIN_MESSAGE_LENGTH } from "@/constants";
 
 const landingServiceIcons = [
   TableIcon,
@@ -87,18 +87,18 @@ export default function Home() {
 
             <div className="mt-12 grid w-full max-w-6xl gap-10 lg:grid-cols-[1.05fr_1fr] lg:items-center">
               <ZoomContainer once className="w-full">
-                <div className="relative mx-auto w-full max-w-2xl">
+                <div className="relative mx-auto  max-w-2xl bg-gradient-to-br from-primary-100 to-primary-300 flex justify-center">
                   <Image
-                    src="/imgs/devices.png"
+                    src="/imgs/profile_1.png"
                     alt="Equipe da PLS Sistemas trabalhando em projetos web"
-                    width={1200}
-                    height={760}
+                    width={280}
+                    height={76}
                   />
                 </div>
               </ZoomContainer>
 
               <RevealContainer once className="w-full">
-                <div className="space-y-5">
+                <div className="space-y-5 ">
                   {aboutContent.paragraphs.map((text) => (
                     <Paragraph
                       key={text}
@@ -383,7 +383,12 @@ export default function Home() {
                     label={customSolutionFormContent.submitLabel}
                     variant="filled"
                     className="bg-secondary-700 px-6 py-3 text-white font-bold"
-                    disabled={!name || !phone || !message || message.length < MIN_MESSAGE_LENGTH}
+                    disabled={
+                      !name ||
+                      !phone ||
+                      !message ||
+                      message.length < MIN_MESSAGE_LENGTH
+                    }
                   />
                 </div>
               </form>
