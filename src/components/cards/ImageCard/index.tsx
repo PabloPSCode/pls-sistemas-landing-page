@@ -67,7 +67,7 @@ export default function ImageCard({
 
       {/* Descrição */}
       {description && (
-        <p className="text-gray-700 text-xs sm:text-sm">{description}</p>
+        <p className="text-gray-700 text-xs sm:text-sm h-full">{description}</p>
       )}
 
       {/* Botão "Ver Detalhes" */}

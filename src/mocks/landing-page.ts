@@ -281,6 +281,12 @@ export const templates: LandingTemplateItem[] = [
     recommendation: "Dentistas, clínicas e profissionais de saúde.",
   },
   {
+    templateName: "Real State",
+    templateUrl: "https://realstate-landing-page-template.vercel.app/",
+    templateImage: "/imgs/templates/real-state.png",
+    recommendation: "Corretores de imóveis.",
+  },
+  {
     templateName: "Breakio",
     templateUrl: "https://breakio-landing-page-template.vercel.app/",
     templateImage: "/imgs/templates/breakio.png",
@@ -291,6 +297,12 @@ export const templates: LandingTemplateItem[] = [
     templateUrl: "https://magnifico-landing-page-template.vercel.app/",
     templateImage: "/imgs/templates/devox.png",
     recommendation: "Empresas de tecnologia, software e inovação.",
+  },
+  {
+    templateName: "Workout",
+    templateUrl: "https://workout-landing-page-template.vercel.app/",
+    templateImage: "/imgs/templates/workout.png",
+    recommendation: "Profissionais de saúde e bem-estar e academias.",
   },
   {
     templateName: "Xinder",
@@ -315,6 +327,18 @@ export const templates: LandingTemplateItem[] = [
     templateUrl: "https://mabi-landing-page-template.vercel.app/",
     templateImage: "/imgs/templates/mabi.png",
     recommendation: "Nutricionistas e profissionais de saúde.",
+  },
+  {
+    templateName: "Builder",
+    templateUrl: "https://builder-landing-page-template.vercel.app/",
+    templateImage: "/imgs/templates/builder.png",
+    recommendation: "Arquitetos e profissionais da construção civil.",
+  },
+  {
+    templateName: "Psycho",
+    templateUrl: "https://psycho-landing-page-template.vercel.app/",
+    templateImage: "/imgs/templates/psycho.png",
+    recommendation: "Psicólogos, terapeutas e profissionais de saúde mental.",
   },
   {
     templateName: "Law",
