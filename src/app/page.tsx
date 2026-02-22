@@ -87,7 +87,7 @@ export default function Home() {
 
             <div className="mt-12 grid w-full max-w-6xl gap-10 lg:grid-cols-[1.05fr_1fr] lg:items-center">
               <ZoomContainer once className="w-full">
-                <div className="relative mx-auto  max-w-2xl bg-gradient-to-br from-primary-100 to-primary-300 flex justify-center">
+                <div className="relative mx-auto  max-w-2xl bg-gradient-to-br from-primary-100 to-primary-300 flex justify-center rounded-lg">
                   <Image
                     src="/imgs/profile_1.png"
                     alt="Equipe da PLS Sistemas trabalhando em projetos web"
