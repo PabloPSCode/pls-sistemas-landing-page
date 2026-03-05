@@ -64,10 +64,20 @@ const ubuntu = Ubuntu({
   subsets: ["latin"],
 });
 
+const siteUrl = new URL("https://www.plssistemas.com.br");
+
 export const metadata: Metadata = {
+  metadataBase: siteUrl,
+  alternates: {
+    canonical: "/",
+  },
   title: landingPageTitle,
   description:
     "PLS Sistemas - Agência web e software de João Monlevade - MG especializada em landing pages, websites e soluções sob medida.",
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
