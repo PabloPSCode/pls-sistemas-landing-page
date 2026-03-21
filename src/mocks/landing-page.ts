@@ -145,8 +145,8 @@ export const webSolutionsContent = {
       description:
         "Envie uma foto e receba um produto pronto para divulgar, com aparência profissional e muito menos esforço manual.",
       ctaLabel: "Saiba mais",
-      imagePath: "/imgs/logo_mostra_loja.png",
-      url: "https://pic-loja-landing-page.vercel.app/",
+      imagePath: "/imgs/logo_pic_loja.png",
+      url: "https://picloja.plssistemas.com.br/",
     },
 
     {
@@ -187,7 +187,7 @@ export const footerContent = {
     { label: "Soluções sob medida", href: "#solucoes-sob-medida" },
   ] as FooterLinkItem[],
   solutions: [
-    { label: "Pic Loja", href: "https://pic-loja-landing-page.vercel.app/" },
+    { label: "Pic Loja", href: "https://picloja.plssistemas.com.br/" },
     { label: "React Ultimate Componentes", href: "https://reactultimate.pablosilvadev.com.br/" },
   ] as FooterLinkItem[],
   policyLinks: [
