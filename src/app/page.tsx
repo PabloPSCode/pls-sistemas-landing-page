@@ -39,7 +39,7 @@ const landingServiceIcons = [
 
 export default function Home() {
   const heroTexts = [
-    "Sites e landing pages profissionais sob medida para a sua empresa.",
+    "Sites e landing pages profissionais sob medida para empresas e profissionais.",
     "Ferramentas web prontas para facilitar o seu dia a dia.",
     "Soluções digitais personalizadas para alavancar o seu negócio.",
   ];

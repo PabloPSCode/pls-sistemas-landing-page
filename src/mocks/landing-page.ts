@@ -44,7 +44,7 @@ export interface LandingTemplateItem {
 export const landingPageTitle = "PLS Sistemas | Landing Pages e Websites";
 
 export const heroContent = {
-  title: "Landing pages, websites e ferramentas para sua empresa crescer",
+  title: "Landing pages, websites e ferramentas para profissionais e empresas",
   description:
     "Oferecemos soluções modernas e eficazes para melhorar e facilitar a vida de pessoas e empresas.",
   primaryButtonTitle: "Explorar documentação",
