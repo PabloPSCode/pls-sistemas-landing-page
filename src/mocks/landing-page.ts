@@ -53,7 +53,7 @@ export const heroContent = {
 export const navItems: LandingNavItem[] = [
   { label: "Quem somos", href: "#quem-somos" },
   { label: "Websites e landing pages", href: "#landing-pages" },
-  { label: "Soluções web", href: "#solucoes-web" },
+  { label: "Soluções para seu negócio", href: "#solucoes-web" },
   { label: "Soluções sob medida", href: "#solucoes-sob-medida" },
 ];
 
@@ -136,30 +136,23 @@ export const landingServicesContent = {
 
 export const webSolutionsContent = {
   sectionId: "solucoes-web",
-  title: "SOLUÇÕES WEB",
+  title: "Soluções para seu negócio",
   subtitle:
     "Além da criação de landing pages e websites, também oferecemos soluções para escalar seu negócio.",
   items: [
     {
-      title: "Mostra Loja",
+      title: "Pic Loja",
       description:
-        "Exiba produtos da sua loja em uma vitrine virtual profissional e combine pagamento e envio diretamente com o cliente.",
+        "Envie uma foto e receba um produto pronto para divulgar, com aparência profissional e muito menos esforço manual.",
       ctaLabel: "Saiba mais",
       imagePath: "/imgs/logo_mostra_loja.png",
-      url: "https://tirestore.mostraloja.com.br",
+      url: "https://pic-loja-landing-page.vercel.app/",
     },
-    {
-      title: "Encarte Oferta",
-      description:
-        "Crie encartes e promoções para seu comércio de maneira simples e profissional, com foco em conversão.",
-      ctaLabel: "Saiba mais",
-      imagePath: "/imgs/logo_encarte_oferta.png",
-      url: "https://www.plssistemas.com.br",
-    },
+
     {
       title: "React Ultimate Componentes",
       description:
-        "Biblioteca com +130 componentes React contruída para desenvolvedores e empresas de software.",
+        "Biblioteca com +130 componentes React construída para desenvolvedores e empresas de software.",
       ctaLabel: "Saiba mais",
       imagePath: "/imgs/logo_react_ultimate.png",
       url: "https://reactultimate.pablosilvadev.com.br/",
@@ -171,7 +164,7 @@ export const customSolutionFormContent = {
   sectionId: "solucoes-sob-medida",
   title: "SOLUÇÕES SOB MEDIDA",
   description:
-    "Precisa de uma solução sob medida para seu negócio? Informe seu nome, Whatsapp e nos conte o que você precisa. Iremos analisar seu caso cuidadosamente e retornar o contato.",
+    "Precisa de uma solução sob medida para seu negócio? Chame-nos agora mesmo no Whatsapp e nos conte o que você precisa. Iremos analisar seu caso cuidadosamente e retornar o contato.",
   nameLabel: "Seu nome",
   phoneLabel: "Whatsapp",
   messageLabel: "Como podemos ajudar você?",
@@ -185,12 +178,17 @@ export const customSolutionFormContent = {
 export const footerContent = {
   navTitle: "NAVEGUE",
   policyTitle: "TERMOS E POLÍTICAS",
+  solutionsTitle: "SOLUÇÕES PARA SEU NEGÓCIO",
   copyright: "2026, Todos os direitos reservados",
   navLinks: [
     { label: "Quem somos", href: "#quem-somos" },
     { label: "Websites e landing pages", href: "#landing-pages" },
-    { label: "Soluções web", href: "#solucoes-web" },
+    { label: "Soluções para seu negócio", href: "#solucoes-web" },
     { label: "Soluções sob medida", href: "#solucoes-sob-medida" },
+  ] as FooterLinkItem[],
+  solutions: [
+    { label: "Pic Loja", href: "https://pic-loja-landing-page.vercel.app/" },
+    { label: "React Ultimate Componentes", href: "https://reactultimate.pablosilvadev.com.br/" },
   ] as FooterLinkItem[],
   policyLinks: [
     { label: "Política de Privacidade", href: "/politica-de-privacidade" },
@@ -200,6 +198,7 @@ export const footerContent = {
     { iconName: "x", href: "https://x.com" },
   ] as const,
 };
+
 
 export const companies: BrandLogo[] = [
   {

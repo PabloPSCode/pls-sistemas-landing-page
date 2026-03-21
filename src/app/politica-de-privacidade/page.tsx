@@ -53,7 +53,7 @@ export default function PoliticaDePrivacidadePage() {
         <div className="space-y-5">
           <PolicySection title="1. Quem somos">
             <Paragraph
-              content="A PLS Sistemas é uma empresa de desenvolvimento de software, websites e soluções web, inscrita no CNPJ 47.463.499/0001-37 e sediada em João Monlevade - Minas Gerais. Para fins da LGPD, a PLS Sistemas poderá atuar como Controladora ou Operadora de dados pessoais, conforme a natureza de cada serviço contratado."
+              content="A PLS Sistemas é uma empresa de desenvolvimento de software, websites e Soluções para seu negócio, inscrita no CNPJ 47.463.499/0001-37 e sediada em João Monlevade - Minas Gerais. Para fins da LGPD, a PLS Sistemas poderá atuar como Controladora ou Operadora de dados pessoais, conforme a natureza de cada serviço contratado."
               className="text-white/90 text-sm sm:text-lg"
             />
           </PolicySection>

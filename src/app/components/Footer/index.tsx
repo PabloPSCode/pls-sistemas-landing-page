@@ -13,10 +13,10 @@ export default function Footer() {
     <FooterElement.Root bordered={false} className="bg-[#030307] text-white">
       <FooterElement.Top
         columns={4}
-        className="gap-8 border-t border-white/10 py-14"
+        className="gap-8 border-t border-white/10 py-14 text-center sm:text-left"
       >
-        <FooterElement.Column className="items-start gap-5">
-          <div className="flex items-center gap-2">
+        <FooterElement.Column className="items-center sm:items-start gap-6">
+          <div className="flex items-center justify-center gap-2 sm:justify-start">
             <Image
               src="/imgs/logo_pls_sistemas.png"
               alt="Equipe da PLS Sistemas trabalhando em projetos web"
@@ -25,18 +25,37 @@ export default function Footer() {
               className="w-full h-10 sm:h-12"
             />
           </div>
-          <Paragraph
-            content="João Monlevade - MG."
-            className="text-white/70 text-sm sm:text-xl"
-          />
+          <div className="flex flex-col items-center gap-2 text-center sm:items-start sm:text-left">
+            <Paragraph
+              content="CNPJ 47.463.499/0001-37"
+              className="text-white/70 !text-xs !sm:text-sm"
+            />
+            <Paragraph
+              content="João Monlevade - MG."
+              className="text-white/70 !text-xs !sm:text-sm"
+            />
+            <Subtitle
+              content="Acompanhe nossas redes sociais"
+              className="text-white/70 !text-sm !sm:text-base mt-4"
+            />
+            <FooterElement.SocialRow
+              iconsClassName="text-foreground/80 hover:text-foreground -mt-4 sm:-ml-6"
+              items={[
+                {
+                  href: "https://www.instagram.com/pls.sistemas",
+                  iconName: "instagram",
+                },
+              ]}
+            />
+          </div>
         </FooterElement.Column>
 
-        <FooterElement.Column className="items-start gap-4">
+        <FooterElement.Column className="items-center sm:items-start gap-4">
           <Subtitle
             content={footerContent.navTitle}
             className="text-white text-base sm:text-2xl"
           />
-          <ul className="space-y-3">
+          <ul className="space-y-3 text-center sm:text-left">
             {footerContent.navLinks.map((link) => (
               <li key={link.label}>
                 <a href={link.href} className="text-white/80 hover:text-white">
@@ -49,13 +68,36 @@ export default function Footer() {
             ))}
           </ul>
         </FooterElement.Column>
+        <FooterElement.Column className="items-center sm:items-start gap-4">
+          <Subtitle
+            content={footerContent.solutionsTitle}
+            className="text-white text-base sm:text-2xl"
+          />
+          <ul className="space-y-3 text-center sm:text-left">
+            {footerContent.solutions.map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/80 hover:text-white"
+                >
+                  <Paragraph
+                    content={link.label}
+                    className="text-sm sm:text-xl"
+                  />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </FooterElement.Column>
 
-        <FooterElement.Column className="items-start gap-4">
+        <FooterElement.Column className="items-center sm:items-start gap-4">
           <Subtitle
             content={footerContent.policyTitle}
             className="text-white text-base sm:text-2xl"
           />
-          <ul className="space-y-3">
+          <ul className="space-y-3 text-center sm:text-left">
             {footerContent.policyLinks.map((link) => (
               <li key={link.label}>
                 <a href={link.href} className="text-white/80 hover:text-white">
@@ -68,40 +110,22 @@ export default function Footer() {
             ))}
           </ul>
         </FooterElement.Column>
-
-        <FooterElement.Column className="items-start lg:items-end">
-          <Image
-            src="/imgs/safe_site.png"
-            alt="Site seguro - certificado SSL da PLS Sistemas"
-            width={240}
-            height={40}
-          />
-        </FooterElement.Column>
       </FooterElement.Top>
 
       <FooterElement.Bottom
         bordered
         className="border-t border-white/40 py-6 flex-col items-center gap-4"
       >
-        <span className="text-white/70 text-xs sm:text-sm">
+        <span className="text-white/70 !text-xs !sm:text-sm w-fit">
           {new Date().getFullYear()} - Desenvolvido por PLS Sistemas
         </span>
-        <FooterElement.SocialRow
-          iconsClassName="text-foreground/80 hover:text-foreground"
-          items={[
-            {
-              href: "https://www.instagram.com/pls.sistemas",
-              iconName: "instagram",
-            },
-          ]}
-        />
       </FooterElement.Bottom>
       <a
         onClick={() => startWhatsAppChat()}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Falar no WhatsApp"
-        className="fixed bottom-6 right-6 z-50 rounded-full bg-[#1ecd5a] p-4 text-white hover:scale-105"
+        className="fixed bottom-6 right-6 z-50 rounded-full bg-success-500 p-4 text-white hover:scale-105"
       >
         <WhatsappLogoIcon size={32} weight="thin" />
       </a>

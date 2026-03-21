@@ -109,7 +109,13 @@ const Column: React.FC<ColumnProps> = ({
   ...rest
 }) => {
   return (
-    <div {...rest} className={clsx("flex flex-col items-center sm:items-start", className)}>
+    <div
+      {...rest}
+      className={clsx(
+        "flex flex-col items-center text-center sm:items-start sm:text-left",
+        className
+      )}
+    >
       {title && (
         <h4 className="mb-3 text-xs sm:text-sm font-semibold tracking-wide text-foreground">
           {title}
@@ -173,9 +179,9 @@ const SocialRow: React.FC<SocialRowProps> = ({
         className
       )}
     >
-      <div className="mx-auto flex w-full max-w-7xl  justify-between gap-4 px-4 py-4 sm:px-6 flex-col items-center sm:flex-row">
+      <div className="mx-auto flex w-full max-w-7xl justify-center gap-4 px-4 py-4 sm:px-6 flex-col items-center text-center sm:justify-between sm:flex-row sm:text-left">
         {/* Conteúdo à esquerda (opcional) passado como children */}
-        <div className="min-w-0 flex-1">
+        <div className="min-w-0 flex flex-1 flex-col items-center text-center sm:items-start sm:text-left">
           {children ? (
             children
           ) : items ? (
@@ -216,7 +222,7 @@ const Bottom: React.FC<BottomProps> = ({
         className
       )}
     >
-      <div className="mx-auto w-full max-w-7xl px-4 py-4 text-sm sm:px-6 flex flex-col items-center sm:flex-row">
+      <div className="mx-auto w-full max-w-7xl px-4 py-4 text-sm sm:px-6 flex flex-col items-center text-center sm:flex-row sm:text-left">
         {children}
       </div>
     </div>

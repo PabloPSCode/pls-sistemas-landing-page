@@ -6,9 +6,6 @@ import ZoomContainer from "@/components/animations-and-loading/ZoomContainer";
 import Button from "@/components/buttons/Button";
 
 import { Section } from "@/components/elements/Section";
-import VideoSection from "@/components/elements/VideoSection";
-import TextAreaInput from "@/components/inputs/TextAreaInput";
-import TextInput from "@/components/inputs/TextInput";
 import Paragraph from "@/components/typography/Paragraph";
 import Subtitle from "@/components/typography/Subtitle";
 import Title from "@/components/typography/Title";
@@ -19,20 +16,17 @@ import {
   WrenchIcon,
 } from "@phosphor-icons/react";
 import Image from "next/image";
-import { useState } from "react";
 
-import MaskedTextInput from "@/components/inputs/MaskedTextInput";
+import { FadeText } from "@/components/animations-and-loading/FadeText";
+import TechParticlesHeroSection from "@/components/elements/TechParticlesHeroSection";
 import BrandMarquee from "@/components/marketing/BrandMarquee";
-import { MIN_MESSAGE_LENGTH } from "@/constants";
 import {
   aboutContent,
   companies,
   customSolutionFormContent,
-  heroContent,
   landingServicesContent,
   webSolutionsContent,
 } from "@/mocks/landing-page";
-import { brazilianPhoneMask } from "@/utils/masks";
 import { startWhatsAppChat } from "@/utils/whatsapp";
 import Link from "next/link";
 
@@ -44,36 +38,21 @@ const landingServiceIcons = [
 ];
 
 export default function Home() {
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [message, setMessage] = useState("");
-
-  const handleVisitDocs = () => {
-    window.open("https://docs.reactultimate.pablosilvadev.com.br", "_blank");
-  };
-
-  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const completeMessage = `Olá, meu nome é ${name}. Meu telefone para contato é ${phone}. ${message}`;
-    startWhatsAppChat(completeMessage);
-  };
+  const heroTexts = [
+    "Sites e landing pages profissionais sob medida para a sua empresa.",
+    "Ferramentas web prontas para facilitar o seu dia a dia.",
+    "Soluções digitais personalizadas para alavancar o seu negócio.",
+  ];
 
   return (
     <div className="overflow-x-hidden bg-[#020205] text-white">
       <main className="flex flex-col">
-        <div id="inicio">
-          <VideoSection
-            size="full"
-            title={heroContent.title}
-            description={heroContent.description}
-            videoUrl="/videos/landing-pages.mov"
-            primaryButtonTitle={heroContent.primaryButtonTitle}
-            onPrimaryClick={handleVisitDocs}
-            containerClassName="h-[90vh]"
-            titleClassName="max-w-4xl"
-            primaryButtonClassName="bg-white text-black"
+        <TechParticlesHeroSection className="bg-gradient-to-br from-[#000000] via-[#250c48] to-[#7E1EED]m-auto w-full min-h-[50vh] px-4 py-20 sm:py-24 flex items-center justify-center text-center">
+          <FadeText
+            items={heroTexts}
+            className="text-2xl sm:text-4xl max-w-4xl mx-auto font-semibold tracking-wide"
           />
-        </div>
+        </TechParticlesHeroSection>
 
         <div id={aboutContent.sectionId} className="scroll-mt-8">
           <Section size="full" sectionClassName="bg-[#030307] py-20 sm:py-24">
@@ -89,10 +68,11 @@ export default function Home() {
               <ZoomContainer once className="w-full">
                 <div className="relative mx-auto  max-w-2xl bg-gradient-to-br from-primary-100 to-primary-300 flex justify-center rounded-lg">
                   <Image
-                    src="/imgs/profile_1.png"
+                    src="/imgs/profile_3.png"
                     alt="Equipe da PLS Sistemas trabalhando em projetos web"
-                    width={280}
+                    width={360}
                     height={76}
+                    className="contrast-115"
                   />
                 </div>
               </ZoomContainer>
@@ -134,137 +114,153 @@ export default function Home() {
         <div id={landingServicesContent.sectionId} className="scroll-mt-8">
           <Section
             size="full"
-            sectionClassName="bg-gradient-to-b from-[#0f0327] via-[#3a126f] to-[#8f33ff] py-20 sm:py-24"
+            sectionClassName="relative isolate overflow-hidden bg-gradient-to-br from-[#000000] via-[#250c48] to-[#7E1EED] py-20 sm:py-24"
           >
-            <RevealContainer once className="w-full max-w-6xl">
-              <Title
-                content="Websites e Landing Pages"
-                element="h2"
-                className="text-center text-white tracking-[0.16em] font-black"
-              />
-              <Subtitle
-                content="Criação de sites e landing pages otimizados para conversão, com design moderno e responsivo."
-                className="mx-auto mt-4 max-w-4xl text-center text-white/90 text-xl sm:text-4xl"
-              />
-            </RevealContainer>
-
-            <div className="mt-12 grid w-full max-w-6xl gap-6 md:grid-cols-2">
-              {landingServicesContent.items.map((item, index) => {
-                const Icon = landingServiceIcons[index];
-
-                return (
-                  <FadeContainer
-                    key={item.title}
-                    once
-                    delay={index + 1}
-                    className="h-full"
-                  >
-                    <article className="flex h-full flex-col gap-4 rounded-xl border border-white/10 bg-[#2B2B2B] p-8 shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
-                      <div className="flex items-start justify-between gap-4">
-                        <Icon
-                          size={44}
-                          className="text-primary-100"
-                          weight="light"
-                        />
-                        <Link
-                          href="/landing-pages#criar-site-landing-page"
-                          className="flex items-center gap-2"
-                        >
-                          <Subtitle
-                            content={item.ctaLabel}
-                            className="text-primary-200 text-lg sm:text-3xl"
-                          />
-                        </Link>
-                      </div>
-
-                      <Subtitle
-                        content={item.title}
-                        className="text-white text-3xl sm:text-5xl"
-                      />
-
-                      <Paragraph
-                        content={item.description}
-                        className="text-white/80 text-base sm:text-2xl"
-                      />
-                    </article>
-                  </FadeContainer>
-                );
-              })}
-            </div>
-            <RevealContainer
-              once
-              className="w-full flex justify-center items-center mt-8 mx-auto"
-            >
-              <Link
-                href="/landing-pages#criar-site-landing-page"
-                className="relative isolate flex items-center justify-center overflow-hidden rounded-xl border border-primary-300/35 bg-gradient-to-r from-primary-700 via-primary-600 to-primary-700 px-6 py-3 shadow-[0_14px_32px_rgba(96,61,255,0.35)] transition-all duration-300 before:absolute before:inset-0 before:-z-10 before:rounded-xl before:bg-primary-400/35 before:blur-2xl before:content-[''] hover:-translate-y-0.5 hover:from-primary-600 hover:to-primary-700 hover:shadow-[0_20px_38px_rgba(110,76,255,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300/60"
-                id="criar-site-landing-page"
-              >
-                <Subtitle
-                  content="Quero criar meu site ou landing page"
-                  className="text-white text-lg sm:text-3xl text-center"
+            <div className="relative z-10 flex w-full flex-col items-center">
+              <RevealContainer once className="w-full max-w-6xl">
+                <Title
+                  content="Websites e Landing Pages"
+                  element="h2"
+                  className="text-center text-white tracking-[0.16em] font-black"
                 />
-              </Link>
-            </RevealContainer>
+                <Subtitle
+                  content="Criação de sites e landing pages otimizados para conversão, com design moderno e responsivo."
+                  className="mx-auto mt-4 max-w-4xl text-center text-white/90 text-xl sm:text-4xl"
+                />
+              </RevealContainer>
+
+              <div className="mt-12 grid w-full max-w-6xl gap-6 md:grid-cols-2">
+                {landingServicesContent.items.map((item, index) => {
+                  const Icon = landingServiceIcons[index];
+
+                  return (
+                    <FadeContainer
+                      key={item.title}
+                      once
+                      delay={index + 1}
+                      className="h-full"
+                    >
+                      <article className="flex h-full flex-col gap-4 rounded-xl border border-white/15 bg-[rgba(0,0,0,0.52)] p-8 shadow-[0_16px_45px_rgba(0,0,0,0.35)] ">
+                        <div className="flex items-start justify-between gap-4">
+                          <Icon
+                            size={44}
+                            className="text-primary-100"
+                            weight="light"
+                          />
+                          <Link
+                            href="/landing-pages#criar-site-landing-page"
+                            className="flex items-center gap-2"
+                          >
+                            <Subtitle
+                              content={item.ctaLabel}
+                              className="text-primary-200 text-lg sm:text-3xl"
+                            />
+                          </Link>
+                        </div>
+
+                        <Subtitle
+                          content={item.title}
+                          className="text-white text-3xl sm:text-5xl"
+                        />
+
+                        <Paragraph
+                          content={item.description}
+                          className="text-white/80 text-base sm:text-2xl"
+                        />
+                      </article>
+                    </FadeContainer>
+                  );
+                })}
+              </div>
+              <RevealContainer
+                once
+                className="w-full flex justify-center items-center mt-8 mx-auto"
+              >
+                <Link
+                  href="/landing-pages#criar-site-landing-page"
+                  className="relative isolate flex items-center justify-center overflow-hidden rounded-xl border border-primary-300/35 bg-gradient-to-r from-primary-700 via-primary-600 to-primary-700 px-6 py-3 shadow-[0_14px_32px_rgba(96,61,255,0.35)] transition-all duration-300 before:absolute before:inset-0 before:-z-10 before:rounded-xl before:bg-primary-400/35 before:blur-2xl before:content-[''] hover:-translate-y-0.5 hover:from-primary-600 hover:to-primary-700 hover:shadow-[0_20px_38px_rgba(110,76,255,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300/60"
+                  id="criar-site-landing-page"
+                >
+                  <Subtitle
+                    content="Quero criar meu site ou landing page"
+                    className="text-white text-lg sm:text-3xl text-center"
+                  />
+                </Link>
+              </RevealContainer>
+            </div>
           </Section>
         </div>
 
         <div id={webSolutionsContent.sectionId} className="scroll-mt-8">
-          <Section size="full" sectionClassName="bg-[#030307] py-20 sm:py-24">
-            <RevealContainer once className="w-full max-w-6xl">
-              <Title
-                content={webSolutionsContent.title}
-                element="h2"
-                className="text-center text-white tracking-[0.16em] font-black"
-              />
-              <Subtitle
-                content={webSolutionsContent.subtitle}
-                className="mx-auto mt-4 max-w-4xl text-center text-white/90 text-xl sm:text-4xl"
-              />
-            </RevealContainer>
+          <Section
+            size="full"
+            sectionClassName="relative isolate overflow-hidden bg-[#030307] py-20 sm:py-24"
+          >
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(86,144,255,0.14),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(143,51,255,0.12),transparent_42%),linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0))] backdrop-blur-[3px]"
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -left-10 top-12 h-56 w-56 rounded-full bg-primary-400/10 blur-3xl"
+            />
 
-            <div className="mt-12 grid w-full max-w-6xl gap-6 lg:grid-cols-3">
-              {webSolutionsContent.items.map((item, index) => {
-                return (
-                  <RevealContainer
-                    key={item.title}
-                    once
-                    delay={index + 1}
-                    className="h-full"
-                  >
-                    <article className="flex h-full flex-col gap-4 rounded-xl border border-white/10 bg-[#2B2B2B] p-7 shadow-[0_16px_45px_rgba(0,0,0,0.32)]">
-                      <div className="flex items-start justify-between gap-4">
-                        <Image
-                          src={item.imagePath}
-                          alt={`Icone de ${item.title}`}
-                          width={40}
-                          height={40}
-                        />
-                        <a
-                          href={item.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Subtitle
-                            content={item.ctaLabel}
-                            className="text-primary-200 text-lg sm:text-3xl"
+            <div className="relative z-10 flex w-full flex-col items-center">
+              <RevealContainer once className="w-full max-w-6xl">
+                <Title
+                  content={webSolutionsContent.title}
+                  element="h2"
+                  className="text-center text-white tracking-[0.16em] font-black"
+                />
+                <Subtitle
+                  content={webSolutionsContent.subtitle}
+                  className="mx-auto mt-4 max-w-4xl text-center text-white/90 text-xl sm:text-4xl"
+                />
+              </RevealContainer>
+
+              <div className="mt-12 grid w-full max-w-6xl gap-6 lg:grid-cols-2">
+                {webSolutionsContent.items.map((item, index) => {
+                  return (
+                    <RevealContainer
+                      key={item.title}
+                      once
+                      delay={index + 1}
+                      className="h-full"
+                    >
+                      <article className="flex h-full flex-col gap-4 rounded-xl border border-white/15 bg-[rgba(0,0,0,0.52)] p-8 shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
+                        <div className="flex items-start justify-between gap-4">
+                          <Image
+                            src={item.imagePath}
+                            alt={`Icone de ${item.title}`}
+                            width={40}
+                            height={40}
                           />
-                        </a>
-                      </div>
+                          <a
+                            href={item.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <Subtitle
+                              content={item.ctaLabel}
+                              className="text-primary-200 text-lg sm:text-3xl"
+                            />
+                          </a>
+                        </div>
 
-                      <Subtitle
-                        content={item.title}
-                        className="text-white text-3xl sm:text-5xl"
-                      />
+                        <Subtitle
+                          content={item.title}
+                          className="text-white text-3xl sm:text-5xl"
+                        />
 
-                      <Paragraph
-                        content={item.description}
-                        className="text-white/85 text-base sm:text-2xl"
-                      />
-                    </article>
-                  </RevealContainer>
-                );
-              })}
+                        <Paragraph
+                          content={item.description}
+                          className="text-white/85 text-base sm:text-2xl"
+                        />
+                      </article>
+                    </RevealContainer>
+                  );
+                })}
+              </div>
             </div>
           </Section>
         </div>
@@ -325,7 +321,7 @@ export default function Home() {
         <div id={customSolutionFormContent.sectionId} className="scroll-mt-8">
           <Section
             size="full"
-            sectionClassName="bg-gradient-to-b from-[#0f0327] via-[#3a126f] to-[#8f33ff] py-20 sm:py-24"
+            sectionClassName="bg-gradient-to-br from-[#000000] via-[#250c48] to-[#7E1EED] py-20 sm:py-24"
           >
             <RevealContainer once className="w-full max-w-6xl">
               <Title
@@ -341,57 +337,14 @@ export default function Home() {
             </RevealContainer>
 
             <FadeContainer once className="mt-12 w-full max-w-4xl">
-              <form
-                onSubmit={handleFormSubmit}
-                className="rounded-xl border border-white/10 bg-[#2B2B2B] p-5 shadow-[0_16px_45px_rgba(0,0,0,0.28)] sm:p-7"
-              >
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <TextInput
-                    id="nome"
-                    label={customSolutionFormContent.nameLabel}
-                    value={name}
-                    onChange={(event) => setName(event.target.value)}
-                    placeholder={customSolutionFormContent.namePlaceholder}
-                  />
-
-                  <MaskedTextInput
-                    mask={brazilianPhoneMask}
-                    id="telefone"
-                    label={customSolutionFormContent.phoneLabel}
-                    value={phone}
-                    onChange={(event) => setPhone(event.target.value)}
-                    placeholder={customSolutionFormContent.phonePlaceholder}
-                  />
-                </div>
-
-                <div className="mt-3">
-                  <TextAreaInput
-                    id="mensagem"
-                    label={customSolutionFormContent.messageLabel}
-                    value={message}
-                    onChange={(event) => setMessage(event.target.value)}
-                    placeholder={customSolutionFormContent.messagePlaceholder}
-                    maxTextLength={1000}
-                    currentTextLength={message.length}
-                    className="min-h-44"
-                  />
-                </div>
-
-                <div className="mt-4 flex justify-end">
-                  <Button
-                    type="submit"
-                    label={customSolutionFormContent.submitLabel}
-                    variant="filled"
-                    className="bg-secondary-700 px-6 py-3 text-white font-bold"
-                    disabled={
-                      !name ||
-                      !phone ||
-                      !message ||
-                      message.length < MIN_MESSAGE_LENGTH
-                    }
-                  />
-                </div>
-              </form>
+              <div className="flex justify-center">
+                <Button
+                  label={customSolutionFormContent.submitLabel}
+                  variant="filled"
+                  className="relative isolate flex items-center justify-center overflow-hidden rounded-xl border border-success-300/35 bg-gradient-to-r from-success-500 via-success-600 to-success-500 px-6 py-3 shadow-[0_14px_32px_rgba(100,21,255,0.35)] transition-all duration-300 before:absolute before:inset-0 before:-z-10 before:rounded-xl before:bg-success-400/35 before:blur-2xl before:content-[''] hover:-translate-y-0.5 hover:shadow-[0_20px_38px_rgba(82, 255, 76, 0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-success-300/60 text-white font-bold text-lg sm:text-3xl"
+                  onClick={() => startWhatsAppChat()}
+                />
+              </div>
             </FadeContainer>
           </Section>
         </div>

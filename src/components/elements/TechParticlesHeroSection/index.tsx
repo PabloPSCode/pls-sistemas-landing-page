@@ -4,6 +4,21 @@ import Particles, { initParticlesEngine } from "@tsparticles/react";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 
+const TABLET_MIN_WIDTH = 768;
+const DESKTOP_MIN_WIDTH = 1024;
+
+function getParticlesCount(viewportWidth: number) {
+  if (viewportWidth >= DESKTOP_MIN_WIDTH) {
+    return 60;
+  }
+
+  if (viewportWidth >= TABLET_MIN_WIDTH) {
+    return 40;
+  }
+
+  return 20;
+}
+
 interface TechParticlesHeroSectionProps {
   children?: React.ReactNode;
   className?: string;
@@ -18,11 +33,27 @@ export default function TechParticlesHeroSection({
   animationSpeed = "medium",
 }: TechParticlesHeroSectionProps) {
   const [init, setInit] = useState(false);
+  const [particlesCount, setParticlesCount] = useState(() =>
+    typeof window === "undefined" ? 60 : getParticlesCount(window.innerWidth),
+  );
 
   useEffect(() => {
     initParticlesEngine(async (engine) => {
       await loadLinksPreset(engine);
     }).then(() => setInit(true));
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const handleResize = () => {
+      setParticlesCount(getParticlesCount(window.innerWidth));
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
@@ -64,6 +95,9 @@ export default function TechParticlesHeroSection({
                   "#4379ed",
                   "#140a80",
                 ],
+              },
+              number: {
+                value: particlesCount,
               },
               links: {
                 enable: true,
