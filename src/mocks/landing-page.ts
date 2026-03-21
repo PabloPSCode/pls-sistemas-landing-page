@@ -155,7 +155,7 @@ export const webSolutionsContent = {
         "Biblioteca com +130 componentes React construída para desenvolvedores e empresas de software.",
       ctaLabel: "Saiba mais",
       imagePath: "/imgs/logo_react_ultimate.png",
-      url: "https://reactultimate.pablosilvadev.com.br/",
+      url: "https://reactultimatecomponents.plssistemas.com.br/",
     },
   ] as WebSolutionItem[],
 };
@@ -188,7 +188,7 @@ export const footerContent = {
   ] as FooterLinkItem[],
   solutions: [
     { label: "Pic Loja", href: "https://picloja.plssistemas.com.br/" },
-    { label: "React Ultimate Componentes", href: "https://reactultimate.pablosilvadev.com.br/" },
+    { label: "React Ultimate Componentes", href: "https://reactultimatecomponents.plssistemas.com.br/" },
   ] as FooterLinkItem[],
   policyLinks: [
     { label: "Política de Privacidade", href: "/politica-de-privacidade" },
