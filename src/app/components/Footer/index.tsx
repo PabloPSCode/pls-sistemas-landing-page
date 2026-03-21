@@ -19,7 +19,7 @@ export default function Footer() {
           <div className="flex items-center justify-center gap-2 sm:justify-start">
             <Image
               src="/imgs/logo_pls_sistemas.png"
-              alt="Equipe da PLS Sistemas trabalhando em projetos web"
+              alt="Logo da PLS Sistemas"
               width={160}
               height={76}
               className="w-full h-10 sm:h-12"

@@ -41,7 +41,8 @@ export interface LandingTemplateItem {
   recommendation: string;
 }
 
-export const landingPageTitle = "PLS Sistemas | Landing Pages e Websites";
+export const landingPageTitle =
+  "PLS Sistemas | Desenvolvimento de Sistemas, Sites e Landing Pages em João Monlevade - MG";
 
 export const heroContent = {
   title: "Landing pages, websites e ferramentas para profissionais e empresas",
@@ -61,7 +62,7 @@ export const aboutContent = {
   sectionId: "quem-somos",
   title: "QUEM SOMOS",
   paragraphs: [
-    "Com o propósito de trazer soluções modernas e eficazes para melhorar e facilitar a vida de pessoas e empresas, nasce a PLS Sistemas.",
+    "A PLS Sistemas é uma empresa de software sediada em João Monlevade - MG, criada para desenvolver soluções modernas e eficazes para empresas que precisam vender mais e operar melhor.",
     "Alinhada com o cenário atual da tecnologia, criamos ferramentas e software aplicando o poder da IA para transformar sua marca e seu negócio.",
     "Realizamos serviços de criação de landing pages, websites, software personalizado e além disso possuímos ferramentas prontas para alavancar seu negócio.",
   ],

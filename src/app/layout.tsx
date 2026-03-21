@@ -73,7 +73,31 @@ export const metadata: Metadata = {
   },
   title: landingPageTitle,
   description:
-    "PLS Sistemas - Agência web e software de João Monlevade - MG especializada em landing pages, websites e soluções sob medida.",
+    "PLS Sistemas é uma empresa de desenvolvimento de sistemas em João Monlevade - MG. Criamos sites, landing pages, soluções web e software sob medida para empresas.",
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: siteUrl,
+    siteName: "PLS Sistemas",
+    title: landingPageTitle,
+    description:
+      "Empresa de desenvolvimento de sistemas em João Monlevade - MG, com criação de sites, landing pages e soluções web sob medida.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "PLS Sistemas",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: landingPageTitle,
+    description:
+      "Desenvolvimento de sistemas, sites, landing pages e soluções web em João Monlevade - MG.",
+    images: ["/og-image.png"],
+  },
   robots: {
     index: true,
     follow: true,

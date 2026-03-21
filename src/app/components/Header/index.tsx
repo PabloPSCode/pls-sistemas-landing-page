@@ -30,7 +30,7 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-2">
           <Image
             src="/imgs/logo_pls_sistemas.png"
-            alt="Equipe da PLS Sistemas trabalhando em projetos web"
+            alt="Logo da PLS Sistemas"
             width={180}
             height={80}
             className="w-full h-10 sm:h-12"

@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: "Política de Privacidade | PLS Sistemas",
   description:
     "Política de Privacidade da PLS Sistemas, empresa de desenvolvimento de sistemas web e software em João Monlevade - MG.",
+  alternates: {
+    canonical: "/politica-de-privacidade",
+  },
 };
 
 function PolicySection({

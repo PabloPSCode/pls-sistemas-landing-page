@@ -37,6 +37,69 @@ const landingServiceIcons = [
   WrenchIcon,
 ];
 
+const businessPhone = process.env.NEXT_PUBLIC_WHATSAPP_CONTACT?.replace(
+  /\D/g,
+  "",
+);
+
+const homePageSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: "PLS Sistemas",
+    url: "https://www.plssistemas.com.br",
+    image: "https://www.plssistemas.com.br/og-image.png",
+    logo: "https://www.plssistemas.com.br/imgs/logo_pls_sistemas.png",
+    description:
+      "Empresa de desenvolvimento de sistemas em João Monlevade - MG, com criação de sites, landing pages, software e soluções web sob medida.",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "João Monlevade",
+      addressRegion: "MG",
+      addressCountry: "BR",
+    },
+    areaServed: [
+      {
+        "@type": "City",
+        name: "João Monlevade",
+      },
+      {
+        "@type": "State",
+        name: "Minas Gerais",
+      },
+    ],
+    sameAs: ["https://www.instagram.com/pls.sistemas"],
+    taxID: "47.463.499/0001-37",
+    serviceType: [
+      "Desenvolvimento de sistemas",
+      "Criação de sites",
+      "Criação de landing pages",
+      "Soluções web sob medida",
+    ],
+    ...(businessPhone
+      ? {
+          telephone: `+${businessPhone}`,
+          contactPoint: [
+            {
+              "@type": "ContactPoint",
+              telephone: `+${businessPhone}`,
+              contactType: "customer service",
+              areaServed: "BR",
+              availableLanguage: ["pt-BR"],
+            },
+          ],
+        }
+      : {}),
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "PLS Sistemas",
+    url: "https://www.plssistemas.com.br",
+    inLanguage: "pt-BR",
+  },
+];
+
 export default function Home() {
   const heroTexts = [
     "Sites e landing pages profissionais sob medida para empresas e profissionais.",
@@ -46,12 +109,22 @@ export default function Home() {
 
   return (
     <div className="overflow-x-hidden bg-[#020205] text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(homePageSchemas),
+        }}
+      />
       <main className="flex flex-col">
-        <TechParticlesHeroSection className="bg-gradient-to-br from-[#000000] via-[#250c48] to-[#7E1EED]m-auto w-full min-h-[50vh] px-4 py-20 sm:py-24 flex items-center justify-center text-center">
-          <FadeText
-            items={heroTexts}
-            className="text-2xl sm:text-4xl max-w-4xl mx-auto font-semibold tracking-wide"
-          />
+        <TechParticlesHeroSection className="m-auto flex w-full min-h-[50vh] items-center justify-center bg-gradient-to-br from-[#000000] via-[#250c48] to-[#7E1EED] px-4 py-20 text-center sm:py-24">
+          <div className="mx-auto flex max-w-5xl flex-col items-center">
+            
+            <FadeText
+              items={heroTexts}
+              wrapper="p"
+              className="mt-8 max-w-4xl text-center text-lg font-semibold tracking-wide text-white/95 sm:text-3xl"
+            />
+          </div>
         </TechParticlesHeroSection>
 
         <div id={aboutContent.sectionId} className="scroll-mt-8">
@@ -94,7 +167,7 @@ export default function Home() {
               className="w-full flex flex-col items-center max-w-7xl mx-auto gap-4 py-8 px-4 my-8 scroll-mt-12 sm:scroll-mt-14"
               id="empresas"
             >
-              <Title content="Empresas assistidas" />
+              <Title content="Empresas assistidas" element="h3" />
               <Subtitle
                 content="Empresas que já foram impactadas pelos nossos serviços"
                 weight="light"
@@ -160,6 +233,7 @@ export default function Home() {
 
                         <Subtitle
                           content={item.title}
+                          element="h3"
                           className="text-white text-3xl sm:text-5xl"
                         />
 
@@ -249,6 +323,7 @@ export default function Home() {
 
                         <Subtitle
                           content={item.title}
+                          element="h3"
                           className="text-white text-3xl sm:text-5xl"
                         />
 
