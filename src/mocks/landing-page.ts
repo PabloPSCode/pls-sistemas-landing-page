@@ -138,7 +138,7 @@ export const webSolutionsContent = {
   sectionId: "solucoes-web",
   title: "Soluções para seu negócio",
   subtitle:
-    "Além da criação de landing pages e websites, também oferecemos soluções para escalar seu negócio.",
+    "Oferecemos soluções prontas para escalar seu negócio.",
   items: [
     {
       title: "Pic Loja",
@@ -164,7 +164,7 @@ export const customSolutionFormContent = {
   sectionId: "solucoes-sob-medida",
   title: "SOLUÇÕES SOB MEDIDA",
   description:
-    "Precisa de uma solução sob medida para seu negócio? Chame-nos agora mesmo no Whatsapp e nos conte o que você precisa. Iremos analisar seu caso cuidadosamente e retornar o contato.",
+    "Precisa de uma solução sob medida para seu negócio?\nChame-nos agora mesmo no Whatsapp.",
   nameLabel: "Seu nome",
   phoneLabel: "Whatsapp",
   messageLabel: "Como podemos ajudar você?",

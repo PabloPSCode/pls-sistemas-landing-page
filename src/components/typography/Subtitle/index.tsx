@@ -23,6 +23,8 @@ export default function Subtitle({
   element = "h2",
   className,
 }: TitleProps) {
+  const lines = content.split("\n");
+
   return (
     <>
       {React.createElement(
@@ -33,10 +35,14 @@ export default function Subtitle({
             className
           ),
         },
-        content
+        lines.map((line, index) => (
+          <React.Fragment key={`${line}-${index}`}>
+            {index > 0 ? <br /> : null}
+            {line}
+          </React.Fragment>
+        ))
       )}
     </>
   );
 }
-
 

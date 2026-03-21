@@ -124,8 +124,8 @@ export default function Home() {
                   className="text-center text-white tracking-[0.16em] font-black"
                 />
                 <Subtitle
-                  content="Criação de sites e landing pages otimizados para conversão, com design moderno e responsivo."
-                  className="mx-auto mt-4 max-w-4xl text-center text-white/90 text-xl sm:text-4xl"
+                  content="Criação de sites e landing pages profissionais e otimizados para conversão."
+                  className="mx-auto mt-4 max-w-4xl text-center text-white/90 text-xl sm:text-4xl !font-light"
                 />
               </RevealContainer>
 
@@ -214,7 +214,7 @@ export default function Home() {
                 />
                 <Subtitle
                   content={webSolutionsContent.subtitle}
-                  className="mx-auto mt-4 max-w-4xl text-center text-white/90 text-xl sm:text-4xl"
+                  className="mx-auto mt-4 max-w-4xl text-center text-white/90 text-xl sm:text-4xl !font-light"
                 />
               </RevealContainer>
 
@@ -332,7 +332,7 @@ export default function Home() {
 
               <Subtitle
                 content={customSolutionFormContent.description}
-                className="mx-auto mt-5 max-w-5xl text-center text-white/90 text-xl sm:text-4xl"
+                className="mx-auto mt-5 max-w-5xl text-center text-white/90 text-xl sm:text-4xl !font-light "
               />
             </RevealContainer>
 
