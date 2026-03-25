@@ -122,12 +122,12 @@ export default function Home() {
             <FadeText
               items={heroTexts}
               wrapper="p"
-              className="mt-8 max-w-4xl text-center text-lg font-semibold tracking-wide text-white/95 sm:text-3xl"
+              className="mt-8 max-w-4xl text-center font-semibold tracking-wide text-white/95 text-3xl sm:text-5xl"
             />
           </div>
         </TechParticlesHeroSection>
 
-        <div id={aboutContent.sectionId} className="scroll-mt-8">
+        <div id={aboutContent.sectionId} className="scroll-mt-8">http://localhost:5173/dashboard/perguntas-frequentes
           <Section size="full" sectionClassName="bg-[#030307] py-20 sm:py-24">
             <RevealContainer once className="w-full max-w-6xl">
               <Title
