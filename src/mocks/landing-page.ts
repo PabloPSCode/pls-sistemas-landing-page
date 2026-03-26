@@ -54,8 +54,9 @@ export const heroContent = {
 export const navItems: LandingNavItem[] = [
   { label: "Quem somos", href: "#quem-somos" },
   { label: "Websites e landing pages", href: "#landing-pages" },
-  { label: "Soluções para seu negócio", href: "#solucoes-web" },
-  { label: "Soluções sob medida", href: "#solucoes-sob-medida" },
+  { label: "Soluções", href: "#solucoes-web" },
+  { label: "Para o seu negócio", href: "#solucoes-sob-medida" },
+  { label: "Blog", href: "/blog" },
 ];
 
 export const aboutContent = {
@@ -137,7 +138,7 @@ export const landingServicesContent = {
 
 export const webSolutionsContent = {
   sectionId: "solucoes-web",
-  title: "Soluções para seu negócio",
+  title: "Soluções",
   subtitle:
     "Oferecemos soluções prontas para escalar seu negócio.",
   items: [
@@ -163,7 +164,7 @@ export const webSolutionsContent = {
 
 export const customSolutionFormContent = {
   sectionId: "solucoes-sob-medida",
-  title: "SOLUÇÕES SOB MEDIDA",
+  title: "Para o seu negócio",
   description:
     "Precisa de uma solução sob medida para seu negócio?\nChame-nos agora mesmo no Whatsapp.",
   nameLabel: "Seu nome",
@@ -184,8 +185,9 @@ export const footerContent = {
   navLinks: [
     { label: "Quem somos", href: "#quem-somos" },
     { label: "Websites e landing pages", href: "#landing-pages" },
-    { label: "Soluções para seu negócio", href: "#solucoes-web" },
-    { label: "Soluções sob medida", href: "#solucoes-sob-medida" },
+    { label: "Soluções", href: "#solucoes-web" },
+    { label: "Para o seu negócio", href: "#solucoes-sob-medida" },
+    { label: "Blog", href: "/blog" },
   ] as FooterLinkItem[],
   solutions: [
     { label: "Pic Loja", href: "https://picloja.plssistemas.com.br/" },

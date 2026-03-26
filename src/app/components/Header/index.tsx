@@ -1,7 +1,8 @@
 "use client";
 
 import LandingHeader from "@/components/elements/LandingHeader";
-import { customSolutionFormContent, navItems } from "@/mocks/landing-page";
+import { navItems } from "@/mocks/landing-page";
+import { resolveSiteHref } from "@/utils/navigation";
 import { startWhatsAppChat } from "@/utils/whatsapp";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,13 +12,6 @@ import { useState } from "react";
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-
-  const resolveHref = (href: string) => {
-    if (href.startsWith("#")) {
-      return pathname === "/" ? href : `/${href}`;
-    }
-    return href;
-  };
 
   return (
     <LandingHeader.Root
@@ -43,7 +37,7 @@ export default function Header() {
           {navItems.map((item) => (
             <LandingHeader.Nav.Item
               key={item.href}
-              href={resolveHref(item.href)}
+              href={resolveSiteHref(pathname, item.href)}
             >
               {item.label}
             </LandingHeader.Nav.Item>
@@ -62,7 +56,7 @@ export default function Header() {
           {navItems.map((item) => (
             <LandingHeader.Nav.Item
               key={`mobile-${item.href}`}
-              href={item.href}
+              href={resolveSiteHref(pathname, item.href)}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {item.label}

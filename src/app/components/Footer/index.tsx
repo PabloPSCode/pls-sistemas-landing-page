@@ -4,11 +4,16 @@ import FooterElement from "@/components/elements/Footer";
 import Paragraph from "@/components/typography/Paragraph";
 import Subtitle from "@/components/typography/Subtitle";
 import { footerContent } from "@/mocks/landing-page";
+import { resolveSiteHref } from "@/utils/navigation";
 import { startWhatsAppChat } from "@/utils/whatsapp";
 import { WhatsappLogoIcon } from "@phosphor-icons/react/dist/icons/WhatsappLogo";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+  const pathname = usePathname();
+
   return (
     <FooterElement.Root bordered={false} className="bg-[#030307] text-white">
       <FooterElement.Top
@@ -58,12 +63,15 @@ export default function Footer() {
           <ul className="space-y-3 text-center sm:text-left">
             {footerContent.navLinks.map((link) => (
               <li key={link.label}>
-                <a href={link.href} className="text-white/80 hover:text-white">
+                <Link
+                  href={resolveSiteHref(pathname, link.href)}
+                  className="text-white/80 hover:text-white"
+                >
                   <Paragraph
                     content={link.label}
                     className="text-sm sm:text-xl"
                   />
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -100,12 +108,12 @@ export default function Footer() {
           <ul className="space-y-3 text-center sm:text-left">
             {footerContent.policyLinks.map((link) => (
               <li key={link.label}>
-                <a href={link.href} className="text-white/80 hover:text-white">
+                <Link href={link.href} className="text-white/80 hover:text-white">
                   <Paragraph
                     content={link.label}
                     className="text-sm sm:text-xl"
                   />
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
