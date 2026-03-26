@@ -127,7 +127,7 @@ export default function Home() {
           </div>
         </TechParticlesHeroSection>
 
-        <div id={aboutContent.sectionId} className="scroll-mt-8">http://localhost:5173/dashboard/perguntas-frequentes
+        <div id={aboutContent.sectionId} className="scroll-mt-8">
           <Section size="full" sectionClassName="bg-[#030307] py-20 sm:py-24">
             <RevealContainer once className="w-full max-w-6xl">
               <Title
