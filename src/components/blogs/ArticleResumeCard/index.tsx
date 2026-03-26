@@ -1,6 +1,8 @@
 "use client";
 import clsx from "clsx";
 import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
 export interface ArticleResumeCardProps {
   /** Categoria exibida no “badge” (pílula). */
@@ -9,6 +11,10 @@ export interface ArticleResumeCardProps {
   title: string;
   /** URL da imagem (thumb). */
   imageUrl: string;
+  /** Link do artigo. */
+  href?: string;
+  /** Abre o link em nova aba. */
+  newTab?: boolean;
 
   /** Classes extras (opcionais). */
   badgeClassName?: string;
@@ -26,12 +32,29 @@ export default function ArticleResumeCard({
   category,
   title,
   imageUrl,
+  href,
+  newTab,
   badgeClassName,
   titleClassName,
   containerClassName,
 }: ArticleResumeCardProps) {
+  const isLink = Boolean(href);
+  const Wrapper: React.ElementType = isLink ? (newTab ? "a" : Link) : "div";
+  const wrapperProps = isLink
+    ? newTab
+      ? {
+          href,
+          target: "_blank",
+          rel: "noopener noreferrer",
+        }
+      : {
+          href,
+        }
+    : {};
+
   return (
-    <div
+    <Wrapper
+      {...wrapperProps}
       className={clsx(
         "w-full max-w-md rounded-md  bg-transparent",
         "grid grid-cols-[1fr_auto] gap-3 sm:gap-4 items-center",
@@ -81,6 +104,6 @@ export default function ArticleResumeCard({
           loading="lazy"
         />
       </div>
-    </div>
+    </Wrapper>
   );
 }

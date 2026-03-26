@@ -103,12 +103,12 @@ export default function Breadcrumb({
                     {it.label}
                   </span>
                 ) : (
-                  <a
+                  <Link
                     href={it.href}
                     className="text-foreground/70 hover:text-foreground underline-offset-4 hover:underline transition"
                   >
                     {it.label}
-                  </a>
+                  </Link>
                 )}
               </li>
             </React.Fragment>

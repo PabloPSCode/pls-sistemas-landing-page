@@ -1,13 +1,13 @@
 "use client";
 
 import ArticleImage from "@/components/blogs/ArticleImage";
-import ArticleResumeCard from "@/components/blogs/ArticleResumeCard";
 import Button from "@/components/buttons/Button";
 import SearchInput from "@/components/inputs/SearchInput";
 import Paragraph from "@/components/typography/Paragraph";
 import Subtitle from "@/components/typography/Subtitle";
 import Title from "@/components/typography/Title";
-import { blogPosts, relatedBlogPosts } from "@/mocks/blog";
+import { blogPosts, getBlogPostHref } from "@/mocks/blog";
+import { normalizeTextValue } from "@/utils/slug";
 import { FormEvent, useState } from "react";
 
 const stripHtml = (htmlContent: string) =>
@@ -16,21 +16,14 @@ const stripHtml = (htmlContent: string) =>
     .replace(/\s+/g, " ")
     .trim();
 
-const normalizeText = (value: string) =>
-  value
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .trim();
-
 export default function BlogListingPage() {
   const [search, setSearch] = useState("");
 
-  const normalizedSearch = normalizeText(search);
+  const normalizedSearch = normalizeTextValue(search);
   const filteredPosts = blogPosts.filter((post) => {
     if (!normalizedSearch) return true;
 
-    const searchableContent = normalizeText(
+    const searchableContent = normalizeTextValue(
       [post.title, post.category, stripHtml(post.htmlContent)].join(" "),
     );
 
@@ -87,7 +80,7 @@ export default function BlogListingPage() {
 
       <section
         id="blog-results"
-        className="mx-auto grid w-full max-w-7xl gap-10 px-6 py-14 sm:px-8 lg:grid-cols-[minmax(0,1.55fr)_320px]"
+        className="mx-auto w-full max-w-7xl px-6 py-14 sm:px-8"
       >
         <div className="min-w-0">
           <div className="flex flex-col gap-3 border-b border-white/10 pb-6 sm:flex-row sm:items-end sm:justify-between">
@@ -127,6 +120,7 @@ export default function BlogListingPage() {
                   title={post.title}
                   publishedAt={post.createdAt}
                   readingTime={post.readingTime}
+                  href={getBlogPostHref(post)}
                   className="max-w-none border-white/10 bg-white/[0.03]"
                 />
               ))}
@@ -151,38 +145,6 @@ export default function BlogListingPage() {
             </div>
           )}
         </div>
-
-        <aside className="lg:sticky lg:top-28">
-          <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6 shadow-[0_16px_50px_rgba(0,0,0,0.24)] backdrop-blur">
-            <span className="text-xs font-semibold uppercase tracking-[0.24em] text-white/45">
-              Relacionados
-            </span>
-            <Title
-              content="Posts relacionados"
-              element="h2"
-              className="mt-3 !text-2xl text-white"
-            />
-            <Paragraph
-              content="Uma seleção curta com leituras complementares para quem está avaliando presença digital, performance e crescimento operacional."
-              className="mt-3 !text-sm leading-7 text-white/60"
-            />
-
-            <div className="mt-6 divide-y divide-white/10">
-              {relatedBlogPosts.map((post) => (
-                <div key={post.id} className="py-4 first:pt-0 last:pb-0">
-                  <ArticleResumeCard
-                    category={post.category}
-                    title={post.title}
-                    imageUrl={post.backgroundUrl}
-                    badgeClassName="bg-primary-500 text-white"
-                    titleClassName="text-white"
-                    containerClassName="max-w-none !rounded-none !bg-transparent !p-0 hover:!bg-transparent"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </aside>
       </section>
     </main>
   );

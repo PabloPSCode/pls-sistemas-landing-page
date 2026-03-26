@@ -2,6 +2,7 @@ import { formatDateLong } from "@/utils/format";
 import { CalendarIcon, ClockIcon } from "@phosphor-icons/react";
 import clsx from "clsx";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 export interface ArticleImageProps {
@@ -43,13 +44,18 @@ export default function ArticleImage({
   overlayClassName,
   titleClassName,
 }: ArticleImageProps) {
-  const Wrapper: React.ElementType = href ? "a" : "div";
-  const wrapperProps = href
-    ? {
-        href,
-        target: newTab ? "_blank" : undefined,
-        rel: newTab ? "noopener noreferrer" : undefined,
-      }
+  const isLink = Boolean(href);
+  const Wrapper: React.ElementType = isLink ? (newTab ? "a" : Link) : "div";
+  const wrapperProps = isLink
+    ? newTab
+      ? {
+          href,
+          target: "_blank",
+          rel: "noopener noreferrer",
+        }
+      : {
+          href,
+        }
     : {};
 
   return (

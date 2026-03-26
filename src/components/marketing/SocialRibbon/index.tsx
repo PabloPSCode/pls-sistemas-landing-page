@@ -39,6 +39,8 @@ export interface SocialRibbonProps {
   iconsWeight?: "thin" | "light" | "regular" | "bold" | "fill" | "duotone";
   /** Título acima do ribbon */
   title?: string;
+  /** Abre os links em nova aba */
+  openInNewTab?: boolean;
 }
 /** Componente SocialRibbon */
 export default function SocialRibbon({
@@ -46,6 +48,7 @@ export default function SocialRibbon({
   iconsClassName,
   iconsWeight,
   title,
+  openInNewTab = true,
 }: SocialRibbonProps) {
   return (
     <div className="flex flex-col">
@@ -57,7 +60,12 @@ export default function SocialRibbon({
       <ul className="flex gap-3 items-center">
         {items.map((item, index) => (
           <li key={index}>
-            <a href={item.href} className="flex items-center">
+            <a
+              href={item.href}
+              className="flex items-center"
+              target={openInNewTab ? "_blank" : undefined}
+              rel={openInNewTab ? "noopener noreferrer" : undefined}
+            >
               {item.iconName === "instagram" ? (
                 <InstagramLogoIcon
                   className={clsx("w-5 h-5 sm:w-7 sm:h-7", iconsClassName)}
@@ -108,5 +116,3 @@ export default function SocialRibbon({
     </div>
   );
 }
-
-
