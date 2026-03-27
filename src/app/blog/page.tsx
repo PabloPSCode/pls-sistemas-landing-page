@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { getBlogManagerContentSafe } from "@/api/blog-manager";
 import BlogListingPage from "./BlogListingPage";
 
 const blogPageTitle = "Blog | PLS Sistemas";
@@ -34,6 +35,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogPage() {
-  return <BlogListingPage />;
+export default async function BlogPage() {
+  const { posts } = await getBlogManagerContentSafe();
+
+  return <BlogListingPage blogPosts={posts} />;
 }

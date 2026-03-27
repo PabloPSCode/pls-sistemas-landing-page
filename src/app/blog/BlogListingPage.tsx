@@ -6,7 +6,7 @@ import SearchInput from "@/components/inputs/SearchInput";
 import Paragraph from "@/components/typography/Paragraph";
 import Subtitle from "@/components/typography/Subtitle";
 import Title from "@/components/typography/Title";
-import { blogPosts, getBlogPostHref } from "@/mocks/blog";
+import { getBlogPostHref, type BlogPost } from "@/lib/blog";
 import { normalizeTextValue } from "@/utils/slug";
 import { FormEvent, useState } from "react";
 
@@ -16,7 +16,13 @@ const stripHtml = (htmlContent: string) =>
     .replace(/\s+/g, " ")
     .trim();
 
-export default function BlogListingPage() {
+interface BlogListingPageProps {
+  blogPosts: BlogPost[];
+}
+
+export default function BlogListingPage({
+  blogPosts,
+}: BlogListingPageProps) {
   const [search, setSearch] = useState("");
 
   const normalizedSearch = normalizeTextValue(search);
@@ -115,7 +121,7 @@ export default function BlogListingPage() {
             <div className="grid gap-5 md:grid-cols-2">
               {filteredPosts.map((post) => (
                 <ArticleImage
-                  key={post.id}
+                  key={post.id ?? post.slug}
                   imgUrl={post.backgroundUrl}
                   title={post.title}
                   publishedAt={post.createdAt}

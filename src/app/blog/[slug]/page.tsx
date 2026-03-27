@@ -1,30 +1,23 @@
 import BlogPostDetails from "./BlogPostDetails";
-import {
-  blogPosts,
-  getBlogPostBySlug,
-  getRelatedBlogPosts,
-} from "@/mocks/blog";
+import { getBlogManagerContentSafe } from "@/api/blog-manager";
+import { getBlogPostBySlug, getRelatedBlogPosts, stripHtml } from "@/lib/blog";
 import { collapseLongString } from "@/utils/format";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-const siteUrl = "https://www.plssistemas.com.br";
+const fallbackSiteUrl = process.env.SITE_URL ?? "https://www.plssistemas.com.br";
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
 };
 
-export function generateStaticParams() {
-  return blogPosts.map((post) => ({
-    slug: post.slug,
-  }));
-}
-
 export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = getBlogPostBySlug(slug);
+  const { site, posts } = await getBlogManagerContentSafe();
+  const post = getBlogPostBySlug(posts, slug);
+  const siteUrl = site?.url ?? fallbackSiteUrl;
 
   if (!post) {
     return {
@@ -68,11 +61,13 @@ export default async function BlogPostPage({
   params,
 }: BlogPostPageProps) {
   const { slug } = await params;
-  const post = getBlogPostBySlug(slug);
+  const { site, posts } = await getBlogManagerContentSafe();
+  const post = getBlogPostBySlug(posts, slug);
 
   if (!post) notFound();
 
-  const relatedPosts = getRelatedBlogPosts(post.slug, 3);
+  const relatedPosts = getRelatedBlogPosts(posts, post.slug, 3);
+  const siteUrl = site?.url ?? fallbackSiteUrl;
 
   return (
     <BlogPostDetails
@@ -81,8 +76,4 @@ export default async function BlogPostPage({
       siteUrl={siteUrl}
     />
   );
-}
-
-function stripHtml(htmlContent: string): string {
-  return htmlContent.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
 }

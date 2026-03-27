@@ -8,7 +8,7 @@ import Title from "@/components/typography/Title";
 import {
   type BlogPost,
   getBlogPostHref,
-} from "@/mocks/blog";
+} from "@/lib/blog";
 import { formatDateLong } from "@/utils/format";
 import { CalendarIcon, ClockIcon } from "@phosphor-icons/react";
 import Image from "next/image";
@@ -111,21 +111,23 @@ export default function BlogPostDetails({
               />
             </div>
 
-            <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6 shadow-[0_16px_50px_rgba(0,0,0,0.24)] backdrop-blur">
-              <span className="text-xs font-semibold uppercase tracking-[0.24em] text-white/45">
-                Tags
-              </span>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {post.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-2 text-sm font-medium text-white/78"
-                  >
-                    {tag}
-                  </span>
-                ))}
+            {post.tags.length ? (
+              <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6 shadow-[0_16px_50px_rgba(0,0,0,0.24)] backdrop-blur">
+                <span className="text-xs font-semibold uppercase tracking-[0.24em] text-white/45">
+                  Tags
+                </span>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {post.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-2 text-sm font-medium text-white/78"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
+            ) : null}
 
             <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6 shadow-[0_16px_50px_rgba(0,0,0,0.24)] backdrop-blur">
               <span className="text-xs font-semibold uppercase tracking-[0.24em] text-white/45">
@@ -142,22 +144,29 @@ export default function BlogPostDetails({
               />
 
               <div className="mt-6 divide-y divide-white/10">
-                {relatedPosts.map((relatedPost) => (
-                  <div
-                    key={relatedPost.slug}
-                    className="py-4 first:pt-0 last:pb-0"
-                  >
-                    <ArticleResumeCard
-                      href={getBlogPostHref(relatedPost)}
-                      category={relatedPost.category}
-                      title={relatedPost.title}
-                      imageUrl={relatedPost.backgroundUrl}
-                      badgeClassName="bg-primary-500 text-white"
-                      titleClassName="text-white"
-                      containerClassName="max-w-none !rounded-none !bg-transparent !p-0 hover:!bg-white/[0.03]"
-                    />
-                  </div>
-                ))}
+                {relatedPosts.length ? (
+                  relatedPosts.map((relatedPost) => (
+                    <div
+                      key={relatedPost.slug}
+                      className="py-4 first:pt-0 last:pb-0"
+                    >
+                      <ArticleResumeCard
+                        href={getBlogPostHref(relatedPost)}
+                        category={relatedPost.category}
+                        title={relatedPost.title}
+                        imageUrl={relatedPost.backgroundUrl}
+                        badgeClassName="bg-primary-500 text-white"
+                        titleClassName="text-white"
+                        containerClassName="max-w-none !rounded-none !bg-transparent !p-0 hover:!bg-white/[0.03]"
+                      />
+                    </div>
+                  ))
+                ) : (
+                  <Paragraph
+                    content="Ainda não existem outras publicações para relacionar com este post."
+                    className="py-4 !text-sm leading-7 text-white/60"
+                  />
+                )}
               </div>
             </div>
           </aside>
