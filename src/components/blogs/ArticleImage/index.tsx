@@ -63,8 +63,8 @@ export default function ArticleImage({
       {...wrapperProps}
       onClick={onClick}
       className={clsx(
-        "block group relative overflow-hidden rounded-2xl border border-border-card bg-bg-card",
-        "shadow-sm transition-transform duration-200 will-change-transform",
+        "block group relative overflow-hidden rounded-2xl",
+        "shadow-sm transition-transform duration-200 will-change-transform bg-gradient-to-b from-primary-900 to-primary-100",
         "hover:shadow-md hover:-translate-y-[1px]",
         isMain
           ? "aspect-[16/11] sm:aspect-[16/10] lg:aspect-[16/9] w-full"
@@ -81,7 +81,7 @@ export default function ArticleImage({
         loading="lazy"
         className={clsx(
           "absolute inset-0 h-full w-full object-cover",
-          "transition-transform duration-300 group-hover:scale-[1.03]",
+          "transition-transform duration-300 group-hover:scale-[1.03] opacity-50",
           imageClassName
         )}
       />
