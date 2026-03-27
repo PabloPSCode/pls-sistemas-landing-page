@@ -64,7 +64,7 @@ export default function ArticleImage({
       onClick={onClick}
       className={clsx(
         "block group relative overflow-hidden rounded-2xl",
-        "shadow-sm transition-transform duration-200 will-change-transform bg-gradient-to-b from-primary-800 to-primary-100",
+        "shadow-sm transition-transform duration-200 will-change-transform bg-gradient-to-b from-primary-900 to-primary-50",
         "hover:shadow-md hover:-translate-y-[1px]",
         isMain
           ? "aspect-[16/11] sm:aspect-[16/10] lg:aspect-[16/9] w-full"
