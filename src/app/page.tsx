@@ -33,6 +33,7 @@ import {
   landingPageTitle,
   webSolutionsContent,
 } from "@/mocks/landing-page";
+import { works, worksSectionContent } from "@/mocks/works";
 import { startWhatsAppChat } from "@/utils/whatsapp";
 import Link from "next/link";
 
@@ -282,6 +283,77 @@ export default function Home() {
                     </RevealContainer>
                   );
                 })}
+              </div>
+            </div>
+          </Section>
+        </div>
+
+        <div id={worksSectionContent.sectionId} className="scroll-mt-8">
+          <Section
+            size="full"
+            sectionClassName="relative isolate overflow-hidden bg-[linear-gradient(180deg,#05050a_0%,#11111a_100%)] py-20 sm:py-24"
+          >
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(126,30,237,0.16),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(86,144,255,0.12),transparent_40%)]"
+            />
+
+            <div className="relative z-10 flex w-full flex-col items-center">
+              <RevealContainer once className="w-full max-w-6xl">
+                <Title
+                  content={worksSectionContent.title}
+                  element="h2"
+                  className="text-center text-white tracking-[0.16em] font-black"
+                />
+                <Subtitle
+                  content={worksSectionContent.subtitle}
+                  className="mx-auto mt-4 max-w-4xl text-center text-white/85 text-xl sm:text-4xl !font-light"
+                />
+              </RevealContainer>
+
+              <div className="mt-12 grid w-full max-w-6xl gap-6 lg:grid-cols-3">
+                {works.map((work, index) => (
+                  <FadeContainer
+                    key={work.title}
+                    once
+                    delay={index + 1}
+                    className="h-full"
+                  >
+                    <article className="group flex h-full flex-col gap-5 rounded-[28px] border border-white/12 bg-white/[0.04] p-5 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur">
+                      <div className="overflow-hidden rounded-[22px] border border-white/10 bg-black/30">
+                        <Image
+                          src={work.imageUrl}
+                          alt={`Preview do website ${work.title}`}
+                          width={1280}
+                          height={820}
+                          className="h-auto w-full object-cover transition duration-500 scale-[1.1] group-hover:scale-[1.3]"
+                        />
+                      </div>
+
+                      <div className="flex flex-1 flex-col gap-4">
+                        <Subtitle
+                          content={work.title}
+                          element="h3"
+                          className="text-white text-3xl sm:text-4xl"
+                        />
+
+                        <Paragraph
+                          content={work.description}
+                          className="text-white/72 text-base leading-7 sm:text-xl"
+                        />
+
+                        <a
+                          href={work.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-auto inline-flex w-fit items-center rounded-full border border-primary-300/30 bg-primary-500/12 px-4 py-2 text-sm font-semibold text-primary-100 transition hover:border-primary-200/50 hover:bg-primary-500/20 hover:text-white sm:text-base"
+                        >
+                          {worksSectionContent.ctaLabel}
+                        </a>
+                      </div>
+                    </article>
+                  </FadeContainer>
+                ))}
               </div>
             </div>
           </Section>
