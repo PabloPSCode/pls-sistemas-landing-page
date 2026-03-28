@@ -52,11 +52,11 @@ export const heroContent = {
 };
 
 export const navItems: LandingNavItem[] = [
-  { label: "Início", href: "/" },
   { label: "Quem somos", href: "#quem-somos" },
-  { label: "Landing Pages", href: "/landing-pages" },
+  { label: "Websites e landing pages", href: "#landing-pages" },
+  { label: "Soluções", href: "#solucoes-web" },
+  { label: "Para o seu negócio", href: "#solucoes-sob-medida" },
   { label: "Blog", href: "/blog" },
-  { label: "Privacidade", href: "/politica-de-privacidade" },
 ];
 
 export const aboutContent = {
@@ -182,12 +182,7 @@ export const footerContent = {
   policyTitle: "TERMOS E POLÍTICAS",
   solutionsTitle: "SOLUÇÕES PARA SEU NEGÓCIO",
   copyright: "2026, Todos os direitos reservados",
-  navLinks: [
-    { label: "Início", href: "/" },
-    { label: "Quem somos", href: "#quem-somos" },
-    { label: "Landing Pages e Websites", href: "/landing-pages" },
-    { label: "Blog", href: "/blog" },
-  ] as FooterLinkItem[],
+  navLinks: [...navItems] as FooterLinkItem[],
   solutions: [
     { label: "Pic Loja", href: "https://picloja.plssistemas.com.br/" },
     { label: "React Ultimate Componentes", href: "https://reactultimatecomponents.plssistemas.com.br/" },

@@ -7,7 +7,7 @@ export interface WorkItem {
 
 export const worksSectionContent = {
   sectionId: "portfolio",
-  title: "PORTFOLIO",
+  title: "PORTFÓLIO",
   subtitle:
     "Veja alguns projetos recentes desenvolvidos pela PLS Sistemas para empresas e profissionais.",
   ctaLabel: "Acessar website",
