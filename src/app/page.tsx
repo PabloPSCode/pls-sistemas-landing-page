@@ -4,11 +4,16 @@ import FadeContainer from "@/components/animations-and-loading/FadeContainer";
 import RevealContainer from "@/components/animations-and-loading/RevealContainer";
 import ZoomContainer from "@/components/animations-and-loading/ZoomContainer";
 import Button from "@/components/buttons/Button";
-
+import StructuredData from "@/components/seo/StructuredData";
 import { Section } from "@/components/elements/Section";
 import Paragraph from "@/components/typography/Paragraph";
 import Subtitle from "@/components/typography/Subtitle";
 import Title from "@/components/typography/Title";
+import {
+  createPrimaryPagesItemListSchema,
+  createWebPageSchema,
+  siteDescription,
+} from "@/lib/seo";
 import {
   MagnifyingGlassIcon,
   PaintBrushIcon,
@@ -25,6 +30,7 @@ import {
   companies,
   customSolutionFormContent,
   landingServicesContent,
+  landingPageTitle,
   webSolutionsContent,
 } from "@/mocks/landing-page";
 import { startWhatsAppChat } from "@/utils/whatsapp";
@@ -37,67 +43,13 @@ const landingServiceIcons = [
   WrenchIcon,
 ];
 
-const businessPhone = process.env.NEXT_PUBLIC_WHATSAPP_CONTACT?.replace(
-  /\D/g,
-  "",
-);
-
 const homePageSchemas = [
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: "PLS Sistemas",
-    url: "https://www.plssistemas.com.br",
-    image: "https://www.plssistemas.com.br/og-image.png",
-    logo: "https://www.plssistemas.com.br/imgs/logo_pls_sistemas.png",
-    description:
-      "Empresa de desenvolvimento de sistemas em João Monlevade - MG, com criação de sites, landing pages, software e soluções web sob medida.",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "João Monlevade",
-      addressRegion: "MG",
-      addressCountry: "BR",
-    },
-    areaServed: [
-      {
-        "@type": "City",
-        name: "João Monlevade",
-      },
-      {
-        "@type": "State",
-        name: "Minas Gerais",
-      },
-    ],
-    sameAs: ["https://www.instagram.com/pls.sistemas"],
-    taxID: "47.463.499/0001-37",
-    serviceType: [
-      "Desenvolvimento de sistemas",
-      "Criação de sites",
-      "Criação de landing pages",
-      "Soluções web sob medida",
-    ],
-    ...(businessPhone
-      ? {
-          telephone: `+${businessPhone}`,
-          contactPoint: [
-            {
-              "@type": "ContactPoint",
-              telephone: `+${businessPhone}`,
-              contactType: "customer service",
-              areaServed: "BR",
-              availableLanguage: ["pt-BR"],
-            },
-          ],
-        }
-      : {}),
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "PLS Sistemas",
-    url: "https://www.plssistemas.com.br",
-    inLanguage: "pt-BR",
-  },
+  createWebPageSchema({
+    name: landingPageTitle,
+    description: siteDescription,
+    path: "/",
+  }),
+  createPrimaryPagesItemListSchema(),
 ];
 
 export default function Home() {
@@ -109,12 +61,7 @@ export default function Home() {
 
   return (
     <div className="overflow-x-hidden bg-[#020205] text-white">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(homePageSchemas),
-        }}
-      />
+      <StructuredData data={homePageSchemas} id="plssistemas-home-seo" />
       <main className="flex flex-col">
         <TechParticlesHeroSection className="m-auto flex w-full min-h-[50vh] items-center justify-center bg-gradient-to-br from-[#000000] via-[#250c48] to-[#7E1EED] px-4 py-20 text-center sm:py-24">
           <div className="mx-auto flex max-w-5xl flex-col items-center">

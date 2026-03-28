@@ -47,16 +47,16 @@ export const landingPageTitle =
 export const heroContent = {
   title: "Landing pages, websites e ferramentas para profissionais e empresas",
   description:
-    "Oferecemos soluções modernas e eficazes para melhorar e facilitar a vida de pessoas e empresas.",
-  primaryButtonTitle: "Explorar documentação",
+    "Oferecemos soluções web personalizadas para atender às necessidades do seu negócio.",
+  primaryButtonTitle: "Criar meu site agora",
 };
 
 export const navItems: LandingNavItem[] = [
+  { label: "Início", href: "/" },
   { label: "Quem somos", href: "#quem-somos" },
-  { label: "Websites e landing pages", href: "#landing-pages" },
-  { label: "Soluções", href: "#solucoes-web" },
-  { label: "Para o seu negócio", href: "#solucoes-sob-medida" },
+  { label: "Landing Pages", href: "/landing-pages" },
   { label: "Blog", href: "/blog" },
+  { label: "Privacidade", href: "/politica-de-privacidade" },
 ];
 
 export const aboutContent = {
@@ -75,7 +75,7 @@ export const landingServicesContent = {
   sectionId: "landing-pages",
   title: "DETALHES SOBRE LANDING PAGES E WEBSITES",
   subtitle:
-    "Entenda um pouco mais sobre nossos serviços de criação de landing pages e websites o e os resultados que você pode esperar ao contratar nossos serviços.",
+    "Entenda um pouco mais sobre nossos serviços de criação de landing pages e websites e os resultados que você pode esperar ao contratar nossos serviços.",
   items: [
     {
       title: "Templates pré-prontos",
@@ -178,15 +178,14 @@ export const customSolutionFormContent = {
 };
 
 export const footerContent = {
-  navTitle: "NAVEGUE",
+  navTitle: "PÁGINAS PRINCIPAIS",
   policyTitle: "TERMOS E POLÍTICAS",
   solutionsTitle: "SOLUÇÕES PARA SEU NEGÓCIO",
   copyright: "2026, Todos os direitos reservados",
   navLinks: [
+    { label: "Início", href: "/" },
     { label: "Quem somos", href: "#quem-somos" },
-    { label: "Websites e landing pages", href: "#landing-pages" },
-    { label: "Soluções", href: "#solucoes-web" },
-    { label: "Para o seu negócio", href: "#solucoes-sob-medida" },
+    { label: "Landing Pages e Websites", href: "/landing-pages" },
     { label: "Blog", href: "/blog" },
   ] as FooterLinkItem[],
   solutions: [

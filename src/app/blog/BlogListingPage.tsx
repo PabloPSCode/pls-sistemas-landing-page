@@ -3,6 +3,7 @@
 import ArticleImage from "@/components/blogs/ArticleImage";
 import Button from "@/components/buttons/Button";
 import SearchInput from "@/components/inputs/SearchInput";
+import Breadcrumb from "@/components/navigation/BreadCrumb";
 import Paragraph from "@/components/typography/Paragraph";
 import Subtitle from "@/components/typography/Subtitle";
 import Title from "@/components/typography/Title";
@@ -51,6 +52,15 @@ export default function BlogListingPage({
         <div className="pointer-events-none absolute right-[-5%] top-10 h-72 w-72 rounded-full bg-primary-300/10 blur-3xl" />
 
         <div className="mx-auto flex w-full max-w-7xl flex-col items-center px-6 py-20 text-center sm:px-8 sm:py-24">
+          <div className="w-full max-w-3xl text-left">
+            <Breadcrumb
+              currentPath="/blog"
+              rootLabel="Início"
+              labelMap={{ blog: "Blog" }}
+              separator="•"
+            />
+          </div>
+
           <Title
             content="Descubra nossos conteúdos mais recentes"
             element="h1"

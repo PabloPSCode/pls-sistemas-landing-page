@@ -21,7 +21,10 @@ export default function Footer() {
         className="gap-8 border-t border-white/10 py-14 text-center sm:text-left"
       >
         <FooterElement.Column className="items-center sm:items-start gap-6">
-          <div className="flex items-center justify-center gap-2 sm:justify-start">
+          <Link
+            href="/"
+            className="flex items-center justify-center gap-2 sm:justify-start"
+          >
             <Image
               src="/imgs/logo_pls_sistemas.png"
               alt="Logo da PLS Sistemas"
@@ -29,7 +32,7 @@ export default function Footer() {
               height={76}
               className="w-full h-10 sm:h-12"
             />
-          </div>
+          </Link>
           <div className="flex flex-col items-center gap-2 text-center sm:items-start sm:text-left">
             <Paragraph
               content="CNPJ 47.463.499/0001-37"

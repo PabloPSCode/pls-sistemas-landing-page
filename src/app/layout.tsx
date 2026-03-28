@@ -11,6 +11,16 @@ import {
   Work_Sans,
 } from "next/font/google";
 
+import StructuredData from "@/components/seo/StructuredData";
+import {
+  createOrganizationSchema,
+  createPageMetadata,
+  createProfessionalServiceSchema,
+  createWebsiteSchema,
+  siteDescription,
+  siteMetadataBase,
+  siteName,
+} from "@/lib/seo";
 import { landingPageTitle } from "@/mocks/landing-page";
 //@ts-ignore
 import "../styles/globals.css";
@@ -64,44 +74,36 @@ const ubuntu = Ubuntu({
   subsets: ["latin"],
 });
 
-const siteUrl = new URL("https://www.plssistemas.com.br");
+const businessPhone = process.env.NEXT_PUBLIC_WHATSAPP_CONTACT?.replace(
+  /\D/g,
+  "",
+);
 
 export const metadata: Metadata = {
-  metadataBase: siteUrl,
-  alternates: {
-    canonical: "/",
-  },
-  title: landingPageTitle,
-  description:
-    "PLS Sistemas é uma empresa de desenvolvimento de sistemas em João Monlevade - MG. Criamos sites, landing pages, soluções web e software sob medida para empresas.",
-  openGraph: {
-    type: "website",
-    locale: "pt_BR",
-    url: siteUrl,
-    siteName: "PLS Sistemas",
+  metadataBase: siteMetadataBase,
+  applicationName: siteName,
+  authors: [
+    {
+      name: siteName,
+      url: siteMetadataBase.toString(),
+    },
+  ],
+  creator: siteName,
+  publisher: siteName,
+  category: "technology",
+  ...createPageMetadata({
     title: landingPageTitle,
-    description:
-      "Empresa de desenvolvimento de sistemas em João Monlevade - MG, com criação de sites, landing pages e soluções web sob medida.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "PLS Sistemas",
-      },
+    description: siteDescription,
+    path: "/",
+    keywords: [
+      "PLS Sistemas",
+      "desenvolvimento de sistemas",
+      "criação de sites",
+      "landing pages",
+      "soluções web",
+      "João Monlevade",
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: landingPageTitle,
-    description:
-      "Desenvolvimento de sistemas, sites, landing pages e soluções web em João Monlevade - MG.",
-    images: ["/og-image.png"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  }),
 };
 
 export default function RootLayout({
@@ -109,11 +111,20 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const rootSchemas = [
+    createOrganizationSchema(),
+    createProfessionalServiceSchema(
+      businessPhone ? `+${businessPhone}` : undefined,
+    ),
+    createWebsiteSchema(),
+  ];
+
   return (
     <html lang="pt-BR">
       <body
         className={`${oxanium.variable} ${poppins.variable} ${montserrat.variable} ${raleway.variable} ${roboto.variable} ${inter.variable} ${openSans.variable} ${workSans.variable} ${ubuntu.variable} antialiased overflow-x-hidden`}
       >
+        <StructuredData data={rootSchemas} id="plssistemas-root-seo" />
         <Header />
         {children}
         <Footer />

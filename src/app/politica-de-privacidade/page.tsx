@@ -1,19 +1,29 @@
-import type { Metadata } from "next";
-
+import StructuredData from "@/components/seo/StructuredData";
+import {
+  createBreadcrumbSchema,
+  createPageMetadata,
+  createWebPageSchema,
+} from "@/lib/seo";
 import Paragraph from "@/components/typography/Paragraph";
 import Subtitle from "@/components/typography/Subtitle";
 import Title from "@/components/typography/Title";
 
 const lastUpdated = "17 de fevereiro de 2026";
+const privacyPolicyTitle = "Política de Privacidade | PLS Sistemas";
+const privacyPolicyDescription =
+  "Política de Privacidade da PLS Sistemas, empresa de desenvolvimento de sistemas web e software em João Monlevade - MG.";
 
-export const metadata: Metadata = {
-  title: "Política de Privacidade | PLS Sistemas",
-  description:
-    "Política de Privacidade da PLS Sistemas, empresa de desenvolvimento de sistemas web e software em João Monlevade - MG.",
-  alternates: {
-    canonical: "/politica-de-privacidade",
-  },
-};
+export const metadata = createPageMetadata({
+  title: privacyPolicyTitle,
+  description: privacyPolicyDescription,
+  path: "/politica-de-privacidade",
+  keywords: [
+    "política de privacidade",
+    "LGPD",
+    "proteção de dados",
+    "PLS Sistemas",
+  ],
+});
 
 function PolicySection({
   title,
@@ -34,8 +44,24 @@ function PolicySection({
 }
 
 export default function PoliticaDePrivacidadePage() {
+  const privacyPolicySchemas = [
+    createWebPageSchema({
+      name: privacyPolicyTitle,
+      description: privacyPolicyDescription,
+      path: "/politica-de-privacidade",
+    }),
+    createBreadcrumbSchema([
+      { name: "Início", path: "/" },
+      { name: "Política de Privacidade", path: "/politica-de-privacidade" },
+    ]),
+  ];
+
   return (
     <main className="min-h-screen bg-foreground">
+      <StructuredData
+        data={privacyPolicySchemas}
+        id="plssistemas-privacy-policy-seo"
+      />
       <div className="mx-auto w-full max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
         <header className="mb-8 sm:mb-10">
           <Title

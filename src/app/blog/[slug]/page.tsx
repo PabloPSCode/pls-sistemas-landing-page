@@ -1,6 +1,14 @@
+import StructuredData from "@/components/seo/StructuredData";
 import BlogPostDetails from "./BlogPostDetails";
 import { getBlogManagerContentSafe } from "@/api/blog-manager";
 import { getBlogPostBySlug, getRelatedBlogPosts, stripHtml } from "@/lib/blog";
+import {
+  createBreadcrumbSchema,
+  createPageMetadata,
+  siteOrigin,
+  siteLanguage,
+  toAbsoluteUrl,
+} from "@/lib/seo";
 import { collapseLongString } from "@/utils/format";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -15,9 +23,8 @@ export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const { site, posts } = await getBlogManagerContentSafe();
+  const { posts } = await getBlogManagerContentSafe();
   const post = getBlogPostBySlug(posts, slug);
-  const siteUrl = site?.url ?? fallbackSiteUrl;
 
   if (!post) {
     return {
@@ -26,35 +33,20 @@ export async function generateMetadata({
   }
 
   const description = collapseLongString(stripHtml(post.htmlContent), 160);
-  const canonicalUrl = `${siteUrl}/blog/${post.slug}`;
 
-  return {
+  return createPageMetadata({
     title: `${post.title} | Blog PLS Sistemas`,
     description,
-    alternates: {
-      canonical: `/blog/${post.slug}`,
+    path: `/blog/${post.slug}`,
+    type: "article",
+    image: {
+      url: post.backgroundUrl,
+      alt: post.title,
     },
-    openGraph: {
-      type: "article",
-      url: canonicalUrl,
-      title: post.title,
-      description,
-      publishedTime: post.createdAt,
-      modifiedTime: post.updatedAt,
-      images: [
-        {
-          url: post.backgroundUrl,
-          alt: post.title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description,
-      images: [post.backgroundUrl],
-    },
-  };
+    keywords: post.tags,
+    publishedTime: post.createdAt,
+    modifiedTime: post.updatedAt,
+  });
 }
 
 export default async function BlogPostPage({
@@ -68,12 +60,56 @@ export default async function BlogPostPage({
 
   const relatedPosts = getRelatedBlogPosts(posts, post.slug, 3);
   const siteUrl = site?.url ?? fallbackSiteUrl;
+  const description = collapseLongString(stripHtml(post.htmlContent), 160);
+  const postUrl = toAbsoluteUrl(`/blog/${post.slug}`);
+  const wordCount = stripHtml(post.htmlContent)
+    .split(/\s+/)
+    .filter(Boolean).length;
+  const postSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: post.title,
+      description,
+      url: postUrl,
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": postUrl,
+      },
+      inLanguage: siteLanguage,
+      datePublished: post.createdAt,
+      dateModified: post.updatedAt,
+      image: [toAbsoluteUrl(post.backgroundUrl)],
+      articleSection: post.category,
+      keywords: post.tags,
+      wordCount,
+      author: {
+        "@type": "Person",
+        name: post.authorName,
+        image: toAbsoluteUrl(post.authorAvatarUrl),
+      },
+      publisher: {
+        "@id": `${siteOrigin}#organization`,
+      },
+    },
+    createBreadcrumbSchema([
+      { name: "Início", path: "/" },
+      { name: "Blog", path: "/blog" },
+      { name: post.title, path: `/blog/${post.slug}` },
+    ]),
+  ];
 
   return (
-    <BlogPostDetails
-      post={post}
-      relatedPosts={relatedPosts}
-      siteUrl={siteUrl}
-    />
+    <>
+      <StructuredData
+        data={postSchemas}
+        id={`plssistemas-blog-post-seo-${post.slug}`}
+      />
+      <BlogPostDetails
+        post={post}
+        relatedPosts={relatedPosts}
+        siteUrl={siteUrl}
+      />
+    </>
   );
 }
