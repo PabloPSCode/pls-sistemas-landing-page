@@ -55,7 +55,7 @@ export const siteLanguage = "pt-BR";
 export const siteLocale = "pt_BR";
 export const siteDescription =
   "PLS Sistemas é uma empresa de desenvolvimento de sistemas em João Monlevade - MG. Criamos sites, landing pages, soluções web e software sob medida para empresas.";
-export const defaultOgImagePath = "/og-image.png";
+export const defaultOgImagePath = "/social-preview.png";
 export const siteLogoPath = "/imgs/logo_pls_sistemas.png";
 export const siteSocialProfiles = ["https://www.instagram.com/pls.sistemas"];
 export const defaultSiteTitle = landingPageTitle;

@@ -14,7 +14,7 @@ import { formatSlug } from "@/utils/slug";
 
 const DEFAULT_BLOG_MANAGER_API_BASE_URL = "http://127.0.0.1:3336";
 const DEFAULT_AUTHOR_AVATAR_URL = "/imgs/profile_1.png";
-const DEFAULT_BACKGROUND_URL = "/og-image.png";
+const DEFAULT_BACKGROUND_URL = "/social-preview.png";
 const DEFAULT_CATEGORY = "Blog";
 const DEFAULT_AUTHOR_NAME = "Equipe PLS Sistemas";
 const WORDS_PER_MINUTE = 200;
