@@ -5,6 +5,7 @@ import RevealContainer from "@/components/animations-and-loading/RevealContainer
 import ZoomContainer from "@/components/animations-and-loading/ZoomContainer";
 import Button from "@/components/buttons/Button";
 import TargetCursor from "@/components/cursors";
+import MagicRingsSection from "@/components/elements/MagicRingsSection";
 import StructuredData from "@/components/seo/StructuredData";
 import DotGridSection from "@/components/elements/DotGridSection";
 import { Section } from "@/components/elements/Section";
@@ -449,31 +450,57 @@ export default function Home() {
         <div id={customSolutionFormContent.sectionId} className="scroll-mt-8">
           <Section
             size="full"
-            sectionClassName="bg-gradient-to-br from-[#000000] via-[#250c48] to-[#7E1EED] py-20 sm:py-24"
+            sectionClassName="relative isolate overflow-hidden bg-gradient-to-r from-[#2c015a] via-[#2e0344] to-[#300360] py-20 sm:py-24"
           >
-            <RevealContainer once className="w-full max-w-6xl">
-              <Title
-                content={customSolutionFormContent.title}
-                element="h2"
-                className="text-center text-white tracking-[0.16em] font-black"
+            <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+              <MagicRingsSection
+                color="#9f46ff"
+                colorTwo="#841eb7"
+                speed={0.8}
+                ringCount={6}
+                attenuation={12}
+                lineThickness={1.8}
+                baseRadius={0.28}
+                radiusStep={0.12}
+                scaleRate={0.11}
+                opacity={0.9}
+                blur={1}
+                noiseAmount={0.03}
+                rotation={-18}
+                ringGap={1.38}
               />
+            </div>
 
-              <Subtitle
-                content={customSolutionFormContent.description}
-                className="mx-auto mt-5 max-w-5xl text-center text-white/90 text-xl sm:text-4xl !font-light "
-              />
-            </RevealContainer>
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(159,70,255,0.18),transparent_34%),linear-gradient(180deg,rgba(4,3,10,0.1),rgba(4,3,10,0.76))]"
+            />
 
-            <FadeContainer once className="mt-12 w-full max-w-4xl">
-              <div className="flex justify-center">
-                <Button
-                  label={customSolutionFormContent.submitLabel}
-                  variant="filled"
-                  className="relative isolate flex items-center justify-center overflow-hidden rounded-xl border border-success-300/35 bg-gradient-to-r from-success-500 via-success-600 to-success-500 px-6 py-3 shadow-[0_14px_32px_rgba(100,21,255,0.35)] transition-all duration-300 before:absolute before:inset-0 before:-z-10 before:rounded-xl before:bg-success-400/35 before:blur-2xl before:content-[''] hover:-translate-y-0.5 hover:shadow-[0_20px_38px_rgba(82, 255, 76, 0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-success-300/60 text-white font-bold text-lg sm:text-3xl"
-                  onClick={() => startWhatsAppChat()}
+            <div className="relative z-10 flex w-full flex-col items-center">
+              <RevealContainer once className="w-full max-w-6xl">
+                <Title
+                  content={customSolutionFormContent.title}
+                  element="h2"
+                  className="text-center text-white tracking-[0.16em] font-black"
                 />
-              </div>
-            </FadeContainer>
+
+                <Subtitle
+                  content={customSolutionFormContent.description}
+                  className="mx-auto mt-5 max-w-5xl text-center text-white/90 text-xl sm:text-4xl !font-light "
+                />
+              </RevealContainer>
+
+              <FadeContainer once className="mt-12 w-full max-w-4xl">
+                <div className="flex justify-center">
+                  <Button
+                    label={customSolutionFormContent.submitLabel}
+                    variant="filled"
+                    className="relative isolate flex items-center justify-center overflow-hidden rounded-xl border border-success-300/35 bg-gradient-to-r from-success-500 via-success-600 to-success-500 px-6 py-3 shadow-[0_14px_32px_rgba(100,21,255,0.35)] transition-all duration-300 before:absolute before:inset-0 before:-z-10 before:rounded-xl before:bg-success-400/35 before:blur-2xl before:content-[''] hover:-translate-y-0.5 hover:shadow-[0_20px_38px_rgba(82, 255, 76, 0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-success-300/60 text-white font-bold text-lg sm:text-3xl"
+                    onClick={() => startWhatsAppChat()}
+                  />
+                </div>
+              </FadeContainer>
+            </div>
           </Section>
         </div>
       </main>
