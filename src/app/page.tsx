@@ -81,6 +81,12 @@ export default function Home() {
               wrapper="p"
               className="mt-8 max-w-4xl text-center font-semibold tracking-wide text-white/95 text-3xl sm:text-5xl"
             />
+            <Button
+              label={customSolutionFormContent.submitLabel}
+              variant="filled"
+              className="relative isolate flex items-center justify-center overflow-hidden rounded-xl border border-primary-300/35 bg-gradient-to-r from-primary-500 via-primary-600 to-primary-500 px-6 py-3 shadow-[0_14px_32px_rgba(100,21,255,0.35)] transition-all duration-300 before:absolute before:inset-0 before:-z-10 before:rounded-xl before:bg-primary-400/35 before:blur-2xl before:content-[''] hover:-translate-y-0.5 hover:shadow-[0_20px_38px_rgba(82, 255, 76, 0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300/60 text-white font-bold text-lg sm:text-3xl mt-8"
+              onClick={() => startWhatsAppChat()}
+            />
           </div>
         </TechParticlesHeroSection>
 
