@@ -4,6 +4,7 @@ import FadeContainer from "@/components/animations-and-loading/FadeContainer";
 import RevealContainer from "@/components/animations-and-loading/RevealContainer";
 import ZoomContainer from "@/components/animations-and-loading/ZoomContainer";
 import Button from "@/components/buttons/Button";
+import TargetCursor from "@/components/cursors";
 import StructuredData from "@/components/seo/StructuredData";
 import DotGridSection from "@/components/elements/DotGridSection";
 import { Section } from "@/components/elements/Section";
@@ -65,6 +66,12 @@ export default function Home() {
   return (
     <div className="overflow-x-hidden bg-[#020205] text-white">
       <StructuredData data={homePageSchemas} id="plssistemas-home-seo" />
+      <TargetCursor
+        targetSelector="#portfolio .portfolio-card-target"
+        zoneSelector="#portfolio"
+        hideDefaultCursor={false}
+        spinDuration={3}
+      />
       <main className="flex flex-col">
         <TechParticlesHeroSection className="m-auto flex w-full min-h-[50vh] items-center justify-center bg-gradient-to-br from-[#000000] via-[#250c48] to-[#7E1EED] px-4 py-20 text-center sm:py-24">
           <div className="mx-auto flex max-w-5xl flex-col items-center">
@@ -312,10 +319,13 @@ export default function Home() {
           </Section>
         </div>
 
-        <div id={worksSectionContent.sectionId} className="scroll-mt-8">
+        <div
+          id={worksSectionContent.sectionId}
+          className="scroll-mt-8 cursor-none [&_*]:cursor-none"
+        >
           <Section
             size="full"
-            sectionClassName="relative isolate overflow-hidden bg-[linear-gradient(180deg,#05050a_0%,#11111a_100%)] py-20 sm:py-24"
+            sectionClassName="relative isolate overflow-hidden bg-gradient-to-br from-[#000000] via-[#250c48] to-[#7E1EED] py-20 sm:py-24"
           >
             <div
               aria-hidden="true"
@@ -343,7 +353,7 @@ export default function Home() {
                     delay={index + 1}
                     className="h-full"
                   >
-                    <article className="group flex h-full flex-col gap-5 rounded-[28px] border border-white/12 bg-white/[0.04] p-5 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur">
+                    <article className="portfolio-card-target group flex h-full flex-col gap-5 rounded-[28px] border border-white/12 bg-white/[0.04] p-5 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur">
                       <div className="overflow-hidden rounded-[22px] border border-white/10 bg-black/30">
                         <Image
                           src={work.imageUrl}
