@@ -59,7 +59,7 @@ const homePageSchemas = [
 
 export default function Home() {
   const heroTexts = [
-    "Sites e landing pages profissionais sob medida para empresas e profissionais.",
+    "Sites e landing pages com qualidade premium.",
     "Ferramentas web prontas para facilitar o seu dia a dia.",
     "Soluções digitais personalizadas para alavancar o seu negócio.",
   ];
@@ -170,7 +170,7 @@ export default function Home() {
                 />
               </RevealContainer>
 
-              <div className="mt-12 grid w-full max-w-6xl gap-6 md:grid-cols-2">
+              <div className="mt-12 grid w-full max-w-6xl gap-6 sm:grid-cols-2 md:grid-cols-3">
                 {landingServicesContent.items.map((item, index) => {
                   const Icon = landingServiceIcons[index];
 
@@ -237,7 +237,7 @@ export default function Home() {
                 >
                   <Subtitle
                     content="Quero criar meu site ou landing page"
-                    className="text-white text-lg sm:text-3xl text-center"
+                    className="text-white text-base sm:text-2xl text-center"
                   />
                 </Link>
               </RevealContainer>

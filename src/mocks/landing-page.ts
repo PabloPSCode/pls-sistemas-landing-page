@@ -65,7 +65,7 @@ export const aboutContent = {
   paragraphs: [
     "A PLS Sistemas é uma empresa de software sediada em João Monlevade - MG, criada para desenvolver soluções modernas e eficazes para empresas que precisam vender mais e operar melhor.",
     "Alinhada com o cenário atual da tecnologia, criamos ferramentas e software aplicando o poder da IA para transformar sua marca e seu negócio.",
-    "Realizamos serviços de criação de landing pages, websites, software personalizado e além disso possuímos ferramentas prontas para alavancar seu negócio.",
+    "Realizamos serviços de criação de landing pages, websites, aplicações web e além disso possuímos ferramentas prontas para alavancar seu negócio.",
   ],
   imageUrl:
     "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80",
@@ -106,23 +106,9 @@ export const landingServicesContent = {
         "Mais confiança para sua marca e melhor engajamento em qualquer tela.",
     },
     {
-      title: "Seu site na primeira página do Google",
-      description:
-        "Aplicamos técnicas de SEO para ampliar sua presença online.",
-      ctaLabel: "Saiba mais",
-      highlights: [
-        "Configuração inicial de SEO técnico e estrutura de títulos semânticos.",
-        "Boas práticas de conteúdo para aumentar relevância nas buscas.",
-      ],
-      idealFor:
-        "Empresas que precisam gerar tráfego orgânico com previsibilidade.",
-      expectedOutcome:
-        "Mais visibilidade para a empresa e aumento de oportunidades comerciais.",
-    },
-    {
       title: "Atualização do conteúdo",
       description:
-        "Oferecemos plano opcional mensal de apenas R$ 99,90 para manter o conteúdo do seu site sempre atualizado e alinhado com o mercado.",
+        "Oferecemos plano opcional com valores acessíveis para manter o conteúdo do seu site sempre atualizado e alinhado com o mercado.",
       ctaLabel: "Saiba mais",
       highlights: [
         "Plano contínuo para manter textos, banners e seções sempre atualizados. (Não inclui novas páginas ou mudanças estruturais ou mudanças de design).",
