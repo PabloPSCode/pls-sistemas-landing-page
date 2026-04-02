@@ -281,37 +281,49 @@ export default function Home() {
                       delay={index + 1}
                       className="h-full"
                     >
-                      <article className="flex h-full flex-col gap-4 rounded-xl border border-white/15 bg-[rgba(0,0,0,0.52)] p-8 shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
-                        <div className="flex items-start justify-between gap-4">
-                          <Image
-                            src={item.imagePath}
-                            alt={`Icone de ${item.title}`}
-                            width={40}
-                            height={40}
-                          />
-                          <a
-                            href={item.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <Subtitle
-                              content={item.ctaLabel}
-                              className="text-primary-200 text-lg sm:text-3xl"
+                      <BorderedGlowCard
+                        edgeSensitivity={300}
+                        glowColor="40 80 80"
+                        backgroundColor="#060010"
+                        borderRadius={12}
+                        glowRadius={10}
+                        glowIntensity={1}
+                        coneSpread={25}
+                        animated={false}
+                        colors={["#c084fc", "#aa08cf", "#f838bf"]}
+                      >
+                        <article className="flex h-full flex-col gap-4 rounded-xl border border-white/15 bg-[rgba(0,0,0,0.52)] p-8 shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
+                          <div className="flex items-start justify-between gap-4">
+                            <Image
+                              src={item.imagePath}
+                              alt={`Icone de ${item.title}`}
+                              width={40}
+                              height={40}
                             />
-                          </a>
-                        </div>
+                            <a
+                              href={item.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <Subtitle
+                                content={item.ctaLabel}
+                                className="text-primary-200 text-lg sm:text-3xl"
+                              />
+                            </a>
+                          </div>
 
-                        <Subtitle
-                          content={item.title}
-                          element="h3"
-                          className="text-white text-3xl sm:text-5xl"
-                        />
+                          <Subtitle
+                            content={item.title}
+                            element="h3"
+                            className="text-white text-3xl sm:text-5xl"
+                          />
 
-                        <Paragraph
-                          content={item.description}
-                          className="text-white/85 text-base sm:text-2xl"
-                        />
-                      </article>
+                          <Paragraph
+                            content={item.description}
+                            className="text-white/85 text-base sm:text-2xl"
+                          />
+                        </article>
+                      </BorderedGlowCard>
                     </RevealContainer>
                   );
                 })}
@@ -452,7 +464,10 @@ export default function Home() {
             size="full"
             sectionClassName="relative isolate overflow-hidden bg-gradient-to-r from-[#2c015a] via-[#2e0344] to-[#300360] py-20 sm:py-24"
           >
-            <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0"
+            >
               <MagicRingsSection
                 color="#9f46ff"
                 colorTwo="#841eb7"
