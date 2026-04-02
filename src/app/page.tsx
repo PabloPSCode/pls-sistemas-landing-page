@@ -5,6 +5,7 @@ import RevealContainer from "@/components/animations-and-loading/RevealContainer
 import ZoomContainer from "@/components/animations-and-loading/ZoomContainer";
 import Button from "@/components/buttons/Button";
 import StructuredData from "@/components/seo/StructuredData";
+import DotGridSection from "@/components/elements/DotGridSection";
 import { Section } from "@/components/elements/Section";
 import Paragraph from "@/components/typography/Paragraph";
 import Subtitle from "@/components/typography/Subtitle";
@@ -36,6 +37,7 @@ import {
 import { works, worksSectionContent } from "@/mocks/works";
 import { startWhatsAppChat } from "@/utils/whatsapp";
 import Link from "next/link";
+import BorderedGlowCard from "@/components/animations-and-loading/BorderedGlowCard";
 
 const landingServiceIcons = [
   TableIcon,
@@ -66,7 +68,6 @@ export default function Home() {
       <main className="flex flex-col">
         <TechParticlesHeroSection className="m-auto flex w-full min-h-[50vh] items-center justify-center bg-gradient-to-br from-[#000000] via-[#250c48] to-[#7E1EED] px-4 py-20 text-center sm:py-24">
           <div className="mx-auto flex max-w-5xl flex-col items-center">
-            
             <FadeText
               items={heroTexts}
               wrapper="p"
@@ -133,11 +134,22 @@ export default function Home() {
         </div>
 
         <div id={landingServicesContent.sectionId} className="scroll-mt-8">
-          <Section
-            size="full"
-            sectionClassName="relative isolate overflow-hidden bg-gradient-to-br from-[#000000] via-[#250c48] to-[#7E1EED] py-20 sm:py-24"
+          <DotGridSection
+            className="relative isolate bg-[#05020b] py-20 sm:py-24"
+            dotSize={8}
+            gap={18}
+            baseColor="#2c1247"
+            activeColor="#8f3dff"
+            proximity={170}
+            shockRadius={220}
+            shockStrength={4}
           >
-            <div className="relative z-10 flex w-full flex-col items-center">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(143,61,255,0.22),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(27,109,255,0.12),transparent_30%)]"
+            />
+
+            <div className="relative z-10 mx-auto flex w-full flex-col items-center px-8">
               <RevealContainer once className="w-full max-w-6xl">
                 <Title
                   content="Websites e Landing Pages"
@@ -161,35 +173,47 @@ export default function Home() {
                       delay={index + 1}
                       className="h-full"
                     >
-                      <article className="flex h-full flex-col gap-4 rounded-xl border border-white/15 bg-[rgba(0,0,0,0.52)] p-8 shadow-[0_16px_45px_rgba(0,0,0,0.35)] ">
-                        <div className="flex items-start justify-between gap-4">
-                          <Icon
-                            size={44}
-                            className="text-primary-100"
-                            weight="light"
-                          />
-                          <Link
-                            href="/landing-pages#criar-site-landing-page"
-                            className="flex items-center gap-2"
-                          >
-                            <Subtitle
-                              content={item.ctaLabel}
-                              className="text-primary-200 text-lg sm:text-3xl"
+                      <BorderedGlowCard
+                        edgeSensitivity={300}
+                        glowColor="40 80 80"
+                        backgroundColor="#060010"
+                        borderRadius={12}
+                        glowRadius={10}
+                        glowIntensity={1}
+                        coneSpread={25}
+                        animated={false}
+                        colors={["#c084fc", "#aa08cf", "#f838bf"]}
+                      >
+                        <article className="flex h-full flex-col gap-4 rounded-xl border border-white/15 bg-[rgba(0,0,0,0.52)] p-8 shadow-[0_16px_45px_rgba(0,0,0,0.35)] ">
+                          <div className="flex items-start justify-between gap-4">
+                            <Icon
+                              size={44}
+                              className="text-primary-100"
+                              weight="light"
                             />
-                          </Link>
-                        </div>
+                            <Link
+                              href="/landing-pages#criar-site-landing-page"
+                              className="flex items-center gap-2"
+                            >
+                              <Subtitle
+                                content={item.ctaLabel}
+                                className="text-primary-200 text-lg sm:text-3xl"
+                              />
+                            </Link>
+                          </div>
 
-                        <Subtitle
-                          content={item.title}
-                          element="h3"
-                          className="text-white text-3xl sm:text-5xl"
-                        />
+                          <Subtitle
+                            content={item.title}
+                            element="h3"
+                            className="text-white text-3xl sm:text-5xl"
+                          />
 
-                        <Paragraph
-                          content={item.description}
-                          className="text-white/80 text-base sm:text-2xl"
-                        />
-                      </article>
+                          <Paragraph
+                            content={item.description}
+                            className="text-white/80 text-base sm:text-2xl"
+                          />
+                        </article>
+                      </BorderedGlowCard>
                     </FadeContainer>
                   );
                 })}
@@ -210,7 +234,7 @@ export default function Home() {
                 </Link>
               </RevealContainer>
             </div>
-          </Section>
+          </DotGridSection>
         </div>
 
         <div id={webSolutionsContent.sectionId} className="scroll-mt-8">
