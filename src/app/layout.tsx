@@ -10,6 +10,7 @@ import {
   Ubuntu,
   Work_Sans,
 } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 import StructuredData from "@/components/seo/StructuredData";
 import {
@@ -78,6 +79,7 @@ const businessPhone = process.env.NEXT_PUBLIC_WHATSAPP_CONTACT?.replace(
   /\D/g,
   "",
 );
+const googleAnalyticsId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
 
 export const metadata: Metadata = {
   metadataBase: siteMetadataBase,
@@ -129,6 +131,7 @@ export default function RootLayout({
         {children}
         <Footer />
       </body>
+      {googleAnalyticsId ? <GoogleAnalytics gaId={googleAnalyticsId} /> : null}
     </html>
   );
 }
