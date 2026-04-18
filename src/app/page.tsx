@@ -37,6 +37,7 @@ import {
   webSolutionsContent,
 } from "@/mocks/landing-page";
 import { works, worksSectionContent } from "@/mocks/works";
+import { trackCtaClick } from "@/utils/analytics";
 import { startWhatsAppChat } from "@/utils/whatsapp";
 import Link from "next/link";
 import BorderedGlowCard from "@/components/animations-and-loading/BorderedGlowCard";
@@ -85,7 +86,13 @@ export default function Home() {
               label={customSolutionFormContent.submitLabel}
               variant="filled"
               className="relative isolate flex items-center justify-center overflow-hidden rounded-xl border border-primary-300/35 bg-gradient-to-r from-primary-500 via-primary-600 to-primary-500 px-6 py-3 shadow-[0_14px_32px_rgba(100,21,255,0.35)] transition-all duration-300 before:absolute before:inset-0 before:-z-10 before:rounded-xl before:bg-primary-400/35 before:blur-2xl before:content-[''] hover:-translate-y-0.5 hover:shadow-[0_20px_38px_rgba(82, 255, 76, 0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300/60 text-white font-bold text-lg sm:text-3xl mt-8"
-              onClick={() => startWhatsAppChat()}
+              onClick={() => {
+                trackCtaClick({
+                  ctaLabel: customSolutionFormContent.submitLabel,
+                  ctaLocation: "hero",
+                });
+                startWhatsAppChat();
+              }}
             />
           </div>
         </TechParticlesHeroSection>
@@ -240,6 +247,13 @@ export default function Home() {
                   href="/landing-pages#criar-site-landing-page"
                   className="relative isolate flex items-center justify-center overflow-hidden rounded-xl border border-primary-300/35 bg-gradient-to-r from-primary-700 via-primary-600 to-primary-700 px-6 py-3 shadow-[0_14px_32px_rgba(96,61,255,0.35)] transition-all duration-300 before:absolute before:inset-0 before:-z-10 before:rounded-xl before:bg-primary-400/35 before:blur-2xl before:content-[''] hover:-translate-y-0.5 hover:from-primary-600 hover:to-primary-700 hover:shadow-[0_20px_38px_rgba(110,76,255,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300/60"
                   id="criar-site-landing-page"
+                  onClick={() =>
+                    trackCtaClick({
+                      ctaLabel: "Quero criar meu site ou landing page",
+                      ctaLocation: "landing_pages_section",
+                      destinationUrl: "/landing-pages#criar-site-landing-page",
+                    })
+                  }
                 >
                   <Subtitle
                     content="Quero criar meu site ou landing page"
@@ -400,6 +414,14 @@ export default function Home() {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="mt-auto inline-flex w-fit items-center rounded-full border border-primary-300/30 bg-primary-500/12 px-4 py-2 text-sm font-semibold text-primary-100 transition hover:border-primary-200/50 hover:bg-primary-500/20 hover:text-white sm:text-base"
+                          onClick={() =>
+                            trackCtaClick({
+                              ctaLabel: worksSectionContent.ctaLabel,
+                              ctaLocation: "portfolio",
+                              destinationUrl: work.link,
+                              siteName: work.title,
+                            })
+                          }
                         >
                           {worksSectionContent.ctaLabel}
                         </a>
@@ -517,7 +539,13 @@ export default function Home() {
                     label={customSolutionFormContent.submitLabel}
                     variant="filled"
                     className="relative isolate flex items-center justify-center overflow-hidden rounded-xl border border-success-300/35 bg-gradient-to-r from-success-500 via-success-600 to-success-500 px-6 py-3 shadow-[0_14px_32px_rgba(100,21,255,0.35)] transition-all duration-300 before:absolute before:inset-0 before:-z-10 before:rounded-xl before:bg-success-400/35 before:blur-2xl before:content-[''] hover:-translate-y-0.5 hover:shadow-[0_20px_38px_rgba(82, 255, 76, 0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-success-300/60 text-white font-bold text-lg sm:text-3xl"
-                    onClick={() => startWhatsAppChat()}
+                    onClick={() => {
+                      trackCtaClick({
+                        ctaLabel: customSolutionFormContent.submitLabel,
+                        ctaLocation: "custom_solution_section",
+                      });
+                      startWhatsAppChat();
+                    }}
                   />
                 </div>
               </FadeContainer>

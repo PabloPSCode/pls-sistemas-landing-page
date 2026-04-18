@@ -2,6 +2,7 @@
 
 import LandingHeader from "@/components/elements/LandingHeader";
 import { navItems } from "@/mocks/landing-page";
+import { trackCtaClick } from "@/utils/analytics";
 import { resolveSiteHref } from "@/utils/navigation";
 import { startWhatsAppChat } from "@/utils/whatsapp";
 import Image from "next/image";
@@ -67,7 +68,13 @@ export default function Header() {
         <LandingHeader.CTA
           label="Falar com especialista"
           className="hidden md:flex bg-[#7e2cff] text-white"
-          onClick={() => startWhatsAppChat()}
+          onClick={() => {
+            trackCtaClick({
+              ctaLabel: "Falar com especialista",
+              ctaLocation: "header",
+            });
+            startWhatsAppChat();
+          }}
         />
       </LandingHeader.Right>
     </LandingHeader.Root>
