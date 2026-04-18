@@ -185,9 +185,9 @@ export const footerContent = {
 
 export const companies: BrandLogo[] = [
   {
-    href: "https://www.ajxcapital.com.br",
-    src: "/companies/ajx.png",
-    alt: "Ajx",
+    href: "https://www.avodtech.com",
+    src: "/companies/avod.png",
+    alt: "Avod",
   },
   {
     href: "https://www.mirtescontabilidade.com.br",
@@ -200,9 +200,9 @@ export const companies: BrandLogo[] = [
     alt: "Ag Sistemas",
   },
   {
-    href: "https://www.avodtech.com",
-    src: "/companies/avod.png",
-    alt: "Avod",
+    href: "https://www.sgoengenharia.com.br",
+    src: "/companies/sgo_engenharia.webp",
+    alt: "SGO Engenharia",
   },
   {
     href: "https://www.buybye.com.br",
