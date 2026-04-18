@@ -15,6 +15,12 @@ export const worksSectionContent = {
 
 export const works: WorkItem[] = [
   {
+    title: "SGO Engenharia",
+    description: "Site desenvolvido para a empresa de soldagem e engenharia SGO Engenharia.",
+    imageUrl: "/imgs/sgo_engenharia_site.png",
+    link: "https://www.sgoengenharia.com.br/",
+  },
+  {
     title: "MJ Contabilidade",
     description: "Site desenvolvido para o escritório de contabilidade MJ Contabilidade.",
     imageUrl: "/imgs/mj_contabilidade_site.png",
