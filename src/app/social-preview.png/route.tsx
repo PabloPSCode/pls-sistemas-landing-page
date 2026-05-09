@@ -253,7 +253,7 @@ function createOgImageResponse() {
               <div
                 style={{
                   display: "flex",
-                  fontSize: "30px",
+                  fontSize: "20px",
                   fontWeight: 600,
                   color: "#ffffff",
                 }}
