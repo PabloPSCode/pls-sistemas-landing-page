@@ -5,10 +5,10 @@ import RevealContainer from "@/components/animations-and-loading/RevealContainer
 import ZoomContainer from "@/components/animations-and-loading/ZoomContainer";
 import Button from "@/components/buttons/Button";
 import TargetCursor from "@/components/cursors";
-import MagicRingsSection from "@/components/elements/MagicRingsSection";
-import StructuredData from "@/components/seo/StructuredData";
 import DotGridSection from "@/components/elements/DotGridSection";
+import MagicRingsSection from "@/components/elements/MagicRingsSection";
 import { Section } from "@/components/elements/Section";
+import StructuredData from "@/components/seo/StructuredData";
 import Paragraph from "@/components/typography/Paragraph";
 import Subtitle from "@/components/typography/Subtitle";
 import Title from "@/components/typography/Title";
@@ -25,22 +25,22 @@ import {
 } from "@phosphor-icons/react";
 import Image from "next/image";
 
+import BorderedGlowCard from "@/components/animations-and-loading/BorderedGlowCard";
 import { FadeText } from "@/components/animations-and-loading/FadeText";
-import TechParticlesHeroSection from "@/components/elements/TechParticlesHeroSection";
+import VideoSection from "@/components/elements/VideoSection";
 import BrandMarquee from "@/components/marketing/BrandMarquee";
 import {
   aboutContent,
   companies,
   customSolutionFormContent,
-  landingServicesContent,
   landingPageTitle,
+  landingServicesContent,
   webSolutionsContent,
 } from "@/mocks/landing-page";
 import { works, worksSectionContent } from "@/mocks/works";
 import { trackCtaClick } from "@/utils/analytics";
 import { startWhatsAppChat } from "@/utils/whatsapp";
 import Link from "next/link";
-import BorderedGlowCard from "@/components/animations-and-loading/BorderedGlowCard";
 
 const landingServiceIcons = [
   TableIcon,
@@ -65,6 +65,13 @@ export default function Home() {
     "Soluções digitais personalizadas para alavancar o seu negócio.",
   ];
 
+  function scrollToSection(sectionId: string) {
+    document.getElementById(sectionId)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
+
   return (
     <div className="overflow-x-hidden bg-[#020205] text-white">
       <StructuredData data={homePageSchemas} id="plssistemas-home-seo" />
@@ -75,27 +82,49 @@ export default function Home() {
         spinDuration={3}
       />
       <main className="flex flex-col">
-        <TechParticlesHeroSection className="m-auto flex w-full min-h-[50vh] items-center justify-center bg-gradient-to-br from-[#000000] via-[#250c48] to-[#7E1EED] px-4 py-20 text-center sm:py-24">
-          <div className="mx-auto flex max-w-5xl flex-col items-center">
-            <FadeText
-              items={heroTexts}
-              wrapper="p"
-              className="mt-8 max-w-4xl text-center font-semibold tracking-wide text-white/95 text-3xl sm:text-5xl"
-            />
-            <Button
-              label={customSolutionFormContent.submitLabel}
-              variant="filled"
-              className="relative isolate flex items-center justify-center overflow-hidden rounded-xl border border-primary-300/35 bg-gradient-to-r from-primary-500 via-primary-600 to-primary-500 px-6 py-3 shadow-[0_14px_32px_rgba(100,21,255,0.35)] transition-all duration-300 before:absolute before:inset-0 before:-z-10 before:rounded-xl before:bg-primary-400/35 before:blur-2xl before:content-[''] hover:-translate-y-0.5 hover:shadow-[0_20px_38px_rgba(82, 255, 76, 0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300/60 text-white font-bold text-lg sm:text-3xl mt-8"
-              onClick={() => {
-                trackCtaClick({
-                  ctaLabel: customSolutionFormContent.submitLabel,
-                  ctaLocation: "hero",
-                });
-                startWhatsAppChat();
-              }}
-            />
+        <section className="relative overflow-hidden ">
+          <div className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-r from-black/80 via-primary-500/50 to-black/20 flex flex-col items-center justify-center" />
+          <VideoSection
+            size="full"
+            videoUrl="/videos/setup.mp4"
+            showPlayPauseButton={false}
+            showOverlay
+            containerClassName="!min-h-[82vh] bg-transparent"
+          />
+          <div className="absolute inset-0 z-30 flex flex-col items-center justify-center h-full">
+            <div className="mx-auto my-auto min-h-[95vh] flex w-full max-w-7xl items-center justify-center2 px-6 pb-16 lg:px-8">
+              <RevealContainer
+                once
+                className="pointer-events-auto m-auto space-y-8"
+              >
+                <FadeText
+                  items={heroTexts}
+                  wrapper="p"
+                  className="mt-8 max-w-4xl text-center font-semibold tracking-wide text-white/95 text-3xl sm:text-5xl"
+                />
+
+                <FadeContainer
+                  once
+                  className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
+                >
+                  <Button
+                    type="button"
+                    label="Entrar em contato"
+                    onClick={() => startWhatsAppChat()}
+                    className="!rounded-full !bg-secondary-500 !px-8 !py-4 !text-black !shadow-none font-bold"
+                  />
+                  <Button
+                    type="button"
+                    variant="outlined"
+                    label="Ver portfólio"
+                    onClick={() => scrollToSection("portfolio")}
+                    className="!rounded-full !border !border-white !px-8 !py-4 !text-white !shadow-none font-bold"
+                  />
+                </FadeContainer>
+              </RevealContainer>
+            </div>
           </div>
-        </TechParticlesHeroSection>
+        </section>
 
         <div id={aboutContent.sectionId} className="scroll-mt-8">
           <Section size="full" sectionClassName="bg-[#030307] py-20 sm:py-24">

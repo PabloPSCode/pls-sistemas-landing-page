@@ -1,25 +1,31 @@
 "use client";
 
-import Paragraph from "@/components/typography/Paragraph";
-import Title from "@/components/typography/Title";
+import Button from "@/components/buttons/Button";
+import Paragraph from "../../typography/Paragraph";
+import Title from "../../typography/Title";
 import { PauseIcon, PlayIcon } from "@phosphor-icons/react";
 import clsx from "clsx";
-import { useState } from "react";
-import ReactPlayer from "react-player";
+import { useEffect, useRef, useState } from "react";
 
 export interface VideoSectionProps {
   /** Largura da seção */
   size: "midle" | "full";
   /** Título principal */
-  title: string;
+  title?: string;
   /** Texto descritivo */
-  description: string;
+  description?: string;
   /** URL do vídeo de fundo */
   videoUrl: string;
+  /** Poster exibido enquanto o vídeo carrega */
+  posterUrl?: string;
   /** Exibir controles nativos do player */
   showPlayPauseButton?: boolean;
+  /** Renderiza apenas o vídeo, sem conteúdo sobreposto */
+  backgroundOnly?: boolean;
+  /** Exibe o gradiente interno sobre o vídeo */
+  showOverlay?: boolean;
   /** Título do botão primário */
-  primaryButtonTitle: string;
+  primaryButtonTitle?: string;
   /** Título do botão secundário */
   secondaryButtonTitle?: string;
   /** Callback do botão primário */
@@ -36,6 +42,10 @@ export interface VideoSectionProps {
   descriptionClassName?: string;
   /** Classe adicional do container */
   containerClassName?: string;
+  /** Classe adicional da overlay */
+  overlayClassName?: string;
+  /** Classe adicional do vídeo */
+  videoClassName?: string;
 }
 
 export default function VideoSection({
@@ -43,12 +53,41 @@ export default function VideoSection({
   title,
   description,
   videoUrl,
+  posterUrl,
   showPlayPauseButton = false,
+  backgroundOnly = false,
+  showOverlay = true,
+  primaryButtonTitle,
+  secondaryButtonTitle,
+  onPrimaryClick,
+  onSecondaryClick,
+  primaryButtonClassName,
+  secondaryButtonClassName,
   titleClassName,
   descriptionClassName,
   containerClassName,
+  overlayClassName,
+  videoClassName,
 }: VideoSectionProps) {
   const [isPlaying, setIsPlaying] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const videoElement = videoRef.current;
+
+    if (!videoElement) {
+      return;
+    }
+
+    if (!isPlaying) {
+      videoElement.pause();
+      return;
+    }
+
+    void videoElement.play().catch(() => {
+      setIsPlaying(false);
+    });
+  }, [isPlaying]);
 
   return (
     <section
@@ -61,33 +100,33 @@ export default function VideoSection({
         )}
       >
         <div className="absolute inset-0 overflow-hidden">
-          <ReactPlayer
-            wrapper="div"
-            src={videoUrl}
-            playing={isPlaying}
-            controls={showPlayPauseButton}
-            loop
+          <video
+            ref={videoRef}
+            autoPlay
             muted
+            loop
             playsInline
-            width="100%"
-            height="100%"
-            style={{
-              position: "absolute",
-              inset: 0,
-              width: "100%",
-              height: "100%",
-            }}
+            preload="auto"
+            poster={posterUrl}
+            controls={showPlayPauseButton}
             className={clsx(
-              "video-section-player !absolute !inset-0 !w-full !h-full !max-w-none !max-h-none",
-              showPlayPauseButton
-                ? "pointer-events-auto"
-                : "pointer-events-none",
-              containerClassName,
+              "absolute inset-0 h-full w-full object-cover [transform:translateZ(0)]",
+              showPlayPauseButton ? "pointer-events-auto" : "pointer-events-none",
+              videoClassName,
             )}
-          />
+          >
+            <source src={videoUrl} type="video/mp4" />
+          </video>
         </div>
 
-        <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/55 via-black/10 to-black/15" />
+        {showOverlay && (
+          <div
+            className={clsx(
+              "absolute inset-0 pointer-events-none bg-gradient-to-t from-black/55 via-black/10 to-black/15",
+              overlayClassName,
+            )}
+          />
+        )}
 
         {showPlayPauseButton && (
           <button
@@ -104,25 +143,56 @@ export default function VideoSection({
           </button>
         )}
 
-        <div className="h-full flex flex-col justify-end items-center mx-auto max-w-7xl gap-4 ">
-          <div className="z-20 max-w-[82%] sm:max-w-[70%]">
-            <Title
-              content={title}
-              element="h2"
-              className={clsx(
-                "text-white text-3xl sm:text-5xl md:text-6xl leading-[0.95] text-center",
-                titleClassName,
-              )}
-            />
-            <Paragraph
-              content={description}
-              className={clsx(
-                "mt-3 sm:mt-4 text-white/90 text-sm sm:text-base md:text-lg text-center",
-                descriptionClassName,
-              )}
-            />
+        {!backgroundOnly && (title || description) && (
+          <div className="absolute left-4 right-4 bottom-24 z-20 max-w-[82%] sm:left-8 sm:right-8 sm:bottom-10 sm:max-w-[70%]">
+            {title && (
+              <Title
+                content={title}
+                element="h2"
+                className={clsx(
+                  "text-white text-3xl leading-[0.95] sm:text-5xl md:text-6xl",
+                  titleClassName,
+                )}
+              />
+            )}
+            {description && (
+              <Paragraph
+                content={description}
+                className={clsx(
+                  "mt-3 text-sm text-white/90 sm:mt-4 sm:text-base md:text-lg",
+                  descriptionClassName,
+                )}
+              />
+            )}
           </div>
-        </div>
+        )}
+
+        {!backgroundOnly && (primaryButtonTitle || secondaryButtonTitle) && (
+          <div className="absolute bottom-4 left-4 right-4 z-20 flex flex-wrap gap-2 sm:bottom-8 sm:left-auto sm:right-8 sm:justify-end sm:gap-3">
+            {primaryButtonTitle && (
+              <Button
+                label={primaryButtonTitle}
+                variant="filled"
+                onClick={onPrimaryClick}
+                className={clsx(
+                  "rounded-full bg-white px-4 py-2 text-none hover:bg-white/85 sm:px-6 sm:py-3",
+                  primaryButtonClassName,
+                )}
+              />
+            )}
+            {secondaryButtonTitle && (
+            <Button
+              label={secondaryButtonTitle}
+              variant="outlined"
+              onClick={onSecondaryClick}
+              className={clsx(
+                "rounded-full px-4 py-2 sm:px-6 sm:py-3 border-white text-white hover:bg-white/15",
+                secondaryButtonClassName,
+              )}
+            />
+            )}
+          </div>
+        )}
       </div>
     </section>
   );

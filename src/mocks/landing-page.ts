@@ -157,7 +157,7 @@ export const customSolutionFormContent = {
   phoneLabel: "Whatsapp",
   messageLabel: "Como podemos ajudar você?",
   namePlaceholder: "João Silva",
-  phonePlaceholder: "(31) 98518-7963",
+  phonePlaceholder: "(31) 99481-7962",
   messagePlaceholder:
     "Descreva o que você precisa. Quanto mais detalhes você fornecer, melhor podemos ajudar.",
   submitLabel: "Iniciar conversa no WhatsApp",
