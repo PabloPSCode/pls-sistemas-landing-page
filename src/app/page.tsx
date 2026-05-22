@@ -49,6 +49,12 @@ const landingServiceIcons = [
   WrenchIcon,
 ];
 
+const landingServicePagePaths = [
+  "/servicos/criacao-de-landing-pages",
+  "/servicos/criacao-de-sites",
+  "/servicos/seo-tecnico",
+];
+
 const homePageSchemas = [
   createWebPageSchema({
     name: landingPageTitle,
@@ -215,6 +221,8 @@ export default function Home() {
               <div className="mt-12 grid w-full max-w-6xl gap-6 sm:grid-cols-2 md:grid-cols-3">
                 {landingServicesContent.items.map((item, index) => {
                   const Icon = landingServiceIcons[index];
+                  const serviceHref =
+                    landingServicePagePaths[index] ?? "/servicos";
 
                   return (
                     <FadeContainer
@@ -234,7 +242,7 @@ export default function Home() {
                         animated={false}
                         colors={["#c084fc", "#aa08cf", "#f838bf"]}
                       >
-                        <article className="flex h-full flex-col gap-4 rounded-xl border border-white/15 bg-[rgba(0,0,0,0.52)] p-8 shadow-[0_16px_45px_rgba(0,0,0,0.35)] ">
+                        <article className="flex h-full flex-col gap-4 rounded-xl border border-white/15 bg-[rgba(0,0,0,0.52)] p-8 shadow-[0_16px_45px_rgba(0,0,0,0.35)] min-h-[280px]">
                           <div className="flex items-start justify-between gap-4">
                             <Icon
                               size={44}
@@ -242,7 +250,7 @@ export default function Home() {
                               weight="light"
                             />
                             <Link
-                              href="/landing-pages#criar-site-landing-page"
+                              href={serviceHref}
                               className="flex items-center gap-2"
                             >
                               <Subtitle

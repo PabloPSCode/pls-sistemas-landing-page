@@ -1,0 +1,379 @@
+{
+  "servicePages": [
+    {
+      "slug": "criacao-de-sites",
+      "path": "/servicos/criacao-de-sites",
+      "name": "Criação de Sites Profissionais",
+      "shortName": "Criação de Sites",
+      "title": "Criação de Sites Profissionais em João Monlevade | PLS Sistemas",
+      "description": "Criação de sites profissionais para empresas em João Monlevade e região, com design responsivo, SEO técnico, performance e estrutura preparada para gerar contatos.",
+      "keywords": [
+        "criação de sites",
+        "sites profissionais",
+        "desenvolvimento de sites em João Monlevade",
+        "site para empresa",
+        "PLS Sistemas"
+      ],
+      "serviceTypes": [
+        "Criação de sites",
+        "Desenvolvimento web",
+        "Site institucional",
+        "SEO técnico"
+      ],
+      "heroEyebrow": "Sites profissionais",
+      "heroTitle": "Sites institucionais para empresas que precisam aparecer, explicar melhor sua oferta e gerar contatos.",
+      "heroDescription": "A PLS Sistemas cria websites responsivos, rápidos e alinhados à identidade do negócio, com estrutura pensada para mecanismos de busca e para clientes que pesquisam antes de comprar.",
+      "audience": "Ideal para empresas, prestadores de serviço, escritórios e profissionais que precisam de uma presença digital confiável.",
+      "primaryCtaLabel": "Solicitar orçamento",
+      "secondaryCtaLabel": "Ver landing pages",
+      "secondaryCtaHref": "/landing-pages",
+      "benefits": [
+        {
+          "title": "Estrutura clara",
+          "description": "Páginas organizadas para apresentar serviços, diferenciais, localização, portfólio e canais de atendimento sem dispersar o visitante."
+        },
+        {
+          "title": "SEO desde a base",
+          "description": "Metadados, heading hierarchy, sitemap, URLs amigáveis e conteúdo orientado às buscas reais do público."
+        },
+        {
+          "title": "Experiência mobile",
+          "description": "Layout responsivo para navegação fluida no celular, onde boa parte dos clientes conhece a empresa pela primeira vez."
+        }
+      ],
+      "sections": [
+        {
+          "title": "Como o projeto é conduzido",
+          "body": "O desenvolvimento começa com entendimento do negócio, público e objetivos comerciais. A partir disso, definimos a arquitetura da página, textos principais, seções essenciais, identidade visual e pontos de conversão."
+        },
+        {
+          "title": "O que o site pode incluir",
+          "body": "O projeto pode incluir página inicial, serviços, sobre a empresa, portfólio, depoimentos, integração com WhatsApp, formulários, blog e páginas institucionais como política de privacidade."
+        },
+        {
+          "title": "Foco em confiança e descoberta",
+          "body": "Além do visual, o site precisa ser rastreável, carregar bem, explicar a oferta com clareza e reforçar sinais de confiança para quem compara fornecedores."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "A PLS Sistemas cria sites para empresas de fora de João Monlevade?",
+          "answer": "Sim. A empresa atende negócios em João Monlevade, Minas Gerais e outras regiões do Brasil, com briefing e acompanhamento online."
+        },
+        {
+          "question": "O site já é entregue com SEO?",
+          "answer": "Sim. O projeto inclui configuração técnica de SEO, URLs amigáveis, metadados, sitemap e estrutura de conteúdo preparada para indexação."
+        },
+        {
+          "question": "Posso adicionar novas páginas depois?",
+          "answer": "Sim. A estrutura pode evoluir com novas páginas, posts de blog, páginas de serviço e melhorias conforme a estratégia digital amadurece."
+        }
+      ],
+      "relatedSlugs": [
+        "criacao-de-landing-pages",
+        "seo-tecnico",
+        "desenvolvimento-de-sistemas"
+      ]
+    },
+    {
+      "slug": "criacao-de-landing-pages",
+      "path": "/servicos/criacao-de-landing-pages",
+      "name": "Criação de Landing Pages",
+      "shortName": "Landing Pages",
+      "title": "Criação de Landing Pages com Foco em Conversão | PLS Sistemas",
+      "description": "Landing pages profissionais para campanhas, lançamentos e captação de leads, com copy, design responsivo, carregamento rápido e SEO técnico.",
+      "keywords": [
+        "criação de landing pages",
+        "landing page profissional",
+        "landing page para campanha",
+        "página de captura",
+        "conversão"
+      ],
+      "serviceTypes": [
+        "Criação de landing pages",
+        "Página de captura",
+        "Design responsivo",
+        "Otimização de conversão"
+      ],
+      "heroEyebrow": "Páginas de conversão",
+      "heroTitle": "Landing pages para transformar tráfego em contatos, orçamentos e oportunidades comerciais.",
+      "heroDescription": "Criamos páginas focadas em uma oferta específica, com narrativa clara, CTA destacado, prova social e estrutura visual pensada para reduzir atrito no caminho da conversão.",
+      "audience": "Ideal para campanhas de tráfego pago, lançamentos, validação de oferta, eventos, serviços recorrentes e produtos digitais.",
+      "primaryCtaLabel": "Criar minha landing page",
+      "secondaryCtaLabel": "Escolher template",
+      "secondaryCtaHref": "/landing-pages#criar-site-landing-page",
+      "benefits": [
+        {
+          "title": "Mensagem direta",
+          "description": "Conteúdo organizado para explicar a promessa, mostrar valor e conduzir o visitante até o próximo passo."
+        },
+        {
+          "title": "CTA sem ruído",
+          "description": "Botões e seções posicionados para facilitar contato por WhatsApp, formulário ou outro canal definido no projeto."
+        },
+        {
+          "title": "Entrega ágil",
+          "description": "Uso de templates e componentes prontos quando faz sentido, sem abrir mão da identidade da marca."
+        }
+      ],
+      "sections": [
+        {
+          "title": "Quando uma landing page faz sentido",
+          "body": "A landing page é indicada quando a empresa precisa apresentar uma oferta com foco, sem dispersar o usuário em muitas opções de navegação."
+        },
+        {
+          "title": "Conteúdo orientado à conversão",
+          "body": "A página pode combinar título forte, benefícios, diferenciais, perguntas frequentes, provas de confiança, imagens e CTA para WhatsApp ou formulário."
+        },
+        {
+          "title": "Preparada para campanhas",
+          "body": "A estrutura é pensada para tráfego pago, redes sociais e buscas orgânicas, com carregamento rápido e leitura simples no celular."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Landing page é diferente de site?",
+          "answer": "Sim. O site costuma apresentar a empresa de forma mais ampla. A landing page concentra a atenção em uma oferta ou campanha específica."
+        },
+        {
+          "question": "A landing page pode ter formulário e WhatsApp?",
+          "answer": "Sim. A página pode direcionar para WhatsApp, formulário, telefone, checkout ou outro canal escolhido para a campanha."
+        },
+        {
+          "question": "É possível usar um template?",
+          "answer": "Sim. A PLS Sistemas possui opções de templates que aceleram a criação e podem ser adaptadas para a identidade do negócio."
+        }
+      ],
+      "relatedSlugs": [
+        "criacao-de-sites",
+        "seo-tecnico",
+        "automacao-para-empresas"
+      ]
+    },
+    {
+      "slug": "desenvolvimento-de-sistemas",
+      "path": "/servicos/desenvolvimento-de-sistemas",
+      "name": "Desenvolvimento de Sistemas Web",
+      "shortName": "Sistemas Web",
+      "title": "Desenvolvimento de Sistemas Web Sob Medida | PLS Sistemas",
+      "description": "Desenvolvimento de sistemas web sob medida para empresas que precisam organizar processos, automatizar tarefas e criar ferramentas digitais próprias.",
+      "keywords": [
+        "desenvolvimento de sistemas",
+        "sistemas web",
+        "software sob medida",
+        "aplicação web",
+        "PLS Sistemas"
+      ],
+      "serviceTypes": [
+        "Desenvolvimento de sistemas",
+        "Software sob medida",
+        "Aplicações web",
+        "Ferramentas digitais"
+      ],
+      "heroEyebrow": "Software sob medida",
+      "heroTitle": "Sistemas web para organizar operações, reduzir trabalho manual e apoiar decisões do negócio.",
+      "heroDescription": "Desenvolvemos aplicações web alinhadas ao fluxo real da empresa, com interfaces objetivas, regras de negócio claras e base preparada para evolução contínua.",
+      "audience": "Ideal para empresas que dependem de planilhas, processos manuais ou ferramentas genéricas que já não acompanham a operação.",
+      "primaryCtaLabel": "Conversar sobre um sistema",
+      "secondaryCtaLabel": "Ver soluções prontas",
+      "secondaryCtaHref": "/#solucoes-web",
+      "benefits": [
+        {
+          "title": "Fluxos personalizados",
+          "description": "Funcionalidades desenhadas em torno da rotina da equipe, evitando adaptações forçadas a softwares genéricos."
+        },
+        {
+          "title": "Interface objetiva",
+          "description": "Telas pensadas para uso recorrente, leitura rápida e ações importantes sempre acessíveis."
+        },
+        {
+          "title": "Base evolutiva",
+          "description": "Arquitetura preparada para receber novas regras, relatórios, integrações e melhorias conforme a operação cresce."
+        }
+      ],
+      "sections": [
+        {
+          "title": "Do problema ao produto",
+          "body": "O projeto começa com mapeamento do processo atual, gargalos e objetivos. Depois definimos escopo inicial, usuários, permissões, dados e telas prioritárias."
+        },
+        {
+          "title": "Possibilidades de implementação",
+          "body": "Um sistema pode incluir cadastros, painéis, relatórios, permissões, upload de arquivos, automações, integrações externas e módulos específicos do negócio."
+        },
+        {
+          "title": "Controle e evolução",
+          "body": "O software próprio permite adaptar regras, medir resultados e evoluir a ferramenta sem depender de limitações rígidas de plataformas prontas."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "A PLS Sistemas desenvolve sistemas do zero?",
+          "answer": "Sim. O projeto pode ser criado sob medida a partir do fluxo, regras e objetivos da empresa."
+        },
+        {
+          "question": "É possível integrar com outras ferramentas?",
+          "answer": "Sim. Dependendo da disponibilidade técnica das ferramentas, o sistema pode integrar APIs, formulários, bancos de dados e serviços externos."
+        },
+        {
+          "question": "O sistema pode começar pequeno?",
+          "answer": "Sim. É comum iniciar com um MVP ou módulo principal e evoluir conforme a operação valida necessidades reais."
+        }
+      ],
+      "relatedSlugs": [
+        "automacao-para-empresas",
+        "criacao-de-sites",
+        "seo-tecnico"
+      ]
+    },
+    {
+      "slug": "automacao-para-empresas",
+      "path": "/servicos/automacao-para-empresas",
+      "name": "Automação para Empresas",
+      "shortName": "Automação",
+      "title": "Automação para Empresas e Processos Digitais | PLS Sistemas",
+      "description": "Automação de processos para empresas que querem reduzir tarefas repetitivas, conectar ferramentas e ganhar produtividade com soluções digitais.",
+      "keywords": [
+        "automação para empresas",
+        "automação de processos",
+        "produtividade empresarial",
+        "integração de ferramentas",
+        "sistemas para empresas"
+      ],
+      "serviceTypes": [
+        "Automação de processos",
+        "Integração de ferramentas",
+        "Soluções digitais",
+        "Produtividade empresarial"
+      ],
+      "heroEyebrow": "Processos digitais",
+      "heroTitle": "Automação para reduzir retrabalho, padronizar rotinas e dar mais velocidade à operação.",
+      "heroDescription": "A PLS Sistemas ajuda empresas a transformar tarefas repetitivas em fluxos digitais mais consistentes, conectando dados, pessoas e ferramentas quando isso gera ganho real.",
+      "audience": "Ideal para negócios com muitos controles manuais, repetições em atendimento, cadastros, relatórios, triagens ou acompanhamento operacional.",
+      "primaryCtaLabel": "Mapear minha automação",
+      "secondaryCtaLabel": "Sistemas sob medida",
+      "secondaryCtaHref": "/servicos/desenvolvimento-de-sistemas",
+      "benefits": [
+        {
+          "title": "Menos tarefas repetitivas",
+          "description": "Automatizações ajudam a reduzir digitação duplicada, conferências manuais e passos operacionais que consomem tempo da equipe."
+        },
+        {
+          "title": "Processos padronizados",
+          "description": "Fluxos digitais diminuem variações de execução e tornam a rotina mais previsível."
+        },
+        {
+          "title": "Dados mais úteis",
+          "description": "Ao organizar entradas e saídas, fica mais fácil acompanhar indicadores, pendências e oportunidades de melhoria."
+        }
+      ],
+      "sections": [
+        {
+          "title": "Onde automatizar primeiro",
+          "body": "O melhor ponto de partida costuma ser um processo frequente, repetitivo e com regras claras. Isso aumenta o retorno e reduz risco de complexidade desnecessária."
+        },
+        {
+          "title": "Exemplos de fluxos",
+          "body": "Podem ser automatizados cadastros, notificações, geração de documentos, organização de pedidos, triagem de solicitações, relatórios e integrações entre ferramentas."
+        },
+        {
+          "title": "Automação com critério",
+          "body": "Nem todo processo precisa ser automatizado de imediato. A prioridade é identificar o que gera economia de tempo, redução de erro ou melhor atendimento."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Automação exige trocar todas as ferramentas da empresa?",
+          "answer": "Não necessariamente. Muitas automações conectam ferramentas já usadas pela equipe ou criam uma camada digital para organizar melhor o fluxo."
+        },
+        {
+          "question": "A automação pode ser integrada ao WhatsApp?",
+          "answer": "Dependendo do caso e das regras das plataformas utilizadas, é possível criar fluxos conectados a canais de atendimento e formulários."
+        },
+        {
+          "question": "Como saber se vale a pena automatizar?",
+          "answer": "O primeiro passo é mapear frequência, tempo gasto, risco de erro e impacto no atendimento ou operação."
+        }
+      ],
+      "relatedSlugs": [
+        "desenvolvimento-de-sistemas",
+        "criacao-de-landing-pages",
+        "seo-tecnico"
+      ]
+    },
+    {
+      "slug": "seo-tecnico",
+      "path": "/servicos/seo-tecnico",
+      "name": "SEO Técnico para Sites",
+      "shortName": "SEO Técnico",
+      "title": "SEO Técnico para Sites, Landing Pages e Sistemas | PLS Sistemas",
+      "description": "SEO técnico para melhorar rastreamento, indexação, performance, metadados, sitemap e estrutura de páginas em sites e landing pages.",
+      "keywords": [
+        "SEO técnico",
+        "otimização para Google",
+        "sitemap",
+        "metadados",
+        "indexação de site"
+      ],
+      "serviceTypes": [
+        "SEO técnico",
+        "Otimização para mecanismos de busca",
+        "Auditoria de site",
+        "Performance web"
+      ],
+      "heroEyebrow": "SEO técnico",
+      "heroTitle": "SEO técnico para ajudar o Google a entender, rastrear e exibir melhor as páginas certas.",
+      "heroDescription": "Trabalhamos a base técnica do site: metadados, dados estruturados, sitemap, robots, URLs, performance, hierarquia de conteúdo e links internos.",
+      "audience": "Ideal para sites que já existem, novas landing pages e empresas que querem melhorar a presença orgânica sem depender apenas de anúncios.",
+      "primaryCtaLabel": "Avaliar meu SEO",
+      "secondaryCtaLabel": "Criar site com SEO",
+      "secondaryCtaHref": "/servicos/criacao-de-sites",
+      "benefits": [
+        {
+          "title": "Indexação mais clara",
+          "description": "Sitemaps, canonical URLs, robots e metadados ajudam mecanismos de busca a encontrar e interpretar páginas importantes."
+        },
+        {
+          "title": "Dados estruturados",
+          "description": "Schema.org pode descrever empresa, serviços, breadcrumbs, FAQ e artigos para enriquecer o entendimento da página."
+        },
+        {
+          "title": "Links internos melhores",
+          "description": "Uma arquitetura clara distribui relevância entre páginas de serviço, blog e páginas institucionais."
+        }
+      ],
+      "sections": [
+        {
+          "title": "O que é revisado",
+          "body": "A análise inclui títulos, descrições, headings, canonical, sitemap, robots, dados estruturados, performance, conteúdo duplicado, links internos e páginas órfãs."
+        },
+        {
+          "title": "SEO programático com qualidade",
+          "body": "Páginas geradas por dados podem ampliar cobertura de busca, desde que tenham conteúdo útil, URLs claras, diferenciação real e navegação interna."
+        },
+        {
+          "title": "Sitelinks dependem do Google",
+          "body": "Não existe garantia de exibição de links extras no resultado, mas uma estrutura rastreável, consistente e bem conectada aumenta a chance de o Google escolher páginas relevantes."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "SEO técnico garante primeira posição no Google?",
+          "answer": "Não. SEO técnico melhora a base de rastreamento e indexação, mas resultados dependem também de conteúdo, concorrência, autoridade e comportamento dos usuários."
+        },
+        {
+          "question": "Dados estruturados ajudam a aparecer com links extras?",
+          "answer": "Eles ajudam o Google a entender a estrutura do site, mas a exibição de sitelinks é automática e não pode ser forçada."
+        },
+        {
+          "question": "O SEO pode ser aplicado em landing pages?",
+          "answer": "Sim. Landing pages podem receber metadados, schema, conteúdo rastreável, performance e links internos."
+        }
+      ],
+      "relatedSlugs": [
+        "criacao-de-sites",
+        "criacao-de-landing-pages",
+        "desenvolvimento-de-sistemas"
+      ]
+    }
+  ]
+}

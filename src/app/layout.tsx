@@ -13,11 +13,14 @@ import {
 import { GoogleAnalytics } from "@next/third-parties/google";
 
 import StructuredData from "@/components/seo/StructuredData";
+import { serviceSeoPages } from "@/lib/programmatic-seo";
 import {
   createOrganizationSchema,
   createPageMetadata,
   createProfessionalServiceSchema,
+  createSiteNavigationSchema,
   createWebsiteSchema,
+  primarySitePages,
   siteDescription,
   siteMetadataBase,
   siteName,
@@ -113,12 +116,22 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const structuredSitePages = [
+    ...primarySitePages,
+    ...serviceSeoPages.map((page) => ({
+      name: page.shortName,
+      path: page.path,
+      description: page.description,
+      keywords: page.keywords,
+    })),
+  ];
   const rootSchemas = [
     createOrganizationSchema(),
     createProfessionalServiceSchema(
       businessPhone ? `+${businessPhone}` : undefined,
     ),
-    createWebsiteSchema(),
+    createWebsiteSchema(structuredSitePages),
+    createSiteNavigationSchema(structuredSitePages),
   ];
 
   return (

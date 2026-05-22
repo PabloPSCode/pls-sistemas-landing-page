@@ -41,6 +41,11 @@ type ServiceSchemaParams = {
   serviceTypes: string[];
 };
 
+type FAQSchemaItem = {
+  question: string;
+  answer: string;
+};
+
 export type PrimarySitePage = {
   name: string;
   path: string;
@@ -71,6 +76,18 @@ export const primarySitePages: PrimarySitePage[] = [
       "desenvolvimento de sistemas",
       "sites em João Monlevade",
       "landing pages",
+    ],
+  },
+  {
+    name: "Serviços",
+    path: "/servicos",
+    description:
+      "Hub de serviços da PLS Sistemas para criação de sites, landing pages, sistemas web, automação e SEO técnico.",
+    keywords: [
+      "serviços de desenvolvimento web",
+      "criação de sites",
+      "landing pages",
+      "SEO técnico",
     ],
   },
   {
@@ -236,7 +253,7 @@ export function createProfessionalServiceSchema(telephone?: string) {
   });
 }
 
-export function createWebsiteSchema() {
+export function createWebsiteSchema(pages: PrimarySitePage[] = primarySitePages) {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -247,7 +264,7 @@ export function createWebsiteSchema() {
     publisher: {
       "@id": `${siteOrigin}#organization`,
     },
-    hasPart: primarySitePages.map((page) => ({
+    hasPart: pages.map((page) => ({
       "@type": "WebPage",
       name: page.name,
       url: toAbsoluteUrl(page.path),
@@ -256,12 +273,36 @@ export function createWebsiteSchema() {
   };
 }
 
-export function createPrimaryPagesItemListSchema() {
+export function createSiteNavigationSchema(
+  pages: PrimarySitePage[] = primarySitePages,
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Navegação principal da PLS Sistemas",
+    itemListElement: pages
+      .filter((page) => page.path !== "/")
+      .map((page, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "SiteNavigationElement",
+          name: page.name,
+          url: toAbsoluteUrl(page.path),
+          description: page.description,
+        },
+      })),
+  };
+}
+
+export function createPrimaryPagesItemListSchema(
+  pages: PrimarySitePage[] = primarySitePages,
+) {
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: "Principais páginas da PLS Sistemas",
-    itemListElement: primarySitePages
+    itemListElement: pages
       .filter((page) => page.path !== "/")
       .map((page, index) => ({
         "@type": "ListItem",
@@ -322,6 +363,21 @@ export function createServiceSchema({
       "@id": `${siteOrigin}#professional-service`,
     },
     serviceType: serviceTypes,
+  };
+}
+
+export function createFAQPageSchema(items: FAQSchemaItem[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
   };
 }
 

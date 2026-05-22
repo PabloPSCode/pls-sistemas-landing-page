@@ -53,9 +53,9 @@ export const heroContent = {
 
 export const navItems: LandingNavItem[] = [
   { label: "Quem somos", href: "#quem-somos" },
-  { label: "Websites e landing pages", href: "#landing-pages" },
+  { label: "Serviços", href: "/servicos" },
+  { label: "Websites e landing pages", href: "/landing-pages" },
   { label: "Soluções", href: "#solucoes-web" },
-  { label: "Para o seu negócio", href: "#solucoes-sob-medida" },
   { label: "Blog", href: "/blog" },
 ];
 
@@ -169,6 +169,22 @@ export const footerContent = {
   solutionsTitle: "SOLUÇÕES PARA SEU NEGÓCIO",
   copyright: "2026, Todos os direitos reservados",
   navLinks: [...navItems] as FooterLinkItem[],
+  serviceLinks: [
+    { label: "Criação de Sites", href: "/servicos/criacao-de-sites" },
+    {
+      label: "Landing Pages",
+      href: "/servicos/criacao-de-landing-pages",
+    },
+    {
+      label: "Sistemas Web",
+      href: "/servicos/desenvolvimento-de-sistemas",
+    },
+    {
+      label: "Automação",
+      href: "/servicos/automacao-para-empresas",
+    },
+    { label: "SEO Técnico", href: "/servicos/seo-tecnico" },
+  ] as FooterLinkItem[],
   solutions: [
     { label: "Pic Loja", href: "https://picloja.plssistemas.com.br/" },
     { label: "React Ultimate Componentes", href: "https://reactultimatecomponents.plssistemas.com.br/" },

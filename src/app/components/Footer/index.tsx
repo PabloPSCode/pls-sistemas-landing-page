@@ -85,6 +85,19 @@ export default function Footer() {
             className="text-white text-base sm:text-2xl"
           />
           <ul className="space-y-3 text-center sm:text-left">
+            {footerContent.serviceLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="text-white/80 hover:text-white"
+                >
+                  <Paragraph
+                    content={link.label}
+                    className="text-sm sm:text-xl"
+                  />
+                </Link>
+              </li>
+            ))}
             {footerContent.solutions.map((link) => (
               <li key={link.label}>
                 <a
@@ -111,7 +124,10 @@ export default function Footer() {
           <ul className="space-y-3 text-center sm:text-left">
             {footerContent.policyLinks.map((link) => (
               <li key={link.label}>
-                <Link href={link.href} className="text-white/80 hover:text-white">
+                <Link
+                  href={link.href}
+                  className="text-white/80 hover:text-white"
+                >
                   <Paragraph
                     content={link.label}
                     className="text-sm sm:text-xl"
