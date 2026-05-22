@@ -1,5 +1,15 @@
 "use client";
 
+import {
+    Inter,
+    Montserrat,
+    Open_Sans,
+    Poppins,
+    Raleway,
+    Roboto,
+    Ubuntu,
+    Work_Sans,
+} from "next/font/google";
 import { useState, type FormEvent } from "react";
 
 import Button from "@/components/buttons/Button";
@@ -14,12 +24,54 @@ import Subtitle from "@/components/typography/Subtitle";
 import Title from "@/components/typography/Title";
 import { MIN_MESSAGE_LENGTH } from "@/constants";
 import {
-  creationProcessSteps,
-  landingServicesContent,
-  templates,
+    creationProcessSteps,
+    landingServicesContent,
+    templates,
 } from "@/mocks/landing-page";
 import { brazilianPhoneMask } from "@/utils/masks";
 import { startWhatsAppChat } from "@/utils/whatsapp";
+
+const poppins = Poppins({
+  variable: "--font-poppins",
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+});
+
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ["latin"],
+});
+
+const raleway = Raleway({
+  variable: "--font-raleway",
+  subsets: ["latin"],
+});
+
+const roboto = Roboto({
+  variable: "--font-roboto",
+  subsets: ["latin"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+const openSans = Open_Sans({
+  variable: "--font-open-sans",
+  subsets: ["latin"],
+});
+
+const workSans = Work_Sans({
+  variable: "--font-work-sans",
+  subsets: ["latin"],
+});
+
+const ubuntu = Ubuntu({
+  variable: "--font-ubuntu",
+  weight: ["300", "400", "500", "700"],
+  subsets: ["latin"],
+});
 
 const fontOptions: Option[] = [
   { label: "Poppins", value: "Poppins" },
@@ -313,7 +365,9 @@ export default function Page() {
   );
 
   return (
-    <main className="overflow-x-hidden bg-foreground">
+    <main
+      className={`${poppins.variable} ${montserrat.variable} ${raleway.variable} ${roboto.variable} ${inter.variable} ${openSans.variable} ${workSans.variable} ${ubuntu.variable} overflow-x-hidden bg-foreground`}
+    >
       <section
         className="w-full py-16 sm:py-20 max-w-7xl mx-auto"
         id="criar-site-landing-page"

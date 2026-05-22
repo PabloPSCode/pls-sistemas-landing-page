@@ -26,7 +26,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import BorderedGlowCard from "@/components/animations-and-loading/BorderedGlowCard";
-import { FadeText } from "@/components/animations-and-loading/FadeText";
 import { HeroSection } from "@/components/elements/HeroSection";
 import BrandMarquee from "@/components/marketing/BrandMarquee";
 import {
@@ -104,12 +103,6 @@ export default function Home() {
     return () => clearTimeout(timeoutId);
   }, []);
 
-  const heroTexts = [
-    "Sites e landing pages com qualidade premium.",
-    "Ferramentas web prontas para facilitar o seu dia a dia.",
-    "Soluções digitais personalizadas para alavancar o seu negócio.",
-  ];
-
   function scrollToSection(sectionId: string) {
     document.getElementById(sectionId)?.scrollIntoView({
       behavior: "smooth",
@@ -135,15 +128,13 @@ export default function Home() {
           children={
             <div className="absolute inset-0 z-30 flex flex-col items-center justify-center h-full">
               <div className="mx-auto my-auto min-h-[95vh] flex w-full max-w-7xl items-center justify-center2 px-6 pb-16 lg:px-8">
-                <RevealContainer
-                  once
-                  className="pointer-events-auto m-auto space-y-8"
-                >
-                  <FadeText
-                    items={heroTexts}
-                    wrapper="p"
-                    className="mt-8 max-w-4xl text-center font-semibold tracking-wide text-white/95 text-3xl sm:text-5xl"
-                  />
+                <div className="pointer-events-auto m-auto space-y-8">
+                  <h1 className="mt-8 max-w-4xl text-center font-semibold tracking-wide text-white/95 text-3xl sm:text-5xl">
+                    Sites e landing pages com qualidade premium.
+                  </h1>
+                  <p className="mx-auto max-w-4xl text-center text-white/85 text-base sm:text-2xl">
+                    Ferramentas web prontas para facilitar o seu dia a dia.
+                  </p>
 
                   <FadeContainer
                     once
@@ -163,7 +154,7 @@ export default function Home() {
                       className="!rounded-full !border !border-white !px-8 !py-4 !text-white !shadow-none font-bold"
                     />
                   </FadeContainer>
-                </RevealContainer>
+                </div>
               </div>
             </div>
           }
