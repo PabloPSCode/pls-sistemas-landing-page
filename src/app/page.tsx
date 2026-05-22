@@ -41,6 +41,7 @@ import { works, worksSectionContent } from "@/mocks/works";
 import { trackCtaClick } from "@/utils/analytics";
 import { startWhatsAppChat } from "@/utils/whatsapp";
 import Link from "next/link";
+import { HeroSection } from "@/components/elements/HeroSection";
 
 const landingServiceIcons = [
   TableIcon,
@@ -88,49 +89,45 @@ export default function Home() {
         spinDuration={3}
       />
       <main className="flex flex-col">
-        <section className="relative overflow-hidden ">
-          <div className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-r from-black/80 via-primary-500/50 to-black/20 flex flex-col items-center justify-center" />
-          <VideoSection
-            size="full"
-            videoUrl="/videos/setup.mp4"
-            showPlayPauseButton={false}
-            showOverlay
-            containerClassName="!min-h-[82vh] bg-transparent"
-          />
-          <div className="absolute inset-0 z-30 flex flex-col items-center justify-center h-full">
-            <div className="mx-auto my-auto min-h-[95vh] flex w-full max-w-7xl items-center justify-center2 px-6 pb-16 lg:px-8">
-              <RevealContainer
-                once
-                className="pointer-events-auto m-auto space-y-8"
-              >
-                <FadeText
-                  items={heroTexts}
-                  wrapper="p"
-                  className="mt-8 max-w-4xl text-center font-semibold tracking-wide text-white/95 text-3xl sm:text-5xl"
-                />
-
-                <FadeContainer
+        <HeroSection
+          size="full"
+          sectionClassName="min-h-[72vh] bg-gradient-to-br from-[#000000] via-[#250c48] to-[#7E1EED] relative isolate overflow-hidden"
+          children={
+            <div className="absolute inset-0 z-30 flex flex-col items-center justify-center h-full">
+              <div className="mx-auto my-auto min-h-[95vh] flex w-full max-w-7xl items-center justify-center2 px-6 pb-16 lg:px-8">
+                <RevealContainer
                   once
-                  className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
+                  className="pointer-events-auto m-auto space-y-8"
                 >
-                  <Button
-                    type="button"
-                    label="Entrar em contato"
-                    onClick={() => startWhatsAppChat()}
-                    className="!rounded-full !bg-secondary-500 !px-8 !py-4 !text-black !shadow-none font-bold"
+                  <FadeText
+                    items={heroTexts}
+                    wrapper="p"
+                    className="mt-8 max-w-4xl text-center font-semibold tracking-wide text-white/95 text-3xl sm:text-5xl"
                   />
-                  <Button
-                    type="button"
-                    variant="outlined"
-                    label="Ver portfólio"
-                    onClick={() => scrollToSection("portfolio")}
-                    className="!rounded-full !border !border-white !px-8 !py-4 !text-white !shadow-none font-bold"
-                  />
-                </FadeContainer>
-              </RevealContainer>
+
+                  <FadeContainer
+                    once
+                    className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
+                  >
+                    <Button
+                      type="button"
+                      label="Entrar em contato"
+                      onClick={() => startWhatsAppChat()}
+                      className="!rounded-full !bg-secondary-500 !px-8 !py-4 !text-black !shadow-none font-bold"
+                    />
+                    <Button
+                      type="button"
+                      variant="outlined"
+                      label="Ver portfólio"
+                      onClick={() => scrollToSection("portfolio")}
+                      className="!rounded-full !border !border-white !px-8 !py-4 !text-white !shadow-none font-bold"
+                    />
+                  </FadeContainer>
+                </RevealContainer>
+              </div>
             </div>
-          </div>
-        </section>
+          }
+        />
 
         <div id={aboutContent.sectionId} className="scroll-mt-8">
           <Section size="full" sectionClassName="bg-[#030307] py-20 sm:py-24">
