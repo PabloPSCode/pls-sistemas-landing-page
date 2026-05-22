@@ -6,6 +6,7 @@ import type { InputHTMLAttributes } from "react";
 import { forwardRef, useId } from "react";
 import { PhoneInput, type PhoneInputProps } from "react-international-phone";
 import "react-international-phone/style.css";
+import "../../../styles/phone-overrides.css";
 // Import this CSS **once** in your app root (recommended):
 // import "react-international-phone/style.css";
 

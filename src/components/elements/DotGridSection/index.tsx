@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
-import React, { useRef, useEffect, useCallback, useMemo } from 'react';
 import { gsap } from 'gsap';
 import { InertiaPlugin } from 'gsap/InertiaPlugin';
+import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 
 gsap.registerPlugin(InertiaPlugin);
 
@@ -27,6 +27,7 @@ interface Dot {
 }
 
 export interface DotGridSectionProps {
+  animated?: boolean;
   dotSize?: number;
   gap?: number;
   baseColor?: string;
@@ -54,6 +55,7 @@ function hexToRgb(hex: string) {
 }
 
 const DotGridSection: React.FC<DotGridSectionProps> = ({
+  animated = true,
   dotSize = 16,
   gap = 32,
   baseColor = '#5227FF',
@@ -72,6 +74,7 @@ const DotGridSection: React.FC<DotGridSectionProps> = ({
   const wrapperRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const dotsRef = useRef<Dot[]>([]);
+  const [shouldAnimate, setShouldAnimate] = React.useState(false);
   const pointerRef = useRef({
     x: 0,
     y: 0,
@@ -85,6 +88,17 @@ const DotGridSection: React.FC<DotGridSectionProps> = ({
 
   const baseRgb = useMemo(() => hexToRgb(baseColor), [baseColor]);
   const activeRgb = useMemo(() => hexToRgb(activeColor), [activeColor]);
+
+  useEffect(() => {
+    if (!animated) {
+      setShouldAnimate(false);
+      return;
+    }
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+    setShouldAnimate(!reducedMotion && isDesktop);
+  }, [animated]);
 
   const circlePath = useMemo(() => {
     if (typeof window === 'undefined' || !window.Path2D) return null;
@@ -134,7 +148,7 @@ const DotGridSection: React.FC<DotGridSectionProps> = ({
   }, [dotSize, gap]);
 
   useEffect(() => {
-    if (!circlePath) return;
+    if (!circlePath || !shouldAnimate) return;
 
     let rafId: number;
     const proxSq = proximity * proximity;
@@ -177,9 +191,11 @@ const DotGridSection: React.FC<DotGridSectionProps> = ({
 
     draw();
     return () => cancelAnimationFrame(rafId);
-  }, [proximity, baseColor, activeRgb, baseRgb, circlePath]);
+  }, [proximity, baseColor, activeRgb, baseRgb, circlePath, shouldAnimate]);
 
   useEffect(() => {
+    if (!shouldAnimate) return;
+
     buildGrid();
     let ro: ResizeObserver | null = null;
     if ('ResizeObserver' in window) {
@@ -192,9 +208,11 @@ const DotGridSection: React.FC<DotGridSectionProps> = ({
       if (ro) ro.disconnect();
       else window.removeEventListener('resize', buildGrid);
     };
-  }, [buildGrid]);
+  }, [buildGrid, shouldAnimate]);
 
   useEffect(() => {
+    if (!shouldAnimate) return;
+
     const onMove = (e: MouseEvent) => {
       const now = performance.now();
       const pr = pointerRef.current;
@@ -280,13 +298,15 @@ const DotGridSection: React.FC<DotGridSectionProps> = ({
       window.removeEventListener('mousemove', throttledMove);
       window.removeEventListener('click', onClick);
     };
-  }, [maxSpeed, speedTrigger, proximity, resistance, returnDuration, shockRadius, shockStrength]);
+  }, [maxSpeed, speedTrigger, proximity, resistance, returnDuration, shockRadius, shockStrength, shouldAnimate]);
 
   return (
     <section className={`relative w-full overflow-hidden ${className}`.trim()} style={style}>
-      <div ref={wrapperRef} className="absolute inset-0 h-full w-full" aria-hidden="true">
-        <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" />
-      </div>
+      {shouldAnimate ? (
+        <div ref={wrapperRef} className="absolute inset-0 h-full w-full" aria-hidden="true">
+          <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" />
+        </div>
+      ) : null}
       {children ? <div className="relative z-10 w-full">{children}</div> : null}
     </section>
   );

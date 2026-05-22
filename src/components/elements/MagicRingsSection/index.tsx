@@ -129,6 +129,10 @@ export default function MagicRingsSection({
     const mount = mountRef.current;
     if (!mount) return;
 
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+    if (reducedMotion || !isDesktop) return;
+
     let renderer: THREE.WebGLRenderer;
     try {
       renderer = new THREE.WebGLRenderer({ alpha: true });
@@ -209,9 +213,20 @@ export default function MagicRingsSection({
     mount.addEventListener('mouseleave', onMouseLeave);
     mount.addEventListener('click', onClick);
 
+    let isVisible = true;
+    const visibilityObserver = new IntersectionObserver(
+      (entries) => {
+        isVisible = entries[0]?.isIntersecting ?? true;
+      },
+      { threshold: 0.08 },
+    );
+    visibilityObserver.observe(mount);
+
     let frameId: number;
     const animate = (t: number) => {
       frameId = requestAnimationFrame(animate);
+      if (!isVisible) return;
+
       const p = propsRef.current!;
 
       smoothMouseRef.current[0] += (mouseRef.current[0] - smoothMouseRef.current[0]) * 0.08;
@@ -254,6 +269,7 @@ export default function MagicRingsSection({
       mount.removeEventListener('mouseenter', onMouseEnter);
       mount.removeEventListener('mouseleave', onMouseLeave);
       mount.removeEventListener('click', onClick);
+      visibilityObserver.disconnect();
       mount.removeChild(renderer.domElement);
       renderer.dispose();
       material.dispose();

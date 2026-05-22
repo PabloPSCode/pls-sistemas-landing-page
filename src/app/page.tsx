@@ -4,9 +4,7 @@ import FadeContainer from "@/components/animations-and-loading/FadeContainer";
 import RevealContainer from "@/components/animations-and-loading/RevealContainer";
 import ZoomContainer from "@/components/animations-and-loading/ZoomContainer";
 import Button from "@/components/buttons/Button";
-import TargetCursor from "@/components/cursors";
 import DotGridSection from "@/components/elements/DotGridSection";
-import MagicRingsSection from "@/components/elements/MagicRingsSection";
 import { Section } from "@/components/elements/Section";
 import StructuredData from "@/components/seo/StructuredData";
 import Paragraph from "@/components/typography/Paragraph";
@@ -18,16 +16,18 @@ import {
   siteDescription,
 } from "@/lib/seo";
 import {
-  MagnifyingGlassIcon,
-  PaintBrushIcon,
-  TableIcon,
-  WrenchIcon,
-} from "@phosphor-icons/react";
+  MagnifyingGlassIcon
+} from "@phosphor-icons/react/dist/icons/MagnifyingGlass";
+import { PaintBrushIcon } from "@phosphor-icons/react/dist/icons/PaintBrush";
+import { TableIcon } from "@phosphor-icons/react/dist/icons/Table";
+import { WrenchIcon } from "@phosphor-icons/react/dist/icons/Wrench";
+import dynamic from "next/dynamic";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 import BorderedGlowCard from "@/components/animations-and-loading/BorderedGlowCard";
 import { FadeText } from "@/components/animations-and-loading/FadeText";
-import VideoSection from "@/components/elements/VideoSection";
+import { HeroSection } from "@/components/elements/HeroSection";
 import BrandMarquee from "@/components/marketing/BrandMarquee";
 import {
   aboutContent,
@@ -41,7 +41,17 @@ import { works, worksSectionContent } from "@/mocks/works";
 import { trackCtaClick } from "@/utils/analytics";
 import { startWhatsAppChat } from "@/utils/whatsapp";
 import Link from "next/link";
-import { HeroSection } from "@/components/elements/HeroSection";
+
+const TargetCursor = dynamic(() => import("@/components/cursors"), {
+  ssr: false,
+});
+
+const MagicRingsSection = dynamic(
+  () => import("@/components/elements/MagicRingsSection"),
+  {
+    ssr: false,
+  },
+);
 
 const landingServiceIcons = [
   TableIcon,
@@ -66,6 +76,34 @@ const homePageSchemas = [
 ];
 
 export default function Home() {
+  const [enablePointerFx, setEnablePointerFx] = useState(false);
+  const [enableDecorativeFx, setEnableDecorativeFx] = useState(false);
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const canUsePointerFx = window.matchMedia("(min-width: 1024px) and (pointer:fine)").matches;
+    const win = window as Window & {
+      requestIdleCallback?: (cb: () => void, options?: { timeout: number }) => number;
+      cancelIdleCallback?: (id: number) => void;
+    };
+
+    setEnablePointerFx(canUsePointerFx && !reducedMotion);
+
+    const scheduleEnable = () => setEnableDecorativeFx(!reducedMotion);
+    if (typeof win.requestIdleCallback === "function") {
+      const idleId = win.requestIdleCallback(scheduleEnable, { timeout: 1200 });
+
+      return () => {
+        if (typeof win.cancelIdleCallback === "function") {
+          win.cancelIdleCallback(idleId);
+        }
+      };
+    }
+
+    const timeoutId = setTimeout(scheduleEnable, 700);
+    return () => clearTimeout(timeoutId);
+  }, []);
+
   const heroTexts = [
     "Sites e landing pages com qualidade premium.",
     "Ferramentas web prontas para facilitar o seu dia a dia.",
@@ -82,12 +120,14 @@ export default function Home() {
   return (
     <div className="overflow-x-hidden bg-[#020205] text-white">
       <StructuredData data={homePageSchemas} id="plssistemas-home-seo" />
-      <TargetCursor
-        targetSelector="#portfolio .portfolio-card-target"
-        zoneSelector="#portfolio"
-        hideDefaultCursor={false}
-        spinDuration={3}
-      />
+      {enablePointerFx ? (
+        <TargetCursor
+          targetSelector="#portfolio .portfolio-card-target"
+          zoneSelector="#portfolio"
+          hideDefaultCursor={false}
+          spinDuration={3}
+        />
+      ) : null}
       <main className="flex flex-col">
         <HeroSection
           size="full"
@@ -147,6 +187,7 @@ export default function Home() {
                     alt="Equipe da PLS Sistemas trabalhando em projetos web"
                     width={360}
                     height={76}
+                    sizes="(max-width: 1024px) 90vw, 360px"
                     className="contrast-115"
                   />
                 </div>
@@ -179,7 +220,7 @@ export default function Home() {
                 <BrandMarquee
                   logos={companies}
                   imageFilter="grayscale"
-                  speed={120}
+                  speed={48}
                 />
               </div>
             </div>
@@ -189,6 +230,7 @@ export default function Home() {
         <div id={landingServicesContent.sectionId} className="scroll-mt-8">
           <DotGridSection
             className="relative isolate bg-[#05020b] py-20 sm:py-24"
+            animated={enableDecorativeFx}
             dotSize={8}
             gap={18}
             baseColor="#2c1247"
@@ -427,6 +469,7 @@ export default function Home() {
                           alt={`Preview do website ${work.title}`}
                           width={1280}
                           height={820}
+                          sizes="(max-width: 1024px) 100vw, 33vw"
                           className="h-auto w-full object-cover transition duration-500 scale-[1.1] group-hover:scale-[1.3]"
                         />
                       </div>
@@ -530,22 +573,24 @@ export default function Home() {
               aria-hidden="true"
               className="pointer-events-none absolute inset-0"
             >
-              <MagicRingsSection
-                color="#9f46ff"
-                colorTwo="#841eb7"
-                speed={0.8}
-                ringCount={6}
-                attenuation={12}
-                lineThickness={1.8}
-                baseRadius={0.28}
-                radiusStep={0.12}
-                scaleRate={0.11}
-                opacity={0.9}
-                blur={1}
-                noiseAmount={0.03}
-                rotation={-18}
-                ringGap={1.38}
-              />
+              {enableDecorativeFx ? (
+                <MagicRingsSection
+                  color="#9f46ff"
+                  colorTwo="#841eb7"
+                  speed={0.8}
+                  ringCount={6}
+                  attenuation={12}
+                  lineThickness={1.8}
+                  baseRadius={0.28}
+                  radiusStep={0.12}
+                  scaleRate={0.11}
+                  opacity={0.9}
+                  blur={1}
+                  noiseAmount={0.03}
+                  rotation={-18}
+                  ringGap={1.38}
+                />
+              ) : null}
             </div>
 
             <div
