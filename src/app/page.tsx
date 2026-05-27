@@ -1,6 +1,7 @@
 "use client";
 
 import FadeContainer from "@/components/animations-and-loading/FadeContainer";
+import { FadeText } from "@/components/animations-and-loading/FadeText";
 import RevealContainer from "@/components/animations-and-loading/RevealContainer";
 import ZoomContainer from "@/components/animations-and-loading/ZoomContainer";
 import Button from "@/components/buttons/Button";
@@ -25,7 +26,6 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-import BorderedGlowCard from "@/components/animations-and-loading/BorderedGlowCard";
 import { HeroSection } from "@/components/elements/HeroSection";
 import BrandMarquee from "@/components/marketing/BrandMarquee";
 import {
@@ -40,10 +40,6 @@ import { works, worksSectionContent } from "@/mocks/works";
 import { trackCtaClick } from "@/utils/analytics";
 import { startWhatsAppChat } from "@/utils/whatsapp";
 import Link from "next/link";
-
-const TargetCursor = dynamic(() => import("@/components/cursors"), {
-  ssr: false,
-});
 
 const MagicRingsSection = dynamic(
   () => import("@/components/elements/MagicRingsSection"),
@@ -75,18 +71,14 @@ const homePageSchemas = [
 ];
 
 export default function Home() {
-  const [enablePointerFx, setEnablePointerFx] = useState(false);
   const [enableDecorativeFx, setEnableDecorativeFx] = useState(false);
 
   useEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const canUsePointerFx = window.matchMedia("(min-width: 1024px) and (pointer:fine)").matches;
     const win = window as Window & {
       requestIdleCallback?: (cb: () => void, options?: { timeout: number }) => number;
       cancelIdleCallback?: (id: number) => void;
     };
-
-    setEnablePointerFx(canUsePointerFx && !reducedMotion);
 
     const scheduleEnable = () => setEnableDecorativeFx(!reducedMotion);
     if (typeof win.requestIdleCallback === "function") {
@@ -113,27 +105,43 @@ export default function Home() {
   return (
     <div className="overflow-x-hidden bg-[#020205] text-white">
       <StructuredData data={homePageSchemas} id="plssistemas-home-seo" />
-      {enablePointerFx ? (
-        <TargetCursor
-          targetSelector="#portfolio .portfolio-card-target"
-          zoneSelector="#portfolio"
-          hideDefaultCursor={false}
-          spinDuration={3}
-        />
-      ) : null}
       <main className="flex flex-col">
         <HeroSection
           size="full"
           sectionClassName="min-h-[72vh] bg-gradient-to-br from-[#000000] via-[#250c48] to-[#7E1EED] relative isolate overflow-hidden"
           children={
             <div className="absolute inset-0 z-30 flex flex-col items-center justify-center h-full">
-              <div className="mx-auto my-auto min-h-[95vh] flex w-full max-w-7xl items-center justify-center2 px-6 pb-16 lg:px-8">
+              <Image
+                aria-hidden="true"
+                src="/imgs/mosaic_bg.png"
+                alt=""
+                fill
+                priority
+                sizes="100vw"
+                className="pointer-events-none absolute inset-0 z-0 select-none object-cover object-center opacity-60 sm:opacity-75"
+              />
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(180deg,rgba(2,2,5,0.66)_0%,rgba(2,2,5,0.54)_20%,rgba(2,2,5,0.76)_100%)]"
+              />
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(ellipse_at_center,rgba(2,2,5,0.76)_0%,rgba(2,2,5,0.70)_28%,rgba(81,24,184,0.32)_64%,rgba(2,2,5,0.72)_100%)]"
+              />
+
+              <div className="relative z-10 mx-auto my-auto min-h-[95vh] flex w-full max-w-7xl items-center justify-center2 px-6 pb-16 lg:px-8">
                 <div className="pointer-events-auto m-auto space-y-8">
-                  <h1 className="mt-8 max-w-4xl text-center font-semibold tracking-wide text-white/95 text-3xl sm:text-5xl">
-                    Sites e landing pages com qualidade premium.
-                  </h1>
+                  <FadeText
+                    wrapper="h1"
+                    className="mt-8 max-w-4xl text-center font-semibold tracking-wide text-white/95 text-3xl sm:text-5xl"
+                    items={[
+                      "Sites e landing pages com qualidade premium.",
+                      "Ferramentas comerciais impulsionadas por IA",
+                      "Soluções personalizadas para o seu negócio",
+                    ]}
+                  />
                   <p className="mx-auto max-w-4xl text-center text-white/85 text-base sm:text-2xl">
-                    Ferramentas web prontas para facilitar o seu dia a dia.
+                    Criamos experiências online que encantam seus clientes e impulsionam seu negócio para o sucesso.
                   </p>
 
                   <FadeContainer
@@ -261,47 +269,35 @@ export default function Home() {
                       delay={index + 1}
                       className="h-full"
                     >
-                      <BorderedGlowCard
-                        edgeSensitivity={300}
-                        glowColor="40 80 80"
-                        backgroundColor="#060010"
-                        borderRadius={12}
-                        glowRadius={10}
-                        glowIntensity={1}
-                        coneSpread={25}
-                        animated={false}
-                        colors={["#c084fc", "#aa08cf", "#f838bf"]}
-                      >
-                        <article className="flex h-full flex-col gap-4 rounded-xl border border-white/15 bg-[rgba(0,0,0,0.52)] p-8 shadow-[0_16px_45px_rgba(0,0,0,0.35)] min-h-[280px]">
-                          <div className="flex items-start justify-between gap-4">
-                            <Icon
-                              size={44}
-                              className="text-primary-100"
-                              weight="light"
+                      <article className="flex h-full flex-col gap-4 rounded-xl border border-white/15 bg-[rgba(0,0,0,0.52)] p-8 shadow-[0_16px_45px_rgba(0,0,0,0.35)] min-h-[280px]">
+                        <div className="flex items-start justify-between gap-4">
+                          <Icon
+                            size={44}
+                            className="text-primary-100"
+                            weight="light"
+                          />
+                          <Link
+                            href={serviceHref}
+                            className="flex items-center gap-2"
+                          >
+                            <Subtitle
+                              content={item.ctaLabel}
+                              className="text-primary-200 text-lg sm:text-3xl"
                             />
-                            <Link
-                              href={serviceHref}
-                              className="flex items-center gap-2"
-                            >
-                              <Subtitle
-                                content={item.ctaLabel}
-                                className="text-primary-200 text-lg sm:text-3xl"
-                              />
-                            </Link>
-                          </div>
+                          </Link>
+                        </div>
 
-                          <Subtitle
-                            content={item.title}
-                            element="h3"
-                            className="text-white text-3xl sm:text-5xl"
-                          />
+                        <Subtitle
+                          content={item.title}
+                          element="h3"
+                          className="text-white text-3xl sm:text-5xl"
+                        />
 
-                          <Paragraph
-                            content={item.description}
-                            className="text-white/80 text-base sm:text-2xl"
-                          />
-                        </article>
-                      </BorderedGlowCard>
+                        <Paragraph
+                          content={item.description}
+                          className="text-white/80 text-base sm:text-2xl"
+                        />
+                      </article>
                     </FadeContainer>
                   );
                 })}
@@ -368,49 +364,37 @@ export default function Home() {
                       delay={index + 1}
                       className="h-full"
                     >
-                      <BorderedGlowCard
-                        edgeSensitivity={300}
-                        glowColor="40 80 80"
-                        backgroundColor="#060010"
-                        borderRadius={12}
-                        glowRadius={10}
-                        glowIntensity={1}
-                        coneSpread={25}
-                        animated={false}
-                        colors={["#c084fc", "#aa08cf", "#f838bf"]}
-                      >
-                        <article className="flex h-full flex-col gap-4 rounded-xl border border-white/15 bg-[rgba(0,0,0,0.52)] p-8 shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
-                          <div className="flex items-start justify-between gap-4">
-                            <Image
-                              src={item.imagePath}
-                              alt={`Icone de ${item.title}`}
-                              width={40}
-                              height={40}
+                      <article className="flex h-full flex-col gap-4 rounded-xl border border-white/15 bg-[rgba(0,0,0,0.52)] p-8 shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
+                        <div className="flex items-start justify-between gap-4">
+                          <Image
+                            src={item.imagePath}
+                            alt={`Icone de ${item.title}`}
+                            width={40}
+                            height={40}
+                          />
+                          <a
+                            href={item.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <Subtitle
+                              content={item.ctaLabel}
+                              className="text-primary-200 text-lg sm:text-3xl"
                             />
-                            <a
-                              href={item.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <Subtitle
-                                content={item.ctaLabel}
-                                className="text-primary-200 text-lg sm:text-3xl"
-                              />
-                            </a>
-                          </div>
+                          </a>
+                        </div>
 
-                          <Subtitle
-                            content={item.title}
-                            element="h3"
-                            className="text-white text-3xl sm:text-5xl"
-                          />
+                        <Subtitle
+                          content={item.title}
+                          element="h3"
+                          className="text-white text-3xl sm:text-5xl"
+                        />
 
-                          <Paragraph
-                            content={item.description}
-                            className="text-white/85 text-base sm:text-2xl"
-                          />
-                        </article>
-                      </BorderedGlowCard>
+                        <Paragraph
+                          content={item.description}
+                          className="text-white/85 text-base sm:text-2xl"
+                        />
+                      </article>
                     </RevealContainer>
                   );
                 })}
@@ -421,7 +405,7 @@ export default function Home() {
 
         <div
           id={worksSectionContent.sectionId}
-          className="scroll-mt-8 cursor-none [&_*]:cursor-none"
+          className="scroll-mt-8"
         >
           <Section
             size="full"
@@ -453,7 +437,7 @@ export default function Home() {
                     delay={index + 1}
                     className="h-full"
                   >
-                    <article className="portfolio-card-target group flex h-full flex-col gap-5 rounded-[28px] border border-white/12 bg-white/[0.04] p-5 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur">
+                    <article className="group flex h-full flex-col gap-5 rounded-[28px] border border-white/12 bg-white/[0.04] p-5 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur">
                       <div className="overflow-hidden rounded-[22px] border border-white/10 bg-black/30">
                         <Image
                           src={work.imageUrl}
