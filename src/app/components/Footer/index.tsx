@@ -68,7 +68,7 @@ export default function Footer() {
               <li key={link.label}>
                 <Link
                   href={resolveSiteHref(pathname, link.href)}
-                  className="text-white/80 hover:text-white"
+                  className="text-white/70 hover:text-white transition-colors duration-150"
                 >
                   <Paragraph
                     content={link.label}
@@ -89,7 +89,7 @@ export default function Footer() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-white/80 hover:text-white"
+                  className="text-white/70 hover:text-white transition-colors duration-150"
                 >
                   <Paragraph
                     content={link.label}
@@ -104,7 +104,7 @@ export default function Footer() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/80 hover:text-white"
+                  className="text-white/70 hover:text-white transition-colors duration-150"
                 >
                   <Paragraph
                     content={link.label}
@@ -126,7 +126,7 @@ export default function Footer() {
               <li key={link.label}>
                 <Link
                   href={link.href}
-                  className="text-white/80 hover:text-white"
+                  className="text-white/70 hover:text-white transition-colors duration-150"
                 >
                   <Paragraph
                     content={link.label}
@@ -141,7 +141,7 @@ export default function Footer() {
 
       <FooterElement.Bottom
         bordered
-        className="border-t border-white/40 py-6 flex-col items-center gap-4"
+        className="border-t border-white/10 py-6 flex-col items-center gap-4"
       >
         <span className="text-white/70 !text-xs !sm:text-sm w-fit">
           {new Date().getFullYear()} - Desenvolvido por PLS Sistemas
@@ -152,7 +152,8 @@ export default function Footer() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Falar no WhatsApp"
-        className="fixed bottom-6 right-6 z-50 rounded-full bg-success-500 p-4 text-white hover:scale-105"
+        role="button"
+        className="fixed bottom-6 right-6 z-50 rounded-full bg-success-500 p-4 text-white cursor-pointer transition-all duration-200 hover:scale-110 hover:bg-success-400 shadow-[0_4px_20px_rgba(16,185,129,0.45)] hover:shadow-[0_8px_28px_rgba(16,185,129,0.65)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-success-300/60"
       >
         <WhatsappLogoIcon size={32} weight="thin" />
       </a>

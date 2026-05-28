@@ -133,14 +133,14 @@ export default function Home() {
                 <div className="pointer-events-auto m-auto space-y-8">
                   <FadeText
                     wrapper="h1"
-                    className="mt-8 max-w-4xl text-center font-semibold tracking-wide text-white/95 text-3xl sm:text-5xl"
+                    className="mt-8 max-w-4xl text-center font-semibold tracking-wide text-white/95 text-4xl sm:text-5xl lg:text-6xl"
                     items={[
                       "Sites e landing pages com qualidade premium.",
                       "Ferramentas comerciais impulsionadas por IA",
                       "Soluções personalizadas para o seu negócio",
                     ]}
                   />
-                  <p className="mx-auto max-w-4xl text-center text-white/85 text-base sm:text-2xl">
+                  <p className="mx-auto max-w-3xl text-center text-white/80 text-lg sm:text-2xl leading-relaxed">
                     Criamos experiências online que encantam seus clientes e impulsionam seu negócio para o sucesso.
                   </p>
 
@@ -152,14 +152,14 @@ export default function Home() {
                       type="button"
                       label="Entrar em contato"
                       onClick={() => startWhatsAppChat()}
-                      className="!rounded-full !bg-secondary-500 !px-8 !py-4 !text-black !shadow-none font-bold"
+                      className="!rounded-full !bg-secondary-500 !px-8 !py-4 !text-black !shadow-none font-bold cursor-pointer transition-all duration-200 hover:!bg-secondary-400 hover:scale-[1.03] active:scale-[0.98]"
                     />
                     <Button
                       type="button"
                       variant="outlined"
                       label="Ver portfólio"
                       onClick={() => scrollToSection("portfolio")}
-                      className="!rounded-full !border !border-white !px-8 !py-4 !text-white !shadow-none font-bold"
+                      className="!rounded-full !border !border-white/70 !px-8 !py-4 !text-white !shadow-none font-bold cursor-pointer transition-all duration-200 hover:!border-white hover:!bg-white/10 hover:scale-[1.03] active:scale-[0.98]"
                     />
                   </FadeContainer>
                 </div>
@@ -180,7 +180,7 @@ export default function Home() {
 
             <div className="mt-12 grid w-full max-w-6xl gap-10 lg:grid-cols-[1.05fr_1fr] lg:items-center">
               <ZoomContainer once className="w-full">
-                <div className="relative mx-auto  max-w-2xl bg-gradient-to-br from-primary-100 to-primary-300 flex justify-center rounded-lg">
+                <div className="relative mx-auto max-w-2xl bg-gradient-to-br from-primary-700/60 to-primary-900/80 flex justify-center rounded-2xl ring-1 ring-primary-400/20 shadow-[0_20px_60px_rgba(126,30,237,0.22)]">
                   <Image
                     src="/imgs/profile_3.png"
                     alt="Equipe da PLS Sistemas trabalhando em projetos web"
@@ -269,16 +269,16 @@ export default function Home() {
                       delay={index + 1}
                       className="h-full"
                     >
-                      <article className="flex h-full flex-col gap-4 rounded-xl border border-white/15 bg-[rgba(0,0,0,0.52)] p-8 shadow-[0_16px_45px_rgba(0,0,0,0.35)] min-h-[280px]">
+                      <article className="flex h-full flex-col gap-4 rounded-xl border border-white/15 bg-[rgba(0,0,0,0.52)] p-8 shadow-[0_16px_45px_rgba(0,0,0,0.35)] min-h-[280px] transition-all duration-300 hover:border-primary-400/35 hover:bg-[rgba(8,3,18,0.68)] hover:-translate-y-1 hover:shadow-[0_24px_52px_rgba(0,0,0,0.48)]">
                         <div className="flex items-start justify-between gap-4">
                           <Icon
                             size={44}
-                            className="text-primary-100"
+                            className="text-primary-200"
                             weight="light"
                           />
                           <Link
                             href={serviceHref}
-                            className="flex items-center gap-2"
+                            className="flex items-center gap-2 cursor-pointer transition-colors duration-150"
                           >
                             <Subtitle
                               content={item.ctaLabel}
@@ -308,7 +308,7 @@ export default function Home() {
               >
                 <Link
                   href="/landing-pages#criar-site-landing-page"
-                  className="relative isolate flex items-center justify-center overflow-hidden rounded-xl border border-primary-300/35 bg-gradient-to-r from-primary-700 via-primary-600 to-primary-700 px-6 py-3 shadow-[0_14px_32px_rgba(96,61,255,0.35)] transition-all duration-300 before:absolute before:inset-0 before:-z-10 before:rounded-xl before:bg-primary-400/35 before:blur-2xl before:content-[''] hover:-translate-y-0.5 hover:from-primary-600 hover:to-primary-700 hover:shadow-[0_20px_38px_rgba(110,76,255,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300/60"
+                  className="relative isolate flex items-center justify-center overflow-hidden rounded-xl border border-primary-300/40 bg-gradient-to-r from-primary-700 via-primary-600 to-primary-700 px-8 py-4 shadow-[0_14px_32px_rgba(96,61,255,0.4)] transition-all duration-300 before:absolute before:inset-0 before:-z-10 before:rounded-xl before:bg-primary-400/35 before:blur-2xl before:content-[''] hover:-translate-y-1 hover:from-primary-600 hover:to-primary-700 hover:shadow-[0_20px_42px_rgba(110,76,255,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300/60 cursor-pointer"
                   id="criar-site-landing-page"
                   onClick={() =>
                     trackCtaClick({
@@ -364,7 +364,7 @@ export default function Home() {
                       delay={index + 1}
                       className="h-full"
                     >
-                      <article className="flex h-full flex-col gap-4 rounded-xl border border-white/15 bg-[rgba(0,0,0,0.52)] p-8 shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
+                      <article className="flex h-full flex-col gap-4 rounded-xl border border-white/15 bg-[rgba(0,0,0,0.52)] p-8 shadow-[0_16px_45px_rgba(0,0,0,0.35)] transition-all duration-300 hover:border-primary-400/35 hover:bg-[rgba(8,3,18,0.68)] hover:-translate-y-1 hover:shadow-[0_24px_52px_rgba(0,0,0,0.48)]">
                         <div className="flex items-start justify-between gap-4">
                           <Image
                             src={item.imagePath}
@@ -376,6 +376,7 @@ export default function Home() {
                             href={item.url}
                             target="_blank"
                             rel="noopener noreferrer"
+                            className="cursor-pointer transition-colors duration-150"
                           >
                             <Subtitle
                               content={item.ctaLabel}
@@ -437,7 +438,7 @@ export default function Home() {
                     delay={index + 1}
                     className="h-full"
                   >
-                    <article className="group flex h-full flex-col gap-5 rounded-[28px] border border-white/12 bg-white/[0.04] p-5 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur">
+                    <article className="group flex h-full flex-col gap-5 rounded-[28px] border border-white/12 bg-white/[0.04] p-5 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur transition-all duration-300 hover:border-white/20 hover:bg-white/[0.07] hover:-translate-y-1 hover:shadow-[0_28px_56px_rgba(0,0,0,0.42)]">
                       <div className="overflow-hidden rounded-[22px] border border-white/10 bg-black/30">
                         <Image
                           src={work.imageUrl}
@@ -458,14 +459,14 @@ export default function Home() {
 
                         <Paragraph
                           content={work.description}
-                          className="text-white/72 text-base leading-7 sm:text-xl"
+                          className="text-white/70 text-base leading-7 sm:text-xl"
                         />
 
                         <a
                           href={work.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="mt-auto inline-flex w-fit items-center rounded-full border border-primary-300/30 bg-primary-500/12 px-4 py-2 text-sm font-semibold text-primary-100 transition hover:border-primary-200/50 hover:bg-primary-500/20 hover:text-white sm:text-base"
+                          className="mt-auto inline-flex w-fit items-center rounded-full border border-primary-300/30 bg-primary-500/12 px-4 py-2 text-sm font-semibold text-primary-100 transition-all duration-200 hover:border-primary-200/60 hover:bg-primary-500/25 hover:text-white hover:-translate-y-0.5 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300/60 sm:text-base"
                           onClick={() =>
                             trackCtaClick({
                               ctaLabel: worksSectionContent.ctaLabel,
@@ -592,7 +593,7 @@ export default function Home() {
                   <Button
                     label={customSolutionFormContent.submitLabel}
                     variant="filled"
-                    className="relative isolate flex items-center justify-center overflow-hidden rounded-xl border border-success-300/35 bg-gradient-to-r from-success-500 via-success-600 to-success-500 px-6 py-3 shadow-[0_14px_32px_rgba(100,21,255,0.35)] transition-all duration-300 before:absolute before:inset-0 before:-z-10 before:rounded-xl before:bg-success-400/35 before:blur-2xl before:content-[''] hover:-translate-y-0.5 hover:shadow-[0_20px_38px_rgba(82, 255, 76, 0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-success-300/60 text-white font-bold text-lg sm:text-3xl"
+                    className="relative isolate flex items-center justify-center overflow-hidden rounded-xl border border-success-300/40 bg-gradient-to-r from-success-500 via-success-600 to-success-500 px-8 py-4 shadow-[0_14px_32px_rgba(16,185,129,0.4)] transition-all duration-300 before:absolute before:inset-0 before:-z-10 before:rounded-xl before:bg-success-400/35 before:blur-2xl before:content-[''] hover:-translate-y-1 hover:shadow-[0_20px_42px_rgba(16,185,129,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-success-300/60 text-white font-bold text-lg sm:text-3xl cursor-pointer"
                     onClick={() => {
                       trackCtaClick({
                         ctaLabel: customSolutionFormContent.submitLabel,
