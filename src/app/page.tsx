@@ -108,7 +108,7 @@ export default function Home() {
       <main className="flex flex-col">
         <HeroSection
           size="full"
-          sectionClassName="min-h-[72vh] bg-gradient-to-br from-[#000000] via-[#250c48] to-[#7E1EED] relative isolate overflow-hidden"
+          sectionClassName="min-h-[72vh] bg-gradient-to-br from-[#703cd6] via-[#9a60ea] to-[#b97efc] relative isolate overflow-hidden"
           children={
             <div className="absolute inset-0 z-30 flex flex-col items-center justify-center h-full">
               <Image
@@ -122,22 +122,22 @@ export default function Home() {
               />
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(180deg,rgba(2,2,5,0.66)_0%,rgba(2,2,5,0.54)_20%,rgba(2,2,5,0.76)_100%)]"
+                className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(180deg,rgba(2,2,5,0.66)_0%,rgba(2,2,5,0.54)_20%,rgba(2,2,5,0.32)_100%)]"
               />
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(ellipse_at_center,rgba(2,2,5,0.76)_0%,rgba(2,2,5,0.70)_28%,rgba(81,24,184,0.32)_64%,rgba(2,2,5,0.72)_100%)]"
+                className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(ellipse_at_center,rgba(2,2,5,0.76)_0%,rgba(2,2,5,0.70)_28%,rgba(81,24,184,0.12)_64%,rgba(2,2,5,0.72)_100%)]"
               />
 
               <div className="relative z-10 mx-auto my-auto min-h-[95vh] flex w-full max-w-7xl items-center justify-center2 px-6 pb-16 lg:px-8">
                 <div className="pointer-events-auto m-auto space-y-8">
                   <FadeText
                     wrapper="h1"
-                    className="mt-8 max-w-4xl text-center font-semibold tracking-wide text-white/95 text-4xl sm:text-5xl lg:text-6xl"
+                    className="mt-8 max-w-4xl text-center font-semibold tracking-wide text-white/95 text-4xl sm:text-4xl lg:text-5xl"
                     items={[
-                      "Sites e landing pages com qualidade premium.",
-                      "Ferramentas comerciais impulsionadas por IA",
-                      "Soluções personalizadas para o seu negócio",
+                      "Criamos sites e landing pages com qualidade premium.",
+                      "Disponibilizamos ferramentas comerciais impulsionadas por IA.",
+                      "Desenvolvemos soluções personalizadas para o seu negócio.",
                     ]}
                   />
                   <p className="mx-auto max-w-3xl text-center text-white/80 text-lg sm:text-2xl leading-relaxed">

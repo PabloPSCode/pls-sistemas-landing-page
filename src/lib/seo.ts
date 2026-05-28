@@ -114,6 +114,9 @@ export const primarySitePages: PrimarySitePage[] = [
       "estratégias digitais",
     ],
   },
+];
+
+export const utilityPages: PrimarySitePage[] = [
   {
     name: "Política de Privacidade",
     path: "/politica-de-privacidade",

@@ -11,6 +11,7 @@ import {
     createSiteNavigationSchema,
     createWebsiteSchema,
     primarySitePages,
+    utilityPages,
     siteDescription,
     siteMetadataBase,
     siteName,
@@ -64,7 +65,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const structuredSitePages = [
+  const navPages = [
     ...primarySitePages,
     ...serviceSeoPages.map((page) => ({
       name: page.shortName,
@@ -73,13 +74,14 @@ export default function RootLayout({
       keywords: page.keywords,
     })),
   ];
+  const allPages = [...navPages, ...utilityPages];
   const rootSchemas = [
     createOrganizationSchema(),
     createProfessionalServiceSchema(
       businessPhone ? `+${businessPhone}` : undefined,
     ),
-    createWebsiteSchema(structuredSitePages),
-    createSiteNavigationSchema(structuredSitePages),
+    createWebsiteSchema(allPages),
+    createSiteNavigationSchema(navPages),
   ];
 
   return (
