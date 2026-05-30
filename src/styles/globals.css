@@ -91,6 +91,9 @@
   --color-bg-card: #272931;
   --color-border-card: #3b3f48;
 
+  /* Design token: all content cards use this radius (= rounded-2xl = 16px) */
+  --radius-card: 1rem;
+
   --font-primary: var(--font-oxanium), ui-sans-serif, system-ui,
     -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans",
     "Apple Color Emoji", "Segoe UI Emoji", sans-serif;

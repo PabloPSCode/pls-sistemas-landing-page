@@ -68,19 +68,19 @@ export default function BlogListingPage({
           />
 
           <Subtitle
-            content="Insights sobre sites, landing pages, SEO, automação e estratégias digitais para empresas que precisam vender mais e operar melhor."
+            content="Insights sobre sites, landing pages, SEO e estratégias digitais para empresas que precisam vender mais e operar melhor."
             className="mt-6 max-w-3xl text-center !text-base !font-light leading-8 text-white/72 sm:!text-xl"
           />
 
           <form
             onSubmit={handleSubmit}
-            className="mt-10 flex w-full max-w-3xl flex-col gap-3 bg-white/[0.04] p-3 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur sm:flex-row sm:items-center"
+            className="mt-10 flex w-full max-w-3xl flex-col gap-3 rounded-2xl bg-white/[0.04] p-3 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur sm:flex-row sm:items-center"
           >
             <SearchInput
               search={search}
               setSearch={setSearch}
               onCancelSearch={() => setSearch("")}
-              placeholder="Pesquise por SEO, landing pages, automação ou performance"
+              placeholder="Pesquise por SEO, landing pages ou performance"
               containerClassName="flex-1"
               className="!my-0 !h-12 !rounded-2xl !border-white/10 !bg-white/[0.03] !px-3 text-white placeholder:!text-white/40"
             />
@@ -96,7 +96,7 @@ export default function BlogListingPage({
 
       <section
         id="blog-results"
-        className="mx-auto w-full max-w-7xl px-6 py-14 sm:px-8"
+        className="mx-auto w-full max-w-7xl px-6 py-20 sm:px-8 sm:py-24"
       >
         <div className="min-w-0">
           <div className="flex flex-col gap-3 border-b border-white/10 pb-6 sm:flex-row sm:items-end sm:justify-between">
@@ -142,7 +142,7 @@ export default function BlogListingPage({
               ))}
             </div>
           ) : (
-            <div className="mt-8 rounded-[28px] border border-dashed border-white/15 bg-white/[0.03] p-8 text-center sm:p-12">
+            <div className="mt-8 rounded-2xl border border-dashed border-white/15 bg-white/[0.03] p-8 text-center sm:p-12">
               <Title
                 content="Nenhum conteúdo encontrado"
                 element="h3"

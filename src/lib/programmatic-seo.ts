@@ -29,6 +29,7 @@ export type ProgrammaticSeoPage = {
   heroDescription: string;
   audience: string;
   primaryCtaLabel: string;
+  primaryCtaHref?: string;
   secondaryCtaLabel: string;
   secondaryCtaHref: string;
   benefits: ProgrammaticSeoBenefit[];

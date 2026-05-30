@@ -12,7 +12,7 @@ import BlogListingPage from "./BlogListingPage";
 
 const blogPageTitle = "Blog | PLS Sistemas";
 const blogPageDescription =
-  "Conteúdos da PLS Sistemas sobre sites, landing pages, SEO, automação e estratégias digitais para empresas.";
+  "Conteúdos da PLS Sistemas sobre sites, landing pages, SEO e estratégias digitais para empresas.";
 
 export const metadata = createPageMetadata({
   title: blogPageTitle,
@@ -22,7 +22,6 @@ export const metadata = createPageMetadata({
     "blog de SEO",
     "artigos sobre landing pages",
     "conteúdo sobre sites",
-    "automação comercial",
     "marketing digital",
   ],
 });

@@ -13,7 +13,7 @@ import { serviceSeoPages } from "@/lib/programmatic-seo";
 
 const servicesPageTitle = "Serviços de Desenvolvimento Web e SEO | PLS Sistemas";
 const servicesPageDescription =
-  "Conheça os serviços da PLS Sistemas para criação de sites, landing pages, sistemas web sob medida, automação para empresas e SEO técnico.";
+  "Conheça os serviços da PLS Sistemas para criação de sites, landing pages, sistemas web sob medida e SEO técnico.";
 
 export const metadata = createPageMetadata({
   title: servicesPageTitle,
@@ -75,8 +75,8 @@ export default function ServicesPage() {
             Serviços
           </p>
           <h1 className="max-w-5xl text-4xl font-bold leading-tight text-white sm:text-6xl">
-            Desenvolvimento web, automação e SEO para empresas que precisam
-            crescer com uma base digital sólida.
+            Desenvolvimento web e SEO para empresas que precisam crescer com
+            uma base digital sólida.
           </h1>
           <p className="max-w-3xl text-base leading-8 text-white/78 sm:text-xl">
             Escolha o tipo de projeto que mais se aproxima da sua necessidade
@@ -100,12 +100,12 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="px-4 py-14 sm:px-6 sm:py-20">
+      <section className="px-4 py-20 sm:px-6 sm:py-24">
         <div className="mx-auto grid w-full max-w-6xl gap-5 md:grid-cols-2">
           {serviceSeoPages.map((page) => (
             <article
               key={page.slug}
-              className="flex h-full flex-col rounded-lg border border-white/12 bg-white/[0.04] p-6 shadow-[0_18px_46px_rgba(0,0,0,0.28)]"
+              className="flex h-full flex-col rounded-2xl border border-white/12 bg-white/[0.04] p-6 shadow-[0_18px_46px_rgba(0,0,0,0.28)]"
             >
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-teal-200">
                 {page.heroEyebrow}

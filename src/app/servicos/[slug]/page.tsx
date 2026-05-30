@@ -118,7 +118,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
               </p>
             </div>
 
-            <aside className="rounded-lg border border-white/12 bg-white/[0.04] p-6">
+            <aside className="rounded-2xl border border-white/12 bg-white/[0.04] p-6">
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white/56">
                 Indicado para
               </p>
@@ -127,7 +127,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col">
                 <Link
-                  href="/#solucoes-sob-medida"
+                  href={page.primaryCtaHref ?? "/#solucoes-sob-medida"}
                   className="inline-flex justify-center rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#030307] transition hover:bg-white/86"
                 >
                   {page.primaryCtaLabel}
@@ -144,12 +144,12 @@ export default async function ServicePage({ params }: ServicePageProps) {
         </div>
       </section>
 
-      <section className="px-4 py-14 sm:px-6 sm:py-20">
+      <section className="px-4 py-20 sm:px-6 sm:py-24">
         <div className="mx-auto grid w-full max-w-6xl gap-5 md:grid-cols-3">
           {page.benefits.map((benefit) => (
             <article
               key={benefit.title}
-              className="rounded-lg border border-white/12 bg-white/[0.04] p-6"
+              className="rounded-2xl border border-white/12 bg-white/[0.04] p-6"
             >
               <h2 className="text-xl font-semibold text-white">
                 {benefit.title}
@@ -162,7 +162,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
         </div>
       </section>
 
-      <section className="border-y border-white/10 bg-[#07110f] px-4 py-14 sm:px-6 sm:py-20">
+      <section className="border-y border-white/10 bg-[#07110f] px-4 py-20 sm:px-6 sm:py-24">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
           {page.sections.map((section) => (
             <section
@@ -180,13 +180,13 @@ export default async function ServicePage({ params }: ServicePageProps) {
         </div>
       </section>
 
-      <section className="px-4 py-14 sm:px-6 sm:py-20">
+      <section className="px-4 py-20 sm:px-6 sm:py-24">
         <div className="mx-auto grid w-full max-w-6xl gap-8 lg:grid-cols-[0.72fr_0.28fr]">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-teal-200">
               Perguntas frequentes
             </p>
-            <div className="mt-6 divide-y divide-white/10 rounded-lg border border-white/12">
+            <div className="mt-6 divide-y divide-white/10 rounded-2xl border border-white/12">
               {page.faqs.map((faq) => (
                 <details key={faq.question} className="group p-5 open:bg-white/[0.03]">
                   <summary className="cursor-pointer list-none text-lg font-semibold text-white marker:hidden">
@@ -209,7 +209,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
                 <Link
                   key={relatedPage.slug}
                   href={relatedPage.path}
-                  className="rounded-lg border border-white/12 bg-white/[0.04] p-4 text-sm font-semibold text-white transition hover:border-teal-200/60 hover:bg-teal-300/10"
+                  className="rounded-2xl border border-white/12 bg-white/[0.04] p-4 text-sm font-semibold text-white transition hover:border-teal-200/60 hover:bg-teal-300/10"
                 >
                   {relatedPage.name}
                 </Link>

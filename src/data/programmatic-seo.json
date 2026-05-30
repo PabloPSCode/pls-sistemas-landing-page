@@ -24,7 +24,8 @@
       "heroTitle": "Sites institucionais para empresas que precisam aparecer, explicar melhor sua oferta e gerar contatos.",
       "heroDescription": "A PLS Sistemas cria websites responsivos, rápidos e alinhados à identidade do negócio, com estrutura pensada para mecanismos de busca e para clientes que pesquisam antes de comprar.",
       "audience": "Ideal para empresas, prestadores de serviço, escritórios e profissionais que precisam de uma presença digital confiável.",
-      "primaryCtaLabel": "Solicitar orçamento",
+      "primaryCtaLabel": "Criar website",
+      "primaryCtaHref": "/landing-pages",
       "secondaryCtaLabel": "Ver landing pages",
       "secondaryCtaHref": "/landing-pages",
       "benefits": [
@@ -100,6 +101,7 @@
       "heroDescription": "Criamos páginas focadas em uma oferta específica, com narrativa clara, CTA destacado, prova social e estrutura visual pensada para reduzir atrito no caminho da conversão.",
       "audience": "Ideal para campanhas de tráfego pago, lançamentos, validação de oferta, eventos, serviços recorrentes e produtos digitais.",
       "primaryCtaLabel": "Criar minha landing page",
+      "primaryCtaHref": "/landing-pages",
       "secondaryCtaLabel": "Escolher template",
       "secondaryCtaHref": "/landing-pages#criar-site-landing-page",
       "benefits": [
@@ -146,8 +148,7 @@
       ],
       "relatedSlugs": [
         "criacao-de-sites",
-        "seo-tecnico",
-        "automacao-para-empresas"
+        "seo-tecnico"
       ]
     },
     {
@@ -220,83 +221,7 @@
         }
       ],
       "relatedSlugs": [
-        "automacao-para-empresas",
         "criacao-de-sites",
-        "seo-tecnico"
-      ]
-    },
-    {
-      "slug": "automacao-para-empresas",
-      "path": "/servicos/automacao-para-empresas",
-      "name": "Automação para Empresas",
-      "shortName": "Automação",
-      "title": "Automação para Empresas e Processos Digitais | PLS Sistemas",
-      "description": "Automação de processos para empresas que querem reduzir tarefas repetitivas, conectar ferramentas e ganhar produtividade com soluções digitais.",
-      "keywords": [
-        "automação para empresas",
-        "automação de processos",
-        "produtividade empresarial",
-        "integração de ferramentas",
-        "sistemas para empresas"
-      ],
-      "serviceTypes": [
-        "Automação de processos",
-        "Integração de ferramentas",
-        "Soluções digitais",
-        "Produtividade empresarial"
-      ],
-      "heroEyebrow": "Processos digitais",
-      "heroTitle": "Automação para reduzir retrabalho, padronizar rotinas e dar mais velocidade à operação.",
-      "heroDescription": "A PLS Sistemas ajuda empresas a transformar tarefas repetitivas em fluxos digitais mais consistentes, conectando dados, pessoas e ferramentas quando isso gera ganho real.",
-      "audience": "Ideal para negócios com muitos controles manuais, repetições em atendimento, cadastros, relatórios, triagens ou acompanhamento operacional.",
-      "primaryCtaLabel": "Mapear minha automação",
-      "secondaryCtaLabel": "Sistemas sob medida",
-      "secondaryCtaHref": "/servicos/desenvolvimento-de-sistemas",
-      "benefits": [
-        {
-          "title": "Menos tarefas repetitivas",
-          "description": "Automatizações ajudam a reduzir digitação duplicada, conferências manuais e passos operacionais que consomem tempo da equipe."
-        },
-        {
-          "title": "Processos padronizados",
-          "description": "Fluxos digitais diminuem variações de execução e tornam a rotina mais previsível."
-        },
-        {
-          "title": "Dados mais úteis",
-          "description": "Ao organizar entradas e saídas, fica mais fácil acompanhar indicadores, pendências e oportunidades de melhoria."
-        }
-      ],
-      "sections": [
-        {
-          "title": "Onde automatizar primeiro",
-          "body": "O melhor ponto de partida costuma ser um processo frequente, repetitivo e com regras claras. Isso aumenta o retorno e reduz risco de complexidade desnecessária."
-        },
-        {
-          "title": "Exemplos de fluxos",
-          "body": "Podem ser automatizados cadastros, notificações, geração de documentos, organização de pedidos, triagem de solicitações, relatórios e integrações entre ferramentas."
-        },
-        {
-          "title": "Automação com critério",
-          "body": "Nem todo processo precisa ser automatizado de imediato. A prioridade é identificar o que gera economia de tempo, redução de erro ou melhor atendimento."
-        }
-      ],
-      "faqs": [
-        {
-          "question": "Automação exige trocar todas as ferramentas da empresa?",
-          "answer": "Não necessariamente. Muitas automações conectam ferramentas já usadas pela equipe ou criam uma camada digital para organizar melhor o fluxo."
-        },
-        {
-          "question": "A automação pode ser integrada ao WhatsApp?",
-          "answer": "Dependendo do caso e das regras das plataformas utilizadas, é possível criar fluxos conectados a canais de atendimento e formulários."
-        },
-        {
-          "question": "Como saber se vale a pena automatizar?",
-          "answer": "O primeiro passo é mapear frequência, tempo gasto, risco de erro e impacto no atendimento ou operação."
-        }
-      ],
-      "relatedSlugs": [
-        "desenvolvimento-de-sistemas",
-        "criacao-de-landing-pages",
         "seo-tecnico"
       ]
     },

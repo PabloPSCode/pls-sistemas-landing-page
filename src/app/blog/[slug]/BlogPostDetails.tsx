@@ -39,7 +39,7 @@ export default function BlogPostDetails({
         <div className="pointer-events-none absolute right-[-4rem] top-12 h-64 w-64 rounded-full bg-primary-500/12 blur-3xl" />
         <div className="pointer-events-none absolute left-[-5rem] top-48 h-72 w-72 rounded-full bg-primary-300/8 blur-3xl" />
 
-        <div className="mx-auto grid w-full max-w-7xl gap-10 px-6 py-10 sm:px-8 lg:grid-cols-[minmax(0,1.45fr)_320px] lg:py-14">
+        <div className="mx-auto grid w-full max-w-7xl gap-10 px-6 py-14 sm:px-8 sm:py-20 lg:grid-cols-[minmax(0,1.45fr)_320px]">
           <div className="min-w-0">
             <Breadcrumb
               currentPath={getBlogPostHref(post)}
@@ -96,13 +96,13 @@ export default function BlogPostDetails({
             </div>
 
             <article
-              className="mt-8 rounded-[32px] border border-white/10 bg-white/[0.03] p-6 shadow-[0_20px_70px_rgba(0,0,0,0.18)] sm:p-10 [&_blockquote]:mt-8 [&_blockquote]:border-l-2 [&_blockquote]:border-primary-300/60 [&_blockquote]:pl-5 [&_blockquote]:text-lg [&_blockquote]:leading-8 [&_blockquote]:text-white/86 [&_h2]:mt-10 [&_h2]:text-2xl [&_h2]:font-black [&_h2]:tracking-[-0.04em] [&_h2]:text-white sm:[&_h2]:text-4xl [&_h2:first-child]:mt-0 [&_li]:text-sm [&_li]:leading-7 [&_li]:text-white/76 sm:[&_li]:text-base [&_p]:mt-5 [&_p]:text-sm [&_p]:leading-8 [&_p]:text-white/76 sm:[&_p]:text-lg [&_ul]:mt-6 [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5"
+              className="mt-8 rounded-2xl border border-white/10 bg-white/[0.03] p-6 shadow-[0_20px_70px_rgba(0,0,0,0.18)] sm:p-10 [&_blockquote]:mt-8 [&_blockquote]:border-l-2 [&_blockquote]:border-primary-300/60 [&_blockquote]:pl-5 [&_blockquote]:text-lg [&_blockquote]:leading-8 [&_blockquote]:text-white/86 [&_h2]:mt-10 [&_h2]:text-2xl [&_h2]:font-black [&_h2]:tracking-[-0.04em] [&_h2]:text-white sm:[&_h2]:text-4xl [&_h2:first-child]:mt-0 [&_li]:text-sm [&_li]:leading-7 [&_li]:text-white/76 sm:[&_li]:text-base [&_p]:mt-5 [&_p]:text-sm [&_p]:leading-8 [&_p]:text-white/76 sm:[&_p]:text-lg [&_ul]:mt-6 [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5"
               dangerouslySetInnerHTML={{ __html: post.htmlContent }}
             />
           </div>
 
           <aside className="space-y-6 lg:sticky lg:top-28 lg:h-fit">
-            <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6 shadow-[0_16px_50px_rgba(0,0,0,0.24)] backdrop-blur">
+            <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 shadow-[0_16px_50px_rgba(0,0,0,0.24)] backdrop-blur">
               <SocialRibbon
                 title="Compartilhe este conteúdo"
                 items={shareItems}
@@ -112,7 +112,7 @@ export default function BlogPostDetails({
             </div>
 
             {post.tags.length ? (
-              <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6 shadow-[0_16px_50px_rgba(0,0,0,0.24)] backdrop-blur">
+              <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 shadow-[0_16px_50px_rgba(0,0,0,0.24)] backdrop-blur">
                 <span className="text-xs font-semibold uppercase tracking-[0.24em] text-white/45">
                   Tags
                 </span>
@@ -129,7 +129,7 @@ export default function BlogPostDetails({
               </div>
             ) : null}
 
-            <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6 shadow-[0_16px_50px_rgba(0,0,0,0.24)] backdrop-blur">
+            <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 shadow-[0_16px_50px_rgba(0,0,0,0.24)] backdrop-blur">
               <span className="text-xs font-semibold uppercase tracking-[0.24em] text-white/45">
                 Relacionados
               </span>

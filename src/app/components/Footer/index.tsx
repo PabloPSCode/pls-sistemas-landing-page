@@ -44,7 +44,7 @@ export default function Footer() {
             />
             <Subtitle
               content="Acompanhe nossas redes sociais"
-              className="text-white/70 !text-sm !sm:text-base mt-4"
+              className="text-white/70 !text-xs !sm:text-sm uppercase tracking-[0.14em] mt-4"
             />
             <FooterElement.SocialRow
               iconsClassName="text-foreground/80 hover:text-foreground -mt-4 sm:-ml-6"
@@ -61,7 +61,7 @@ export default function Footer() {
         <FooterElement.Column className="items-center sm:items-start gap-4">
           <Subtitle
             content={footerContent.navTitle}
-            className="text-white text-base sm:text-2xl"
+            className="text-white !text-xs !sm:text-sm !font-semibold uppercase tracking-[0.14em] opacity-70"
           />
           <ul className="space-y-3 text-center sm:text-left">
             {footerContent.navLinks.map((link) => (
@@ -72,7 +72,7 @@ export default function Footer() {
                 >
                   <Paragraph
                     content={link.label}
-                    className="text-sm sm:text-xl"
+                    className="!text-xs !sm:text-sm"
                   />
                 </Link>
               </li>
@@ -82,7 +82,7 @@ export default function Footer() {
         <FooterElement.Column className="items-center sm:items-start gap-4">
           <Subtitle
             content={footerContent.solutionsTitle}
-            className="text-white text-base sm:text-2xl"
+            className="text-white !text-xs !sm:text-sm !font-semibold uppercase tracking-[0.14em] opacity-70"
           />
           <ul className="space-y-3 text-center sm:text-left">
             {footerContent.serviceLinks.map((link) => (
@@ -93,7 +93,7 @@ export default function Footer() {
                 >
                   <Paragraph
                     content={link.label}
-                    className="text-sm sm:text-xl"
+                    className="!text-xs !sm:text-sm"
                   />
                 </Link>
               </li>
@@ -108,7 +108,7 @@ export default function Footer() {
                 >
                   <Paragraph
                     content={link.label}
-                    className="text-sm sm:text-xl"
+                    className="!text-xs !sm:text-sm"
                   />
                 </a>
               </li>
@@ -119,7 +119,7 @@ export default function Footer() {
         <FooterElement.Column className="items-center sm:items-start gap-4">
           <Subtitle
             content={footerContent.policyTitle}
-            className="text-white text-base sm:text-2xl"
+            className="text-white !text-xs !sm:text-sm !font-semibold uppercase tracking-[0.14em] opacity-70"
           />
           <ul className="space-y-3 text-center sm:text-left">
             {footerContent.policyLinks.map((link) => (
@@ -130,7 +130,7 @@ export default function Footer() {
                 >
                   <Paragraph
                     content={link.label}
-                    className="text-sm sm:text-xl"
+                    className="!text-xs !sm:text-sm"
                   />
                 </Link>
               </li>
@@ -143,7 +143,7 @@ export default function Footer() {
         bordered
         className="border-t border-white/10 py-6 flex-col items-center gap-4"
       >
-        <span className="text-white/70 !text-xs !sm:text-sm w-fit">
+        <span className="text-white/50 text-xs w-fit">
           {new Date().getFullYear()} - Desenvolvido por PLS Sistemas
         </span>
       </FooterElement.Bottom>

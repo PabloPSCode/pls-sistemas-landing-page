@@ -82,7 +82,7 @@ export const primarySitePages: PrimarySitePage[] = [
     name: "Serviços",
     path: "/servicos",
     description:
-      "Hub de serviços da PLS Sistemas para criação de sites, landing pages, sistemas web, automação e SEO técnico.",
+      "Hub de serviços da PLS Sistemas para criação de sites, landing pages, sistemas web e SEO técnico.",
     keywords: [
       "serviços de desenvolvimento web",
       "criação de sites",
@@ -106,11 +106,10 @@ export const primarySitePages: PrimarySitePage[] = [
     name: "Blog",
     path: "/blog",
     description:
-      "Conteúdos da PLS Sistemas sobre SEO, landing pages, automação, websites e estratégias digitais.",
+      "Conteúdos da PLS Sistemas sobre SEO, landing pages, websites e estratégias digitais.",
     keywords: [
       "blog de SEO",
       "conteúdo sobre landing pages",
-      "automação comercial",
       "estratégias digitais",
     ],
   },

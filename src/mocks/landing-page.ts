@@ -54,7 +54,6 @@ export const heroContent = {
 export const navItems: LandingNavItem[] = [
   { label: "Quem somos", href: "#quem-somos" },
   { label: "Serviços", href: "/servicos" },
-  { label: "Websites e landing pages", href: "/landing-pages" },
   { label: "Soluções", href: "#solucoes-web" },
   { label: "Blog", href: "/blog" },
 ];
@@ -178,10 +177,6 @@ export const footerContent = {
     {
       label: "Sistemas Web",
       href: "/servicos/desenvolvimento-de-sistemas",
-    },
-    {
-      label: "Automação",
-      href: "/servicos/automacao-para-empresas",
     },
     { label: "SEO Técnico", href: "/servicos/seo-tecnico" },
   ] as FooterLinkItem[],

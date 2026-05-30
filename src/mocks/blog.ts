@@ -56,24 +56,6 @@ const blogPostSeeds: BlogPostSeed[] = [
     tags: ["SEO Local", "Google", "Tráfego Orgânico"],
   },
   {
-    id: "post-automacao-comercial",
-    siteId,
-    authorId,
-    authorName,
-    authorAvatarUrl,
-    category: "Automação",
-    title: "Automação comercial: quando vale sair do controle manual e integrar processos",
-    htmlContent:
-      "<h2>O custo invisível do processo manual</h2><p>Planilhas isoladas, repasses via WhatsApp e retrabalho escondem gargalos operacionais. A automação ajuda a organizar atendimento, acompanhamento de propostas e histórico de relacionamento.</p><p>Quando o negócio cresce, o improviso deixa de ser solução rápida e passa a comprometer prazo, previsibilidade e experiência do cliente.</p><h2>Como identificar o momento certo</h2><p>O ponto central é identificar tarefas repetitivas que tomam tempo da equipe e transformam crescimento em desorganização. Entradas duplicadas, perda de histórico e dependência de uma pessoa são sinais claros.</p><ul><li>Centralização de dados comerciais.</li><li>Padronização de etapas de atendimento.</li><li>Menos retrabalho entre vendas e operação.</li></ul><h2>Automação com critério</h2><p>Automatizar não é apenas substituir pessoas por sistema. É criar um fluxo em que a equipe trabalha com mais contexto, menos ruído e mais capacidade de acompanhar oportunidades em escala.</p>",
-    backgroundUrl:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80",
-    createdAt: "2024-11-14T09:15:00.000Z",
-    updatedAt: "2024-11-14T09:15:00.000Z",
-    deletedAt: null,
-    readingTime: "6 min",
-    tags: ["Automação", "Processos", "Eficiência Operacional"],
-  },
-  {
     id: "post-performance-sites",
     siteId,
     authorId,
