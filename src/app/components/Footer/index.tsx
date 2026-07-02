@@ -17,7 +17,7 @@ export default function Footer() {
   return (
     <FooterElement.Root bordered={false} className="bg-[#030307] text-white">
       <FooterElement.Top
-        columns={4}
+        columns={5}
         className="gap-8 border-t border-white/10 py-14 text-center sm:text-left"
       >
         <FooterElement.Column className="items-center sm:items-start gap-6">
@@ -111,6 +111,28 @@ export default function Footer() {
                     className="!text-xs !sm:text-sm"
                   />
                 </a>
+              </li>
+            ))}
+          </ul>
+        </FooterElement.Column>
+
+        <FooterElement.Column className="items-center sm:items-start gap-4">
+          <Subtitle
+            content={footerContent.businessTitle}
+            className="text-white !text-xs !sm:text-sm !font-semibold uppercase tracking-[0.14em] opacity-70"
+          />
+          <ul className="space-y-3 text-center sm:text-left">
+            {footerContent.businessCategories.map((link) => (
+              <li key={link.label}>
+                <Link
+                  href={resolveSiteHref(pathname, link.href)}
+                  className="text-white/70 hover:text-white transition-colors duration-150"
+                >
+                  <Paragraph
+                    content={link.label}
+                    className="!text-xs !sm:text-sm"
+                  />
+                </Link>
               </li>
             ))}
           </ul>

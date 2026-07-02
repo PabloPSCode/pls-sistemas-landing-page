@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Oxanium } from "next/font/google";
 
 import StructuredData from "@/components/seo/StructuredData";
+import { businessCategories } from "@/lib/business-categories";
 import { serviceSeoPages } from "@/lib/programmatic-seo";
 import {
     createOrganizationSchema,
@@ -74,7 +75,12 @@ export default function RootLayout({
       keywords: page.keywords,
     })),
   ];
-  const allPages = [...navPages, ...utilityPages];
+  const businessCategoryPages = businessCategories.map((category) => ({
+    name: category.title,
+    path: category.path,
+    description: category.problemContext,
+  }));
+  const allPages = [...navPages, ...businessCategoryPages, ...utilityPages];
   const rootSchemas = [
     createOrganizationSchema(),
     createProfessionalServiceSchema(

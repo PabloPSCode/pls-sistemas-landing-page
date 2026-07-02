@@ -166,6 +166,7 @@ export const footerContent = {
   navTitle: "PÁGINAS PRINCIPAIS",
   policyTitle: "TERMOS E POLÍTICAS",
   solutionsTitle: "SOLUÇÕES PARA SEU NEGÓCIO",
+  businessTitle: "SITE PARA O SEU NEGÓCIO",
   copyright: "2026, Todos os direitos reservados",
   navLinks: [...navItems] as FooterLinkItem[],
   serviceLinks: [
@@ -183,6 +184,22 @@ export const footerContent = {
   solutions: [
     { label: "Pic Loja", href: "https://picloja.plssistemas.com.br/" },
     { label: "React Ultimate Componentes", href: "https://reactultimatecomponents.plssistemas.com.br/" },
+  ] as FooterLinkItem[],
+  businessCategories: [
+    { label: "Empresas em geral", href: "/sites/empresas-em-geral" },
+    { label: "Dentistas e clínicas", href: "/sites/dentistas-e-clinicas" },
+    { label: "Corretores de imóveis", href: "/sites/corretores-de-imoveis" },
+    { label: "RH e contabilidade", href: "/sites/rh-e-contabilidade" },
+    { label: "Tecnologia e software", href: "/sites/tecnologia-e-software" },
+    { label: "Academias e bem-estar", href: "/sites/academias-e-bem-estar" },
+    { label: "Nutricionistas", href: "/sites/nutricionistas" },
+    {
+      label: "Arquitetos e construção civil",
+      href: "/sites/arquitetos-e-construcao-civil",
+    },
+    { label: "Psicólogos e terapeutas", href: "/sites/psicologos-e-terapeutas" },
+    { label: "Advogados e escritórios", href: "/sites/advogados-e-escritorios" },
+    { label: "Agências de veículos", href: "/sites/agencias-de-veiculos" },
   ] as FooterLinkItem[],
   policyLinks: [
     { label: "Política de Privacidade", href: "/politica-de-privacidade" },
@@ -338,5 +355,11 @@ export const templates: LandingTemplateItem[] = [
     templateUrl: "https://teach-landing-page-template.vercel.app/",
     templateImage: "/imgs/templates/teach.png",
     recommendation: "Advogados, profissionais do direito e escritórios de advocacia.",
+  },
+  {
+    templateName: "Motors",
+    templateUrl: "https://car-agency-landing-page-template.vercel.app/",
+    templateImage: "/imgs/templates/car-agency.png",
+    recommendation: "Agências e revendas de veículos.",
   },
 ];

@@ -1,9 +1,29 @@
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const { servicePages } = require("./src/data/programmatic-seo.json");
 
+// Keep in sync with src/lib/business-categories.ts
+const businessCategorySlugs = [
+  "empresas-em-geral",
+  "dentistas-e-clinicas",
+  "corretores-de-imoveis",
+  "rh-e-contabilidade",
+  "tecnologia-e-software",
+  "academias-e-bem-estar",
+  "nutricionistas",
+  "arquitetos-e-construcao-civil",
+  "psicologos-e-terapeutas",
+  "advogados-e-escritorios",
+  "agencias-de-veiculos",
+];
+
+const businessCategoryRoutes = businessCategorySlugs.map(
+  (slug) => `/sites/${slug}`,
+);
+
 const programmaticRoutes = [
   "/servicos",
   ...servicePages.map((page) => page.path),
+  ...businessCategoryRoutes,
 ];
 
 // Keep in sync with src/api/blog-manager.ts
@@ -38,15 +58,22 @@ module.exports = {
     };
     const isBlogPost = path.startsWith("/blog/");
     const isServiceRoute = path.startsWith("/servicos/");
+    const isBusinessCategoryRoute = path.startsWith("/sites/");
 
     return {
       loc: path,
       changefreq:
         changefreqByPath[path] ??
-        (isBlogPost || isServiceRoute ? "weekly" : config.changefreq),
+        (isBlogPost || isServiceRoute || isBusinessCategoryRoute
+          ? "weekly"
+          : config.changefreq),
       priority:
         priorityByPath[path] ??
-        (isServiceRoute ? 0.85 : isBlogPost ? 0.75 : config.priority),
+        (isServiceRoute || isBusinessCategoryRoute
+          ? 0.85
+          : isBlogPost
+            ? 0.75
+            : config.priority),
       lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
     };
   },
