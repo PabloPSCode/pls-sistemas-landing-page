@@ -41,7 +41,7 @@ const meta: Meta<typeof TopMenu> = {
     (Story) => (
       <div className="min-h-[60vh] w-full bg-background text-foreground p-4">
         <Story />
-        <div className="max-w-7xl mx-auto mt-8 text-sm text-foreground/70">
+        <div className="max-w-6xl mx-auto mt-8 text-sm text-foreground/70">
           Passe o mouse sobre os itens para abrir os submenus.
         </div>
       </div>

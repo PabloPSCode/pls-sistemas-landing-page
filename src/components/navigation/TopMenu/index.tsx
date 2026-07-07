@@ -83,7 +83,7 @@ export const TopMenu: React.FC<TopMenuProps> = ({
       <nav
         aria-label="Menu principal"
         className={clsx(
-          "w-full max-w-7xl bg-background text-foreground px-3 py-2 cursor-pointer",
+          "w-full max-w-6xl bg-background text-foreground px-3 py-2 cursor-pointer",
           className
         )}
       >

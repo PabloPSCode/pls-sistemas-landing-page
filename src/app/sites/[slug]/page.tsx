@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import PromotionalSection from "@/components/marketing/PromotionalSection";
+import { Accordeon } from "@/components/miscellaneous/Accordeon";
 import ReferenceSiteButton from "@/components/miscellaneous/ReferenceSiteButton";
 import StructuredData from "@/components/seo/StructuredData";
 import {
@@ -12,10 +14,12 @@ import {
 } from "@/lib/business-categories";
 import {
   createBreadcrumbSchema,
+  createFAQPageSchema,
   createPageMetadata,
   createServiceSchema,
   createWebPageSchema,
 } from "@/lib/seo";
+import { getSiteFaqQuestions } from "@/mocks/faq";
 
 type BusinessCategoryPageProps = {
   params: Promise<{ slug: string }>;
@@ -66,6 +70,7 @@ export default async function BusinessCategoryPage({
 
   const relatedCategories = getRelatedBusinessCategories(category);
   const referenceUrl = category.templates[0]?.templateUrl;
+  const faqQuestions = getSiteFaqQuestions(category.slug);
   const categorySchemas = [
     createWebPageSchema({
       name: category.title,
@@ -88,6 +93,7 @@ export default async function BusinessCategoryPage({
       { name: "Landing Pages e Websites", path: "/landing-pages" },
       { name: category.shortName, path: category.path },
     ]),
+    createFAQPageSchema(faqQuestions),
   ];
 
   return (
@@ -165,31 +171,19 @@ export default async function BusinessCategoryPage({
         </div>
       </section>
 
+      <PromotionalSection category={category.shortName} />
+
       <section className="border-y border-white/10 bg-[#07110f] px-4 py-20 sm:px-6 sm:py-24">
         <div className="mx-auto grid w-full max-w-6xl gap-8 lg:grid-cols-[0.72fr_0.28fr]">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-teal-200">
-              Conteúdos relacionados
+              Perguntas frequentes
             </p>
-            <div className="mt-6 flex flex-col gap-3">
-              {category.relatedArticles.map((article) => (
-                <a
-                  key={article.href}
-                  href={article.href}
-                  className="group flex items-center justify-between gap-4 rounded-2xl border border-white/12 bg-white/[0.04] p-5 transition hover:border-teal-200/60 hover:bg-teal-300/10"
-                >
-                  <span className="text-base font-semibold text-white">
-                    {article.label}
-                  </span>
-                  <span
-                    aria-hidden="true"
-                    className="text-white/50 transition group-hover:translate-x-1 group-hover:text-white"
-                  >
-                    →
-                  </span>
-                </a>
-              ))}
-            </div>
+            <Accordeon
+              questions={faqQuestions}
+              maxWidthClassName="max-w-none"
+              className="mt-6 !border-white/12 !bg-white/[0.03]"
+            />
           </div>
 
           <aside>

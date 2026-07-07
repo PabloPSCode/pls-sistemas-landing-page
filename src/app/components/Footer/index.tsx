@@ -18,12 +18,12 @@ export default function Footer() {
     <FooterElement.Root bordered={false} className="bg-[#030307] text-white">
       <FooterElement.Top
         columns={5}
-        className="gap-8 border-t border-white/10 py-14 text-center sm:text-left"
+        className="gap-8 border-t border-white/10 py-14 text-center sm:text-left justify-items-center sm:justify-items-stretch"
       >
-        <FooterElement.Column className="items-center sm:items-start gap-6">
+        <FooterElement.Column className="items-center sm:items-start text-center sm:text-left gap-6">
           <Link
             href="/"
-            className="flex items-center justify-center gap-2 sm:justify-start"
+            className="flex items-center justify-center sm:justify-start gap-2"
           >
             <Image
               src="/imgs/logo_pls_sistemas.png"
@@ -47,7 +47,7 @@ export default function Footer() {
               className="text-white/70 !text-xs !sm:text-sm uppercase tracking-[0.14em] mt-4"
             />
             <FooterElement.SocialRow
-              iconsClassName="text-foreground/80 hover:text-foreground -mt-4 sm:-ml-6"
+              iconsClassName="text-foreground/80 hover:text-foreground -mt-4"
               items={[
                 {
                   href: "https://www.instagram.com/pls.sistemas",
@@ -58,7 +58,7 @@ export default function Footer() {
           </div>
         </FooterElement.Column>
 
-        <FooterElement.Column className="items-center sm:items-start gap-4">
+        <FooterElement.Column className="items-center sm:items-start text-center sm:text-left gap-4">
           <Subtitle
             content={footerContent.navTitle}
             className="text-white !text-xs !sm:text-sm !font-semibold uppercase tracking-[0.14em] opacity-70"
@@ -79,7 +79,7 @@ export default function Footer() {
             ))}
           </ul>
         </FooterElement.Column>
-        <FooterElement.Column className="items-center sm:items-start gap-4">
+        <FooterElement.Column className="items-center sm:items-start text-center sm:text-left gap-4">
           <Subtitle
             content={footerContent.solutionsTitle}
             className="text-white !text-xs !sm:text-sm !font-semibold uppercase tracking-[0.14em] opacity-70"
@@ -116,7 +116,7 @@ export default function Footer() {
           </ul>
         </FooterElement.Column>
 
-        <FooterElement.Column className="items-center sm:items-start gap-4">
+        <FooterElement.Column className="items-center sm:items-start text-center sm:text-left gap-4">
           <Subtitle
             content={footerContent.businessTitle}
             className="text-white !text-xs !sm:text-sm !font-semibold uppercase tracking-[0.14em] opacity-70"
@@ -138,7 +138,7 @@ export default function Footer() {
           </ul>
         </FooterElement.Column>
 
-        <FooterElement.Column className="items-center sm:items-start gap-4">
+        <FooterElement.Column className="items-center sm:items-start text-center sm:text-left gap-4">
           <Subtitle
             content={footerContent.policyTitle}
             className="text-white !text-xs !sm:text-sm !font-semibold uppercase tracking-[0.14em] opacity-70"

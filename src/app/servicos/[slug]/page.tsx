@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import PromotionalSection from "@/components/marketing/PromotionalSection";
+import { Accordeon } from "@/components/miscellaneous/Accordeon";
 import StructuredData from "@/components/seo/StructuredData";
 import {
   createBreadcrumbSchema,
@@ -162,6 +164,10 @@ export default async function ServicePage({ params }: ServicePageProps) {
         </div>
       </section>
 
+      {page.slug === "criacao-de-sites" ? (
+        <PromotionalSection category="empresa" />
+      ) : null}
+
       <section className="border-y border-white/10 bg-[#07110f] px-4 py-20 sm:px-6 sm:py-24">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
           {page.sections.map((section) => (
@@ -186,18 +192,11 @@ export default async function ServicePage({ params }: ServicePageProps) {
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-teal-200">
               Perguntas frequentes
             </p>
-            <div className="mt-6 divide-y divide-white/10 rounded-2xl border border-white/12">
-              {page.faqs.map((faq) => (
-                <details key={faq.question} className="group p-5 open:bg-white/[0.03]">
-                  <summary className="cursor-pointer list-none text-lg font-semibold text-white marker:hidden">
-                    {faq.question}
-                  </summary>
-                  <p className="mt-3 text-sm leading-7 text-white/72">
-                    {faq.answer}
-                  </p>
-                </details>
-              ))}
-            </div>
+            <Accordeon
+              questions={page.faqs}
+              maxWidthClassName="max-w-none"
+              className="mt-6 !border-white/12 !bg-white/[0.03]"
+            />
           </div>
 
           <aside>

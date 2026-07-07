@@ -369,7 +369,7 @@ export default function Page() {
       className={`${poppins.variable} ${montserrat.variable} ${raleway.variable} ${roboto.variable} ${inter.variable} ${openSans.variable} ${workSans.variable} ${ubuntu.variable} overflow-x-hidden bg-foreground`}
     >
       <section
-        className="w-full py-16 sm:py-20 max-w-7xl mx-auto"
+        className="w-full py-16 sm:py-20 max-w-6xl mx-auto"
         id="criar-site-landing-page"
       >
         <div className="mx-auto w-full max-w-4xl px-8">
@@ -466,7 +466,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="w-full max-w-7xl mx-auto px-8 py-12" id="detalhes">
+      <section className="w-full max-w-6xl mx-auto px-8 py-12" id="detalhes">
         <Title
           content={landingServicesContent.title}
           element="h1"
@@ -477,7 +477,7 @@ export default function Page() {
           className="mx-auto mt-5 max-w-4xl text-center text-gray-900/90 text-base sm:text-3xl"
         />
 
-        <div className="w-full mt-14 space-y-12 max-w-7xl mx-auto flex flex-col items-center">
+        <div className="w-full mt-14 space-y-12 max-w-6xl mx-auto flex flex-col items-center">
           {landingServicesContent.items.map((item, index) => {
             return (
               <article key={item.title} className="w-[80%] sm:w-[70%] mx-auto">

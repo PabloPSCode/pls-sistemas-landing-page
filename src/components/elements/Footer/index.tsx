@@ -3,7 +3,7 @@
 import clsx from "clsx";
 import React from "react";
 import SocialRibbon, {
-  type SocialRibbonProps,
+    type SocialRibbonProps,
 } from "./components/SocialRibbon";
 
 /**
@@ -79,7 +79,7 @@ const Top: React.FC<TopGridProps> = ({
     <div
       {...rest}
       className={clsx(
-        "mx-auto w-full max-w-7xl px-4 sm:px-6",
+        "mx-auto w-full max-w-6xl px-4 sm:px-6",
         "py-8 sm:py-10",
         "grid grid-cols-1 gap-6 sm:grid-cols-2",
         bordered && "border-b border-foreground/50",
@@ -179,7 +179,7 @@ const SocialRow: React.FC<SocialRowProps> = ({
         className
       )}
     >
-      <div className="mx-auto flex w-full max-w-7xl justify-center gap-4 px-4 py-4 sm:px-6 flex-col items-center text-center sm:justify-between sm:flex-row sm:text-left">
+      <div className="mx-auto flex w-full max-w-6xl justify-center gap-4 px-4 py-4 sm:px-6 flex-col items-center text-center sm:justify-between sm:flex-row sm:text-left">
         {/* Conteúdo à esquerda (opcional) passado como children */}
         <div className="min-w-0 flex flex-1 flex-col items-center text-center sm:items-start sm:text-left">
           {children ? (
@@ -222,7 +222,7 @@ const Bottom: React.FC<BottomProps> = ({
         className
       )}
     >
-      <div className="mx-auto w-full max-w-7xl px-4 py-4 text-sm sm:px-6 flex flex-col items-center text-center sm:flex-row sm:text-left">
+      <div className="mx-auto w-full max-w-6xl px-4 py-4 text-sm sm:px-6 flex flex-col items-center text-center sm:flex-row sm:text-left">
         {children}
       </div>
     </div>
@@ -241,9 +241,10 @@ const Footer = {
 
 export default Footer;
 export {
-  Bottom as FooterBottom,
-  Column as FooterColumn,
-  Root as FooterRoot,
-  SocialRow as FooterSocialRow,
-  Top as FooterTop,
+    Bottom as FooterBottom,
+    Column as FooterColumn,
+    Root as FooterRoot,
+    SocialRow as FooterSocialRow,
+    Top as FooterTop
 };
+

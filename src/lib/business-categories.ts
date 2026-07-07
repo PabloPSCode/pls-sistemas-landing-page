@@ -75,10 +75,10 @@ const businessCategoryDefinitions: BusinessCategoryDefinition[] = [
   },
   {
     slug: "corretores-de-imoveis",
-    title: "Site para Corretores de Imóveis",
-    shortName: "Corretores de imóveis",
+    title: "Site para Imobiliárias e corretores de imóveis",
+    shortName: "Imobiliárias e corretores de imóveis",
     problemContext:
-      "Corretores de imóveis precisam de um site para divulgar imóveis, captar interessados, fortalecer sua autoridade local e reduzir a dependência de portais imobiliários e redes sociais.",
+      "Imobiliárias e corretores de imóveis precisam de um site para divulgar imóveis, captar interessados, fortalecer sua autoridade local e reduzir a dependência de portais imobiliários e redes sociais.",
     templateNames: ["Real State"],
     relatedArticles: [
       relatedArticle(

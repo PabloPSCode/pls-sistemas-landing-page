@@ -85,7 +85,7 @@ export const Default: Story = {
           </LandingHeader.Right>
         </LandingHeader.Root>
 
-        <section className="mx-auto max-w-7xl px-3 py-12">
+        <section className="mx-auto max-w-6xl px-3 py-12">
           <h1 className="text-2xl font-bold">Seção de conteúdo</h1>
           <p className="mt-2 text-foreground/70">
             Use os controles do Storybook para alternar tamanho, borda e sticky.
@@ -137,7 +137,7 @@ export const MobileOnly: Story = {
             <LandingHeader.CTA label="Começar agora" />
           </LandingHeader.Right>
         </LandingHeader.Root>
-        <p className="mx-auto max-w-7xl px-3 py-6 text-foreground/70">
+        <p className="mx-auto max-w-6xl px-3 py-6 text-foreground/70">
           Reduza a janela para ver o menu mobile em ação.
         </p>
       </div>

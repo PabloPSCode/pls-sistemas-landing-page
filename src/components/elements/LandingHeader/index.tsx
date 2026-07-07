@@ -1,8 +1,8 @@
 'use client';
 
-import Image from "next/image";
 import { ListIcon, XIcon } from "@phosphor-icons/react"; // @phosphor-icons/react
 import clsx from "clsx";
+import Image from "next/image";
 
 type Size = "sm" | "md" | "lg";
 
@@ -14,7 +14,7 @@ export interface LandingHeaderRootProps
   bordered?: boolean;
   /** Classe adicional */
   sticky?: boolean;
-  /** Largura máxima do container central (ex.: max-w-7xl) */
+  /** Largura máxima do container central (ex.: max-w-6xl) */
   maxWidthClassName?: string;
 }
 
@@ -37,7 +37,7 @@ const Root: React.FC<LandingHeaderRootProps> = ({
     >
       <header
         {...rest}
-        className={clsx("w-full text-foreground", "px-3 max-w-7xl")}
+        className={clsx("w-full text-foreground", "px-3 max-w-6xl")}
       >
         <div
           className={clsx(
@@ -199,7 +199,7 @@ const MobileMenuPanel: React.FC<{
   if (!open) return null;
   return (
     <div className="lg:hidden absolute left-0 right-0 top-full z-30 w-full border-b border-foreground/10 bg-background/98 backdrop-blur transition">
-      <div className="mx-auto max-w-7xl px-3 py-3">
+      <div className="mx-auto max-w-6xl px-3 py-3">
         <ul className="flex flex-col items-center gap-3">{children}</ul>
         {cta && <div className="mt-3">{cta}</div>}
       </div>

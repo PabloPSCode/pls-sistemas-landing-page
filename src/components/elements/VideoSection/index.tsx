@@ -1,11 +1,11 @@
 "use client";
 
 import Button from "@/components/buttons/Button";
-import Paragraph from "../../typography/Paragraph";
-import Title from "../../typography/Title";
 import { PauseIcon, PlayIcon } from "@phosphor-icons/react";
 import clsx from "clsx";
 import { useEffect, useRef, useState } from "react";
+import Paragraph from "../../typography/Paragraph";
+import Title from "../../typography/Title";
 
 export interface VideoSectionProps {
   /** Largura da seção */
@@ -91,7 +91,7 @@ export default function VideoSection({
 
   return (
     <section
-      className={clsx(size === "full" ? "w-full" : "w-full max-w-7xl mx-auto")}
+      className={clsx(size === "full" ? "w-full" : "w-full max-w-6xl mx-auto")}
     >
       <div
         className={clsx(

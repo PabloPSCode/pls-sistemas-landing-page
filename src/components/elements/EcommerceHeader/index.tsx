@@ -1,15 +1,15 @@
 'use client';
 
-import Image from "next/image";
 import {
-  HeartIcon,
-  ListIcon,
-  MapPinIcon,
-  ShoppingCartIcon,
-  SignOutIcon,
-  UserIcon,
+    HeartIcon,
+    ListIcon,
+    MapPinIcon,
+    ShoppingCartIcon,
+    SignOutIcon,
+    UserIcon,
 } from "@phosphor-icons/react";
 import clsx from "clsx";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import CepPopOverInput from "./components/CepPopOverInput";
 import SearchInput, { type SearchInputProps } from "./components/SearchInput";
@@ -50,7 +50,7 @@ const Root: React.FC<EcommerceHeaderRootProps> = ({
     >
       <header
         {...rest}
-        className={clsx("w-full max-w-7xl text-card-foreground")}
+        className={clsx("w-full max-w-6xl text-card-foreground")}
       >
         <div
           className={clsx(
