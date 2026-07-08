@@ -51,7 +51,7 @@ export default function BlogListingPage({
         <div className="pointer-events-none absolute left-[-10%] top-20 h-52 w-52 rounded-full bg-primary-500/15 blur-3xl" />
         <div className="pointer-events-none absolute right-[-5%] top-10 h-72 w-72 rounded-full bg-primary-300/10 blur-3xl" />
 
-        <div className="mx-auto flex w-full max-w-7xl flex-col items-center px-6 py-20 text-center sm:px-8 sm:py-24">
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-center px-6 py-20 text-center sm:px-8 sm:py-24">
           <div className="w-full max-w-3xl text-left">
             <Breadcrumb
               currentPath="/blog"
@@ -96,7 +96,7 @@ export default function BlogListingPage({
 
       <section
         id="blog-results"
-        className="mx-auto w-full max-w-7xl px-6 py-20 sm:px-8 sm:py-24"
+        className="mx-auto w-full max-w-6xl px-6 py-20 sm:px-8 sm:py-24"
       >
         <div className="min-w-0">
           <div className="flex flex-col gap-3 border-b border-white/10 pb-6 sm:flex-row sm:items-end sm:justify-between">

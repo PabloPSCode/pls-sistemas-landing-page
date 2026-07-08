@@ -6,8 +6,8 @@ import Breadcrumb from "@/components/navigation/BreadCrumb";
 import Paragraph from "@/components/typography/Paragraph";
 import Title from "@/components/typography/Title";
 import {
-  type BlogPost,
-  getBlogPostHref,
+    type BlogPost,
+    getBlogPostHref,
 } from "@/lib/blog";
 import { formatDateLong } from "@/utils/format";
 import { CalendarIcon, ClockIcon } from "@phosphor-icons/react";
@@ -39,7 +39,7 @@ export default function BlogPostDetails({
         <div className="pointer-events-none absolute right-[-4rem] top-12 h-64 w-64 rounded-full bg-primary-500/12 blur-3xl" />
         <div className="pointer-events-none absolute left-[-5rem] top-48 h-72 w-72 rounded-full bg-primary-300/8 blur-3xl" />
 
-        <div className="mx-auto grid w-full max-w-7xl gap-10 px-6 py-14 sm:px-8 sm:py-20 lg:grid-cols-[minmax(0,1.45fr)_320px]">
+        <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-14 sm:px-8 sm:py-20 lg:grid-cols-[minmax(0,1.45fr)_320px]">
           <div className="min-w-0">
             <Breadcrumb
               currentPath={getBlogPostHref(post)}

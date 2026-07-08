@@ -1,8 +1,7 @@
 'use client';
 
-import Image from "next/image";
 import clsx from "clsx";
-import React from "react";
+import Image from "next/image";
 import Marquee from "react-fast-marquee";
 
 export type BrandLogo = {
@@ -68,7 +67,7 @@ export default function BrandMarquee({
   if (!logos?.length) return null;
 
   return (
-    <section className={clsx("w-full max-w-7xl", className)}>
+    <section className={clsx("w-full max-w-6xl", className)}>
       {title && (
         <h3 className="mb-3 sm:mb-4 text-sm sm:text-base font-medium text-foreground">
           {title}

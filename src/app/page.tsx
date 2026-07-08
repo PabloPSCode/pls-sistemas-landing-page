@@ -10,9 +10,9 @@ import Paragraph from "@/components/typography/Paragraph";
 import Subtitle from "@/components/typography/Subtitle";
 import Title from "@/components/typography/Title";
 import {
-  createPrimaryPagesItemListSchema,
-  createWebPageSchema,
-  siteDescription,
+    createPrimaryPagesItemListSchema,
+    createWebPageSchema,
+    siteDescription,
 } from "@/lib/seo";
 import dynamic from "next/dynamic";
 import Image from "next/image";
@@ -22,11 +22,11 @@ import { useEffect, useState } from "react";
 import { HeroSection } from "@/components/elements/HeroSection";
 import BrandMarquee from "@/components/marketing/BrandMarquee";
 import {
-  aboutContent,
-  companies,
-  customSolutionFormContent,
-  landingPageTitle,
-  webSolutionsContent,
+    aboutContent,
+    companies,
+    customSolutionFormContent,
+    landingPageTitle,
+    webSolutionsContent,
 } from "@/mocks/landing-page";
 import { works, worksSectionContent } from "@/mocks/works";
 import { trackCtaClick } from "@/utils/analytics";
@@ -176,7 +176,7 @@ export default function Home() {
                 />
 
                 {/* Text content — left column */}
-                <div className="relative z-10 mx-auto flex min-h-[72vh] w-full max-w-7xl flex-col justify-center px-12">
+                <div className="relative z-10 mx-auto flex min-h-[72vh] w-full max-w-6xl flex-col justify-center px-12">
                   <div className="pointer-events-auto max-w-2xl space-y-8">
                     <Title
                       content="Soluções web para impulsionar seu negócio."
@@ -251,7 +251,7 @@ export default function Home() {
         </div>
 
         <div
-          className="w-full flex flex-col items-center max-w-7xl mx-auto gap-4 p-8 px-4 mt-8 scroll-mt-12 sm:scroll-mt-14"
+          className="w-full flex flex-col items-center max-w-6xl mx-auto gap-4 p-8 px-4 mt-8 scroll-mt-12 sm:scroll-mt-14"
           id="empresas"
         >
           <Title content="Empresas assistidas" element="h3" />

@@ -188,7 +188,7 @@ export const footerContent = {
   businessCategories: [
     { label: "Empresas em geral", href: "/sites/empresas-em-geral" },
     { label: "Dentistas e clínicas", href: "/sites/dentistas-e-clinicas" },
-    { label: "Corretores de imóveis", href: "/sites/corretores-de-imoveis" },
+    { label: "Imobiliárias e corretores de imóveis", href: "/sites/corretores-de-imoveis" },
     { label: "RH e contabilidade", href: "/sites/rh-e-contabilidade" },
     { label: "Tecnologia e software", href: "/sites/tecnologia-e-software" },
     { label: "Academias e bem-estar", href: "/sites/academias-e-bem-estar" },
@@ -280,8 +280,8 @@ export const creationProcessSteps = [
 export const templates: LandingTemplateItem[] = [
   {
     templateName: "Solaris",
-    templateUrl: "https://soller-landing-page-template.vercel.app/",
-    templateImage: "/imgs/templates/solaris.png",
+    templateUrl: "https://www.sgoengenharia.com.br/",
+    templateImage: "/imgs/templates/sgo.png",
     recommendation: "Empresas em geral.",
   },
   {
@@ -294,12 +294,12 @@ export const templates: LandingTemplateItem[] = [
     templateName: "Real State",
     templateUrl: "https://real-state-landing-page-template.vercel.app/",
     templateImage: "/imgs/templates/real-state.png",
-    recommendation: "Corretores de imóveis.",
+    recommendation: "Imobiliárias e corretores de imóveis.",
   },
   {
     templateName: "Breakio",
-    templateUrl: "https://breakio-landing-page-template.vercel.app/",
-    templateImage: "/imgs/templates/breakio.png",
+    templateUrl: "https://www.mirtescontabilidade.com.br/",
+    templateImage: "/imgs/templates/mjcontabilidade.png",
     recommendation: "Empresas de RH, contabilidade e similares.",
   },
   {
@@ -346,7 +346,7 @@ export const templates: LandingTemplateItem[] = [
   },
   {
     templateName: "Psycho",
-    templateUrl: "https://psycho-landing-page-template.vercel.app/",
+    templateUrl: "https://www.camilaterapeutatrg.com.br/sobre",
     templateImage: "/imgs/templates/psycho.png",
     recommendation: "Psicólogos, terapeutas e profissionais de saúde mental.",
   },
