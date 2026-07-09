@@ -14,14 +14,6 @@ export interface LandingFeatureItem {
   expectedOutcome?: string;
 }
 
-export interface WebSolutionItem {
-  title: string;
-  description: string;
-  ctaLabel: string;
-  url: string;
-  imagePath: string;
-}
-
 export interface TestimonialItem {
   name: string;
   role: string;
@@ -54,7 +46,6 @@ export const heroContent = {
 export const navItems: LandingNavItem[] = [
   { label: "Quem somos", href: "#quem-somos" },
   { label: "Serviços", href: "/servicos" },
-  { label: "Soluções", href: "#solucoes-web" },
   { label: "Blog", href: "/blog" },
 ];
 
@@ -121,32 +112,6 @@ export const landingServicesContent = {
   ] as LandingFeatureItem[],
 };
 
-export const webSolutionsContent = {
-  sectionId: "solucoes-web",
-  title: "Soluções",
-  subtitle:
-    "Oferecemos soluções prontas para escalar seu negócio.",
-  items: [
-    {
-      title: "Pic Loja",
-      description:
-        "Envie uma foto e receba um produto pronto para divulgar, com aparência profissional e muito menos esforço manual.",
-      ctaLabel: "Saiba mais",
-      imagePath: "/imgs/logo_pic_loja.png",
-      url: "https://picloja.plssistemas.com.br/",
-    },
-
-    {
-      title: "React Ultimate Componentes",
-      description:
-        "Biblioteca com +130 componentes React construída para desenvolvedores e empresas de software.",
-      ctaLabel: "Saiba mais",
-      imagePath: "/imgs/logo_react_ultimate.png",
-      url: "https://reactultimatecomponents.plssistemas.com.br/",
-    },
-  ] as WebSolutionItem[],
-};
-
 export const customSolutionFormContent = {
   sectionId: "solucoes-sob-medida",
   title: "Para o seu negócio",
@@ -165,7 +130,7 @@ export const customSolutionFormContent = {
 export const footerContent = {
   navTitle: "PÁGINAS PRINCIPAIS",
   policyTitle: "TERMOS E POLÍTICAS",
-  solutionsTitle: "SOLUÇÕES PARA SEU NEGÓCIO",
+  servicesTitle: "SERVIÇOS",
   businessTitle: "SITE PARA O SEU NEGÓCIO",
   copyright: "2026, Todos os direitos reservados",
   navLinks: [...navItems] as FooterLinkItem[],
@@ -181,10 +146,6 @@ export const footerContent = {
     },
     { label: "SEO Técnico", href: "/servicos/seo-tecnico" },
   ] as FooterLinkItem[],
-  solutions: [
-    { label: "Pic Loja", href: "https://picloja.plssistemas.com.br/" },
-    { label: "React Ultimate Componentes", href: "https://reactultimatecomponents.plssistemas.com.br/" },
-  ] as FooterLinkItem[],
   businessCategories: [
     { label: "Empresas em geral", href: "/sites/empresas-em-geral" },
     { label: "Dentistas e clínicas", href: "/sites/dentistas-e-clinicas" },
@@ -198,7 +159,7 @@ export const footerContent = {
       href: "/sites/arquitetos-e-construcao-civil",
     },
     { label: "Psicólogos e terapeutas", href: "/sites/psicologos-e-terapeutas" },
-    { label: "Advogados e escritórios", href: "/sites/advogados-e-escritorios" },
+    { label: "Advogados e Escritórios de Advocacia", href: "/sites/advogados-e-escritorios" },
     { label: "Agências de veículos", href: "/sites/agencias-de-veiculos" },
   ] as FooterLinkItem[],
   policyLinks: [

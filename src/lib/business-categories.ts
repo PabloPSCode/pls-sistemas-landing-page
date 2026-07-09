@@ -187,10 +187,10 @@ const businessCategoryDefinitions: BusinessCategoryDefinition[] = [
   },
   {
     slug: "advogados-e-escritorios",
-    title: "Site para Advogados e Escritórios",
-    shortName: "Advogados e escritórios",
+    title: "Site para Advogados e Escritórios de Advocacia",
+    shortName: "Advogados e Escritórios de Advocacia",
     problemContext:
-      "Advogados e escritórios precisam de um site institucional para apresentar áreas de atuação, fortalecer autoridade, gerar confiança e facilitar o contato de potenciais clientes de forma profissional.",
+      "Advogados e Escritórios de Advocacia precisam de um site institucional para apresentar áreas de atuação, fortalecer autoridade, gerar confiança e facilitar o contato de potenciais clientes de forma profissional.",
     templateNames: ["Law"],
     relatedArticles: [
       relatedArticle(

@@ -6,17 +6,18 @@ import PromotionalSection from "@/components/marketing/PromotionalSection";
 import { Accordeon } from "@/components/miscellaneous/Accordeon";
 import StructuredData from "@/components/seo/StructuredData";
 import {
+  getRelatedServiceSeoPages,
+  getServiceSeoPage,
+  serviceSeoPages,
+} from "@/lib/programmatic-seo";
+import {
   createBreadcrumbSchema,
   createFAQPageSchema,
   createPageMetadata,
   createServiceSchema,
   createWebPageSchema,
 } from "@/lib/seo";
-import {
-  getRelatedServiceSeoPages,
-  getServiceSeoPage,
-  serviceSeoPages,
-} from "@/lib/programmatic-seo";
+import ConversationButton from "./components/ConversationButton";
 
 type ServicePageProps = {
   params: Promise<{ slug: string }>;
@@ -128,18 +129,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
                 {page.audience}
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col">
-                <Link
-                  href={page.primaryCtaHref ?? "/#solucoes-sob-medida"}
-                  className="inline-flex justify-center rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#030307] transition hover:bg-white/86"
-                >
-                  {page.primaryCtaLabel}
-                </Link>
-                <Link
-                  href={page.secondaryCtaHref}
-                  className="inline-flex justify-center rounded-full border border-white/25 px-5 py-3 text-sm font-semibold text-white transition hover:border-teal-200/70 hover:bg-white/10"
-                >
-                  {page.secondaryCtaLabel}
-                </Link>
+                <ConversationButton />
               </div>
             </aside>
           </div>

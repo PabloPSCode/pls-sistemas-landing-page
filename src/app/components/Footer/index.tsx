@@ -81,7 +81,7 @@ export default function Footer() {
         </FooterElement.Column>
         <FooterElement.Column className="items-center sm:items-start text-center sm:text-left gap-4">
           <Subtitle
-            content={footerContent.solutionsTitle}
+            content={footerContent.servicesTitle}
             className="text-white !text-xs !sm:text-sm !font-semibold uppercase tracking-[0.14em] opacity-70"
           />
           <ul className="space-y-3 text-center sm:text-left">
@@ -96,21 +96,6 @@ export default function Footer() {
                     className="!text-xs !sm:text-sm"
                   />
                 </Link>
-              </li>
-            ))}
-            {footerContent.solutions.map((link) => (
-              <li key={link.label}>
-                <a
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/70 hover:text-white transition-colors duration-150"
-                >
-                  <Paragraph
-                    content={link.label}
-                    className="!text-xs !sm:text-sm"
-                  />
-                </a>
               </li>
             ))}
           </ul>

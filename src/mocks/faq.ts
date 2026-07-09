@@ -245,10 +245,10 @@ const categoryFaqProfiles: Record<string, CategoryFaqProfile> = {
     ],
   },
   "advogados-e-escritorios": {
-    siteType: "site para advogados e escritórios",
+    siteType: "site para Advogados e Escritórios de Advocacia",
     businessPossessive: "do seu escritório",
     businessOf: "do escritório",
-    professionals: "advogados e escritórios",
+    professionals: "Advogados e Escritórios de Advocacia",
     leadWord: "clientes",
     specific: [
       {

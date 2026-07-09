@@ -26,7 +26,6 @@ import {
     companies,
     customSolutionFormContent,
     landingPageTitle,
-    webSolutionsContent,
 } from "@/mocks/landing-page";
 import { works, worksSectionContent } from "@/mocks/works";
 import { trackCtaClick } from "@/utils/analytics";
@@ -267,73 +266,6 @@ export default function Home() {
               speed={48}
             />
           </div>
-        </div>
-
-        <div id={webSolutionsContent.sectionId} className="scroll-mt-8">
-          <Section
-            size="full"
-            sectionClassName="relative isolate overflow-hidden bg-[#030307] py-20 sm:py-24"
-          >
-            <div className="relative z-10 flex w-full flex-col items-center">
-              <RevealContainer once className="w-full max-w-6xl">
-                <Title
-                  content={webSolutionsContent.title}
-                  element="h2"
-                  className="text-center text-white tracking-[0.16em] font-black"
-                />
-                <Subtitle
-                  content={webSolutionsContent.subtitle}
-                  className="mx-auto mt-4 max-w-4xl text-center text-white/90 text-xl sm:text-4xl !font-light"
-                />
-              </RevealContainer>
-
-              <div className="mt-12 grid w-full max-w-6xl gap-6 lg:grid-cols-2">
-                {webSolutionsContent.items.map((item, index) => {
-                  return (
-                    <RevealContainer
-                      key={item.title}
-                      once
-                      delay={index + 1}
-                      className="h-full"
-                    >
-                      <article className="flex h-full flex-col gap-4 rounded-2xl border border-white/15 bg-[rgba(0,0,0,0.52)] p-8 shadow-[0_16px_45px_rgba(0,0,0,0.35)] transition-all duration-300 hover:border-primary-400/35 hover:bg-[rgba(8,3,18,0.68)] hover:-translate-y-1 hover:shadow-[0_24px_52px_rgba(0,0,0,0.48)]">
-                        <div className="flex items-start justify-between gap-4">
-                          <Image
-                            src={item.imagePath}
-                            alt={`Icone de ${item.title}`}
-                            width={40}
-                            height={40}
-                          />
-                          <a
-                            href={item.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="cursor-pointer transition-colors duration-150"
-                          >
-                            <Subtitle
-                              content={item.ctaLabel}
-                              className="text-primary-200 text-lg sm:text-3xl"
-                            />
-                          </a>
-                        </div>
-
-                        <Subtitle
-                          content={item.title}
-                          element="h3"
-                          className="text-white text-3xl sm:text-5xl"
-                        />
-
-                        <Paragraph
-                          content={item.description}
-                          className="text-white/85 text-base sm:text-2xl"
-                        />
-                      </article>
-                    </RevealContainer>
-                  );
-                })}
-              </div>
-            </div>
-          </Section>
         </div>
 
         <div id={worksSectionContent.sectionId} className="scroll-mt-8">
