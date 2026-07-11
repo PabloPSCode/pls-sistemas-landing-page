@@ -11,6 +11,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+const byLabel = (a: { label: string }, b: { label: string }) =>
+  a.label.localeCompare(b.label, "pt-BR", { sensitivity: "base" });
+
 export default function Footer() {
   const pathname = usePathname();
 
@@ -64,7 +67,7 @@ export default function Footer() {
             className="text-white !text-xs !sm:text-sm !font-semibold uppercase tracking-[0.14em] opacity-70"
           />
           <ul className="space-y-3 text-center sm:text-left">
-            {footerContent.navLinks.map((link) => (
+            {[...footerContent.navLinks].sort(byLabel).map((link) => (
               <li key={link.label}>
                 <Link
                   href={resolveSiteHref(pathname, link.href)}
@@ -85,7 +88,7 @@ export default function Footer() {
             className="text-white !text-xs !sm:text-sm !font-semibold uppercase tracking-[0.14em] opacity-70"
           />
           <ul className="space-y-3 text-center sm:text-left">
-            {footerContent.serviceLinks.map((link) => (
+            {[...footerContent.serviceLinks].sort(byLabel).map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
@@ -107,7 +110,7 @@ export default function Footer() {
             className="text-white !text-xs !sm:text-sm !font-semibold uppercase tracking-[0.14em] opacity-70"
           />
           <ul className="space-y-3 text-center sm:text-left">
-            {footerContent.businessCategories.map((link) => (
+            {[...footerContent.businessCategories].sort(byLabel).map((link) => (
               <li key={link.label}>
                 <Link
                   href={resolveSiteHref(pathname, link.href)}
@@ -129,7 +132,7 @@ export default function Footer() {
             className="text-white !text-xs !sm:text-sm !font-semibold uppercase tracking-[0.14em] opacity-70"
           />
           <ul className="space-y-3 text-center sm:text-left">
-            {footerContent.policyLinks.map((link) => (
+            {[...footerContent.policyLinks].sort(byLabel).map((link) => (
               <li key={link.label}>
                 <Link
                   href={link.href}

@@ -151,7 +151,6 @@ export const footerContent = {
     { label: "Dentistas e clínicas", href: "/sites/dentistas-e-clinicas" },
     { label: "Imobiliárias e corretores de imóveis", href: "/sites/corretores-de-imoveis" },
     { label: "RH e contabilidade", href: "/sites/rh-e-contabilidade" },
-    { label: "Tecnologia e software", href: "/sites/tecnologia-e-software" },
     { label: "Academias e bem-estar", href: "/sites/academias-e-bem-estar" },
     { label: "Nutricionistas", href: "/sites/nutricionistas" },
     {
@@ -161,6 +160,9 @@ export const footerContent = {
     { label: "Psicólogos e terapeutas", href: "/sites/psicologos-e-terapeutas" },
     { label: "Advogados e Escritórios de Advocacia", href: "/sites/advogados-e-escritorios" },
     { label: "Agências de veículos", href: "/sites/agencias-de-veiculos" },
+    { label: "Açaiterias e sorveterias", href: "/sites/acaiterias" },
+    { label: "Pizzarias", href: "/sites/pizzarias" },
+    { label: "Fotógrafos", href: "/sites/fotografos" },
   ] as FooterLinkItem[],
   policyLinks: [
     { label: "Política de Privacidade", href: "/politica-de-privacidade" },
@@ -322,5 +324,23 @@ export const templates: LandingTemplateItem[] = [
     templateUrl: "https://car-agency-landing-page-template.vercel.app/",
     templateImage: "/imgs/templates/car-agency.png",
     recommendation: "Agências e revendas de veículos.",
+  },
+  {
+    templateName: "Acai",
+    templateUrl: "https://acai-shop-landing-page.vercel.app",
+    templateImage: "/imgs/templates/acai.png",
+    recommendation: "Açaiterias, sorveterias e lojas de açaí.",
+  },
+  {
+    templateName: "Pizzarias",
+    templateUrl: "https://pizzeria-landing-page-template.vercel.app/",
+    templateImage: "/imgs/templates/pizzeria.png",
+    recommendation: "Pizzarias e restaurantes de comida rápida.",
+  },
+  {
+    templateName: "Photographer",
+    templateUrl: "https://photography-landing-page-template.vercel.app/",
+    templateImage: "/imgs/templates/photographer.png",
+    recommendation: "Fotógrafos e estúdios de fotografia.",
   },
 ];

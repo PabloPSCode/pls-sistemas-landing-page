@@ -106,22 +106,6 @@ const businessCategoryDefinitions: BusinessCategoryDefinition[] = [
     ],
   },
   {
-    slug: "tecnologia-e-software",
-    title: "Site para Empresas de Tecnologia e Software",
-    shortName: "Tecnologia e software",
-    problemContext:
-      "Empresas de tecnologia e software precisam de um site para explicar seus produtos, gerar leads qualificados, demonstrar autoridade técnica e transformar visitantes em oportunidades comerciais.",
-    templateNames: ["Devox", "Trakor"],
-    relatedArticles: [
-      relatedArticle(
-        "https://www.plssistemas.com.br/blog/por-que-criar-um-site-em-2026",
-      ),
-      relatedArticle(
-        "https://www.plssistemas.com.br/blog/site-para-empresa-de-software",
-      ),
-    ],
-  },
-  {
     slug: "academias-e-bem-estar",
     title: "Site para Academias e Bem-estar",
     shortName: "Academias e bem-estar",
@@ -214,6 +198,54 @@ const businessCategoryDefinitions: BusinessCategoryDefinition[] = [
       ),
       relatedArticle(
         "https://www.plssistemas.com.br/blog/site-para-agencia-de-veiculos",
+      ),
+    ],
+  },
+  {
+    slug: "acaiterias",
+    title: "Site para Açaiterias e Sorveterias",
+    shortName: "Açaiterias e sorveterias",
+    problemContext:
+      "Açaiterias e sorveterias precisam de um site para apresentar o cardápio, destacar promoções e combos, facilitar pedidos e delivery e atrair clientes que pesquisam por açaí ou sorvete na região antes de comprar.",
+    templateNames: ["Acai"],
+    relatedArticles: [
+      relatedArticle(
+        "https://www.plssistemas.com.br/blog/por-que-criar-um-site-em-2026",
+      ),
+      relatedArticle(
+        "https://www.plssistemas.com.br/blog/como-um-site-profissional-ajuda-sua-empresa-a-vender-mais",
+      ),
+    ],
+  },
+  {
+    slug: "pizzarias",
+    title: "Site para Pizzarias",
+    shortName: "Pizzarias",
+    problemContext:
+      "Pizzarias precisam de um site para apresentar o cardápio, destacar promoções e combos, facilitar pedidos e delivery e atrair clientes que pesquisam por pizza na região antes de comprar.",
+    templateNames: ["Pizzarias"],
+    relatedArticles: [
+      relatedArticle(
+        "https://www.plssistemas.com.br/blog/por-que-criar-um-site-em-2026",
+      ),
+      relatedArticle(
+        "https://www.plssistemas.com.br/blog/como-um-site-profissional-ajuda-sua-empresa-a-vender-mais",
+      ),
+    ],
+  },
+  {
+    slug: "fotografos",
+    title: "Site para Fotógrafos",
+    shortName: "Fotógrafos",
+    problemContext:
+      "Fotógrafos precisam de um site para exibir portfólio, apresentar pacotes e estilos de trabalho, transmitir profissionalismo e captar clientes que buscam ensaios, eventos ou serviços fotográficos.",
+    templateNames: ["Photographer"],
+    relatedArticles: [
+      relatedArticle(
+        "https://www.plssistemas.com.br/blog/por-que-criar-um-site-em-2026",
+      ),
+      relatedArticle(
+        "https://www.plssistemas.com.br/blog/como-um-site-profissional-ajuda-sua-empresa-a-vender-mais",
       ),
     ],
   },

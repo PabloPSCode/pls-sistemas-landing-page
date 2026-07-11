@@ -149,25 +149,6 @@ const categoryFaqProfiles: Record<string, CategoryFaqProfile> = {
       },
     ],
   },
-  "tecnologia-e-software": {
-    siteType: "site para empresas de tecnologia e software",
-    businessPossessive: "da sua empresa",
-    businessOf: "da empresa",
-    professionals: "empresas de tecnologia e software",
-    leadWord: "leads qualificados",
-    specific: [
-      {
-        question: "O site consegue explicar bem um produto ou serviço complexo?",
-        answer:
-          "Sim. Estruturamos páginas para explicar produtos e soluções de forma clara, com foco em demonstrar valor e converter visitantes em oportunidades.",
-      },
-      {
-        question: "Vocês criam páginas para captação de leads e demonstrações?",
-        answer:
-          "Sim. Podemos criar landing pages, formulários e chamadas para demonstração ou contato comercial, integradas ao seu fluxo de vendas.",
-      },
-    ],
-  },
   "academias-e-bem-estar": {
     siteType: "site para academias e negócios de bem-estar",
     businessPossessive: "da sua academia",
