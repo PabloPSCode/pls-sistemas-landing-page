@@ -154,14 +154,12 @@ export const footerContent = {
     { label: "Academias e bem-estar", href: "/sites/academias-e-bem-estar" },
     { label: "Nutricionistas", href: "/sites/nutricionistas" },
     {
-      label: "Arquitetos e construção civil",
-      href: "/sites/arquitetos-e-construcao-civil",
+      label: "Arquitetos e designers de interiores",
+      href: "/sites/arquitetos-e-designers-de-interiores",
     },
     { label: "Psicólogos e terapeutas", href: "/sites/psicologos-e-terapeutas" },
     { label: "Advogados e Escritórios de Advocacia", href: "/sites/advogados-e-escritorios" },
     { label: "Agências de veículos", href: "/sites/agencias-de-veiculos" },
-    { label: "Açaiterias e sorveterias", href: "/sites/acaiterias" },
-    { label: "Pizzarias", href: "/sites/pizzarias" },
     { label: "Fotógrafos", href: "/sites/fotografos" },
   ] as FooterLinkItem[],
   policyLinks: [
@@ -305,7 +303,7 @@ export const templates: LandingTemplateItem[] = [
     templateName: "Builder",
     templateUrl: "https://builder-landing-page-template.vercel.app/",
     templateImage: "/imgs/templates/builder.png",
-    recommendation: "Arquitetos e profissionais da construção civil.",
+    recommendation: "Arquitetos e designers de interiores.",
   },
   {
     templateName: "Psycho",
@@ -324,18 +322,6 @@ export const templates: LandingTemplateItem[] = [
     templateUrl: "https://car-agency-landing-page-template.vercel.app/",
     templateImage: "/imgs/templates/car-agency.png",
     recommendation: "Agências e revendas de veículos.",
-  },
-  {
-    templateName: "Acai",
-    templateUrl: "https://acai-shop-landing-page.vercel.app",
-    templateImage: "/imgs/templates/acai.png",
-    recommendation: "Açaiterias, sorveterias e lojas de açaí.",
-  },
-  {
-    templateName: "Pizzarias",
-    templateUrl: "https://pizzeria-landing-page-template.vercel.app/",
-    templateImage: "/imgs/templates/pizzeria.png",
-    recommendation: "Pizzarias e restaurantes de comida rápida.",
   },
   {
     templateName: "Photographer",

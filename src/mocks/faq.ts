@@ -187,22 +187,22 @@ const categoryFaqProfiles: Record<string, CategoryFaqProfile> = {
       },
     ],
   },
-  "arquitetos-e-construcao-civil": {
-    siteType: "site para arquitetos e construção civil",
+  "arquitetos-e-designers-de-interiores": {
+    siteType: "site para arquitetos e designers de interiores",
     businessPossessive: "do seu escritório",
     businessOf: "do escritório",
-    professionals: "arquitetos e empresas de construção",
+    professionals: "arquitetos e designers de interiores",
     leadWord: "clientes",
     specific: [
       {
-        question: "Consigo exibir meu portfólio de projetos e obras no site?",
+        question: "Consigo exibir meu portfólio de projetos no site?",
         answer:
-          "Sim. Damos destaque ao seu portfólio com galerias de projetos e obras, ajudando a demonstrar qualidade e gerar confiança em novos clientes.",
+          "Sim. Damos destaque ao seu portfólio com galerias de projetos e ambientes, ajudando a demonstrar qualidade e gerar confiança em novos clientes.",
       },
       {
-        question: "O site ajuda a captar clientes para projetos e reformas?",
+        question: "O site ajuda a captar clientes para projetos de interiores e reformas?",
         answer:
-          "Sim. Com portfólio, provas sociais e chamadas de contato, o site facilita a captação de interessados em projetos, obras e reformas.",
+          "Sim. Com portfólio, provas sociais e chamadas de contato, o site facilita a captação de interessados em projetos de interiores, ambientes e reformas.",
       },
     ],
   },

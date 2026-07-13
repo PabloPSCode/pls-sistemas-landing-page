@@ -138,11 +138,11 @@ const businessCategoryDefinitions: BusinessCategoryDefinition[] = [
     ],
   },
   {
-    slug: "arquitetos-e-construcao-civil",
-    title: "Site para Arquitetos e Construção Civil",
-    shortName: "Arquitetos e construção civil",
+    slug: "arquitetos-e-designers-de-interiores",
+    title: "Site para Arquitetos e Designers de Interiores",
+    shortName: "Arquitetos e designers de interiores",
     problemContext:
-      "Arquitetos e empresas da construção civil precisam de um site para exibir portfólio, apresentar projetos, gerar confiança e captar clientes interessados em obras, reformas ou projetos personalizados.",
+      "Arquitetos e designers de interiores precisam de um site para exibir portfólio, apresentar projetos, gerar confiança e captar clientes interessados em projetos de ambientes, reformas e design de interiores.",
     templateNames: ["Builder"],
     relatedArticles: [
       relatedArticle(
@@ -198,38 +198,6 @@ const businessCategoryDefinitions: BusinessCategoryDefinition[] = [
       ),
       relatedArticle(
         "https://www.plssistemas.com.br/blog/site-para-agencia-de-veiculos",
-      ),
-    ],
-  },
-  {
-    slug: "acaiterias",
-    title: "Site para Açaiterias e Sorveterias",
-    shortName: "Açaiterias e sorveterias",
-    problemContext:
-      "Açaiterias e sorveterias precisam de um site para apresentar o cardápio, destacar promoções e combos, facilitar pedidos e delivery e atrair clientes que pesquisam por açaí ou sorvete na região antes de comprar.",
-    templateNames: ["Acai"],
-    relatedArticles: [
-      relatedArticle(
-        "https://www.plssistemas.com.br/blog/por-que-criar-um-site-em-2026",
-      ),
-      relatedArticle(
-        "https://www.plssistemas.com.br/blog/como-um-site-profissional-ajuda-sua-empresa-a-vender-mais",
-      ),
-    ],
-  },
-  {
-    slug: "pizzarias",
-    title: "Site para Pizzarias",
-    shortName: "Pizzarias",
-    problemContext:
-      "Pizzarias precisam de um site para apresentar o cardápio, destacar promoções e combos, facilitar pedidos e delivery e atrair clientes que pesquisam por pizza na região antes de comprar.",
-    templateNames: ["Pizzarias"],
-    relatedArticles: [
-      relatedArticle(
-        "https://www.plssistemas.com.br/blog/por-que-criar-um-site-em-2026",
-      ),
-      relatedArticle(
-        "https://www.plssistemas.com.br/blog/como-um-site-profissional-ajuda-sua-empresa-a-vender-mais",
       ),
     ],
   },
