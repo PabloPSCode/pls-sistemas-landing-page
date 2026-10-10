@@ -35,42 +35,50 @@ const poppins = Poppins({
   variable: "--font-poppins",
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
+  preload: false,
 });
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
+  preload: false,
 });
 
 const raleway = Raleway({
   variable: "--font-raleway",
   subsets: ["latin"],
+  preload: false,
 });
 
 const roboto = Roboto({
   variable: "--font-roboto",
   subsets: ["latin"],
+  preload: false,
 });
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  preload: false,
 });
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
   subsets: ["latin"],
+  preload: false,
 });
 
 const workSans = Work_Sans({
   variable: "--font-work-sans",
   subsets: ["latin"],
+  preload: false,
 });
 
 const ubuntu = Ubuntu({
   variable: "--font-ubuntu",
   weight: ["300", "400", "500", "700"],
   subsets: ["latin"],
+  preload: false,
 });
 
 const fontOptions: Option[] = [

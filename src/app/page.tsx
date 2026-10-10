@@ -67,6 +67,9 @@ export default function Home() {
     const reducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
+    // The rings only render on desktop, so don't download three.js elsewhere.
+    const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+    if (reducedMotion || !isDesktop) return;
     const win = window as Window & {
       requestIdleCallback?: (
         cb: () => void,
@@ -75,7 +78,7 @@ export default function Home() {
       cancelIdleCallback?: (id: number) => void;
     };
 
-    const scheduleEnable = () => setEnableDecorativeFx(!reducedMotion);
+    const scheduleEnable = () => setEnableDecorativeFx(true);
     if (typeof win.requestIdleCallback === "function") {
       const idleId = win.requestIdleCallback(scheduleEnable, { timeout: 1200 });
 
