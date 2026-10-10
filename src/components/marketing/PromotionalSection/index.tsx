@@ -48,17 +48,17 @@ export default function PromotionalSection({
   return (
     <section
       className={clsx(
-        "w-full bg-slate-50 px-4 py-20 sm:px-6 sm:py-24",
+        "w-full bg-surface px-4 py-20 sm:px-6 sm:py-24",
         className,
       )}
       id="planos"
     >
       <div className="mx-auto w-full max-w-6xl">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold leading-tight text-gray-900 sm:text-4xl">
+          <h2 className="text-3xl font-bold leading-tight text-foreground sm:text-4xl">
             {title}
           </h2>
-          <p className="mt-4 text-base leading-8 text-gray-600 sm:text-lg">
+          <p className="mt-4 text-base leading-8 text-foreground/70 sm:text-lg">
             {subtitle}
           </p>
         </div>

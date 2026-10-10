@@ -1,5 +1,6 @@
 'use client';
 
+import useTheme from '@/hooks/useTheme';
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
@@ -17,6 +18,7 @@ uniform float uBaseRadius, uRadiusStep, uScaleRate;
 uniform float uOpacity, uNoiseAmount, uRotation, uRingGap;
 uniform float uFadeIn, uFadeOut;
 uniform float uMouseInfluence, uHoverAmount, uHoverScale, uParallax, uBurst;
+uniform float uLightMode;
 uniform vec2 uResolution, uMouse;
 uniform vec3 uColor, uColorTwo;
 uniform int uRingCount;
@@ -59,7 +61,16 @@ void main() {
   c *= 1.0 + uBurst * 2.0;
   float n = fract(sin(dot(gl_FragCoord.xy + uTime * 100.0, vec2(12.9898, 78.233))) * 43758.5453);
   c += (n - 0.5) * uNoiseAmount;
-  gl_FragColor = vec4(c, max(c.r, max(c.g, c.b)) * uOpacity);
+
+  if (uLightMode > 0.5) {
+    // Light backgrounds: emit the full-strength ring hue and let alpha carry the intensity,
+    // so the faint glow fades into the page color instead of darkening it into gray shadows.
+    c = clamp(c, 0.0, 1.0);
+    float a = max(c.r, max(c.g, c.b));
+    gl_FragColor = vec4(c / max(a, 1e-4), a * uOpacity);
+  } else {
+    gl_FragColor = vec4(c, max(c.r, max(c.g, c.b)) * uOpacity);
+  }
 }
 `;
 
@@ -117,6 +128,9 @@ export default function MagicRingsSection({
   const hoverAmountRef = useRef(0);
   const isHoveredRef = useRef(false);
   const burstRef = useRef(0);
+  const { theme } = useTheme();
+  const isLightRef = useRef(theme === 'light');
+  isLightRef.current = theme === 'light';
 
   propsRef.current = {
     color, colorTwo, speed, ringCount, attenuation, lineThickness,
@@ -175,6 +189,7 @@ export default function MagicRingsSection({
       uHoverScale: { value: 1 },
       uParallax: { value: 0 },
       uBurst: { value: 0 },
+      uLightMode: { value: 0 },
     };
 
     const material = new THREE.ShaderMaterial({ vertexShader, fragmentShader, uniforms, transparent: true });
@@ -256,6 +271,7 @@ export default function MagicRingsSection({
       uniforms.uHoverScale.value = p.hoverScale;
       uniforms.uParallax.value = p.parallax;
       uniforms.uBurst.value = p.clickBurst ? burstRef.current : 0;
+      uniforms.uLightMode.value = isLightRef.current ? 1 : 0;
 
       renderer.render(scene, camera);
     };

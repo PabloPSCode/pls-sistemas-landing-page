@@ -142,8 +142,8 @@ const SelectInput = forwardRef<SelectInstance<Option>, SelectInputProps>(
       }),
       menu: (base) => ({
         ...base,
-        backgroundColor: "var(--color-card, white)",
-        border: "1px solid var(--color-border, rgba(107,114,128,.6))",
+        backgroundColor: "var(--color-bg-card, white)",
+        border: "1px solid var(--color-border-card, rgba(107,114,128,.6))",
         borderRadius: 8,
         overflow: "hidden",
       }),
@@ -151,13 +151,14 @@ const SelectInput = forwardRef<SelectInstance<Option>, SelectInputProps>(
         ...base,
         fontSize: "14px",
         backgroundColor: state.isSelected
-          ? "#f4f3f3"
+          ? "color-mix(in srgb, var(--color-primary-500, #7e1eed) 18%, transparent)"
           : state.isFocused
-          ? "#ebebeb"
-          : "#f3f3f3",
-        color: "black",
+          ? "color-mix(in srgb, var(--color-foreground, #111827) 8%, transparent)"
+          : "transparent",
+        color: "var(--color-foreground, #111827)",
         ":active": {
-          backgroundColor: "#ebebeb",
+          backgroundColor:
+            "color-mix(in srgb, var(--color-foreground, #111827) 12%, transparent)",
         },
       }),
       indicatorsContainer: (base) => ({

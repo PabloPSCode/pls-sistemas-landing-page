@@ -34,8 +34,8 @@ export default function BlogPostDetails({
   );
 
   return (
-    <main className="min-h-screen bg-[#020205] text-white">
-      <section className="relative overflow-hidden border-b border-white/10 bg-[radial-gradient(circle_at_top,_rgba(126,30,237,0.16),_transparent_38%),linear-gradient(180deg,_#05050a_0%,_#020205_100%)]">
+    <main className="min-h-screen bg-background text-foreground">
+      <section className="relative overflow-hidden border-b border-foreground/10 bg-[radial-gradient(circle_at_top,_rgba(126,30,237,0.16),_transparent_38%),linear-gradient(180deg,_var(--color-surface)_0%,_var(--color-background)_100%)]">
         <div className="pointer-events-none absolute right-[-4rem] top-12 h-64 w-64 rounded-full bg-primary-500/12 blur-3xl" />
         <div className="pointer-events-none absolute left-[-5rem] top-48 h-72 w-72 rounded-full bg-primary-300/8 blur-3xl" />
 
@@ -46,17 +46,17 @@ export default function BlogPostDetails({
               rootLabel="Home"
               labelMap={breadcrumbLabels}
               separator="•"
-              className="text-white/70"
+              className="text-foreground/70"
             />
 
             <Title
               content={post.title}
               element="h1"
-              className="mt-6 max-w-5xl !text-4xl font-black tracking-[-0.05em] text-white sm:!text-5xl lg:!text-6xl"
+              className="mt-6 max-w-5xl !text-4xl font-black tracking-[-0.05em] text-foreground sm:!text-5xl lg:!text-6xl"
             />
 
-            <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-white/78">
-              <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.04] px-3 py-2">
+            <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-foreground/78">
+              <div className="inline-flex items-center gap-3 rounded-full border border-foreground/10 bg-foreground/[0.04] px-3 py-2">
                 <Image
                   src={post.authorAvatarUrl}
                   alt={post.authorName}
@@ -64,27 +64,27 @@ export default function BlogPostDetails({
                   height={32}
                   className="h-8 w-8 rounded-full object-cover"
                 />
-                <span className="font-semibold text-white">
+                <span className="font-semibold text-foreground">
                   {post.authorName}
                 </span>
               </div>
 
-              <span className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 font-medium text-white/80">
+              <span className="inline-flex items-center rounded-full border border-foreground/10 bg-foreground/[0.04] px-3 py-2 font-medium text-foreground/80">
                 {post.category}
               </span>
 
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 font-medium text-white/80">
+              <span className="inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-foreground/[0.04] px-3 py-2 font-medium text-foreground/80">
                 <ClockIcon size={16} weight="bold" />
                 {post.readingTime} de leitura
               </span>
 
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 font-medium text-white/80">
+              <span className="inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-foreground/[0.04] px-3 py-2 font-medium text-foreground/80">
                 <CalendarIcon size={16} weight="bold" />
                 {formatDateLong(post.createdAt)}
               </span>
             </div>
 
-            <div className="relative mt-8 overflow-hidden rounded-[34px] border border-white/10 bg-white/[0.03] shadow-[0_28px_80px_rgba(0,0,0,0.34)]">
+            <div className="relative mt-8 overflow-hidden rounded-[34px] border border-foreground/10 bg-foreground/[0.03] shadow-[0_28px_80px_var(--elevation-color-strong)]">
               <Image
                 src={post.backgroundUrl}
                 alt={post.title}
@@ -96,31 +96,31 @@ export default function BlogPostDetails({
             </div>
 
             <article
-              className="mt-8 rounded-2xl border border-white/10 bg-white/[0.03] p-6 shadow-[0_20px_70px_rgba(0,0,0,0.18)] sm:p-10 [&_blockquote]:mt-8 [&_blockquote]:border-l-2 [&_blockquote]:border-primary-300/60 [&_blockquote]:pl-5 [&_blockquote]:text-lg [&_blockquote]:leading-8 [&_blockquote]:text-white/86 [&_h2]:mt-10 [&_h2]:text-2xl [&_h2]:font-black [&_h2]:tracking-[-0.04em] [&_h2]:text-white sm:[&_h2]:text-4xl [&_h2:first-child]:mt-0 [&_li]:text-sm [&_li]:leading-7 [&_li]:text-white/76 sm:[&_li]:text-base [&_p]:mt-5 [&_p]:text-sm [&_p]:leading-8 [&_p]:text-white/76 sm:[&_p]:text-lg [&_ul]:mt-6 [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5"
+              className="mt-8 rounded-2xl border border-foreground/10 bg-foreground/[0.03] p-6 shadow-[0_20px_70px_var(--elevation-color)] sm:p-10 [&_blockquote]:mt-8 [&_blockquote]:border-l-2 [&_blockquote]:border-primary-300/60 [&_blockquote]:pl-5 [&_blockquote]:text-lg [&_blockquote]:leading-8 [&_blockquote]:text-foreground/86 [&_h2]:mt-10 [&_h2]:text-2xl [&_h2]:font-black [&_h2]:tracking-[-0.04em] [&_h2]:text-foreground sm:[&_h2]:text-4xl [&_h2:first-child]:mt-0 [&_li]:text-sm [&_li]:leading-7 [&_li]:text-foreground/76 sm:[&_li]:text-base [&_p]:mt-5 [&_p]:text-sm [&_p]:leading-8 [&_p]:text-foreground/76 sm:[&_p]:text-lg [&_ul]:mt-6 [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5"
               dangerouslySetInnerHTML={{ __html: post.htmlContent }}
             />
           </div>
 
           <aside className="space-y-6 lg:sticky lg:top-28 lg:h-fit">
-            <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 shadow-[0_16px_50px_rgba(0,0,0,0.24)] backdrop-blur">
+            <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.04] p-6 shadow-[0_16px_50px_var(--elevation-color)] backdrop-blur">
               <SocialRibbon
                 title="Compartilhe este conteúdo"
                 items={shareItems}
                 iconsWeight="regular"
-                iconsClassName="text-white/72 transition hover:text-white"
+                iconsClassName="text-foreground/72 transition hover:text-foreground"
               />
             </div>
 
             {post.tags.length ? (
-              <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 shadow-[0_16px_50px_rgba(0,0,0,0.24)] backdrop-blur">
-                <span className="text-xs font-semibold uppercase tracking-[0.24em] text-white/45">
+              <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.04] p-6 shadow-[0_16px_50px_var(--elevation-color)] backdrop-blur">
+                <span className="text-xs font-semibold uppercase tracking-[0.24em] text-foreground/65">
                   Tags
                 </span>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {post.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-2 text-sm font-medium text-white/78"
+                      className="rounded-full border border-foreground/10 bg-foreground/[0.05] px-3 py-2 text-sm font-medium text-foreground/78"
                     >
                       {tag}
                     </span>
@@ -129,21 +129,21 @@ export default function BlogPostDetails({
               </div>
             ) : null}
 
-            <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 shadow-[0_16px_50px_rgba(0,0,0,0.24)] backdrop-blur">
-              <span className="text-xs font-semibold uppercase tracking-[0.24em] text-white/45">
+            <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.04] p-6 shadow-[0_16px_50px_var(--elevation-color)] backdrop-blur">
+              <span className="text-xs font-semibold uppercase tracking-[0.24em] text-foreground/65">
                 Relacionados
               </span>
               <Title
                 content="Leituras relacionadas"
                 element="h2"
-                className="mt-3 !text-2xl text-white"
+                className="mt-3 !text-2xl text-foreground"
               />
               <Paragraph
                 content="Posts complementares para aprofundar temas próximos e continuar a navegação dentro do blog."
-                className="mt-3 !text-sm leading-7 text-white/60"
+                className="mt-3 !text-sm leading-7 text-foreground/60"
               />
 
-              <div className="mt-6 divide-y divide-white/10">
+              <div className="mt-6 divide-y divide-foreground/10">
                 {relatedPosts.length ? (
                   relatedPosts.map((relatedPost) => (
                     <div
@@ -156,15 +156,15 @@ export default function BlogPostDetails({
                         title={relatedPost.title}
                         imageUrl={relatedPost.backgroundUrl}
                         badgeClassName="bg-primary-500 text-white"
-                        titleClassName="text-white"
-                        containerClassName="max-w-none !rounded-none !bg-transparent !p-0 hover:!bg-white/[0.03]"
+                        titleClassName="text-foreground"
+                        containerClassName="max-w-none !rounded-none !bg-transparent !p-0 hover:!bg-foreground/[0.03]"
                       />
                     </div>
                   ))
                 ) : (
                   <Paragraph
                     content="Ainda não existem outras publicações para relacionar com este post."
-                    className="py-4 !text-sm leading-7 text-white/60"
+                    className="py-4 !text-sm leading-7 text-foreground/60"
                   />
                 )}
               </div>

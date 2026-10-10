@@ -78,12 +78,12 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="overflow-x-hidden bg-[#020205] text-white">
+    <div className="overflow-x-hidden bg-background text-foreground">
       <StructuredData data={homePageSchemas} id="plssistemas-home-seo" />
       <main className="flex flex-col">
         <HeroSection
           size="full"
-          sectionClassName="bg-[#020205] relative isolate overflow-hidden !px-0 !py-0"
+          sectionClassName="bg-background relative isolate overflow-hidden !px-0 !py-0"
           children={
             <div className="w-full">
               {/* ── MOBILE / TABLET ─────────────────────────────────────────────
@@ -102,10 +102,10 @@ export default function Home() {
                     sizes="100vw"
                     className="pointer-events-none select-none object-cover object-top"
                   />
-                  {/* Fade bottom of image into the dark background */}
+                  {/* Fade bottom of image into the page background */}
                   <div
                     aria-hidden="true"
-                    className="pointer-events-none absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#020205] to-transparent"
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-background to-transparent"
                   />
                 </div>
 
@@ -113,9 +113,9 @@ export default function Home() {
                 <div className="flex flex-col items-center gap-8 px-6 pt-2 text-center">
                   <Title
                     content="Soluções web para impulsionar seu negócio."
-                    className="max-w-lg font-semibold tracking-wide text-white/95 !text-3xl sm:!text-4xl"
+                    className="max-w-lg font-semibold tracking-wide text-foreground/95 !text-3xl sm:!text-4xl"
                   />
-                  <p className="max-w-sm text-center text-white/80 text-base sm:text-lg leading-relaxed">
+                  <p className="max-w-sm text-center text-foreground/80 text-base sm:text-lg leading-relaxed">
                     Criamos experiências online que encantam seus clientes e
                     impulsionam seu negócio para o sucesso.
                   </p>
@@ -134,7 +134,7 @@ export default function Home() {
                       variant="outlined"
                       label="Ver serviços"
                       onClick={() => router.push("/servicos")}
-                      className="!rounded-full !border !border-white/70 !px-8 !py-4 !text-white !shadow-none font-bold cursor-pointer transition-all duration-200 hover:!border-white hover:!bg-white/10 hover:scale-[1.03] active:scale-[0.98]"
+                      className="!rounded-full !border !border-foreground/70 !px-8 !py-4 !text-foreground !shadow-none font-bold cursor-pointer transition-all duration-200 hover:!border-foreground hover:!bg-foreground/10 hover:scale-[1.03] active:scale-[0.98]"
                     />
                   </FadeContainer>
                 </div>
@@ -156,16 +156,16 @@ export default function Home() {
                   className="pointer-events-none absolute inset-0 z-0 select-none object-cover object-right opacity-80"
                 />
 
-                {/* Horizontal gradient: black left → transparent right — the "glue" */}
+                {/* Horizontal gradient: background left → transparent right — the "glue" */}
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-[#020205] from-[26%] via-[#020205]/78 via-[52%] to-transparent to-[78%]"
+                  className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-background from-[26%] via-background/78 via-[52%] to-transparent to-[78%]"
                 />
 
                 {/* Bottom fade into next section */}
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-40 bg-gradient-to-t from-[#020205] to-transparent"
+                  className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-40 bg-gradient-to-t from-background to-transparent"
                 />
 
                 {/* Subtle purple radial accent on the left */}
@@ -179,9 +179,9 @@ export default function Home() {
                   <div className="pointer-events-auto max-w-2xl space-y-8">
                     <Title
                       content="Soluções web para impulsionar seu negócio."
-                      className="max-w-lg font-semibold tracking-wide text-white/95 text-4xl sm:text-6xl"
+                      className="max-w-lg font-semibold tracking-wide text-foreground/95 text-4xl sm:text-6xl"
                     />
-                    <p className="max-w-lg text-left text-white/80 text-base sm:text-lg leading-relaxed">
+                    <p className="max-w-lg text-left text-foreground/80 text-base sm:text-lg leading-relaxed">
                       Criamos experiências online que encantam seus clientes e
                       impulsionam seu negócio para o sucesso.
                     </p>
@@ -200,7 +200,7 @@ export default function Home() {
                         variant="outlined"
                         label="Ver serviços"
                         onClick={() => router.push("/servicos")}
-                        className="!rounded-full !border !border-white/70 !px-8 !py-4 !text-white !shadow-none font-bold cursor-pointer transition-all duration-200 hover:!border-white hover:!bg-white/10 hover:scale-[1.03] active:scale-[0.98]"
+                        className="!rounded-full !border !border-foreground/70 !px-8 !py-4 !text-foreground !shadow-none font-bold cursor-pointer transition-all duration-200 hover:!border-foreground hover:!bg-foreground/10 hover:scale-[1.03] active:scale-[0.98]"
                       />
                     </FadeContainer>
                   </div>
@@ -211,12 +211,12 @@ export default function Home() {
         />
 
         <div id={aboutContent.sectionId} className="scroll-mt-8">
-          <Section size="full" sectionClassName="bg-[#020205] py-20 sm:py-24">
+          <Section size="full" sectionClassName="bg-background py-20 sm:py-24">
             <RevealContainer once className="w-full max-w-6xl">
               <Title
                 content={aboutContent.title}
                 element="h2"
-                className="text-center text-white tracking-[0.18em] font-black"
+                className="text-center text-foreground tracking-[0.18em] font-black"
               />
             </RevealContainer>
 
@@ -240,7 +240,7 @@ export default function Home() {
                     <Paragraph
                       key={text}
                       content={text}
-                      className="text-white/90 text-lg leading-8 sm:text-2xl"
+                      className="text-foreground/90 text-lg leading-8 sm:text-2xl"
                     />
                   ))}
                 </div>
@@ -271,18 +271,18 @@ export default function Home() {
         <div id={worksSectionContent.sectionId} className="scroll-mt-8">
           <Section
             size="full"
-            sectionClassName="relative isolate overflow-hidden bg-[#020205] py-20 sm:py-24"
+            sectionClassName="relative isolate overflow-hidden bg-background py-20 sm:py-24"
           >
             <div className="relative z-10 flex w-full flex-col items-center">
               <RevealContainer once className="w-full max-w-6xl">
                 <Title
                   content={worksSectionContent.title}
                   element="h2"
-                  className="text-center text-white tracking-[0.16em] font-black"
+                  className="text-center text-foreground tracking-[0.16em] font-black"
                 />
                 <Subtitle
                   content={worksSectionContent.subtitle}
-                  className="mx-auto mt-4 max-w-4xl text-center text-white/85 text-xl sm:text-4xl !font-light"
+                  className="mx-auto mt-4 max-w-4xl text-center text-foreground/85 text-xl sm:text-4xl !font-light"
                 />
               </RevealContainer>
 
@@ -294,8 +294,8 @@ export default function Home() {
                     delay={index + 1}
                     className="h-full"
                   >
-                    <article className="group flex h-full flex-col gap-5 rounded-2xl border border-white/12 bg-white/[0.04] p-5 shadow-[0_18px_48px_rgba(0,0,0,0.32)] backdrop-blur transition-all duration-300 hover:border-white/20 hover:bg-white/[0.07] hover:-translate-y-1 hover:shadow-[0_28px_56px_rgba(0,0,0,0.42)]">
-                      <div className="overflow-hidden rounded-xl border border-white/10 bg-black/30">
+                    <article className="group flex h-full flex-col gap-5 rounded-2xl border border-foreground/12 bg-foreground/[0.04] p-5 shadow-[0_18px_48px_var(--elevation-color)] backdrop-blur transition-all duration-300 hover:border-foreground/20 hover:bg-foreground/[0.07] hover:-translate-y-1 hover:shadow-[0_28px_56px_var(--elevation-color-strong)]">
+                      <div className="overflow-hidden rounded-xl border border-foreground/10 bg-foreground/10">
                         <Image
                           src={work.imageUrl}
                           alt={`Preview do website ${work.title}`}
@@ -310,19 +310,19 @@ export default function Home() {
                         <Subtitle
                           content={work.title}
                           element="h3"
-                          className="text-white text-3xl sm:text-4xl"
+                          className="text-foreground text-3xl sm:text-4xl"
                         />
 
                         <Paragraph
                           content={work.description}
-                          className="text-white/70 text-base leading-7 sm:text-xl"
+                          className="text-foreground/70 text-base leading-7 sm:text-xl"
                         />
 
                         <a
                           href={work.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="mt-auto inline-flex w-fit items-center rounded-full border border-primary-300/30 bg-primary-500/12 px-4 py-2 text-sm font-semibold text-primary-100 transition-all duration-200 hover:border-primary-200/60 hover:bg-primary-500/25 hover:text-white hover:-translate-y-0.5 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300/60 sm:text-base"
+                          className="mt-auto inline-flex w-fit items-center rounded-full border border-primary-300/30 bg-primary-500/12 px-4 py-2 text-sm font-semibold text-highlight transition-all duration-200 hover:border-primary-400/60 hover:bg-primary-500/25 hover:text-foreground hover:-translate-y-0.5 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300/60 sm:text-base"
                           onClick={() =>
                             trackCtaClick({
                               ctaLabel: worksSectionContent.ctaLabel,
@@ -344,16 +344,16 @@ export default function Home() {
         </div>
 
         {/* <div id={testimonialsContent.sectionId}>
-          <Section size="full" sectionClassName="bg-[#030307] py-20 sm:py-24">
+          <Section size="full" sectionClassName="bg-surface py-20 sm:py-24">
             <RevealContainer once className="w-full max-w-6xl">
               <Title
                 content={testimonialsContent.title}
                 element="h2"
-                className="text-center text-white tracking-[0.16em] font-black"
+                className="text-center text-foreground tracking-[0.16em] font-black"
               />
               <Subtitle
                 content={testimonialsContent.subtitle}
-                className="mx-auto mt-4 max-w-4xl text-center text-white/90 text-xl sm:text-4xl"
+                className="mx-auto mt-4 max-w-4xl text-center text-foreground/90 text-xl sm:text-4xl"
               />
             </RevealContainer>
 
@@ -365,28 +365,28 @@ export default function Home() {
                   delay={index + 1}
                   className="h-full"
                 >
-                  <article className="flex h-full flex-col items-center gap-5 rounded-xl border border-white/10 bg-[#2B2B2B] p-8 text-center shadow-[0_16px_45px_rgba(0,0,0,0.35)]">
+                  <article className="flex h-full flex-col items-center gap-5 rounded-xl border border-border-card bg-bg-card p-8 text-center shadow-[0_16px_45px_var(--elevation-color)]">
                     <Image
                       src={item.avatarUrl}
                       alt={`Avatar de ${item.name}`}
                       width={92}
                       height={92}
-                      className="h-[92px] w-[92px] rounded-full border-2 border-white/25 object-cover"
+                      className="h-[92px] w-[92px] rounded-full border-2 border-foreground/25 object-cover"
                     />
 
                     <Paragraph
                       content={`“${item.quote}”`}
-                      className="text-white/85 text-base sm:text-2xl"
+                      className="text-foreground/85 text-base sm:text-2xl"
                     />
 
                     <div className="flex flex-col items-center gap-1">
                       <Subtitle
                         content={item.name}
-                        className="text-white text-2xl sm:text-4xl"
+                        className="text-foreground text-2xl sm:text-4xl"
                       />
                       <Paragraph
                         content={item.role}
-                        className="text-white/65 text-sm sm:text-xl"
+                        className="text-foreground/65 text-sm sm:text-xl"
                       />
                     </div>
                   </article>
@@ -399,7 +399,7 @@ export default function Home() {
         <div id={customSolutionFormContent.sectionId} className="scroll-mt-8">
           <Section
             size="full"
-            sectionClassName="relative isolate overflow-hidden bg-[#020205] py-20 sm:py-24"
+            sectionClassName="relative isolate overflow-hidden bg-background py-20 sm:py-24"
           >
             <div
               aria-hidden="true"
@@ -430,12 +430,12 @@ export default function Home() {
                 <Title
                   content={customSolutionFormContent.title}
                   element="h2"
-                  className="text-center text-white tracking-[0.16em] font-black"
+                  className="text-center text-foreground tracking-[0.16em] font-black"
                 />
 
                 <Subtitle
                   content={customSolutionFormContent.description}
-                  className="mx-auto mt-5 max-w-5xl text-center text-white/90 text-xl sm:text-4xl !font-light "
+                  className="mx-auto mt-5 max-w-5xl text-center text-foreground/90 text-xl sm:text-4xl !font-light"
                 />
               </RevealContainer>
 

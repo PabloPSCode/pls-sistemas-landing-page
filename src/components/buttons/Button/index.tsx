@@ -35,13 +35,13 @@ export default function Button({
       className={clsx(
         `flex items-center justify-center w-fit px-3 py-2 sm:px-4 sm:py-3 rounded-md  ${
           variant === "filled"
-            ? "bg-primary-500 text-background"
+            ? "bg-primary-500 text-white"
             : variant === "outlined"
             ? "border border-primary-500 text-primary-500"
             : variant === "alert"
-            ? "bg-amber-500 text-background"
+            ? "bg-amber-500 text-gray-950"
             : variant === "destructive"
-            ? "bg-destructive-500 text-background"
+            ? "bg-destructive-500 text-white"
             : ""
         }`,
         className

@@ -45,8 +45,8 @@ export default function BlogListingPage({
   };
 
   return (
-    <main className="min-h-screen bg-[#020205] text-white">
-      <section className="relative overflow-hidden border-b border-white/10 bg-[radial-gradient(circle_at_top,_rgba(126,30,237,0.22),_transparent_42%),linear-gradient(180deg,_#05050a_0%,_#020205_100%)]">
+    <main className="min-h-screen bg-background text-foreground">
+      <section className="relative overflow-hidden border-b border-foreground/10 bg-[radial-gradient(circle_at_top,_rgba(126,30,237,0.22),_transparent_42%),linear-gradient(180deg,_var(--color-surface)_0%,_var(--color-background)_100%)]">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-52 bg-[linear-gradient(90deg,rgba(126,30,237,0)_0%,rgba(126,30,237,0.22)_50%,rgba(126,30,237,0)_100%)] blur-3xl" />
         <div className="pointer-events-none absolute left-[-10%] top-20 h-52 w-52 rounded-full bg-primary-500/15 blur-3xl" />
         <div className="pointer-events-none absolute right-[-5%] top-10 h-72 w-72 rounded-full bg-primary-300/10 blur-3xl" />
@@ -64,17 +64,17 @@ export default function BlogListingPage({
           <Title
             content="Descubra nossos conteúdos mais recentes"
             element="h1"
-            className="mt-6 max-w-4xl !text-4xl font-black tracking-[-0.04em] text-white sm:!text-5xl lg:!text-6xl"
+            className="mt-6 max-w-4xl !text-4xl font-black tracking-[-0.04em] text-foreground sm:!text-5xl lg:!text-6xl"
           />
 
           <Subtitle
             content="Insights sobre sites, landing pages, SEO e estratégias digitais para empresas que precisam vender mais e operar melhor."
-            className="mt-6 max-w-3xl text-center !text-base !font-light leading-8 text-white/72 sm:!text-xl"
+            className="mt-6 max-w-3xl text-center !text-base !font-light leading-8 text-foreground/72 sm:!text-xl"
           />
 
           <form
             onSubmit={handleSubmit}
-            className="mt-10 flex w-full max-w-3xl flex-col gap-3 rounded-2xl bg-white/[0.04] p-3 shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur sm:flex-row sm:items-center"
+            className="mt-10 flex w-full max-w-3xl flex-col gap-3 rounded-2xl bg-foreground/[0.04] p-3 shadow-[0_18px_60px_var(--elevation-color)] backdrop-blur sm:flex-row sm:items-center"
           >
             <SearchInput
               search={search}
@@ -82,7 +82,7 @@ export default function BlogListingPage({
               onCancelSearch={() => setSearch("")}
               placeholder="Pesquise por SEO, landing pages ou performance"
               containerClassName="flex-1"
-              className="!my-0 !h-12 !rounded-2xl !border-white/10 !bg-white/[0.03] !px-3 text-white placeholder:!text-white/40"
+              className="!my-0 !h-12 !rounded-2xl !border-foreground/10 !bg-foreground/[0.03] !px-3 text-foreground placeholder:!text-foreground/50"
             />
 
             <Button
@@ -99,12 +99,12 @@ export default function BlogListingPage({
         className="mx-auto w-full max-w-6xl px-6 py-20 sm:px-8 sm:py-24"
       >
         <div className="min-w-0">
-          <div className="flex flex-col gap-3 border-b border-white/10 pb-6 sm:flex-row sm:items-end sm:justify-between">
+          <div className="flex flex-col gap-3 border-b border-foreground/10 pb-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <Title
                 content="Nossas publicações"
                 element="h2"
-                className="!text-3xl text-white sm:!text-4xl"
+                className="!text-3xl text-foreground sm:!text-4xl"
               />
               <Paragraph
                 content={
@@ -112,7 +112,7 @@ export default function BlogListingPage({
                     ? `${filteredPosts.length} resultado(s) para "${search.trim()}".`
                     : `${blogPosts.length} publicações disponíveis.`
                 }
-                className="mt-3 !text-sm text-white/60 sm:!text-base"
+                className="mt-3 !text-sm text-foreground/60 sm:!text-base"
               />
             </div>
 
@@ -120,7 +120,7 @@ export default function BlogListingPage({
               <button
                 type="button"
                 onClick={() => setSearch("")}
-                className="w-fit text-sm font-semibold text-primary-100 transition hover:text-white"
+                className="w-fit text-sm font-semibold text-highlight transition hover:text-foreground"
               >
                 Limpar busca
               </button>
@@ -137,20 +137,20 @@ export default function BlogListingPage({
                   publishedAt={post.createdAt}
                   readingTime={post.readingTime}
                   href={getBlogPostHref(post)}
-                  className="max-w-none border-white/10 bg-white/[0.03]"
+                  className="max-w-none border-foreground/10 bg-foreground/[0.03]"
                 />
               ))}
             </div>
           ) : (
-            <div className="mt-8 rounded-2xl border border-dashed border-white/15 bg-white/[0.03] p-8 text-center sm:p-12">
+            <div className="mt-8 rounded-2xl border border-dashed border-foreground/15 bg-foreground/[0.03] p-8 text-center sm:p-12">
               <Title
                 content="Nenhum conteúdo encontrado"
                 element="h3"
-                className="!text-2xl text-white sm:!text-3xl"
+                className="!text-2xl text-foreground sm:!text-3xl"
               />
               <Paragraph
                 content="Tente uma busca mais ampla ou limpe o filtro para voltar aos posts disponíveis."
-                className="mx-auto mt-4 max-w-xl !text-sm leading-7 text-white/65 sm:!text-base"
+                className="mx-auto mt-4 max-w-xl !text-sm leading-7 text-foreground/65 sm:!text-base"
               />
               <Button
                 type="button"

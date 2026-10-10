@@ -47,8 +47,8 @@ export default function ImageCard({
   return (
     <div
       className="
-        flex flex-col items-center text-center text-gray-900 bg-foreground-card 
-         gap-4 shadow-md rounded-lg p-4 max-w-sm mx-auto
+        flex flex-col items-center text-center text-foreground bg-bg-card
+         border border-border-card gap-4 shadow-md rounded-lg p-4 max-w-sm mx-auto
       "
     >
       {/* Imagem */}
@@ -61,13 +61,13 @@ export default function ImageCard({
       />
 
       {/* Título */}
-      <h3 className="font-semibold text-md sm:text-lg text-gray-900 -mt-4">
+      <h3 className="font-semibold text-md sm:text-lg text-foreground -mt-4">
         {title}
       </h3>
 
       {/* Descrição */}
       {description && (
-        <p className="text-gray-700 text-xs sm:text-sm h-full">{description}</p>
+        <p className="text-foreground/75 text-xs sm:text-sm h-full">{description}</p>
       )}
 
       {/* Botão "Ver Detalhes" */}
@@ -76,7 +76,7 @@ export default function ImageCard({
           {onSeeDetails && (
             <button
               onClick={handleSeeDetails}
-              className="w-full flex items-center justify-center px-3 py-2 border border-primary-300 text-primary-300 text-xs sm:text-sm rounded-lg hover:bg-primary-50"
+              className="w-full flex items-center justify-center px-3 py-2 border border-primary-400 text-highlight text-xs sm:text-sm rounded-lg hover:bg-primary-500/10"
               aria-label="Ver template"
               aria-roledescription="botão"
             >

@@ -55,7 +55,7 @@ export default function ReferenceSiteButton({
         onClick={() => setOpen(true)}
         className={
           className ??
-          "inline-flex justify-center rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#030307] transition hover:bg-white/86"
+          "inline-flex justify-center rounded-full bg-foreground px-5 py-3 text-sm font-semibold text-background transition hover:bg-foreground/86"
         }
       >
         {label}
@@ -82,7 +82,7 @@ export default function ReferenceSiteButton({
             className="flex h-[84vh] w-[96vw] max-w-[1600px] flex-col overflow-hidden rounded-xl border-2 border-white/70 bg-white shadow-2xl ring-1 ring-white/20"
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="flex items-center justify-between gap-3 border-b border-black/10 bg-[#030307] px-4 py-2.5 text-white">
+            <div className="flex items-center justify-between gap-3 border-b border-foreground/10 bg-background px-4 py-2.5 text-foreground">
               <p className="min-w-0 truncate text-sm font-semibold">
                 {title ?? "Site de referência"}
               </p>
@@ -91,7 +91,7 @@ export default function ReferenceSiteButton({
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold text-white/80 transition hover:bg-white/10 hover:text-white"
+                  className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold text-foreground/80 transition hover:bg-foreground/10 hover:text-foreground"
                 >
                   <ArrowSquareOutIcon size={16} weight="bold" />
                   <span className="hidden sm:inline">Abrir em nova aba</span>
@@ -100,7 +100,7 @@ export default function ReferenceSiteButton({
                   type="button"
                   onClick={() => setOpen(false)}
                   aria-label="Fechar"
-                  className="inline-flex items-center justify-center rounded-full p-1 bg-red-500 text-white/80 transition hover:bg-white/10 hover:text-white"
+                  className="inline-flex items-center justify-center rounded-full p-1 bg-red-500 text-white/90 transition hover:bg-red-600 hover:text-white"
                 >
                   <XIcon size={18} weight="bold" />
                 </button>

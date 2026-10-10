@@ -366,7 +366,7 @@ export default function Page() {
 
   return (
     <main
-      className={`${poppins.variable} ${montserrat.variable} ${raleway.variable} ${roboto.variable} ${inter.variable} ${openSans.variable} ${workSans.variable} ${ubuntu.variable} overflow-x-hidden bg-foreground`}
+      className={`${poppins.variable} ${montserrat.variable} ${raleway.variable} ${roboto.variable} ${inter.variable} ${openSans.variable} ${workSans.variable} ${ubuntu.variable} overflow-x-hidden bg-background text-foreground`}
     >
       <section
         className="w-full py-16 sm:py-20 max-w-6xl mx-auto"
@@ -376,11 +376,11 @@ export default function Page() {
           <Title
             content="PROCESSO DE CRIAÇÃO DE WEBSITES E LANDING PAGES"
             element="h3"
-            className="text-gray-900  text-xl sm:text-2xl text-center"
+            className="text-foreground text-xl sm:text-2xl text-center"
           />
           <Subtitle
             content={`Em apenas 5 passos o seu negócio já está disponível para o mundo. \n\n \n Conte nos o que você precisa e deixe o resto por nossa conta (:`}
-            className="text-gray-700 mt-4"
+            className="text-foreground/75 mt-4"
           />
 
           <ol className="mt-10">
@@ -389,14 +389,14 @@ export default function Page() {
                 key={step.text}
                 className="relative flex gap-4 pb-10 last:pb-0 sm:gap-6"
               >
-                <span className="w-8 shrink-0 text-center text-4xl font-black leading-none text-black sm:w-10 sm:text-5xl">
+                <span className="w-8 shrink-0 text-center text-4xl font-black leading-none text-foreground sm:w-10 sm:text-5xl">
                   {index + 1}
                 </span>
 
                 <div className="max-w-3xl pt-1">
                   <Paragraph
                     content={step.text}
-                    className="text-gray-900 text-xl sm:text-4xl"
+                    className="text-foreground text-xl sm:text-4xl"
                   />
                   {step.link &&
                   step.link.includes("domínio") &&
@@ -407,7 +407,7 @@ export default function Page() {
                   ) : step.link && step.link.includes("domínio") ? (
                     <button
                       onClick={() => setIsDomainModalOpen(true)}
-                      className="mt-2 inline-block text-base font-semibold text-[#1873ff] underline underline-offset-2 hover:text-[#0e5dd0] sm:text-lg"
+                      className="mt-2 inline-block text-base font-semibold text-link underline underline-offset-2 hover:text-link-hover sm:text-lg"
                     >
                       {step.link}
                     </button>
@@ -421,7 +421,7 @@ export default function Page() {
                       </span>
                       <button
                         onClick={handleOpenTemplateModal}
-                        className="w-fit text-base font-semibold text-[#1873ff] underline underline-offset-2 hover:text-[#0e5dd0] sm:text-lg"
+                        className="w-fit text-base font-semibold text-link underline underline-offset-2 hover:text-link-hover sm:text-lg"
                       >
                         Trocar template
                       </button>
@@ -430,7 +430,7 @@ export default function Page() {
                     step.link.toLowerCase().includes("templates") ? (
                     <button
                       onClick={handleOpenTemplateModal}
-                      className="mt-2 inline-block text-base font-semibold text-[#1873ff] underline underline-offset-2 hover:text-[#0e5dd0] sm:text-lg"
+                      className="mt-2 inline-block text-base font-semibold text-link underline underline-offset-2 hover:text-link-hover sm:text-lg"
                     >
                       {step.link}
                     </button>
@@ -438,7 +438,7 @@ export default function Page() {
                     step.link.toLowerCase().includes("formul") ? (
                     <button
                       onClick={() => setIsWebsiteFormModalOpen(true)}
-                      className="mt-2 inline-block text-base font-semibold text-[#1873ff] underline underline-offset-2 hover:text-[#0e5dd0] sm:text-lg"
+                      className="mt-2 inline-block text-base font-semibold text-link underline underline-offset-2 hover:text-link-hover sm:text-lg"
                     >
                       {step.link}
                     </button>
@@ -447,7 +447,7 @@ export default function Page() {
                       href={step.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-2 inline-block text-base font-semibold text-[#1873ff] underline underline-offset-2 hover:text-[#0e5dd0] sm:text-lg"
+                      className="mt-2 inline-block text-base font-semibold text-link underline underline-offset-2 hover:text-link-hover sm:text-lg"
                     >
                       {step.link}
                     </a>
@@ -470,11 +470,11 @@ export default function Page() {
         <Title
           content={landingServicesContent.title}
           element="h1"
-          className="text-center text-gray-900 tracking-[0.16em] font-black text-2xl sm:text-4xl"
+          className="text-center text-foreground tracking-[0.16em] font-black text-2xl sm:text-4xl"
         />
         <Subtitle
           content={landingServicesContent.subtitle}
-          className="mx-auto mt-5 max-w-4xl text-center text-gray-900/90 text-base sm:text-3xl"
+          className="mx-auto mt-5 max-w-4xl text-center text-foreground/90 text-base sm:text-3xl"
         />
 
         <div className="w-full mt-14 space-y-12 max-w-6xl mx-auto flex flex-col items-center">
@@ -484,12 +484,12 @@ export default function Page() {
                 <Subtitle
                   content={`${index + 1}. ${item.title}`}
                   element="h2"
-                  className="text-gray-900 text-2xl sm:text-4xl"
+                  className="text-foreground text-2xl sm:text-4xl"
                 />
 
                 <Paragraph
                   content={item.description}
-                  className="mt-3 text-gray-900/85 text-base sm:text-2xl"
+                  className="mt-3 text-foreground/85 text-base sm:text-2xl"
                 />
 
                 {item.highlights && (
@@ -498,7 +498,7 @@ export default function Page() {
                       <li key={detail}>
                         <Paragraph
                           content={detail}
-                          className="text-gray-900/80 text-sm sm:text-lg"
+                          className="text-foreground/80 text-sm sm:text-lg"
                         />
                       </li>
                     ))}
@@ -515,17 +515,17 @@ export default function Page() {
         onClose={handleCloseDomainModal}
         title="Consulta de disponibilidade de domínio"
         size="xl"
-        className="bg-white text-gray-900"
+        className="bg-bg-card text-foreground"
         showCloseButton
       >
         <div className="overflow-hidden rounded-lg border border-foreground/15">
           <form
             onSubmit={handleMockDomainCheck}
-            className="space-y-4 bg-white px-4 pt-2 sm:px-5"
+            className="space-y-4 px-4 pt-2 sm:px-5"
           >
             <label
               htmlFor="domain-query"
-              className="block text-sm font-semibold text-gray-900"
+              className="block text-sm font-semibold text-foreground"
             >
               Digite o domínio que deseja consultar
             </label>
@@ -536,37 +536,37 @@ export default function Page() {
                 value={domainQuery}
                 onChange={(event) => setDomainQuery(event.target.value)}
                 placeholder="exemplo.com.br"
-                className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-300/30 disabled:cursor-not-allowed disabled:opacity-70"
+                className="w-full rounded-md border border-gray-300 bg-background px-3 py-2 text-sm text-foreground placeholder:text-foreground/50 outline-none dark:border-gray-600 focus:border-primary-300 focus:ring-2 focus:ring-primary-300/30 disabled:cursor-not-allowed disabled:opacity-70"
               />
               <button
                 type="submit"
                 disabled={isCheckingDomain}
-                className="rounded-md bg-[#1873ff] px-4 py-2 text-sm font-semibold text-white hover:bg-[#0e5dd0] disabled:cursor-not-allowed disabled:opacity-70"
+                className="rounded-md bg-[#0e5dd0] px-4 py-2 text-sm font-semibold text-white hover:bg-[#0a47a3] disabled:cursor-not-allowed disabled:opacity-70"
               >
                 {isCheckingDomain ? "Verificando..." : "Verificar"}
               </button>
             </div>
             {domainError && (
-              <div className="rounded-md border border-orange-200 bg-orange-50 px-3 py-2">
+              <div className="rounded-md border border-orange-200 bg-orange-50 px-3 py-2 dark:border-orange-500/30 dark:bg-orange-500/10">
                 <Paragraph
                   content={domainError}
-                  className="text-orange-700 text-sm"
+                  className="text-orange-700 text-sm dark:text-orange-300"
                 />
               </div>
             )}
             {domainStatus === "available" && (
-              <div className="rounded-md border border-green-200 bg-green-50 px-3 py-2">
+              <div className="rounded-md border border-green-200 bg-green-50 px-3 py-2 dark:border-green-500/30 dark:bg-green-500/10">
                 <Paragraph
                   content="Disponível nesta simulação. Você pode seguir com o registro."
-                  className="text-green-700 text-sm"
+                  className="text-green-700 text-sm dark:text-green-300"
                 />
               </div>
             )}
             {domainStatus === "unavailable" && (
-              <div className="rounded-md border border-red-200 bg-red-50 px-3 py-2">
+              <div className="rounded-md border border-red-200 bg-red-50 px-3 py-2 dark:border-red-500/30 dark:bg-red-500/10">
                 <Paragraph
                   content="Indisponível nesta simulação. Tente outra opção de domínio."
-                  className="text-red-700 text-sm"
+                  className="text-red-700 text-sm dark:text-red-300"
                 />
               </div>
             )}
@@ -585,7 +585,7 @@ export default function Page() {
         onClose={handleCloseTemplateModal}
         title="Selecione o template desejado"
         size="xl"
-        className="bg-white text-gray-900 overflow-x-hidden"
+        className="bg-bg-card text-foreground overflow-x-hidden"
         showCloseButton
       >
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -616,7 +616,7 @@ export default function Page() {
         <div className="mt-5 flex flex-col items-center gap-2">
           <Paragraph
             content={`Página ${currentTemplatePage} de ${totalTemplatePages}`}
-            className="text-sm text-gray-900"
+            className="text-sm text-foreground"
           />
           <div className="flex items-center gap-2">
             <button
@@ -625,7 +625,7 @@ export default function Page() {
                 setCurrentTemplatePage((prevPage) => Math.max(prevPage - 1, 1))
               }
               disabled={!canGoToPreviousTemplatePage}
-              className="rounded-md border border-[#1873ff] px-4 py-2 text-sm font-semibold text-[#1873ff] transition-colors hover:bg-[#e8f1ff] disabled:cursor-not-allowed disabled:border-gray-300 disabled:text-gray-400 disabled:hover:bg-transparent"
+              className="rounded-md border border-link px-4 py-2 text-sm font-semibold text-link transition-colors hover:bg-link/10 disabled:cursor-not-allowed disabled:border-foreground/20 disabled:text-foreground/40 disabled:hover:bg-transparent"
             >
               Anterior
             </button>
@@ -637,7 +637,7 @@ export default function Page() {
                 )
               }
               disabled={!canGoToNextTemplatePage}
-              className="rounded-md border border-[#1873ff] px-4 py-2 text-sm font-semibold text-[#1873ff] transition-colors hover:bg-[#e8f1ff] disabled:cursor-not-allowed disabled:border-gray-300 disabled:text-gray-400 disabled:hover:bg-transparent"
+              className="rounded-md border border-link px-4 py-2 text-sm font-semibold text-link transition-colors hover:bg-link/10 disabled:cursor-not-allowed disabled:border-foreground/20 disabled:text-foreground/40 disabled:hover:bg-transparent"
             >
               Próximo
             </button>
@@ -650,20 +650,20 @@ export default function Page() {
         onClose={handleCloseWebsiteFormModal}
         title="Formulário de criação de website/landing page"
         size="lg"
-        className="bg-white text-gray-900 overflow-x-hidden"
+        className="bg-bg-card text-foreground overflow-x-hidden"
         showCloseButton
       >
         <form
           onSubmit={handleWebsiteFormSubmit}
-          className="space-y-4 text-gray-900 [--color-bg:#ffffff] [--color-border:#d1d5db] [--color-foreground:#111827]"
+          className="space-y-4 text-foreground"
         >
           <Subtitle content="Informações do site" />
-          <div className="rounded-md border border-gray-200 bg-gray-50 p-3">
-            <p className="text-sm text-gray-900">
+          <div className="rounded-md border border-foreground/10 bg-foreground/[0.04] p-3">
+            <p className="text-sm text-foreground">
               <strong>Domínio selecionado:</strong>{" "}
               {websiteCreationFormData.domain || "Não selecionado"}
             </p>
-            <p className="mt-1 text-sm text-gray-900">
+            <p className="mt-1 text-sm text-foreground">
               <strong>Template selecionado:</strong>{" "}
               {websiteCreationFormData.templateName || "Não selecionado"}
             </p>
@@ -671,7 +671,7 @@ export default function Page() {
               <button
                 type="button"
                 onClick={handleOpenDomainModalFromWebsiteForm}
-                className="rounded-md border border-primary-400 px-3 py-1.5 text-xs font-semibold text-primary-700 transition-colors hover:bg-primary-50"
+                className="rounded-md border border-primary-400 px-3 py-1.5 text-xs font-semibold text-highlight transition-colors hover:bg-primary-500/10"
               >
                 {websiteCreationFormData.domain
                   ? "Trocar domínio"
@@ -680,7 +680,7 @@ export default function Page() {
               <button
                 type="button"
                 onClick={handleOpenTemplateModalFromWebsiteForm}
-                className="rounded-md border border-primary-400 px-3 py-1.5 text-xs font-semibold text-primary-700 transition-colors hover:bg-primary-50"
+                className="rounded-md border border-primary-400 px-3 py-1.5 text-xs font-semibold text-highlight transition-colors hover:bg-primary-500/10"
               >
                 {websiteCreationFormData.templateName
                   ? "Trocar template"
@@ -693,8 +693,8 @@ export default function Page() {
             <ColorInput
               id="website-creation-primary-color"
               label="Cor primária"
-              className="bg-white w-[80px]"
-              containerClassName="[&>label]:text-gray-900 [&>p]:text-gray-900 max-w-[280px]"
+              className="w-[80px]"
+              containerClassName="max-w-[280px]"
               value={websiteCreationFormData.primaryColor}
               onChange={(event) =>
                 handleWebsiteFormFieldChange("primaryColor", event.target.value)
@@ -704,8 +704,8 @@ export default function Page() {
             <ColorInput
               id="website-creation-secondary-color"
               label="Cor secundária (opcional)"
-              className="bg-white w-[80px]"
-              containerClassName="[&>label]:text-gray-900 [&>p]:text-gray-900 w-fit max-w-[280px]"
+              className="w-[80px]"
+              containerClassName="w-fit max-w-[280px]"
               value={websiteCreationFormData.secondaryColor}
               onChange={(event) =>
                 handleWebsiteFormFieldChange(
@@ -716,9 +716,9 @@ export default function Page() {
             />
           </div>
 
-          <div className="rounded-md border border-gray-200 bg-gray-50 p-3">
+          <div className="rounded-md border border-foreground/10 bg-foreground/[0.04] p-3">
             <p
-              className="text-lg font-bold text-gray-900"
+              className="text-lg font-bold text-foreground"
               style={{
                 fontFamily: selectedFontFamily,
               }}
@@ -726,7 +726,7 @@ export default function Page() {
               Prévia da fonte selecionada - {selectedFontOption?.label || ""}
             </p>
             <p
-              className="mt-2 text-sm text-gray-900"
+              className="mt-2 text-sm text-foreground"
               style={{
                 fontFamily: selectedFontFamily,
               }}
@@ -750,8 +750,6 @@ export default function Page() {
             placeholder="Selecione uma fonte"
             isSearchable={false}
             notFoundOptionsMessage="Nenhuma fonte disponível."
-            containerClassName="[--color-border:#d1d5db] [--color-foreground:#111827] [--color-placeholder:#111827]"
-            labelClassName="text-gray-900"
           />
 
           <Subtitle content="Informações do solicitante" className="mt-8" />
@@ -765,8 +763,7 @@ export default function Page() {
                 handleWebsiteFormFieldChange("name", event.target.value)
               }
               placeholder="João Silva"
-              className="mt-1 bg-white text-gray-900 placeholder:text-gray-500"
-              containerClassName="[&>label]:text-gray-900 [&>p]:text-gray-900"
+              className="mt-1"
             />
             <MaskedTextInput
               id="website-creation-whatsapp"
@@ -777,15 +774,14 @@ export default function Page() {
                 handleWebsiteFormFieldChange("whatsapp", event.target.value)
               }
               placeholder="(31) 99999-9999"
-              className="mt-1 bg-white text-gray-900 placeholder:text-gray-500"
-              containerClassName="[&>label]:text-gray-900 [&>p]:text-gray-900"
+              className="mt-1"
             />
           </div>
 
           <div>
             <label
               htmlFor="website-creation-message"
-              className="block text-sm font-semibold text-gray-900"
+              className="block text-sm font-semibold text-foreground"
             >
               Mensagem
             </label>
@@ -800,24 +796,24 @@ export default function Page() {
               }
               placeholder="Descreva o seu projeto, quanto mais detalhes, melhor! Quais funcionalidades deseja? Qual o objetivo do site/landing page? Para que tipo de público?"
               rows={5}
-              className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder:text-gray-900 outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-300/30"
+              className="mt-1 w-full rounded-md border border-gray-300 bg-background px-3 py-2 text-sm text-foreground placeholder:text-foreground/60 outline-none dark:border-gray-600 focus:border-primary-300 focus:ring-2 focus:ring-primary-300/30"
             />
           </div>
 
           {websiteFormError && (
-            <div className="rounded-md border border-red-200 bg-red-50 px-3 py-2">
+            <div className="rounded-md border border-red-200 bg-red-50 px-3 py-2 dark:border-red-500/30 dark:bg-red-500/10">
               <Paragraph
                 content={websiteFormError}
-                className="text-red-700 text-sm"
+                className="text-red-700 text-sm dark:text-red-300"
               />
             </div>
           )}
 
           {websiteFormSuccess && (
-            <div className="rounded-md border border-green-200 bg-green-50 px-3 py-2">
+            <div className="rounded-md border border-green-200 bg-green-50 px-3 py-2 dark:border-green-500/30 dark:bg-green-500/10">
               <Paragraph
                 content={websiteFormSuccess}
-                className="text-green-700 text-sm"
+                className="text-green-700 text-sm dark:text-green-300"
               />
             </div>
           )}

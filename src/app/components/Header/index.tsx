@@ -1,6 +1,7 @@
 "use client";
 
 import LandingHeader from "@/components/elements/LandingHeader";
+import ThemeSwitch from "@/components/miscellaneous/ThemeSwitch";
 import { navItems } from "@/mocks/landing-page";
 import { trackCtaClick } from "@/utils/analytics";
 import { resolveSiteHref } from "@/utils/navigation";
@@ -18,17 +19,24 @@ export default function Header() {
     <LandingHeader.Root
       bordered
       sticky
-      className="bg-[#04050b]/95 text-white backdrop-blur border-white/10"
+      className="bg-background/95 backdrop-blur border-foreground/10"
       size="lg"
     >
       <LandingHeader.Left>
         <Link href="/" className="flex items-center gap-2">
           <Image
+            src="/imgs/logo_pls_sistemas_light.png"
+            alt="Logo da PLS Sistemas"
+            width={180}
+            height={80}
+            className="w-full h-10 sm:h-12 dark:hidden"
+          />
+          <Image
             src="/imgs/logo_pls_sistemas.png"
             alt="Logo da PLS Sistemas"
             width={180}
             height={80}
-            className="w-full h-10 sm:h-12"
+            className="hidden w-full h-10 sm:h-12 dark:block"
           />
         </Link>
       </LandingHeader.Left>
@@ -50,7 +58,7 @@ export default function Header() {
         <LandingHeader.MobileMenuToggle
           open={isMobileMenuOpen}
           onToggle={setIsMobileMenuOpen as never}
-          className="text-white"
+          className="text-foreground"
         />
 
         <LandingHeader.MobileMenuPanel open={isMobileMenuOpen}>
@@ -65,9 +73,11 @@ export default function Header() {
           ))}
         </LandingHeader.MobileMenuPanel>
 
+        <ThemeSwitch />
+
         <LandingHeader.CTA
           label="Falar com especialista"
-          className="hidden md:flex bg-[#7e2cff] text-white"
+          className="max-md:!hidden bg-[#7e2cff] text-white"
           onClick={() => {
             trackCtaClick({
               ctaLabel: "Falar com especialista",

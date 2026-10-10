@@ -18,10 +18,10 @@ export default function Footer() {
   const pathname = usePathname();
 
   return (
-    <FooterElement.Root bordered={false} className="bg-[#030307] text-white">
+    <FooterElement.Root bordered={false} className="bg-surface text-foreground">
       <FooterElement.Top
         columns={5}
-        className="gap-8 border-t border-white/10 py-14 text-center sm:text-left justify-items-center sm:justify-items-stretch"
+        className="gap-8 border-t border-foreground/10 py-14 text-center sm:text-left justify-items-center sm:justify-items-stretch"
       >
         <FooterElement.Column className="items-center sm:items-start text-center sm:text-left gap-6">
           <Link
@@ -29,25 +29,32 @@ export default function Footer() {
             className="flex items-center justify-center sm:justify-start gap-2"
           >
             <Image
+              src="/imgs/logo_pls_sistemas_light.png"
+              alt="Logo da PLS Sistemas"
+              width={160}
+              height={76}
+              className="w-full h-10 sm:h-12 dark:hidden"
+            />
+            <Image
               src="/imgs/logo_pls_sistemas.png"
               alt="Logo da PLS Sistemas"
               width={160}
               height={76}
-              className="w-full h-10 sm:h-12"
+              className="hidden w-full h-10 sm:h-12 dark:block"
             />
           </Link>
           <div className="flex flex-col items-center gap-2 text-center sm:items-start sm:text-left">
             <Paragraph
               content="CNPJ 47.463.499/0001-37"
-              className="text-white/70 !text-xs !sm:text-sm"
+              className="text-foreground/70 !text-xs !sm:text-sm"
             />
             <Paragraph
               content="João Monlevade - MG."
-              className="text-white/70 !text-xs !sm:text-sm"
+              className="text-foreground/70 !text-xs !sm:text-sm"
             />
             <Subtitle
               content="Acompanhe nossas redes sociais"
-              className="text-white/70 !text-xs !sm:text-sm uppercase tracking-[0.14em] mt-4"
+              className="text-foreground/70 !text-xs !sm:text-sm uppercase tracking-[0.14em] mt-4"
             />
             <FooterElement.SocialRow
               iconsClassName="text-foreground/80 hover:text-foreground -mt-4"
@@ -64,14 +71,14 @@ export default function Footer() {
         <FooterElement.Column className="items-center sm:items-start text-center sm:text-left gap-4">
           <Subtitle
             content={footerContent.navTitle}
-            className="text-white !text-xs !sm:text-sm !font-semibold uppercase tracking-[0.14em] opacity-70"
+            className="text-foreground !text-xs !sm:text-sm !font-semibold uppercase tracking-[0.14em] opacity-70"
           />
           <ul className="space-y-3 text-center sm:text-left">
             {[...footerContent.navLinks].sort(byLabel).map((link) => (
               <li key={link.label}>
                 <Link
                   href={resolveSiteHref(pathname, link.href)}
-                  className="text-white/70 hover:text-white transition-colors duration-150"
+                  className="text-foreground/70 hover:text-foreground transition-colors duration-150"
                 >
                   <Paragraph
                     content={link.label}
@@ -85,14 +92,14 @@ export default function Footer() {
         <FooterElement.Column className="items-center sm:items-start text-center sm:text-left gap-4">
           <Subtitle
             content={footerContent.servicesTitle}
-            className="text-white !text-xs !sm:text-sm !font-semibold uppercase tracking-[0.14em] opacity-70"
+            className="text-foreground !text-xs !sm:text-sm !font-semibold uppercase tracking-[0.14em] opacity-70"
           />
           <ul className="space-y-3 text-center sm:text-left">
             {[...footerContent.serviceLinks].sort(byLabel).map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-white/70 hover:text-white transition-colors duration-150"
+                  className="text-foreground/70 hover:text-foreground transition-colors duration-150"
                 >
                   <Paragraph
                     content={link.label}
@@ -107,14 +114,14 @@ export default function Footer() {
         <FooterElement.Column className="items-center sm:items-start text-center sm:text-left gap-4">
           <Subtitle
             content={footerContent.businessTitle}
-            className="text-white !text-xs !sm:text-sm !font-semibold uppercase tracking-[0.14em] opacity-70"
+            className="text-foreground !text-xs !sm:text-sm !font-semibold uppercase tracking-[0.14em] opacity-70"
           />
           <ul className="space-y-3 text-center sm:text-left">
             {[...footerContent.businessCategories].sort(byLabel).map((link) => (
               <li key={link.label}>
                 <Link
                   href={resolveSiteHref(pathname, link.href)}
-                  className="text-white/70 hover:text-white transition-colors duration-150"
+                  className="text-foreground/70 hover:text-foreground transition-colors duration-150"
                 >
                   <Paragraph
                     content={link.label}
@@ -129,14 +136,14 @@ export default function Footer() {
         <FooterElement.Column className="items-center sm:items-start text-center sm:text-left gap-4">
           <Subtitle
             content={footerContent.policyTitle}
-            className="text-white !text-xs !sm:text-sm !font-semibold uppercase tracking-[0.14em] opacity-70"
+            className="text-foreground !text-xs !sm:text-sm !font-semibold uppercase tracking-[0.14em] opacity-70"
           />
           <ul className="space-y-3 text-center sm:text-left">
             {[...footerContent.policyLinks].sort(byLabel).map((link) => (
               <li key={link.label}>
                 <Link
                   href={link.href}
-                  className="text-white/70 hover:text-white transition-colors duration-150"
+                  className="text-foreground/70 hover:text-foreground transition-colors duration-150"
                 >
                   <Paragraph
                     content={link.label}
@@ -150,10 +157,9 @@ export default function Footer() {
       </FooterElement.Top>
 
       <FooterElement.Bottom
-        bordered
-        className="border-t border-white/10 py-6 flex-col items-center gap-4"
+        className="border-t border-foreground/10 py-6 flex-col items-center gap-4"
       >
-        <span className="text-white/50 text-xs w-fit">
+        <span className="text-foreground/65 text-xs w-fit">
           {new Date().getFullYear()} - Desenvolvido por PLS Sistemas
         </span>
       </FooterElement.Bottom>

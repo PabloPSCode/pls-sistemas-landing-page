@@ -85,11 +85,21 @@
 @theme {--color-destructive-900: #520013;}
 @theme {--color-destructive-950: #2b0009;}
 
+/* Light theme (default). Dark values live in `:root.dark` below. */
 @theme {
-  --color-background: #020205;
-  --color-foreground: #f4f5f8;
-  --color-bg-card: #272931;
-  --color-border-card: #3b3f48;
+  /* Page background and main text */
+  --color-background: #f8f8fb;
+  --color-foreground: #0b0c14;
+  /* Alternate surfaces (footer, plans section, teal-tinted sections) */
+  --color-surface: #eef0f5;
+  --color-surface-accent: #e8f4f1;
+  --color-bg-card: #ffffff;
+  --color-border-card: #dfe2e9;
+  /* Accent texts: teal eyebrows, purple highlights and inline links */
+  --color-accent: #0f766e;
+  --color-highlight: #5118b8;
+  --color-link: #0e5dd0;
+  --color-link-hover: #0a47a3;
 
   /* Design token: all content cards use this radius (= rounded-2xl = 16px) */
   --radius-card: 1rem;
@@ -103,12 +113,28 @@
     "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
 }
 
+/* Shadow tint used by content cards (plain var, outside @theme on purpose) */
+:root {
+  color-scheme: light;
+  --elevation-color: rgb(16 17 40 / 0.08);
+  --elevation-color-strong: rgb(16 17 40 / 0.14);
+}
+
 /* Class override so a `.dark` class wins regardless of system */
 :root.dark {
+  color-scheme: dark;
   --color-background: #020205;
   --color-foreground: #f4f5f8;
+  --color-surface: #030307;
+  --color-surface-accent: #07110f;
   --color-bg-card: #272931;
   --color-border-card: #3b3f48;
+  --color-accent: #99f6e4;
+  --color-highlight: #e9d8ff;
+  --color-link: #6ea8ff;
+  --color-link-hover: #9cc4ff;
+  --elevation-color: rgb(0 0 0 / 0.32);
+  --elevation-color-strong: rgb(0 0 0 / 0.42);
 }
 
 
@@ -121,6 +147,8 @@ html{
 }
 
 body{
+  background-color: var(--color-background);
+  color: var(--color-foreground);
   font-family:'Oxanium', ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
 }
 

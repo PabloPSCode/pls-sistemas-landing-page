@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Oxanium } from "next/font/google";
 
 import StructuredData from "@/components/seo/StructuredData";
+import { THEME_STORAGE_KEY } from "@/constants";
 import { businessCategories } from "@/lib/business-categories";
 import { serviceSeoPages } from "@/lib/programmatic-seo";
 import {
@@ -33,6 +34,11 @@ const businessPhone = process.env.NEXT_PUBLIC_WHATSAPP_CONTACT?.replace(
   "",
 );
 const googleAnalyticsId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
+
+// Applies the stored theme before the first paint to avoid a light→dark flash.
+const themeInitScript = `(function(){try{if(localStorage.getItem(${JSON.stringify(
+  THEME_STORAGE_KEY,
+)})==="dark")document.documentElement.classList.add("dark");}catch(e){}})();`;
 
 export const metadata: Metadata = {
   metadataBase: siteMetadataBase,
@@ -91,7 +97,10 @@ export default function RootLayout({
   ];
 
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body
         className={`${oxanium.variable} antialiased overflow-x-hidden`}
       >
