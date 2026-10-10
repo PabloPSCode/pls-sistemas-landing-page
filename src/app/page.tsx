@@ -103,7 +103,7 @@ export default function Home() {
           // Theme-tinted wash so the centered copy keeps contrast in light and dark modes,
           // fading into the page background at the bottom.
           overlayClassName="bg-background/60 !bg-[linear-gradient(to_top,var(--color-background)_0%,transparent_28%),radial-gradient(ellipse_at_center,color-mix(in_srgb,var(--color-background)_80%,transparent)_0%,transparent_75%)]"
-          contentClassName="gap-8 px-6 py-20 text-center sm:py-24"
+          contentClassName="gap-8 px-6 py-14 text-center sm:py-24"
         >
           <Title
             content="Soluções web para impulsionar seu negócio."

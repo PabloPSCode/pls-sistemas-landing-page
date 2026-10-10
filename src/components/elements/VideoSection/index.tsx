@@ -1,5 +1,6 @@
 "use client";
 
+import ScrollSuggestion from "@/components/animations-and-loading/ScrollSuggestion";
 import Button from "@/components/buttons/Button";
 import { PauseIcon, PlayIcon } from "@phosphor-icons/react";
 import clsx from "clsx";
@@ -246,6 +247,13 @@ export default function VideoSection({
             )}
           >
             {children}
+            {/* Below the CTAs; colors follow the theme (dark text on light, light text on dark) */}
+            <ScrollSuggestion
+              helperText="Role para ver mais"
+              containerClassName="mt-12"
+              iconClassName="!text-foreground motion-reduce:animate-none [filter:drop-shadow(0_0_6px_var(--color-background))]"
+              textClassName="text-foreground/80 [text-shadow:0_0_12px_var(--color-background),0_0_4px_var(--color-background)]"
+            />
           </div>
         )}
 
