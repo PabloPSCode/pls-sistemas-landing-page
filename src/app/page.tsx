@@ -15,6 +15,14 @@ import {
     createWebPageSchema,
     siteDescription,
 } from "@/lib/seo";
+import {
+    ArrowUpRightIcon,
+    CheckCircleIcon,
+    ShoppingCartIcon,
+    SwatchesIcon,
+    TimerIcon,
+    type Icon,
+} from "@phosphor-icons/react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -27,6 +35,8 @@ import {
     companies,
     customSolutionFormContent,
     landingPageTitle,
+    solutionsContent,
+    type SolutionStatIcon,
 } from "@/mocks/landing-page";
 import { works, worksSectionContent } from "@/mocks/works";
 import { trackCtaClick } from "@/utils/analytics";
@@ -47,6 +57,12 @@ const heroVideoSources = [
   { src: "/videos/banner-video-720-av1.mp4", type: 'video/mp4; codecs="av01.0.05M.08"' },
   { src: "/videos/banner-video-720-h264.mp4", type: 'video/mp4; codecs="avc1.640028"' },
 ];
+
+const solutionStatIcons: Record<SolutionStatIcon, Icon> = {
+  themes: SwatchesIcon,
+  products: ShoppingCartIcon,
+  time: TimerIcon,
+};
 
 const homePageSchemas = [
   createWebPageSchema({
@@ -192,6 +208,159 @@ export default function Home() {
               speed={48}
             />
           </div>
+        </div>
+
+        <div id={solutionsContent.sectionId} className="scroll-mt-8">
+          <Section size="full" sectionClassName="bg-surface py-20 sm:py-24">
+            <RevealContainer once className="w-full max-w-6xl">
+              <Title
+                content={solutionsContent.title}
+                element="h2"
+                className="text-center text-foreground tracking-[0.16em] font-black"
+              />
+              <Subtitle
+                content={solutionsContent.subtitle}
+                className="mx-auto mt-4 max-w-4xl text-center text-foreground/85 text-xl sm:text-4xl !font-light"
+              />
+            </RevealContainer>
+
+            <div className="mt-12 flex w-full max-w-6xl flex-col gap-8">
+              {solutionsContent.items.map((solution) => (
+                <FadeContainer key={solution.name} once>
+                  <article className="relative isolate grid gap-10 overflow-hidden rounded-3xl border border-foreground/12 bg-foreground/[0.03] p-6 shadow-[0_18px_48px_var(--elevation-color)] sm:p-10 lg:grid-cols-[1fr_1.05fr] lg:items-center">
+                    {/* Soft glow in the product's brand colors */}
+                    <div
+                      aria-hidden="true"
+                      className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,rgba(255,194,14,0.16),transparent_45%),radial-gradient(circle_at_bottom_left,rgba(210,27,27,0.1),transparent_45%)]"
+                    />
+
+                    <div className="flex flex-col gap-6">
+                      <Image
+                        src={solution.logoPath}
+                        alt={solution.name}
+                        width={195}
+                        height={31}
+                        unoptimized
+                        className="h-8 w-auto self-start sm:h-9"
+                      />
+                      <Subtitle
+                        content={solution.headline}
+                        element="h3"
+                        weight="bold"
+                        className="text-foreground !text-2xl leading-tight sm:!text-4xl"
+                      />
+                      <Paragraph
+                        content={solution.description}
+                        className="text-foreground/75 !text-base leading-7 sm:!text-lg"
+                      />
+
+                      <ul className="grid gap-3 sm:grid-cols-2">
+                        {solution.features.map((feature) => (
+                          <li
+                            key={feature}
+                            className="flex items-start gap-2.5 text-sm leading-6 text-foreground/85 sm:text-base"
+                          >
+                            <CheckCircleIcon
+                              aria-hidden="true"
+                              weight="fill"
+                              className="mt-0.5 h-5 w-5 shrink-0 text-success-600 dark:text-success-400"
+                            />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+
+                      <div className="flex flex-col gap-3">
+                        <span className="text-xs font-semibold uppercase tracking-[0.16em] text-foreground/65">
+                          {solutionsContent.segmentsLabel}
+                        </span>
+                        <ul className="flex flex-wrap gap-2">
+                          {solution.segments.map((segment) => (
+                            <li
+                              key={segment}
+                              className="rounded-full border border-foreground/15 bg-foreground/[0.05] px-3 py-1.5 text-xs text-foreground/85 sm:text-sm"
+                            >
+                              {segment}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <a
+                        href={solution.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() =>
+                          trackCtaClick({
+                            ctaLabel: solution.ctaLabel,
+                            ctaLocation: "solutions",
+                            destinationUrl: solution.url,
+                            siteName: solution.name,
+                          })
+                        }
+                        className="inline-flex w-fit items-center gap-2 rounded-full bg-[#D21B1B] px-6 py-3 text-sm font-bold text-white shadow-[0_12px_28px_rgba(210,27,27,0.3)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#b51717] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D21B1B]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:text-base"
+                      >
+                        {solution.ctaLabel}
+                        <ArrowUpRightIcon aria-hidden="true" weight="bold" className="h-4 w-4" />
+                      </a>
+                    </div>
+
+                    <div className="flex flex-col gap-4">
+                      <div className="overflow-hidden rounded-2xl border border-foreground/10 bg-background shadow-[0_18px_48px_var(--elevation-color)]">
+                        {/* Browser-style frame around the product screenshot */}
+                        <div
+                          aria-hidden="true"
+                          className="flex items-center gap-1.5 border-b border-foreground/10 bg-foreground/[0.04] px-4 py-2.5"
+                        >
+                          <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+                          <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+                          <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+                          <span className="ml-3 truncate text-xs text-foreground/60">
+                            {solution.url.replace(/^https?:\/\//, "")}
+                          </span>
+                        </div>
+                        <Image
+                          src={solution.imagePath}
+                          alt={solution.imageAlt}
+                          width={1100}
+                          height={602}
+                          sizes="(max-width: 1024px) 100vw, 560px"
+                          className="h-auto w-full"
+                        />
+                      </div>
+
+                      <dl className="grid grid-cols-3 gap-3">
+                        {solution.stats.map((stat) => {
+                          const StatIcon = solutionStatIcons[stat.icon];
+
+                          return (
+                            <div
+                              key={stat.label}
+                              className="flex flex-col items-center gap-1 rounded-xl border border-foreground/10 bg-foreground/[0.04] px-1.5 py-3 text-center sm:px-2"
+                            >
+                              <dt className="order-2 text-[11px] leading-tight text-foreground/70 sm:text-xs">
+                                {stat.label}
+                              </dt>
+                              <dd className="order-1 flex flex-col items-center gap-1.5">
+                                <StatIcon
+                                  aria-hidden="true"
+                                  weight="duotone"
+                                  className="h-6 w-6 text-[#D21B1B] sm:h-7 sm:w-7 dark:text-[#FFC20E]"
+                                />
+                                <span className="whitespace-nowrap text-base font-black text-foreground sm:text-2xl">
+                                  {stat.value}
+                                </span>
+                              </dd>
+                            </div>
+                          );
+                        })}
+                      </dl>
+                    </div>
+                  </article>
+                </FadeContainer>
+              ))}
+            </div>
+          </Section>
         </div>
 
         <div id={worksSectionContent.sectionId} className="scroll-mt-8">

@@ -20,7 +20,7 @@ export default function Footer() {
   return (
     <FooterElement.Root bordered={false} className="bg-surface text-foreground">
       <FooterElement.Top
-        columns={5}
+        columns={6}
         className="gap-8 border-t border-foreground/10 py-14 text-center sm:text-left justify-items-center sm:justify-items-stretch"
       >
         <FooterElement.Column className="items-center sm:items-start text-center sm:text-left gap-6">
@@ -106,6 +106,30 @@ export default function Footer() {
                     className="!text-xs !sm:text-sm"
                   />
                 </Link>
+              </li>
+            ))}
+          </ul>
+        </FooterElement.Column>
+
+        <FooterElement.Column className="items-center sm:items-start text-center sm:text-left gap-4">
+          <Subtitle
+            content={footerContent.solutionsTitle}
+            className="text-foreground !text-xs !sm:text-sm !font-semibold uppercase tracking-[0.14em] opacity-70"
+          />
+          <ul className="space-y-3 text-center sm:text-left">
+            {[...footerContent.solutionLinks].sort(byLabel).map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground/70 hover:text-foreground transition-colors duration-150"
+                >
+                  <Paragraph
+                    content={link.label}
+                    className="!text-xs !sm:text-sm"
+                  />
+                </a>
               </li>
             ))}
           </ul>

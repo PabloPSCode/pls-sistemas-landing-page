@@ -26,6 +26,28 @@ export interface FooterLinkItem {
   href: string;
 }
 
+export type SolutionStatIcon = "themes" | "products" | "time";
+
+export interface SolutionStat {
+  value: string;
+  label: string;
+  icon: SolutionStatIcon;
+}
+
+export interface SolutionItem {
+  name: string;
+  logoPath: string;
+  headline: string;
+  description: string;
+  features: string[];
+  stats: SolutionStat[];
+  segments: string[];
+  imagePath: string;
+  imageAlt: string;
+  ctaLabel: string;
+  url: string;
+}
+
 export interface LandingTemplateItem {
   templateName: string;
   templateUrl: string;
@@ -46,8 +68,51 @@ export const heroContent = {
 export const navItems: LandingNavItem[] = [
   { label: "Quem somos", href: "#quem-somos" },
   { label: "Serviços", href: "/servicos" },
+  { label: "Soluções", href: "#solucoes" },
   { label: "Blog", href: "/blog" },
 ];
+
+export const ENCARTE_OFERTA_URL = "https://www.encarteoferta.com.br";
+
+const encarteOfertaSegments = [
+  "Feiras e Sacolões",
+  "Supermercados e mercearias",
+  "Lojas de pneus",
+  "Lojas de materiais de construção",
+  "Açougues",
+  "Lojas de suplementos",
+  "Lojas de EPIs",
+  "Pet shops",
+];
+
+export const solutionsContent = {
+  sectionId: "solucoes",
+  title: "SOLUÇÕES",
+  subtitle:
+    "Ferramentas prontas, desenvolvidas pela PLS Sistemas, para o seu negócio vender mais.",
+  segmentsLabel: "Ideal para",
+  items: [
+    {
+      name: "Encarte Oferta",
+      logoPath: "/imgs/encarte-oferta/logo.svg",
+      headline: "Seu encarte de ofertas pronto em minutos, não em dias.",
+      description:
+        "Plataforma para lojistas criarem encartes de ofertas profissionais, em apenas 4 passos e em menos de 5 minutos, sem precisar ficar esperando o designer.",
+      features: [],
+      stats: [
+        { value: "+300", label: "temas prontos", icon: "themes" },
+        { value: "+40 mil", label: "produtos no catálogo", icon: "products" },
+        { value: "< 5 min", label: "do tema à publicação", icon: "time" },
+      ],
+      segments: encarteOfertaSegments,
+      imagePath: "/imgs/encarte-oferta/editor.webp",
+      imageAlt:
+        "Editor do Encarte Oferta personalizando um encarte de ofertas de hortifrúti",
+      ctaLabel: "Conhecer o Encarte Oferta",
+      url: ENCARTE_OFERTA_URL,
+    },
+  ] as SolutionItem[],
+};
 
 export const aboutContent = {
   sectionId: "quem-somos",
@@ -131,6 +196,7 @@ export const footerContent = {
   navTitle: "PÁGINAS PRINCIPAIS",
   policyTitle: "TERMOS E POLÍTICAS",
   servicesTitle: "SERVIÇOS",
+  solutionsTitle: "SOLUÇÕES",
   businessTitle: "SITE PARA O SEU NEGÓCIO",
   copyright: "2026, Todos os direitos reservados",
   navLinks: [...navItems] as FooterLinkItem[],
@@ -146,10 +212,17 @@ export const footerContent = {
     },
     { label: "SEO Técnico", href: "/servicos/seo-tecnico" },
   ] as FooterLinkItem[],
+  solutionLinks: encarteOfertaSegments.map((label) => ({
+    label,
+    href: ENCARTE_OFERTA_URL,
+  })) as FooterLinkItem[],
   businessCategories: [
     { label: "Empresas em geral", href: "/sites/empresas-em-geral" },
     { label: "Dentistas e clínicas", href: "/sites/dentistas-e-clinicas" },
-    { label: "Imobiliárias e corretores de imóveis", href: "/sites/corretores-de-imoveis" },
+    {
+      label: "Imobiliárias e corretores de imóveis",
+      href: "/sites/corretores-de-imoveis",
+    },
     { label: "RH e contabilidade", href: "/sites/rh-e-contabilidade" },
     { label: "Academias e bem-estar", href: "/sites/academias-e-bem-estar" },
     { label: "Nutricionistas", href: "/sites/nutricionistas" },
@@ -157,8 +230,14 @@ export const footerContent = {
       label: "Arquitetos e designers de interiores",
       href: "/sites/arquitetos-e-designers-de-interiores",
     },
-    { label: "Psicólogos e terapeutas", href: "/sites/psicologos-e-terapeutas" },
-    { label: "Advogados e Escritórios de Advocacia", href: "/sites/advogados-e-escritorios" },
+    {
+      label: "Psicólogos e terapeutas",
+      href: "/sites/psicologos-e-terapeutas",
+    },
+    {
+      label: "Advogados e Escritórios de Advocacia",
+      href: "/sites/advogados-e-escritorios",
+    },
     { label: "Agências de veículos", href: "/sites/agencias-de-veiculos" },
     { label: "Fotógrafos", href: "/sites/fotografos" },
   ] as FooterLinkItem[],
@@ -170,7 +249,6 @@ export const footerContent = {
     { iconName: "x", href: "https://x.com" },
   ] as const,
 };
-
 
 export const companies: BrandLogo[] = [
   {
@@ -315,7 +393,8 @@ export const templates: LandingTemplateItem[] = [
     templateName: "Law",
     templateUrl: "https://teach-landing-page-template.vercel.app/",
     templateImage: "/imgs/templates/teach.jpg",
-    recommendation: "Advogados, profissionais do direito e escritórios de advocacia.",
+    recommendation:
+      "Advogados, profissionais do direito e escritórios de advocacia.",
   },
   {
     templateName: "Motors",
