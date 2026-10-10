@@ -74,15 +74,16 @@ export const navItems: LandingNavItem[] = [
 
 export const ENCARTE_OFERTA_URL = "https://www.encarteoferta.com.br";
 
+// Each segment has a dedicated page on Encarte Oferta at `/<slug>`.
 const encarteOfertaSegments = [
-  "Feiras e Sacolões",
-  "Supermercados e mercearias",
-  "Lojas de pneus",
-  "Lojas de materiais de construção",
-  "Açougues",
-  "Lojas de suplementos",
-  "Lojas de EPIs",
-  "Pet shops",
+  { label: "Feiras e Sacolões", slug: "feiras-e-sacoloes" },
+  { label: "Supermercados e mercearias", slug: "supermercados-e-mercearias" },
+  { label: "Lojas de pneus", slug: "lojas-de-pneus" },
+  { label: "Lojas de materiais de construção", slug: "lojas-de-materiais-de-construcao" },
+  { label: "Açougues", slug: "acougues" },
+  { label: "Lojas de suplementos", slug: "lojas-de-suplementos" },
+  { label: "Lojas de EPIs", slug: "lojas-de-epis" },
+  { label: "Pet shops", slug: "pet-shops" },
 ];
 
 export const solutionsContent = {
@@ -104,7 +105,7 @@ export const solutionsContent = {
         { value: "+40 mil", label: "produtos no catálogo", icon: "products" },
         { value: "< 5 min", label: "do tema à publicação", icon: "time" },
       ],
-      segments: encarteOfertaSegments,
+      segments: encarteOfertaSegments.map((segment) => segment.label),
       imagePath: "/imgs/encarte-oferta/editor.webp",
       imageAlt:
         "Editor do Encarte Oferta personalizando um encarte de ofertas de hortifrúti",
@@ -212,9 +213,9 @@ export const footerContent = {
     },
     { label: "SEO Técnico", href: "/servicos/seo-tecnico" },
   ] as FooterLinkItem[],
-  solutionLinks: encarteOfertaSegments.map((label) => ({
+  solutionLinks: encarteOfertaSegments.map(({ label, slug }) => ({
     label,
-    href: ENCARTE_OFERTA_URL,
+    href: `${ENCARTE_OFERTA_URL}/${slug}`,
   })) as FooterLinkItem[],
   businessCategories: [
     { label: "Empresas em geral", href: "/sites/empresas-em-geral" },
