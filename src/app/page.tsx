@@ -30,6 +30,7 @@ import { useEffect, useState } from "react";
 import { preload } from "react-dom";
 
 import BrandMarquee from "@/components/marketing/BrandMarquee";
+import Carousel from "@/components/navigation/Swiper";
 import {
     aboutContent,
     companies,
@@ -381,22 +382,28 @@ export default function Home() {
                 />
               </RevealContainer>
 
-              <div className="mt-12 grid w-full max-w-6xl gap-6 lg:grid-cols-3">
-                {works.map((work, index) => (
-                  <FadeContainer
-                    key={work.title}
-                    once
-                    delay={index + 1}
-                    className="h-full"
-                  >
-                    <article className="group flex h-full flex-col gap-5 rounded-2xl border border-foreground/12 bg-foreground/[0.04] p-5 shadow-[0_18px_48px_var(--elevation-color)] backdrop-blur transition-all duration-300 hover:border-foreground/20 hover:bg-foreground/[0.07] hover:-translate-y-1 hover:shadow-[0_28px_56px_var(--elevation-color-strong)]">
+              <FadeContainer once className="mt-12 w-full max-w-6xl">
+                <Carousel
+                  items={works}
+                  loop
+                  slidesPerView={1}
+                  spaceBetween={24}
+                  breakpoints={{
+                    768: { slidesPerView: 2 },
+                    1024: { slidesPerView: 3 },
+                  }}
+                  // Let card shadows breathe: no vertical clipping, and 24px side gutters
+                  // (= spaceBetween, so neighbouring slides never peek in).
+                  swiperClassName="!-mx-6 !w-auto !px-6 !pt-2 !pb-4 !overflow-x-clip !overflow-y-visible"
+                  renderItem={(work) => (
+                    <article className="group flex h-full flex-col gap-5 rounded-2xl border border-foreground/12 bg-foreground/[0.04] p-5 shadow-[0_10px_24px_var(--elevation-color)] backdrop-blur transition-all duration-300 hover:border-foreground/20 hover:bg-foreground/[0.07] hover:-translate-y-1 hover:shadow-[0_16px_32px_var(--elevation-color-strong)]">
                       <div className="overflow-hidden rounded-xl border border-foreground/10 bg-foreground/10">
                         <Image
                           src={work.imageUrl}
                           alt={`Preview do website ${work.title}`}
                           width={1280}
                           height={820}
-                          sizes="(max-width: 1024px) 100vw, 33vw"
+                          sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 384px"
                           className="h-auto w-full object-cover transition duration-500 scale-[1.1] group-hover:scale-[1.3]"
                         />
                       </div>
@@ -431,9 +438,9 @@ export default function Home() {
                         </a>
                       </div>
                     </article>
-                  </FadeContainer>
-                ))}
-              </div>
+                  )}
+                />
+              </FadeContainer>
             </div>
           </Section>
         </div>

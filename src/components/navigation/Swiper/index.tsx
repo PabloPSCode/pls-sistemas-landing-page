@@ -2,7 +2,7 @@
 
 import { ArrowLeftIcon, ArrowRightIcon } from "@phosphor-icons/react";
 import clsx from "clsx";
-import React, { useMemo, useRef, useState } from "react";
+import React, { useMemo, useState } from "react";
 import type { Swiper as SwiperType } from "swiper/bundle";
 import { A11y, Grid, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -41,6 +41,8 @@ export interface CarouselProps<T = unknown> {
   breakpoints?: Record<number, CarouselBreakpoint>;
   /** Classe aplicada ao container externo. */
   className?: string;
+  /** Classe aplicada ao Swiper (ex.: padding para não cortar sombras dos cards). */
+  swiperClassName?: string;
   /** Callback no slide change. */
   onSlideChange?: (swiper: SwiperType) => void;
 }
@@ -78,10 +80,13 @@ export default function Carousel<T>({
   showNavigation = true,
   breakpoints,
   className,
+  swiperClassName,
   onSlideChange,
 }: CarouselProps<T>) {
-  const prevRef = useRef<HTMLButtonElement | null>(null);
-  const nextRef = useRef<HTMLButtonElement | null>(null);
+  // Elements kept in state (not refs) so Swiper binds them whether the buttons
+  // render before or after the slider.
+  const [prevEl, setPrevEl] = useState<HTMLButtonElement | null>(null);
+  const [nextEl, setNextEl] = useState<HTMLButtonElement | null>(null);
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
 
@@ -92,11 +97,43 @@ export default function Carousel<T>({
       map[Number(px)] = {
         slidesPerView: cfg.slidesPerView,
         grid: { rows: cfg.rows ?? 1, fill: "row" as const },
-        spaceBetween: cfg.spaceBetween,
+        // An explicit `undefined` would override the base value and break the layout.
+        ...(cfg.spaceBetween !== undefined && { spaceBetween: cfg.spaceBetween }),
       };
     });
     return map;
   }, [breakpoints]);
+
+  const navigationButtons = (
+    <>
+      <button
+        ref={setPrevEl}
+        type="button"
+        aria-label="Anterior"
+        className={clsx(
+          "inline-flex items-center justify-center rounded-md border px-2.5 py-2",
+          "bg-background text-foreground border-foreground/20",
+          "hover:bg-foreground/5 transition",
+          !loop && isBeginning && "opacity-50 cursor-not-allowed"
+        )}
+      >
+        <ArrowLeftIcon weight="bold" size={16} />
+      </button>
+      <button
+        ref={setNextEl}
+        type="button"
+        aria-label="Próximo"
+        className={clsx(
+          "inline-flex items-center justify-center rounded-md border px-2.5 py-2",
+          "bg-background text-foreground border-foreground/20",
+          "hover:bg-foreground/5 transition",
+          !loop && isEnd && "opacity-50 cursor-not-allowed"
+        )}
+      >
+        <ArrowRightIcon weight="bold" size={16} />
+      </button>
+    </>
+  );
 
   return (
     <>
@@ -106,7 +143,12 @@ export default function Carousel<T>({
         </h3>
       )}
       <div
-        className={clsx("w-full flex flex-col-reverse sm:flex-col", className)}
+        className={clsx(
+          "w-full flex",
+          // The title bar's controls move below the slides on mobile; bottom controls stay below.
+          title ? "flex-col-reverse sm:flex-col" : "flex-col",
+          className
+        )}
       >
         {title && (
           <div className="w-full mb-4 flex sm:items-center justify-between">
@@ -116,34 +158,8 @@ export default function Carousel<T>({
 
             {showNavigation && (
               <div className="w-full flex items-center gap-2 justify-end mt-4 sm:mt-0">
-                <button
-                  ref={prevRef}
-                  type="button"
-                  aria-label="Anterior"
-                  className={clsx(
-                    "inline-flex items-center justify-center rounded-md border px-2.5 py-2",
-                    "bg-background text-foreground border-foreground/20",
-                    "hover:bg-foreground/5 transition",
-                    isBeginning && "opacity-50 cursor-not-allowed"
-                  )}
-                >
-                  <ArrowLeftIcon weight="bold" size={16} />
-                </button>
-                <button
-                  ref={nextRef}
-                  type="button"
-                  aria-label="Próximo"
-                  className={clsx(
-                    "inline-flex items-center justify-center rounded-md border px-2.5 py-2",
-                    "bg-background text-foreground border-foreground/20",
-                    "hover:bg-foreground/5 transition",
-                    isEnd && "opacity-50 cursor-not-allowed"
-                  )}
-                >
-                  <ArrowRightIcon weight="bold" size={16} />
-                </button>
-              </div>
-            )}
+                {navigationButtons}
+              </div>            )}
           </div>
         )}
 
@@ -154,15 +170,7 @@ export default function Carousel<T>({
           slidesPerView={slidesPerView}
           spaceBetween={spaceBetween}
           loop={loop}
-          // navigation via refs
-          onBeforeInit={(swiper) => {
-            // @ts-expect-error internal Swiper types
-            swiper.params.navigation.prevEl = prevRef.current;
-            // @ts-expect-error internal Swiper types
-            swiper.params.navigation.nextEl = nextRef.current;
-            swiper.navigation.init();
-            swiper.navigation.update();
-          }}
+          navigation={showNavigation ? { prevEl, nextEl } : false}
           onSlideChange={(s) => {
             setIsBeginning(s.isBeginning);
             setIsEnd(s.isEnd);
@@ -170,7 +178,7 @@ export default function Carousel<T>({
           }}
           // @ts-expect-error internal Swiper types
           breakpoints={computedBreakpoints}
-          className="w-full"
+          className={clsx("w-full", swiperClassName)}
         >
           {items.map((item, idx) => (
             <SwiperSlide key={idx} className="!h-auto">
@@ -179,6 +187,13 @@ export default function Carousel<T>({
             </SwiperSlide>
           ))}
         </Swiper>
+
+        {/* Without a title bar, the controls sit centered below the slides */}
+        {showNavigation && !title && (
+          <div className="mt-6 flex w-full items-center justify-center gap-3">
+            {navigationButtons}
+          </div>
+        )}
       </div>
     </>
   );
