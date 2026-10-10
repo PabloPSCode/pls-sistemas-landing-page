@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ["@phosphor-icons/react"],
   },
   images: {
+    formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
         protocol: "https",

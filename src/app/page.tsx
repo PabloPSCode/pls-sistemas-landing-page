@@ -147,7 +147,7 @@ export default function Home() {
               <ZoomContainer once className="w-full">
                 <div className="relative mx-auto max-w-2xl bg-gradient-to-br from-primary-700/60 to-primary-900/80 flex justify-center rounded-2xl ring-1 ring-primary-400/20 shadow-[0_20px_60px_rgba(126,30,237,0.22)]">
                   <Image
-                    src="/imgs/profile_3.png"
+                    src="/imgs/profile_3.webp"
                     alt="Equipe da PLS Sistemas trabalhando em projetos web"
                     width={360}
                     height={76}
