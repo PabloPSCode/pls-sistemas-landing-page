@@ -38,3 +38,25 @@ export const WithControls: Story = {
   },
 };
 
+
+export const WithCustomContent: Story = {
+  args: {
+    size: "full",
+    title: undefined,
+    description: undefined,
+    primaryButtonTitle: undefined,
+    secondaryButtonTitle: undefined,
+    overlayClassName: "bg-black/50",
+    contentClassName: "gap-6 px-6 py-16 text-center",
+    children: (
+      <>
+        <h1 className="text-4xl font-bold text-white sm:text-6xl">
+          Conteúdo centralizado
+        </h1>
+        <p className="max-w-xl text-white/85">
+          Use `children` para sobrepor qualquer conteúdo ao vídeo de fundo.
+        </p>
+      </>
+    ),
+  },
+};

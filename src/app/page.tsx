@@ -5,6 +5,7 @@ import RevealContainer from "@/components/animations-and-loading/RevealContainer
 import ZoomContainer from "@/components/animations-and-loading/ZoomContainer";
 import Button from "@/components/buttons/Button";
 import { Section } from "@/components/elements/Section";
+import VideoSection from "@/components/elements/VideoSection";
 import StructuredData from "@/components/seo/StructuredData";
 import Paragraph from "@/components/typography/Paragraph";
 import Subtitle from "@/components/typography/Subtitle";
@@ -18,8 +19,8 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { preload } from "react-dom";
 
-import { HeroSection } from "@/components/elements/HeroSection";
 import BrandMarquee from "@/components/marketing/BrandMarquee";
 import {
     aboutContent,
@@ -37,6 +38,16 @@ const MagicRingsSection = dynamic(
   },
 );
 
+const HERO_POSTER_URL = "/imgs/banner-video-poster.webp";
+const MOBILE_MEDIA = "(max-width: 767px)";
+// First compatible source wins: 480p on phones, 720p elsewhere; AV1 (~45% lighter) before H.264.
+const heroVideoSources = [
+  { src: "/videos/banner-video-480-av1.mp4", type: 'video/mp4; codecs="av01.0.04M.08"', media: MOBILE_MEDIA },
+  { src: "/videos/banner-video-480-h264.mp4", type: 'video/mp4; codecs="avc1.640028"', media: MOBILE_MEDIA },
+  { src: "/videos/banner-video-720-av1.mp4", type: 'video/mp4; codecs="av01.0.05M.08"' },
+  { src: "/videos/banner-video-720-h264.mp4", type: 'video/mp4; codecs="avc1.640028"' },
+];
+
 const homePageSchemas = [
   createWebPageSchema({
     name: landingPageTitle,
@@ -49,6 +60,8 @@ const homePageSchemas = [
 export default function Home() {
   const router = useRouter();
   const [enableDecorativeFx, setEnableDecorativeFx] = useState(false);
+  // The poster is the hero's first paint (LCP candidate): fetch it early.
+  preload(HERO_POSTER_URL, { as: "image", fetchPriority: "high" });
 
   useEffect(() => {
     const reducedMotion = window.matchMedia(
@@ -81,134 +94,44 @@ export default function Home() {
     <div className="overflow-x-hidden bg-background text-foreground">
       <StructuredData data={homePageSchemas} id="plssistemas-home-seo" />
       <main className="flex flex-col">
-        <HeroSection
+        <VideoSection
           size="full"
-          sectionClassName="bg-background relative isolate overflow-hidden !px-0 !py-0"
-          children={
-            <div className="w-full">
-              {/* ── MOBILE / TABLET ─────────────────────────────────────────────
-                  Stacked column: image on top, text below.
-                  Hidden at lg and above.
-              ──────────────────────────────────────────────────────────────── */}
-              <div className="md:hidden">
-                {/* Image block */}
-                <div className="relative h-[28vh] w-full overflow-hidden">
-                  <Image
-                    aria-hidden="true"
-                    src="/imgs/mosaic_bg.png"
-                    alt=""
-                    fill
-                    priority
-                    sizes="100vw"
-                    className="pointer-events-none select-none object-cover object-top"
-                  />
-                  {/* Fade bottom of image into the page background */}
-                  <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-background to-transparent"
-                  />
-                </div>
-
-                {/* Text content below image */}
-                <div className="flex flex-col items-center gap-8 px-6 pt-2 text-center">
-                  <Title
-                    content="Soluções web para impulsionar seu negócio."
-                    className="max-w-lg font-semibold tracking-wide text-foreground/95 !text-3xl sm:!text-4xl"
-                  />
-                  <p className="max-w-sm text-center text-foreground/80 text-base sm:text-lg leading-relaxed">
-                    Criamos experiências online que encantam seus clientes e
-                    impulsionam seu negócio para o sucesso.
-                  </p>
-                  <FadeContainer
-                    once
-                    className="flex w-full flex-col items-center gap-4 sm:flex-row sm:justify-center"
-                  >
-                    <Button
-                      type="button"
-                      label="Entrar em contato"
-                      onClick={() => startWhatsAppChat()}
-                      className="!rounded-full !bg-secondary-500 !px-8 !py-4 !text-black !shadow-none font-bold cursor-pointer transition-all duration-200 hover:!bg-secondary-400 hover:scale-[1.03] active:scale-[0.98]"
-                    />
-                    <Button
-                      type="button"
-                      variant="outlined"
-                      label="Ver serviços"
-                      onClick={() => router.push("/servicos")}
-                      className="!rounded-full !border !border-foreground/70 !px-8 !py-4 !text-foreground !shadow-none font-bold cursor-pointer transition-all duration-200 hover:!border-foreground hover:!bg-foreground/10 hover:scale-[1.03] active:scale-[0.98]"
-                    />
-                  </FadeContainer>
-                </div>
-              </div>
-
-              {/* ── DESKTOP ─────────────────────────────────────────────────────
-                  Split layout: image right, text left, gradient glue.
-                  Hidden below md.
-              ──────────────────────────────────────────────────────────────── */}
-              <div className="hidden md:block relative min-h-[64vh]">
-                {/* Background image anchored to the right column */}
-                <Image
-                  aria-hidden="true"
-                  src="/imgs/mosaic_bg.png"
-                  alt=""
-                  fill
-                  priority
-                  sizes="100vw"
-                  className="pointer-events-none absolute inset-0 z-0 select-none object-cover object-right opacity-80"
-                />
-
-                {/* Horizontal gradient: background left → transparent right — the "glue" */}
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-background from-[26%] via-background/78 via-[52%] to-transparent to-[78%]"
-                />
-
-                {/* Bottom fade into next section */}
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-40 bg-gradient-to-t from-background to-transparent"
-                />
-
-                {/* Subtle purple radial accent on the left */}
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(ellipse_at_left_center,rgba(126,30,237,0.18)_0%,transparent_54%)]"
-                />
-
-                {/* Text content — left column */}
-                <div className="relative z-10 mx-auto flex min-h-[72vh] w-full max-w-6xl flex-col justify-center px-12">
-                  <div className="pointer-events-auto max-w-2xl space-y-8">
-                    <Title
-                      content="Soluções web para impulsionar seu negócio."
-                      className="max-w-lg font-semibold tracking-wide text-foreground/95 text-4xl sm:text-6xl"
-                    />
-                    <p className="max-w-lg text-left text-foreground/80 text-base sm:text-lg leading-relaxed">
-                      Criamos experiências online que encantam seus clientes e
-                      impulsionam seu negócio para o sucesso.
-                    </p>
-                    <FadeContainer
-                      once
-                      className="flex flex-col gap-4 sm:flex-row items-center"
-                    >
-                      <Button
-                        type="button"
-                        label="Entrar em contato"
-                        onClick={() => startWhatsAppChat()}
-                        className="!rounded-full !bg-secondary-500 !px-8 !py-4 !text-black !shadow-none font-bold cursor-pointer transition-all duration-200 hover:!bg-secondary-400 hover:scale-[1.03] active:scale-[0.98]"
-                      />
-                      <Button
-                        type="button"
-                        variant="outlined"
-                        label="Ver serviços"
-                        onClick={() => router.push("/servicos")}
-                        className="!rounded-full !border !border-foreground/70 !px-8 !py-4 !text-foreground !shadow-none font-bold cursor-pointer transition-all duration-200 hover:!border-foreground hover:!bg-foreground/10 hover:scale-[1.03] active:scale-[0.98]"
-                      />
-                    </FadeContainer>
-                  </div>
-                </div>
-              </div>
-            </div>
-          }
-        />
+          sources={heroVideoSources}
+          posterUrl={HERO_POSTER_URL}
+          lazyLoad
+          containerClassName="!min-h-[min(calc(100svh_-_5rem),56.25vw)]"
+          // Theme-tinted wash so the centered copy keeps contrast in light and dark modes,
+          // fading into the page background at the bottom.
+          overlayClassName="bg-background/60 !bg-[linear-gradient(to_top,var(--color-background)_0%,transparent_28%),radial-gradient(ellipse_at_center,color-mix(in_srgb,var(--color-background)_80%,transparent)_0%,transparent_75%)]"
+          contentClassName="gap-8 px-6 py-20 text-center sm:py-24"
+        >
+          <Title
+            content="Soluções web para impulsionar seu negócio."
+            className="max-w-3xl font-semibold tracking-wide text-foreground !text-3xl sm:!text-5xl lg:!text-6xl [text-shadow:0_0_18px_var(--color-background),0_0_4px_var(--color-background)]"
+          />
+          <p className="max-w-xl text-foreground/90 text-base sm:text-lg leading-relaxed [text-shadow:0_0_18px_var(--color-background),0_0_4px_var(--color-background)]">
+            Criamos experiências online que encantam seus clientes e
+            impulsionam seu negócio para o sucesso.
+          </p>
+          <FadeContainer
+            once
+            className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row"
+          >
+            <Button
+              type="button"
+              label="Entrar em contato"
+              onClick={() => startWhatsAppChat()}
+              className="!rounded-full !bg-secondary-500 !px-8 !py-4 !text-black !shadow-none font-bold cursor-pointer transition-all duration-200 hover:!bg-secondary-400 hover:scale-[1.03] active:scale-[0.98]"
+            />
+            <Button
+              type="button"
+              variant="outlined"
+              label="Ver serviços"
+              onClick={() => router.push("/servicos")}
+              className="!rounded-full !border !border-foreground/70 !px-8 !py-4 !text-foreground !shadow-none font-bold cursor-pointer transition-all duration-200 hover:!border-foreground hover:!bg-foreground/10 hover:scale-[1.03] active:scale-[0.98]"
+            />
+          </FadeContainer>
+        </VideoSection>
 
         <div id={aboutContent.sectionId} className="scroll-mt-8">
           <Section size="full" sectionClassName="bg-background py-20 sm:py-24">
