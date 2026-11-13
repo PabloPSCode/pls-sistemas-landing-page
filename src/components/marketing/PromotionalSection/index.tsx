@@ -4,9 +4,11 @@ import { CheckIcon } from "@phosphor-icons/react/dist/icons/Check";
 import clsx from "clsx";
 
 import {
+  blogAddon,
   plans as defaultPlans,
   promotionalSectionContent,
   type Plan,
+  type PlanAddon,
 } from "@/mocks/plans";
 import { startWhatsAppChat } from "@/utils/whatsapp";
 
@@ -17,6 +19,8 @@ export interface PromotionalSectionProps {
   plans?: Plan[];
   /** Produto citado na mensagem do WhatsApp. Padrão: "um website". */
   product?: string;
+  /** Oferta adicional exibida abaixo dos planos. Padrão: blog, apenas com os planos de sites. */
+  addon?: PlanAddon | null;
   title?: string;
   subtitle?: string;
   className?: string;
@@ -112,10 +116,52 @@ function PlanCard({
   );
 }
 
+function AddonCard({ addon }: { addon: PlanAddon }) {
+  return (
+    <article className="mx-auto mt-6 w-full max-w-5xl rounded-3xl border border-foreground/12 bg-foreground/[0.03] p-6 sm:p-7">
+      <p className="text-sm font-medium uppercase tracking-[0.08em] text-foreground/65">
+        {addon.eyebrow}
+      </p>
+      <h3 className="mt-3 text-2xl font-semibold text-foreground">
+        {addon.name}
+      </h3>
+      <p className="mt-3 flex items-baseline gap-2">
+        <span className="text-3xl font-bold text-foreground sm:text-4xl">
+          {addon.price}
+        </span>
+        <span className="text-base text-foreground/65">{addon.priceLabel}</span>
+      </p>
+      <p className="mt-4 text-base leading-7 text-foreground/80">
+        {addon.description}
+      </p>
+      <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+        {addon.features.map((feature) => (
+          <li
+            key={feature}
+            className="flex items-start gap-3 text-base text-foreground/88"
+          >
+            <CheckIcon
+              size={18}
+              weight="bold"
+              className="mt-1 shrink-0 text-emerald-500"
+              aria-hidden="true"
+            />
+            <span>{feature}</span>
+          </li>
+        ))}
+      </ul>
+      <p className="mt-5 text-sm leading-6 text-foreground/60">
+        {addon.footnote}
+      </p>
+    </article>
+  );
+}
+
 export default function PromotionalSection({
   category,
   plans = defaultPlans,
   product = "um website",
+  addon = plans === defaultPlans ? blogAddon : null,
   title = promotionalSectionContent.title,
   subtitle = promotionalSectionContent.subtitle,
   className,
@@ -153,6 +199,8 @@ export default function PromotionalSection({
             />
           ))}
         </div>
+
+        {addon ? <AddonCard addon={addon} /> : null}
       </div>
     </section>
   );

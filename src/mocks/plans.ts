@@ -13,6 +13,17 @@ export interface Plan {
   features: string[];
 }
 
+export interface PlanAddon {
+  id: string;
+  eyebrow: string;
+  name: string;
+  price: string;
+  priceLabel: string;
+  description: string;
+  features: string[];
+  footnote: string;
+}
+
 export const promotionalSectionContent = {
   title: "Planos para colocar o seu negócio no digital",
   subtitle:
@@ -95,3 +106,22 @@ export const landingPagePlans: Plan[] = [
     ],
   },
 ];
+
+export const blogAddon: PlanAddon = {
+  id: "blog-profissional",
+  eyebrow: "Adicional para seu site",
+  name: "Blog Profissional",
+  price: "R$ 29,90",
+  priceLabel: "/mês",
+  description:
+    "Publique novidades, dicas e conteúdos úteis para seus clientes, e mantenha seu site sempre alimentando os motores de busca.",
+  features: [
+    "Painel completo para publicar artigos.",
+    "Adicione textos, imagens e categorias.",
+    "Artigos com URLs próprias.",
+    "Estrutura preparada para indexação no Google.",
+    "Você cria e publica quando quiser.",
+  ],
+  footnote:
+    "Produção e publicação do conteúdo por responsabilidade do cliente. Não inclui redação, consultoria SEO ou garantia de posicionamento no Google.",
+};
