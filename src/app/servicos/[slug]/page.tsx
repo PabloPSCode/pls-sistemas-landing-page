@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import PromotionalSection from "@/components/marketing/PromotionalSection";
 import { Accordeon } from "@/components/miscellaneous/Accordeon";
 import StructuredData from "@/components/seo/StructuredData";
+import { landingPagePlans } from "@/mocks/plans";
 import {
   getRelatedServiceSeoPages,
   getServiceSeoPage,
@@ -156,6 +157,16 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
       {page.slug === "criacao-de-sites" ? (
         <PromotionalSection category="empresa" />
+      ) : null}
+
+      {page.slug === "criacao-de-landing-pages" ? (
+        <PromotionalSection
+          category="empresa"
+          plans={landingPagePlans}
+          product="uma landing page"
+          title="Plano para colocar sua landing page no ar"
+          subtitle="Uma página focada na sua oferta, pronta para receber tráfego e gerar contatos."
+        />
       ) : null}
 
       <section className="border-y border-foreground/10 bg-surface-accent px-4 py-20 sm:px-6 sm:py-24">

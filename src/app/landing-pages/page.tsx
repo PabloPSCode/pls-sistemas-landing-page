@@ -19,6 +19,7 @@ import MaskedTextInput from "@/components/inputs/MaskedTextInput";
 import SelectInput, { type Option } from "@/components/inputs/SelectInput";
 import TextInput from "@/components/inputs/TextInput";
 import GenericModal from "@/components/modals/GenericModal";
+import PromotionalSection from "@/components/marketing/PromotionalSection";
 import Paragraph from "@/components/typography/Paragraph";
 import Subtitle from "@/components/typography/Subtitle";
 import Title from "@/components/typography/Title";
@@ -28,6 +29,7 @@ import {
     landingServicesContent,
     templates,
 } from "@/mocks/landing-page";
+import { landingPagePlans } from "@/mocks/plans";
 import { brazilianPhoneMask } from "@/utils/masks";
 import { startWhatsAppChat } from "@/utils/whatsapp";
 
@@ -473,6 +475,14 @@ export default function Page() {
           </ol>
         </div>
       </section>
+
+      <PromotionalSection
+        category="empresa"
+        plans={landingPagePlans}
+        product="uma landing page"
+        title="Plano para colocar sua landing page no ar"
+        subtitle="Uma página focada na sua oferta, pronta para receber tráfego e gerar contatos."
+      />
 
       <section className="w-full max-w-6xl mx-auto px-8 py-12" id="detalhes">
         <Title
