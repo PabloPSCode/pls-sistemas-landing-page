@@ -58,10 +58,6 @@
       ],
       "faqs": [
         {
-          "question": "A PLS Sistemas cria sites para empresas de fora de João Monlevade?",
-          "answer": "Sim. A empresa atende negócios em João Monlevade, Minas Gerais e outras regiões do Brasil, com briefing e acompanhamento online."
-        },
-        {
           "question": "O site já é entregue com SEO?",
           "answer": "Sim. O projeto inclui configuração técnica de SEO, URLs amigáveis, metadados, sitemap e estrutura de conteúdo preparada para indexação."
         },
@@ -140,10 +136,6 @@
         {
           "question": "A landing page pode ter formulário e WhatsApp?",
           "answer": "Sim. A página pode direcionar para WhatsApp, formulário, telefone, checkout ou outro canal escolhido para a campanha."
-        },
-        {
-          "question": "É possível usar um template?",
-          "answer": "Sim. A PLS Sistemas possui opções de templates que aceleram a criação e podem ser adaptadas para a identidade do negócio."
         }
       ],
       "relatedSlugs": [

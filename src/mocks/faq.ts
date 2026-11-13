@@ -51,7 +51,7 @@ function buildCommonQuestions(profile: CategoryFaqProfile): QuestionItem[] {
     {
       question: "Meu site vai aparecer nas buscas do Google?",
       answer:
-        "Sim. Desenvolvemos todos os sites com boas práticas de SEO técnico e semântico, ajudando o seu negócio a ter mais chances de aparecer nas pesquisas relacionadas aos seus serviços.",
+        "Provavelmente sim. Não podemos garantir que o site apareça nas primeiras páginas do Google, porém desenvolvemos todos os sites com boas práticas de SEO técnico e semântico, ajudando o seu negócio a ter mais chances de aparecer nas pesquisas relacionadas aos seus serviços.",
     },
     {
       question: "O atendimento e o contrato são seguros mesmo a distância?",
